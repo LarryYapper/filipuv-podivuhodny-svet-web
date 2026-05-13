@@ -55,7 +55,7 @@ const SHARED_COMPONENTS = {
         <!-- Sticky Navigation Container -->
         <div class="nav-load main-navigation">
             <a href="index.html" class="logo-hover">
-                <img src="assets/Filip%C3%BAv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png" alt="Filipův podivuhodniý svět">
+                <img src="assets/logo.png" alt="Filipův podivuhodniý svět">
                 <div class="logo-text">Filipův podivuhodný svět</div>
             </a>
 
@@ -67,7 +67,7 @@ const SHARED_COMPONENTS = {
                 <div class="mobile-nav-panel">
                     <div class="mobile-nav-header">
                         <div class="mobile-logo-wrap">
-                            <img src="assets/Filip%C3%BAv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png" alt="Logo">
+                            <img src="assets/logo.png" alt="Logo">
                             <div class="mobile-logo-text">Filipův podivuhodný svět</div>
                         </div>
                         <button class="mobile-nav-close" aria-label="Zavřít">×</button>
@@ -141,7 +141,7 @@ const SHARED_COMPONENTS = {
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
-                        <img src="assets/Filip%C3%BAv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png" alt="Filipův podivuhodniý svět">
+                        <img src="assets/logo.png" alt="Filipův podivuhodniý svět">
                     </div>
                     <div class="footer-tagline">
                         Úkryt před ruchem světa. <br />Měsíční obálka, která tě vytrhne z proudu.
