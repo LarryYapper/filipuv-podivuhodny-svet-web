@@ -362,7 +362,7 @@
         const favicon = document.querySelector('link[rel="icon"]') || document.createElement('link');
         favicon.rel = 'icon';
         favicon.type = 'image/png';
-        favicon.href = 'assets/Filipův podivuhodný svět_logo 2.0.png';
+        favicon.href = 'assets/Filip%C3%BAv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png';
         if (!document.head.contains(favicon)) {
             document.head.appendChild(favicon);
         }

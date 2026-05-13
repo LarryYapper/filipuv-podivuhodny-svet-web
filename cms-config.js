@@ -25,7 +25,7 @@ const CMS_CONFIG = {
     tiers: {
         listek: {
             name: "Start",
-            image: "assets/Lístek.png", // Ensure this path is correct
+            image: "assets/L%C3%ADstek.png", // Ensure this path is correct
             price: "119 Kč",
             frequency: "měsíčně"
         },
@@ -37,7 +37,7 @@ const CMS_CONFIG = {
         },
         balicek: {
             name: "Sběratelský",
-            image: "assets/Balíček.png",
+            image: "assets/Bal%C3%ADek.png",
             price: "250 Kč",
             frequency: "měsíčně"
         }
