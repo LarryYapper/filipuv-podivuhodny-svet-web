@@ -362,7 +362,7 @@
         const favicon = document.querySelector('link[rel="icon"]') || document.createElement('link');
         favicon.rel = 'icon';
         favicon.type = 'image/png';
-        favicon.href = 'assets/logo.png';
+        favicon.href = 'https://raw.githubusercontent.com/LarryYapper/filipuv-podivuhodny-svet-web/main/assets/logo.png';
         if (!document.head.contains(favicon)) {
             document.head.appendChild(favicon);
         }
