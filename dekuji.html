@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Děkujeme za objednávku · Filipův podivuhodný svět</title>
+  <meta name="description" content="Potvrzení dokončené objednávky. Co bude dál?">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #F7F1E6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .paper-canvas {
+      min-height: 100vh;
+      background: #F7F1E6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dekuji-page {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      padding: 80px 48px 96px;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 32px;
+    }
+
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #B65A2F;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: #B65A2F;
+      flex-shrink: 0;
+    }
+
+    .hero-tag::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: #B65A2F;
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      margin: 0;
+      color: #2A201F;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hero-copy-main {
+      margin: 0;
+      color: #2A201F;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .hero-copy-sub {
+      margin: 0;
+      color: #5E524B;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 28px;
+      max-width: 620px;
+    }
+
+    .next {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 48px;
+      padding-top: 40px;
+      border-top: 1px solid #D9CFC2;
+    }
+
+    .next-head {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .next-kicker {
+      color: #B65A2F;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .next-title {
+      margin: 0;
+      color: #2A201F;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 7vw, 72px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .next-copy {
+      max-width: 640px;
+      color: #5E524B;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 32px;
+      margin: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid #D9CFC2;
+      background: rgba(251, 247, 238, 0.6);
+      width: 100%;
+    }
+
+    .step {
+      min-height: 200px;
+      padding: 28px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-right: 1px solid #D9CFC2;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .step:last-child {
+      border-right: none;
+    }
+
+    .step-num {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      color: #B65A2F;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .step-title {
+      margin: 0;
+      color: #2A201F;
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .step-copy {
+      margin: 0;
+      color: #5E524B;
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-style: italic;
+      line-height: 24px;
+    }
+
+    .support {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      padding-top: 40px;
+      border-top: 1px solid #D9CFC2;
+      color: #5E524B;
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 28px;
+    }
+
+    .support a {
+      color: #2A201F;
+      text-decoration: none;
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .support a:hover {
+      color: #B65A2F;
+    }
+
+    @media (max-width: 1080px) {
+      .dekuji-page {
+        gap: 64px;
+        padding: 56px 32px 80px;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid #D9CFC2;
+      }
+
+      .step:nth-child(2),
+      .step:nth-child(4) {
+        border-right: none;
+      }
+
+      .step:nth-child(3),
+      .step:nth-child(4) {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .dekuji-page {
+        gap: 48px;
+        padding: 40px 20px 64px;
+      }
+
+      .hero-tag::before,
+      .hero-tag::after {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: clamp(48px, 8vw, 72px);
+      }
+
+      .hero-copy-main {
+        font-size: 22px;
+        line-height: 32px;
+      }
+
+      .hero-copy-sub {
+        font-size: 16px;
+        line-height: 26px;
+      }
+
+      .next {
+        gap: 36px;
+      }
+
+      .next-title {
+        font-size: 36px;
+      }
+
+      .next-copy {
+        font-size: 17px;
+        line-height: 28px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid #D9CFC2;
+        min-height: auto;
+        padding: 24px 18px 20px;
+      }
+
+      .step:last-child {
+        border-bottom: none;
+      }
+
+      .step-title {
+        font-size: 18px;
+      }
+
+      .step-copy {
+        font-size: 14px;
+      }
+
+      .support {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="dekuji-page">
+      <section class="hero">
+        <div class="hero-tag">✦ Děkuji ✦</div>
+        <h1 class="hero-title">Hotovo.</h1>
+        <div class="hero-copy">
+          <p class="hero-copy-main">Tvoje objednávka je přijatá, potvrzení už je v e-mailu.</p>
+          <p class="hero-copy-sub">Vyrábím a odesílám ručně. Níže vidíš, co se bude dít dál.</p>
+        </div>
+      </section>
+
+      <section class="next">
+        <div class="next-head">
+          <div class="next-kicker">✦ Co bude dál</div>
+          <h2 class="next-title">Cesta k tvé schránce.</h2>
+          <p class="next-copy">Ručně, pečlivě, s potvrzením v každém kroku.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-num"><span>01</span><span>teď</span></div>
+            <h3 class="step-title">Objednávka přijatá.</h3>
+            <p class="step-copy">Vše se uloží v systému a já dostan objednávku k rukám.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num"><span>02</span><span>2–3 dny</span></div>
+            <h3 class="step-title">Příprava běží.</h3>
+            <p class="step-copy">Podle typu objednávky vyrábím, balím nebo připravuju odeslání.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num"><span>03</span><span>3–5 dní</span></div>
+            <h3 class="step-title">Potvrzení dorazí.</h3>
+            <p class="step-copy">E-mail s potvrzením a informacemi o dalších krocích.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num"><span>04</span><span>pak</span></div>
+            <h3 class="step-title">V tvé schránce.</h3>
+            <p class="step-copy">Jakmile je hotovo, dorazí k tobě nebo se stáhne podle typu.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="support">
+        <p>Něco není jasné? Rád odpovídám na otázky.</p>
+        <a href="mailto:podpora@filipuvpodivuhodnysvet.cz">podpora@filipuvpodivuhodnysvet.cz →</a>
+      </section>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="cms-config.js"></script>
+  <script src="components.js"></script>
+  <script src="global.js"></script>
+</body>
+
+</html>

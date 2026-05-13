@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edice VÍTEJ · Objednávka</title>
+  <meta name="description" content="Objednávka Edice VÍTEJ přes SimpleShop.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #F4F2EB;
+      color: #3A2C31;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: 'Mulish', sans-serif;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 56px 0 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: 32px;
+    }
+
+    .kicker {
+      color: #FC7B35;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 7vw, 84px);
+      font-weight: 600;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 52ch;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(20px, 2.8vw, 26px);
+      font-style: italic;
+      line-height: 1.45;
+      color: rgba(58, 44, 49, 0.82);
+    }
+
+    .bullets {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .bullets li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .bullets li::before {
+      content: '•';
+      color: #FC7B35;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .aside {
+      background: #FBF7EE;
+      border: 1px solid rgba(58, 44, 49, 0.12);
+      box-shadow: 0 22px 44px -26px rgba(58, 44, 49, 0.45);
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-note {
+      color: rgba(58, 44, 49, 0.68);
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .form-shell {
+      border-radius: 0;
+      overflow: visible;
+      background: transparent;
+      border: 0;
+    }
+
+    .form-shell > div {
+      padding: 0;
+    }
+
+    .form-shell a {
+      color: #3A2C31;
+    }
+
+    @media (max-width: 980px) {
+      .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100% - 24px, 1180px);
+        padding: 32px 0 56px;
+      }
+
+      .aside {
+        padding: 16px;
+        border-radius: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="wrap">
+      <section class="intro">
+        <div class="kicker">Edice VÍTEJ · objednávka</div>
+        <h1>Otevři první obálku za 99 Kč.</h1>
+        <p class="lead">Jednorázová objednávka s poštovným po Česku v ceně. Bez předplatného, bez automatického strhávání.</p>
+        <ul class="bullets">
+          <li>První vlna 250 ručně dělaných obálek.</li>
+          <li>Platba kartou nebo přes platební bránu.</li>
+          <li>Po objednávce tě stránka přesměruje na poděkování.</li>
+        </ul>
+      </section>
+
+      <aside class="aside" aria-label="Objednávkový formulář Edice VÍTEJ">
+        <p class="form-note">Vyplň formulář a dokonči objednávku.</p>
+        <div class="form-shell">
+          <!-- www.SimpleShop.cz form#148023 start -->
+          <div data-SimpleShopForm="ND583"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=98197" target="_blank">SimpleShop.cz</a>.</div></div>
+          <script>
+           (function(i, s, o, g, r, a, m){
+            i[r] = i[r] || function(){
+             (i[r].q = i[r].q || []).push(arguments)
+            };
+            i[r].l = 1 * new Date();
+            a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+           })(window, document, "script", "https://form.simpleshop.cz/prj/js/SimpleShopService.js", "sss");
+           sss("createForm", "ND583");
+          </script>
+          <!-- www.SimpleShop.cz form#148023 end -->
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+
+</html>

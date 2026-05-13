@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edice Alfa: Poštovné · Filipův podivuhodný svět</title>
+  <meta name="description" content="Tvá edice Alfa: poštovné zdarma a osobní kód pro Edici VÍTEJ.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #F4EFE0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .paper-canvas {
+      width: 100%;
+      background: #F4EFE0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alfa-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .alfa-reveal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 80px 48px 48px;
+    }
+
+    .alfa-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: #FAF6E8;
+      border: 1px solid #1A161433;
+      border-radius: 999px;
+    }
+
+    .alfa-chip-star {
+      color: #1A161499;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+    }
+
+    .alfa-chip-text {
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .alfa-card {
+      width: min(760px, 100%);
+      background: #FAF6E8;
+      border: 1px solid #1A16141A;
+      box-shadow: 0 24px 48px -12px #1A16141F, 0 2px 4px #1A161414;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 64px 72px;
+      transform: rotate(-0.4deg);
+      transform-origin: center;
+    }
+
+    .meta-block {
+      border-bottom: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 24px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .meta-key {
+      width: 88px;
+      flex-shrink: 0;
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .hero-copy-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 8vw, 84px);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .hero-copy-sub {
+      margin: 0;
+      max-width: 540px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 32px;
+    }
+
+    .reward-grid {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      background: #F4EFE0;
+      border: 1px solid #1A16141A;
+    }
+
+    .reward-preview {
+      width: 168px;
+      min-height: 220px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1px dashed #1A161466;
+      box-shadow: 0 2px 6px #1A16140F;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .reward-preview-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      line-height: 12px;
+      text-transform: uppercase;
+    }
+
+    .reward-preview-ticket {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px 6px;
+      border: 2px solid #FC7B35;
+      color: #FC7B35;
+      text-align: center;
+    }
+
+    .reward-preview-state {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 12px;
+      text-transform: uppercase;
+    }
+
+    .reward-preview-value {
+      color: #FC7B35;
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .reward-preview-meta {
+      color: #FC7B35BF;
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      line-height: 10px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .reward-list-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .reward-list-kicker {
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .reward-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-style: italic;
+      line-height: 22px;
+    }
+
+    .reward-item-dot {
+      color: #FC7B35;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .claim-block {
+      border-top: 1px dashed #1A161433;
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .claim-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .claim-title {
+      color: #1A1614;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .claim-time {
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .claim-form {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+    }
+
+    .claim-input {
+      flex: 1;
+      min-width: 260px;
+      padding: 18px 20px;
+      border-top: 1px solid #1A161466;
+      border-left: 1px solid #1A161466;
+      border-bottom: 1px solid #1A161466;
+      color: #1A161466;
+      font-family: 'Courier Prime', monospace;
+      font-size: 14px;
+      line-height: 18px;
+      background: #F4EFE0;
+    }
+
+    .claim-btn {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #FC7B35;
+      background: #FC7B35;
+      color: #FFFFFF;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 18px;
+      padding: 18px 28px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .alfa-footnote {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      line-height: 16px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .about-vitej {
+      border-top: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 64px;
+      padding: 80px 48px;
+    }
+
+    .about-vitej-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      flex: 1;
+      max-width: 620px;
+    }
+
+    .about-vitej-image {
+      flex-shrink: 0;
+      width: 280px;
+      height: 420px;
+      background: #F4EFE0;
+      border: 2px solid #1A161433;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1A161466;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      text-align: center;
+      line-height: 18px;
+    }
+
+    .about-vitej-head {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-vitej-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .about-vitej-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.07;
+      text-align: center;
+    }
+
+    .about-vitej-copy {
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      color: #3A2C31CC;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 28px;
+    }
+
+    .about-vitej-copy p {
+      margin: 0;
+    }
+
+    .about-vitej-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .about-vitej-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 44px;
+      border-radius: 999px;
+      background: #FC7B35;
+      color: #F4F2EB;
+      text-decoration: none;
+      font-family: 'Mulish', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 22px;
+    }
+
+    .about-vitej-note {
+      color: #3A2C3199;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-vitej {
+        flex-direction: column;
+        align-items: center;
+        padding: 64px 20px;
+      }
+
+      .about-vitej-content {
+        max-width: 100%;
+      }
+
+      .about-vitej-image {
+        width: 200px;
+        height: 300px;
+      }
+
+      .alfa-reveal {
+        padding: 56px 20px 40px;
+      }
+
+      .alfa-card {
+        padding: 32px 22px;
+        transform: none;
+      }
+
+      .reward-grid {
+        flex-direction: column;
+      }
+
+      .reward-preview {
+        width: 100%;
+        min-height: 180px;
+      }
+
+      .claim-form {
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .claim-input {
+        min-width: 0;
+        border-right: 1px solid #1A161466;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="alfa-wrap">
+      <section class="alfa-reveal">
+        <div class="alfa-chip">
+          <div class="alfa-chip-star">★</div>
+          <div class="alfa-chip-text">Tvá Edice Alfa</div>
+        </div>
+
+        <article class="alfa-card">
+          <div class="meta-block">
+            <div class="meta-row"><div class="meta-key">karta</div><div class="meta-value">Edice Alfa</div></div>
+            <div class="meta-row"><div class="meta-key">tvá výhra</div><div class="meta-value">Poštovné zdarma · pro Edici VÍTEJ</div></div>
+            <div class="meta-row"><div class="meta-key">stav</div><div class="meta-value" data-code-status>kód ALFA·UC·3M2X · platný do 5. 6. 2026</div></div>
+          </div>
+
+          <div class="hero-copy">
+            <div class="hero-copy-kicker">✦ tvá výhra · kód se přidá v košíku automaticky</div>
+            <h1 class="hero-copy-title">Poštovné zdarma.</h1>
+            <p class="hero-copy-sub">Edici VÍTEJ ti pošlu po Česku zadarmo. Ušetříš 19 Kč na poštovném. 99 → 80 Kč.<br>Při doručení mimo Česko, stále obdržíš slevu 19 Kč.</p>
+          </div>
+
+          <div class="reward-grid">
+            <div class="reward-preview" aria-hidden="true">
+              <div class="reward-preview-top"><span>Česká pošta</span><span>&nbsp;</span></div>
+              <div class="reward-preview-ticket">
+                <div class="reward-preview-state">Vyplaceno</div>
+                <div class="reward-preview-value">19 Kč</div>
+                <div class="reward-preview-meta">Filip → ty</div>
+              </div>
+              <div class="reward-preview-top"><span>obálka · 50 g</span><span>&nbsp;</span></div>
+            </div>
+
+            <div class="reward-list-wrap">
+              <div class="reward-list-kicker">co dostaneš</div>
+              <div class="reward-item"><span class="reward-item-dot">·</span><span>Edici VÍTEJ za 80 Kč — ne 99</span></div>
+              <div class="reward-item"><span class="reward-item-dot">·</span><span>posílám 10. června</span></div>
+            </div>
+          </div>
+
+          <div class="claim-block">
+            <div class="claim-head">
+              <div class="claim-title">✦ Uplatni kód v košíku VÍTEJ</div>
+              <div class="claim-time">platný do 5. června</div>
+            </div>
+
+            <div class="claim-form">
+              <div class="claim-input" data-code-value>ALFA·UC·3M2X</div>
+              <a class="claim-btn" href="edice-vitej.html"><span data-field="claimButton">Vyzvednout VÍTEJ s poštovným zdarma</span><span>→</span></a>
+            </div>
+
+            <p class="about-vitej-note" style="text-align:left; margin: 0;">Kód se přidá automaticky. Vyplníš jen adresu — zásilku pošlu 10. června společně s první vlnou.</p>
+          </div>
+        </article>
+
+        <div class="alfa-footnote"><span>★</span><span>vzácnější výhra · cca 25 % karet · ušetříš 19 Kč na poštovném</span></div>
+      </section>
+
+      <section class="about-vitej">
+        <div class="about-vitej-content">
+          <div class="about-vitej-head">
+            <div class="about-vitej-kicker">✦ co je vlastně edice vítej</div>
+            <h2 class="about-vitej-title">Šest kusů ze srpnové edice. Jednou. Bez závazku.</h2>
+          </div>
+
+          <div class="about-vitej-copy">
+            <p>Edice VÍTEJ je první obálka mého poštovního klubu. Šest fyzických kusů — fotopohlednice, ZINE o klubu, samolepka, citát měsíce, dopisní papír a letáček — za 99 Kč včetně poštovného po Česku. Jednorázově. Žádné předplatné, žádný algoritmus, žádné automatické strhávání.</p>
+            <p>První vlnu vyrábím ručně doma — 650 obálek. Když se rozeberou, otevřu druhou vlnu pro další edici.</p>
+          </div>
+
+          <div class="about-vitej-cta">
+            <a class="about-vitej-btn" href="edice-vitej.html"><span>Vyzkoušej Edici VÍTEJ</span><span>→</span></a>
+            <div class="about-vitej-note">Šest kusů. 99 Kč jednorázově. První vlna 650 obálek.</div>
+          </div>
+        </div>
+
+        <div class="about-vitej-image">Edice VÍTEJ<br>placeholder photo</div>
+      </section>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="cms-config.js"></script>
+  <script src="components.js"></script>
+  <script src="global.js"></script>
+  <script>
+    (function () {
+      function getCodeFromUrl() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('code');
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var code = getCodeFromUrl() || 'ALFA·UC·3M2X';
+        var validCodes = window.CODE_DATABASE && Array.isArray(window.CODE_DATABASE.ALFA_CODES) ? window.CODE_DATABASE.ALFA_CODES : [];
+        var finalCode = validCodes.indexOf(code) !== -1 ? code : 'ALFA·UC·3M2X';
+        var codeNode = document.querySelector('[data-code-value]');
+        var statusNode = document.querySelector('[data-code-status]');
+
+        if (codeNode) {
+          codeNode.textContent = finalCode;
+        }
+
+        if (statusNode) {
+          statusNode.textContent = 'kód ' + finalCode + ' · platný do 5. 6. 2026';
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

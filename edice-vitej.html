@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edice VÍTEJ · Filipův podivuhodný svět</title>
+
+    <!-- Load custom fonts from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .edition-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: clamp(32px, 5vw, 80px);
+            padding-block: clamp(40px, 10vw, 100px);
+            padding-inline: clamp(20px, 5vw, 80px);
+            max-width: 1280px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            min-width: 320px;
+            max-width: 600px;
+            background-color: #3A2C310D;
+            border-radius: 24px;
+            aspect-ratio: 3/2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px dashed #3A2C3133;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 32px;
+            width: 100%;
+        }
+
+        .item-card {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .item-preview {
+            height: 348px;
+            background-color: #3A2C310A;
+            border: 1px solid #3A2C311F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-nav-details summary::-webkit-details-marker,
+        .mobile-nav-details summary::marker {
+            display: none !important;
+            content: "" !important;
+            list-style: none !important;
+            list-style-type: none !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+            position: absolute !important;
+            pointer-events: none !important;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .step-col {
+            flex: 1;
+            min-width: 280px;
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            border-top: 2px solid #3A2C31;
+            border-right: 1px solid #3A2C311F;
+        }
+
+        .step-col:last-child {
+            border-right: none;
+        }
+
+        .step-col.active {
+            background-color: #FC7B3508;
+            border-top-color: #FC7B35;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #3A2C311F;
+            padding-block: 32px;
+        }
+
+        .final-cta-section {
+            background-color: #3A2C31;
+            color: #F4F2EB;
+            padding-block: 100px;
+            padding-inline: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+        }
+
+        @media (max-width: 767px) {
+            .step-col {
+                border-right: none;
+                border-bottom: 1px solid #3A2C311F;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="paper-canvas"
+        style="background-color: #F4F2EB; box-sizing: border-box; display: flex; flex-direction: column; font-size: 12px; font-synthesis: none; height: fit-content; line-height: 16px; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; width: 100%;">
+
+        <div id="global-banner"></div>
+
+        <!-- Navigation -->
+        <div id="global-header"></div>
+
+        <!-- Breadcrumb -->
+        <div style="padding-inline: clamp(20px, 5vw, 80px); padding-block: 20px; border-bottom: 1px solid #3A2C311F;">
+            <div
+                style="max-width: 1280px; margin: 0 auto; display: flex; gap: 8px; font-family: 'Mulish', sans-serif; font-size: 13px; color: #3A2C318C;">
+                <a href="index.html" style="color: inherit; text-decoration: none;">Domů</a>
+                <span>/</span>
+                <a href="postovni-klub.html" style="color: inherit; text-decoration: none;">Poštovní klub</a>
+                <span>/</span>
+                <span style="color: #3A2C31; font-weight: 700;">Edice VÍTEJ</span>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="edition-hero">
+            <div class="hero-content">
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="hero-load hero-load-d0"
+                        style="display: flex; align-items: center; gap: 10px; color: #FC7B35; font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;">
+                        ✦ EDICE VÍTEJ · PRVNÍ VLNA · 250 OBÁLEK
+                    </div>
+                    <h1 class="hero-load hero-load-d1 hero-title"
+                        style="font-family: 'Fraunces', serif; font-size: clamp(40px, 6vw, 80px); font-weight: 600; color: #3A2C31; line-height: 1.1; letter-spacing: -0.025em; margin: 0;">
+                        Otevři první obálku<br />za 99 Kč.
+                    </h1>
+                    <p class="hero-load hero-load-d2 hero-subtitle"
+                        style="font-family: 'Fraunces', serif; font-size: 22px; font-style: italic; color: #3A2C3199; line-height: 1.5; margin: 0;">
+                        První vlna 250 ručně dělaných obálek. <br />Žádné předplatné, žádné automatické strhávání.
+                        <br />Pošlu 10. června.
+                    </p>
+                </div>
+
+                <div class="hero-load hero-load-d3 hero-actions" style="display: flex; align-items: flex-end; gap: 32px; flex-wrap: wrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div
+                            style="display: flex; align-items: baseline; gap: 4px; color: #FC7B35; font-family: 'Fraunces', serif;">
+                            <span style="font-size: 64px; font-weight: 700;">99</span>
+                            <span style="font-size: 32px; font-weight: 600;">Kč</span>
+                        </div>
+                        <div
+                            style="font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; color: #3A2C3199; letter-spacing: 0.18em; text-transform: uppercase;">
+                            JEDNORÁZOVĚ · VČ. POŠTOVNÉHO PO ČESKU
+                        </div>
+                    </div>
+                    <a href="edice-vitej-objednavka.html" class="btn-primary-shared" style="width: auto; padding-inline: 40px; height: 64px;">
+                        <span>Vyzkoušej za 99 Kč</span>
+                        <span style="margin-left: 8px;">→</span>
+                    </a>
+                </div>
+
+                <div class="hero-load hero-load-d4 hero-note"
+                    style="padding-top: 24px; border-top: 1px solid #3A2C311F; display: flex; align-items: center; gap: 14px;">
+                    <span style="color: #FC7B35; font-size: 18px;">☽</span>
+                    <p
+                        style="font-family: 'Mulish', sans-serif; font-size: 13px; color: #3A2C3199; margin: 0; line-height: 1.5;">
+                        Vyrábím v mém pokoji. Posílám Českou poštou v C5 obálce. Platba kartou nebo převodem.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hero-visual hero-load-scale hero-media">
+                <div
+                    style="color: #3A2C3166; font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; padding: 20px;">
+                    Hero Foto<br />(Krajina)
+                </div>
+            </div>
+        </section>
+
+        <!-- Co dostaneš v obálce Section (Mirrored from Home Page) -->
+        <section id="edice-vitej"
+            style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; font-size: 12px; gap: 64px; line-height: 16px; padding-block: 120px; padding-inline: clamp(20px, 5vw, 80px); background-color: #F4F2EB;">
+            <div
+                style="align-items: flex-end; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); justify-content: space-between; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                        ✦ ŠEST KUSŮ · CO DORAZÍ V OBÁLCE
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin: 0;">
+                        Co dostaneš v obálce.
+                    </div>
+                </div>
+                <div style="box-sizing: border-box; width: 100%; max-width: 380px; padding-bottom: 8px;">
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 20px; font-style: italic; line-height: 30px;">
+                        Jako Úroveň 2 — ale ZINE je o klubu samotném, ne tematický. Tedy skoro, součástí jsou veverky,
+                        které jsem
+                        obdivoval v Richmondu. <br>A navíc Receptová karta z Úrovně 3. <br>Bez závazku, bez
+                        předplatného.
+                    </div>
+                </div>
+            </div>
+            <div
+                style="align-items: center; background-color: #FC7B3512; border-left: 3px solid #FC7B35; box-sizing: border-box; display: flex; gap: 20px; padding-block: 20px; padding-inline: 28px; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 28px;">
+                    ☽
+                </div>
+                <div
+                    style="box-sizing: border-box; display: flex; flex-basis: 0%; flex-direction: column; flex-grow: 1; gap: 2px;">
+                    <div
+                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                        PRVNÍ VLNA · 250 OBÁLEK
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-style: italic; line-height: 26px;">
+                        VÍTEJ posílám ručně po vlnách – první má 250 obálek. Jakmile se rozeberou, otevřu druhou vlnu.
+                    </div>
+                </div>
+            </div>
+            <div
+                style="box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <!-- Item 1 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="background-image: linear-gradient(in oklab 160deg, oklab(86.4% -0.008 -0.020) 0%, oklab(71.3% -0.014 -0.041) 50%, oklab(55.1% -0.015 -0.051) 100%); border: 1.5px solid #3A2C31; box-shadow: #3A2C3133 8px 8px 0px -1.5px; box-sizing: border-box; display: flex; flex-direction: column; height: 150px; justify-content: flex-end; padding: 14px; rotate: -3deg; width: 220px;">
+                            <div
+                                style="background-image: url(https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/01KR68B57157YVR15N05RMRHYB.webp); background-position: 50%; background-size: cover; box-sizing: border-box; height: 100px; width: 151px;">
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 12px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.005em; line-height: 16px;">
+                                Veverka a jablko
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                Fotopohlednice
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · 105×148
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Originální fotografie z mého archivu. Každá edice jiná, nikdy se neopakují.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="background-color: #F4F2EB; border: 1.5px solid #3A2C31; box-shadow: #FF6752 8px 8px 0px -1.5px; box-sizing: border-box; display: flex; flex-direction: column; height: 184px; padding: 16px 14px; position: relative; rotate: 2deg; width: 130px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 0.2em; line-height: 10px;">
+                                00
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 24px; margin-top: 80px;">
+                                Vítej.
+                            </div>
+                            <div
+                                style="background-color: #3A2C3133; box-sizing: border-box; height: 1px; margin-top: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 8px; font-style: italic; line-height: 10px;">
+                                    jak vznikl tento klub
+                                </div>
+                            </div>
+                            <div
+                                style="background-color: #3A2C3126; bottom: 0px; box-sizing: border-box; left: 12px; position: absolute; top: 0px; width: 2px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                ZINE o klubu
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · 16 STRAN
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Příběh za klubem. Jak vznikl, proč vyrábím ručně, co tě čeká dál. 16 stran, ručně sešito.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="align-items: center; background-color: #F4F2EB; border: 1.5px solid #3A2C31; box-shadow: #E6A90F80 8px 8px 0px -1.5px; box-sizing: border-box; display: flex; height: 130px; justify-content: center; padding: 18px; rotate: -1deg; width: 200px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-style: italic; letter-spacing: -0.005em; line-height: 22px; text-align: center;">
+                                „Tady. Teď. Nic víc."
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                Citát měsíce
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · PLOTTER
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Zapamatovatelný citát, který dává komplexnost našeho světa do lepší perspektivy.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="align-items: center; background-image: linear-gradient(in oklab 135deg, oklab(77.2% 0.022 0.155) 0%, oklab(70.3% 0.163 0.096) 100%); border: 1.5px solid #3A2C31; border-radius: 50%; box-shadow: #3A2C3133 6px 6px 0px -1.5px; box-sizing: border-box; display: flex; height: 130px; justify-content: center; position: relative; rotate: -4deg; width: 130px;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 56px; font-weight: 700; line-height: 56px;">
+                                F
+                            </div>
+                            <div
+                                style="border: 1px dashed #F4F2EB80; border-radius: 50%; bottom: 8px; box-sizing: border-box; left: 8px; position: absolute; right: 8px; top: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                Členská samolepka
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                ø 70 mm · VINYL
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Exkluzivní pro Edici VÍTEJ. V dalších edicích už ji nedostaneš. Každá samolepka má unikátní
+                            číslo.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="background-color: #F4F2EB; border: 1.5px solid #3A2C31; box-shadow: #3A2C3126 8px 8px 0px -1.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 11px; height: 200px; padding: 18px 16px; rotate: 2deg; width: 145px;">
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div style="background-color: #3A2C3133; box-sizing: border-box; height: 1px;"></div>
+                            <div
+                                style="align-items: center; box-sizing: border-box; display: flex; gap: 6px; padding-top: 8px;">
+                                <div
+                                    style="background-color: #3A2C3133; box-sizing: border-box; flex-grow: 1; height: 1px;">
+                                </div>
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 9px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 12px;">
+                                    F.P.S.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                Dopis
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5 · 120 G
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Ať máš na čem napsat zpátky. Mně, mámě, kamarádovi. Komukoliv.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+                    <div
+                        style="align-items: center; background-color: #3A2C310A; border: 1px solid #3A2C311F; box-sizing: border-box; display: flex; height: 240px; justify-content: center; overflow: hidden;">
+                        <div
+                            style="box-shadow: #3A2C3126 8px 8px 0px -1.5px; box-sizing: border-box; display: flex; rotate: -2deg;">
+                            <div
+                                style="background-color: #F4F2EB; border: 1.5px solid #3A2C31; border-right-color: #3A2C3166; border-right-style: dashed; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px; height: 160px; padding: 14px 10px; width: 80px;">
+                                <div
+                                    style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 7px; font-weight: 700; letter-spacing: 0.18em; line-height: 10px;">
+                                    SVĚT
+                                </div>
+                                <div style="box-sizing: border-box; display: inline-block; padding-top: 4px;">
+                                    <div
+                                        style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 13px;">
+                                        Co tě čeká.
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                style="align-items: center; background-color: #F4F2EB; border: 1.5px solid #3A2C31; border-left: none; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; height: 160px; justify-content: center; padding: 14px 10px; width: 80px;">
+                                <div
+                                    style="background-image: linear-gradient(in oklab 135deg, oklab(77.2% 0.022 0.155) 0%, oklab(70.3% 0.163 0.096) 100%); border-radius: 50%; box-sizing: border-box; height: 28px; width: 28px;">
+                                </div>
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 9px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 12px; text-align: center;">
+                                    průvodce po světě
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px;">
+                                Receptová karta
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px;">
+                            Během pandemie jsem se pustil do vaření a pečení. Vaření mě baví, ale pečení jsem si přímo
+                            zamiloval.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal pricing-banner-bleed"
+                style="background-color: #3A2C31; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; padding-block: 40px; padding-inline: clamp(20px, 5vw, 80px); margin-inline: calc(-1 * clamp(20px, 5vw, 80px)); margin-top: 40px;">
+                <div class="pricing-row"
+                    style="align-items: center; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; width: 100%; max-width: 1280px; margin: 0 auto;">
+                    <div class="price-left"
+                        style="box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 10px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 5vw, 64px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.028em; line-height: 1.1;">
+                                80 Kč
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EBA6; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px;">
+                                jednorázově
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
+                            ZA EDICI VÍTEJ · 6 KUSŮ
+                        </div>
+                    </div>
+                    <div class="price-middle"
+                        style="border-left: 1px solid #F4F2EB2E; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 12px; padding-inline: 32px; width: 100%; max-width: 600px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EB8C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            + POŠTOVNÉ
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 18px;">
+                            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 2px;">
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 24px;">
+                                    19 Kč
+                                </div>
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; line-height: 12px;">
+                                    ČESKO
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 2px;">
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 24px;">
+                                    36 Kč
+                                </div>
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; line-height: 12px;">
+                                    EVROPA · SK
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 2px;">
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 24px;">
+                                    42 Kč
+                                </div>
+                                <div
+                                    style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; line-height: 12px;">
+                                    SVĚT
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-actions"
+                        style="align-items: center; box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="edice-vitej-objednavka.html" class="btn-primary"
+                            style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 18px; padding-inline: 32px; text-decoration: none; cursor: pointer;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px;">
+                                Vyzkoušej za 99 Kč
+                            </div>
+                        </a>
+                        <a href="postovni-klub.html" class="link-hover"
+                            style="align-items: center; box-sizing: border-box; display: flex; gap: 8px; text-decoration: none; cursor: pointer;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px;">
+                                Stát se členem
+                            </div>
+                            <div class="arrow-slide"
+                                style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 18px;">
+                                →
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    style="align-items: center; border-top: 1px solid #F4F2EB1F; box-sizing: border-box; display: flex; padding-top: 16px; width: 100%; max-width: 1280px; margin: 0 auto;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 14px; font-style: italic; line-height: 18px;">
+                        Z reálných 31 / 48 / 54 Kč za poštovné doplácím vždy 12 Kč, abys ty zaplatil méně.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jak to dorazí k tobě Section (Mirrored) -->
+        <section
+            style="background-color: #F4F2EB; border-bottom: 1px solid #3A2C311F; box-sizing: border-box; display: flex; flex-direction: column; gap: 64px; padding-block: 120px; padding-inline: clamp(20px, 5vw, 80px);">
+            <div
+                style="align-items: flex-end; box-sizing: border-box; display: flex; gap: 80px; justify-content: space-between; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px; text-transform: uppercase;">
+                        ✦ CO SE STANE POTOM
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 5vw, 64px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1;">
+                        Jak to dorazí k tobě.
+                    </div>
+                </div>
+                <div
+                    style="box-sizing: border-box; color: #3A2C3199; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 24px; max-width: 320px;">
+                    Žádné překvapení. Datum znáš dopředu, formát znáš dopředu, cenu znáš dopředu.
+                </div>
+            </div>
+            <div
+                style="box-sizing: border-box; display: flex; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="border-right: 1px solid #3A2C311F; border-top: 2px solid #3A2C31; box-sizing: border-box; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; gap: 24px; padding-block: 40px; padding-inline: 36px; min-width: 280px;">
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 56px;">
+                            01
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px; text-transform: uppercase;">
+                            DNES
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 32px;">
+                        Objednáš.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 15px; line-height: 24px;">
+                        Vyplníš krátký formulář a zaplatíš kartou nebo převodem. Pošlu ti e‑mail s potvrzením
+                        objednávky.
+                    </div>
+                </div>
+                <div
+                    style="border-right: 1px solid #3A2C311F; border-top: 2px solid #3A2C31; box-sizing: border-box; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; gap: 24px; padding-block: 40px; padding-inline: 36px; min-width: 280px;">
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 56px;">
+                            02
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #FC7B3580; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px; text-transform: uppercase;">
+                            DO 5. ČERVNA
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 32px;">
+                        Vyrobím.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 15px; line-height: 24px;">
+                        Tisknu doma na archy A4, ručně sešívám, plotruju samolepky. Tvoji obálku připravuju spolu s
+                        ostatními.
+                    </div>
+                </div>
+                <div
+                    style="background-color: #FC7B3508; border-right: 1px solid #3A2C311F; border-top: 2px solid #FC7B35; box-sizing: border-box; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; gap: 24px; padding-block: 40px; padding-inline: 36px; min-width: 280px;">
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 56px;">
+                            03
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px; text-transform: uppercase;">
+                            10. ČERVENCE
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 32px;">
+                        Pošlu.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 15px; line-height: 24px;">
+                        Česká pošta v C5 obálce. Obálka má rozměr 162×229 mm – vejde se do schránky bez ohýbání.
+                    </div>
+                </div>
+                <div
+                    style="border-top: 2px solid #3A2C31; box-sizing: border-box; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; gap: 24px; padding-block: 40px; padding-inline: 36px; min-width: 280px;">
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 56px;">
+                            04
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #FC7B3580; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px; text-transform: uppercase;">
+                            11.–13. ČERVENCE
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 32px;">
+                        Otevíráš.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Mulish', system-ui, sans-serif; font-size: 15px; line-height: 24px;">
+                        Najdeš obálku ve schránce, doneseš ji domů. Otevřeš. Užiješ!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (Mirrored) -->
+        <section
+            style="background-color: #F4F2EB; border-bottom: 1px solid #3A2C311F; box-sizing: border-box; display: flex; flex-direction: column; gap: 64px; padding-block: 120px; padding-inline: clamp(20px, 5vw, 80px);">
+            <div
+                style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px; text-transform: uppercase;">
+                    ✦ ČASTÉ DOTAZY · TRIAL
+                </div>
+                <div
+                    style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 5vw, 64px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1;">
+                    Čtyři věci, které tě nejspíš trápí.
+                </div>
+            </div>
+            <div
+                style="box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="align-items: flex-start; border-top: 1px solid #3A2C3133; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 64px); padding-block: 40px; flex-wrap: wrap;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-shrink: 1; gap: 24px; width: 100%; flex: 1 1 500px; min-width: 300px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                01
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.018em; line-height: 32px;">
+                            Je to opravdu jednorázové? Nezačne mi něco strhávat?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-grow: 1; flex-shrink: 1; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; flex: 1 1 300px; min-width: 300px; word-wrap: break-word;">
+                        Edice VÍTEJ je jednorázový nákup. Žádné předplatné, žádné automatické strhávání, žádný odběr
+                        e‑mailů. Když si pak budeš chtít objednat měsíční edici, klikneš sám/sama — nikdy ne
+                        automaticky.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-top: 1px solid #3A2C3133; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 64px); padding-block: 40px; flex-wrap: wrap;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-shrink: 1; gap: 24px; width: 100%; flex: 1 1 500px; min-width: 300px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                02
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.018em; line-height: 32px;">
+                            99 Kč včetně poštovného? Co když posíláš mimo Česko?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-grow: 1; flex-shrink: 1; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; flex: 1 1 300px; min-width: 300px; word-wrap: break-word;">
+                        Pro Česko ano — 80 Kč obálka + 19 Kč poštovné = 99 Kč. Do Evropy včetně Slovenska 80 + 36 = 116
+                        Kč; mimo Evropu 80 + 42 = 122 Kč. Reálné poštovné je 31 / 48 / 54 Kč — zbytek dorovnávám ze své
+                        kapsy.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-top: 1px solid #3A2C3133; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 64px); padding-block: 40px; flex-wrap: wrap;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-shrink: 1; gap: 24px; width: 100%; flex: 1 1 500px; min-width: 300px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                03
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.018em; line-height: 32px;">
+                            Můžu se po VÍTEJ přihlásit na měsíční předplatné?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-grow: 1; flex-shrink: 1; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; flex: 1 1 300px; min-width: 300px; word-wrap: break-word;">
+                        Můžeš, ale nemusíš – VÍTEJ není podmínka. Měsíční členství vybíráš na /postovni-klub, kde najdeš
+                        tři tiery (Průzkumník 119 Kč, Objevitel 169 Kč, Archivář 299 Kč). Tier měníš kdykoli, rušíš
+                        jedním klikem.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-bottom: 1px solid #3A2C3133; border-top: 1px solid #3A2C3133; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 64px); padding-block: 40px; flex-wrap: wrap;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-shrink: 1; gap: 24px; width: 100%; flex: 1 1 500px; min-width: 300px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                04
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.018em; line-height: 32px;">
+                            Proč jen 250 obálek? Bude druhá vlna?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-grow: 1; flex-shrink: 1; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; flex: 1 1 300px; min-width: 300px; word-wrap: break-word;">
+                        Vyrábím obálky ručně sám – tisknu doma na archy A4, sešívám ZINE, plotruju samolepky. 250
+                        obálek je můj reálný strop na jednu vlnu, abych všechno stíhl odeslat 10. června. Až tahle vlna
+                        skončí, otevřu druhou.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta-section">
+            <div
+                style="font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; color: #FC7B35; letter-spacing: 0.22em; text-transform: uppercase;">
+                ✦ POSLEDNÍ KROK
+            </div>
+            <h2
+                style="font-family: 'Fraunces', serif; font-size: clamp(48px, 10vw, 120px); font-weight: 600; color: #F4F2EB; margin: 0; line-height: 1; letter-spacing: -0.03em; max-width: 900px;">
+                Vyzkoušej za 99 Kč.
+            </h2>
+            <p
+                style="font-family: 'Fraunces', serif; font-size: 22px; font-style: italic; color: #F4F2EBB3; max-width: 700px; line-height: 1.4; margin: 0;">
+                Šest fyzických kusů z první vlny 250 obálek. <br />Bez předplatného, bez automatického strhávání. Pošlu
+                10. června.
+            </p>
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+                <a href="#" class="btn-primary-shared" style="width: auto; padding-inline: 40px; height: 72px;">
+                    <span style="font-size: 20px;">Objednat za 99 Kč</span>
+                    <span style="font-size: 24px; margin-left: 12px;">→</span>
+                </a>
+                <a href="postovni-klub.html"
+                    style="font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 600; color: #F4F2EB99; text-decoration: underline; text-underline-offset: 4px;">
+                    Nebo se rovnou přihlas na měsíční předplatné →
+                </a>
+            </div>
+
+            <div
+                style="display: flex; align-items: center; gap: 40px; margin-top: 24px; flex-wrap: wrap; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #FC7B35;">✦</span>
+                    <span
+                        style="font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; color: #F4F2EB80; letter-spacing: 0.18em;">VYRÁBÍM
+                        V PRAZE</span>
+                </div>
+                <span style="color: #F4F2EB33;">·</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #FC7B35;">✉</span>
+                    <span
+                        style="font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; color: #F4F2EB80; letter-spacing: 0.18em;">ČESKÁ
+                        POŠTA · C5 OBÁLKA</span>
+                </div>
+                <span style="color: #F4F2EB33;">·</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #FC7B35;">☽</span>
+                    <span
+                        style="font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; color: #F4F2EB80; letter-spacing: 0.18em;">DORUČENO
+                        11.–13. ČERVNA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div id="global-footer"></div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="cms-config.js"></script>
+    <script src="components.js"></script>
+    <script src="global.js"></script>
+</body>
+
+</html>

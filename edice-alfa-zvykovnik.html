@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edice Alfa: Zvykovnik · Filipuv podivuhodny svet</title>
+  <meta name="description" content="Tva edice Alfa: 4x Zvykovnik v PDF, pripraveno ke stazeni.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #F4EFE0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .paper-canvas {
+      width: 100%;
+      background: #F4EFE0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alfa-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .alfa-reveal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 80px 48px 48px;
+    }
+
+    .alfa-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: #FAF6E8;
+      border: 1px solid #1A161433;
+      border-radius: 999px;
+    }
+
+    .alfa-chip-star {
+      color: #1A161499;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+    }
+
+    .alfa-chip-text {
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .alfa-card {
+      width: min(760px, 100%);
+      background: #FAF6E8;
+      border: 1px solid #1A16141A;
+      box-shadow: 0 24px 48px -12px #1A16141F, 0 2px 4px #1A161414;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 64px 72px;
+      transform: rotate(-0.4deg);
+      transform-origin: center;
+    }
+
+    .meta-block {
+      border-bottom: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 24px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .meta-key {
+      width: 88px;
+      flex-shrink: 0;
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .hero-copy-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 8vw, 84px);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .hero-copy-sub {
+      margin: 0;
+      max-width: 540px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 32px;
+    }
+
+    .reward-grid {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      background: #F4EFE0;
+      border: 1px solid #1A16141A;
+    }
+
+    .reward-preview {
+      width: 168px;
+      min-height: 220px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1px solid #1A161422;
+      box-shadow: 0 2px 6px #1A16140F;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .reward-preview-title {
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 16px;
+    }
+
+    .reward-list-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .reward-list-kicker {
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .reward-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-style: italic;
+      line-height: 22px;
+    }
+
+    .reward-item-dot {
+      color: #FC7B35;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .claim-block {
+      border-top: 1px dashed #1A161433;
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .claim-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .claim-title {
+      color: #1A1614;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .claim-time {
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .claim-form {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .claim-input {
+      flex: 1;
+      min-width: 260px;
+      padding: 18px 20px;
+      border-top: 1px solid #1A161466;
+      border-left: 1px solid #1A161466;
+      border-bottom: 1px solid #1A161466;
+      color: #1A161466;
+      font-family: 'Courier Prime', monospace;
+      font-size: 14px;
+      line-height: 18px;
+      background: #F4EFE0;
+    }
+
+    .claim-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #FC7B35;
+      background: #FC7B35;
+      color: #FFFFFF;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 18px;
+      padding: 18px 28px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .alfa-footnote {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      line-height: 16px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .about-vitej {
+      border-top: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 64px;
+      padding: 80px 48px;
+      justify-content: center;
+    }
+
+    .about-vitej-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .about-vitej-image {
+      flex-shrink: 0;
+      width: 280px;
+      height: 420px;
+      background: #F4EFE0;
+      border: 2px solid #1A161433;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1A161466;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+    }
+
+    .about-vitej-head {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-vitej-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .about-vitej-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.07;
+      text-align: center;
+    }
+
+    .about-vitej-copy {
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      color: #3A2C31CC;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 28px;
+    }
+
+    .about-vitej-copy p {
+      margin: 0;
+    }
+
+    .about-vitej-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .about-vitej-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 44px;
+      border-radius: 999px;
+      background: #FC7B35;
+      color: #F4F2EB;
+      text-decoration: none;
+      font-family: 'Mulish', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 22px;
+    }
+
+    .about-vitej-note {
+      color: #3A2C3199;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-vitej {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-vitej-content {
+        max-width: 100%;
+      }
+
+      .about-vitej-image {
+        width: 200px;
+        height: 300px;
+      }
+
+      .alfa-reveal {
+        padding: 56px 20px 40px;
+      }
+
+      .alfa-card {
+        padding: 32px 22px;
+        transform: none;
+      }
+
+      .reward-grid {
+        flex-direction: column;
+      }
+
+      .reward-preview {
+        width: 100%;
+        min-height: 140px;
+      }
+
+      .claim-form {
+        flex-direction: column;
+      }
+
+      .claim-input {
+        min-width: 0;
+        border-right: 1px solid #1A161466;
+      }
+
+      .about-vitej {
+        padding: 64px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="alfa-wrap">
+      <section class="alfa-reveal">
+        <div class="alfa-chip">
+          <span class="alfa-chip-star">★</span>
+          <span class="alfa-chip-text">Tvá edice Alfa</span>
+        </div>
+
+        <article class="alfa-card">
+          <div class="meta-block">
+            <div class="meta-row"><span class="meta-key">karta</span><span class="meta-value">EDICE Alfa </span></div>
+            <div class="meta-row"><span class="meta-key">tvá výhra</span><span class="meta-value">4x Zvykovník · PDF</span></div>
+            <div class="meta-row"><span class="meta-key">stav</span><span class="meta-value">připraveno ke stažení</span></div>
+          </div>
+
+          <div class="hero-copy">
+            <div class="hero-copy-kicker">★ tvá výhra · připravena ke stažení</div>
+            <h1 class="hero-copy-title">Zvykovník.</h1>
+            <p class="hero-copy-sub">PDF k tisku. Vybuduj nový zvyk, udělej starý silnější - jeden kruh za druhým.</p>
+          </div>
+
+          <div class="reward-grid">
+            <div class="reward-preview">
+              <div class="reward-preview-title">Zvykovník<br>placeholder photo</div>
+            </div>
+
+            <div class="reward-list-wrap">
+              <div class="reward-list-kicker">co dostaneš</div>
+              <div class="reward-item"><span class="reward-item-dot">·</span><span>4x Zvykovník s fotografií na druhé straně</span></div>
+              <div class="reward-item"><span class="reward-item-dot">·</span><span>krátký dopis s instrukcemi</span></div>
+            </div>
+          </div>
+
+          <div class="claim-block">
+            <div class="claim-head">
+              <div class="claim-title">✉ vyzvedni si Zvykovník</div>
+              <div class="claim-time">trvá 30 vteřin</div>
+            </div>
+
+            <div class="claim-form">
+              <div class="claim-input">tvůj@email.cz</div>
+              <a class="claim-btn" href="#"><span>Pošli mi PDF</span><span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <div class="alfa-footnote"><span>★</span><span>běžná výhra · cca 65 % karet</span></div>
+      </section>
+
+      <section class="about-vitej">
+        <div class="about-vitej-content">
+          <div class="about-vitej-head">
+            <div class="about-vitej-kicker">✦ co je vlastně edice vítej</div>
+            <h2 class="about-vitej-title">Šest kusů. Jednou.<br>Bez závazku.</h2>
+          </div>
+
+          <div class="about-vitej-copy">
+            <p>Edice VÍTEJ je první obálka mého poštovního klubu.</p>
+            <p>Šest fyzických kusů - fotopohlednice, ZINE o klubu, samolepka, citát měsíce, dopis a receptová karta - za 99 Kč včetně poštovného po Česku. Jednorazově. Žádné předplatné, žádný algoritmus, žádné automatické strhávání.</p>
+            <p>První vlnu vyrábím ručně doma - 250 obálek. Když se rozeberou, otevřu druhou vlnu.</p>
+          </div>
+
+          <div class="about-vitej-cta">
+            <a class="about-vitej-btn" href="edice-vitej.html"><span>Vyzkoušej Edici VÍTEJ</span><span>→</span></a>
+            <div class="about-vitej-note">Šest kusů. 99 Kč jednorazově. První vlna 250 obálek.</div>
+          </div>
+        </div>
+
+        <div class="about-vitej-image">Obálka<br>placeholder</div>
+      </section>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="cms-config.js"></script>
+  <script src="components.js"></script>
+  <script src="global.js"></script>
+</body>
+
+</html>

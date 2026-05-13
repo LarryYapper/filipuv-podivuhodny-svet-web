@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poštovní Klub · Filipův podivuhodný svět</title>
+
+    <!-- Load custom fonts from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hide scrollbar for comparison table but keep functionality */
+        .comparison-table::-webkit-scrollbar {
+            display: none;
+        }
+
+        .comparison-table {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="paper-canvas"
+        style="background-color: #F4F2EB; box-sizing: border-box; display: flex; flex-direction: column; font-size: 12px; font-synthesis: none; height: fit-content; line-height: 16px; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; width: 100%;">
+
+        <!-- Header -->
+        <div id="global-banner"></div>
+
+        <!-- Navigation -->
+        <div id="global-header"></div>
+
+
+        <!-- Hero Section -->
+        <div
+            style="box-sizing: border-box; display: flex; flex-direction: column; gap: 48px; padding-bottom: 80px; padding-inline: clamp(20px, 5vw, 80px); padding-top: clamp(40px, 10vw, 100px);">
+            <div
+                style="width: 100%; max-width: 1280px; margin: 0 auto; align-items: center; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; justify-content: space-between;">
+
+                <!-- Left: Content -->
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 48px; flex: 1; min-width: 320px;">
+                    <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+                        <div
+                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                            ✦ POŠTOVNÍ KLUB · ÚROVNĚ ČLENSTVÍ
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(40px, 8vw, 96px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.032em; line-height: 1.1; margin: 0;">
+                            Tři úrovně.<br />Jeden klub.
+                        </div>
+                    </div>
+                    <div style="box-sizing: border-box; width: 100%; max-width: 480px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; font-style: italic; line-height: 32px;">
+                            Začni jednorázově s Edicí VÍTEJ nebo se rovnou přihlaš na měsíční předplatné. Úroveň měníš
+                            kdykoliv, rušíš jedním klikem.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Image Placeholder (Landscape) -->
+                <div class="reveal"
+                    style="box-sizing: border-box; width: 100%; max-width: 600px; flex-shrink: 0; border-radius: 24px; background-color: #3A2C310D; overflow: hidden; display: flex; align-items: center; justify-content: center; aspect-ratio: 3/2; border: 1px dashed #3A2C3133;">
+                    <div
+                        style="color: #3A2C3166; font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; padding: 20px;">
+                        Hero Foto<br />(Krajina)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub Nav -->
+            <div
+                style="align-items: center; justify-content: center; border-top-color: #3A2C3126; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(12px, 3vw, 32px); flex-wrap: wrap; padding-top: 32px;">
+                <div
+                    style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                    ↓ NA STRÁNCE
+                </div>
+                <a href="#srovnani-tieru"
+                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px; text-decoration: none;">
+                    Srování Úrovní
+                </a>
+                <div
+                    style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 18px;">
+                    ·
+                </div>
+                <a href="#co-je-v-kuse"
+                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px; text-decoration: none;">
+                    Jednotlivé části
+                </a>
+                <div
+                    style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 18px;">
+                    ·
+                </div>
+                <a href="#prehled-edic"
+                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px; text-decoration: none;">
+                    Přehled Edic
+                </a>
+                <div
+                    style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 18px;">
+                    ·
+                </div>
+                <a href="#jak-to-funguje"
+                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px; text-decoration: none;">
+                    Jak to funguje
+                </a>
+                <div
+                    style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 18px;">
+                    ·
+                </div>
+                <a href="#faq"
+                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px; text-decoration: none;">
+                    Časté dotazy
+                </a>
+            </div>
+        </div>
+
+        <!-- Sticky Select Tier Bar -->
+        <style>
+            @media (max-width: 767px) {
+                .sticky-bar {
+                    padding-block: 12px !important;
+                    gap: 16px !important;
+                    justify-content: center !important;
+                }
+                .sticky-bar-label {
+                    display: none !important;
+                }
+                .sticky-tier-btn {
+                    padding-inline: 12px !important;
+                    padding-block: 8px !important;
+                }
+                .sticky-tier-btn div:first-child {
+                    display: none !important; /* Hide 'ÚROVEŇ X' text on tiny screens if needed, or just make it smaller */
+                }
+            }
+        </style>
+        <div class="sticky-bar"
+            style="align-items: center; background-color: #3A2C31; box-shadow: #F4F2EB14 0px 1px 0px, #3A2C3166 0px 12px 24px -12px; box-sizing: border-box; display: flex; gap: 32px; flex-wrap: wrap; justify-content: space-between; padding-block: 18px; padding-inline: clamp(20px, 5vw, 80px); position: sticky; top: 0; z-index: 100;">
+            <div class="sticky-bar-label" style="align-items: center; box-sizing: border-box; display: flex; gap: 16px;">
+                <div
+                    style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                    VYBER ÚROVEŇ
+                </div>
+                <div
+                    style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 14px; font-style: italic; line-height: 18px;">
+                    jakmile jsi rozhodnutý
+                </div>
+            </div>
+            <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px; flex-wrap: wrap;">
+                <div class="sticky-tier-btn"
+                    style="align-items: baseline; border-color: #F4F2EB40; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 10px; padding-inline: 18px; cursor: pointer;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
+                        ÚROVEŇ 1
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 20px;">
+                        119 Kč
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                        / měsíc
+                    </div>
+                </div>
+                <div class="sticky-tier-btn"
+                    style="align-items: baseline; background-color: #FC7B35; border-color: #FC7B35; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 10px; padding-inline: 18px; cursor: pointer;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
+                        ÚROVEŇ 2 ✓
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 20px;">
+                        139 Kč
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EBBF; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                        / měsíc
+                    </div>
+                </div>
+                <div class="sticky-tier-btn"
+                    style="align-items: baseline; border-color: #F4F2EB40; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 10px; padding-inline: 18px; cursor: pointer;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
+                        ÚROVEŇ 3
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 20px;">
+                        250 Kč
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                        / měsíc
+                    </div>
+                </div>
+            </div>
+            <div class="btn-primary"
+                style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 10px; padding-block: 12px; padding-inline: 24px; cursor: pointer;">
+                <div id="sticky-checkout-text"
+                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
+                    Pokračovat s Úrovní 2
+                </div>
+                <div
+                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 18px;">
+                    →
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table Section -->
+        <div id="srovnani-tieru"
+            style="background-color: #F4F2EB; box-sizing: border-box; display: flex; flex-direction: column; gap: 64px; padding-bottom: 120px; padding-inline: clamp(20px, 5vw, 80px); padding-top: 140px;">
+            <div
+                style="width: 100%; max-width: 1280px; margin: 0 auto; align-items: flex-end; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; justify-content: space-between;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                        ✦ CO DOSTANEŠ · POROVNÁNÍ ÚROVNÍ
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Vidíš celé.<br />Co je kde, vedle sebe.
+                    </div>
+                </div>
+                <div
+                    style="box-sizing: border-box; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; width: 100%; max-width: 360px; padding-bottom: 8px;">
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 20px; font-style: italic; line-height: 30px;">
+                        Každý kus, každý měsíc, na jednom místě. Úroveň 2 sloupec je zvýrazněný — můj favorit.
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .mobile-swipe-hint {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    background-color: #3A2C310D;
+                    padding: 10px;
+                    border-radius: 8px;
+                    margin-bottom: -48px;
+                    color: #3A2C3199;
+                    font-family: 'Mulish', sans-serif;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+                @media (max-width: 767px) {
+                    .mobile-swipe-hint {
+                        display: flex;
+                    }
+                }
+            </style>
+            <div class="mobile-swipe-hint">
+                <span>← Posuň tabulku pro srovnání →</span>
+            </div>
+
+            <!-- Table Wrapper: Enables horizontal scroll on mobile to avoid squashing -->
+            <div class="comparison-table"
+                style="box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; overflow-x: auto; padding-top: 16px;">
+
+                <!-- Table Header Row -->
+                <div style="background-color: #3A2C31; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="align-items: flex-end; box-sizing: border-box; display: flex; flex-shrink: 0; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EB8C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            CO DOSTANEŠ KAŽDÝ MĚSÍC
+                        </div>
+                    </div>
+                    <div
+                        style="border-left-color: #F4F2EB1F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 8px; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div data-cms="tier-listek-name"
+                            style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            ÚROVEŇ 1 · VSTUPNÍ
+                        </div>
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div data-cms="tier-listek-price"
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 36px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.022em; line-height: 36px;">
+                                119 Kč
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                                / měsíc
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                            + poštovné 19 / 36 / 42 Kč
+                        </div>
+                    </div>
+                    <div
+                        style="background-color: #FF67522E; border-left-color: #F4F2EB1F; border-left-style: solid; border-left-width: 1px; border-right-color: #F4F2EB1F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 8px; padding-block: 28px; padding-inline: 24px; position: relative; width: 320px;">
+                        <div data-cms="tier-dopis-name"
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            ÚROVEŇ 2 · PLNÝ
+                        </div>
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div data-cms="tier-dopis-price"
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 36px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.022em; line-height: 36px;">
+                                139 Kč
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EBB3; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                                / měsíc
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EB8C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                            + poštovné 19 / 36 / 42 Kč
+                        </div>
+                        <div
+                            style="background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; left: 24px; padding-block: 5px; padding-inline: 12px; position: absolute; top: -10px;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                DOPORUČENO
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 8px; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div data-cms="tier-balicek-name"
+                            style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            ÚROVEŇ 3 · PREMIUM
+                        </div>
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div data-cms="tier-balicek-price"
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 36px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.022em; line-height: 36px;">
+                                250 Kč
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB99; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                                / měsíc
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; line-height: 14px;">
+                            poštovné v ceně · po světě
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Rows -->
+                <div
+                    style="border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                            V KAŽDÉ OBÁLCE
+                        </div>
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #FF67521A; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C3126; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Fotopohlednice
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A6 · originál z mého archivu
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Dopis ode mě
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A5 · ručně psaný k tématu měsíce
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Článek
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A5 · text ode mě k tématu
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Samolepka
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            ø 70 mm · vinyl · jiná každý měsíc
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                            OD ÚROVNĚ 2 ↑
+                        </div>
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #FF67521A; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C3126; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Tematický ZINE
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A6 · 16 stran · ručně sešito · srdce obálky
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Mini plakát
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A5 · designovaný k tématu měsíce
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Citát měsíce
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A7 · plotter na premium papír
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                            JEN V ÚROVNI 3 ★
+                        </div>
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #FF67521A; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C3126; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                    <div
+                        style="background-color: #3A2C310F; box-sizing: border-box; flex-shrink: 0; padding-block: 18px; padding-inline: 24px; width: 320px;">
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Pohlednice s malbou
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A6 · slavný obraz, který mě zasáhl
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Receptová karta
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            A6 · jeden recept k tématu měsíce
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Slosovací lístek
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            měsíční tah o originální dílo
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C314D; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 22px; line-height: 28px;">
+                            —
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 17px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.012em; line-height: 22px;">
+                            Poštovné v ceně
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            platí pro celý svět · žádné příplatky
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                            19 / 36 / 42 Kč
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C311F; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C311F; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                            19 / 36 / 42 Kč
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 22px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 24px; font-weight: 900; line-height: 22px; text-shadow: 0 0 1px #FF675233;">
+                            ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="background-color: #3A2C310A; border-top-color: #3A2C314D; border-top-style: solid; border-top-width: 2px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; padding-block: 24px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            CELKEM KUSŮ V OBÁLCE
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 13px; font-style: italic; line-height: 16px;">
+                            každý měsíc, každý do tvé schránky
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 24px; padding-inline: 24px; width: 320px;">
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 44px;">
+                                4
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                                kusy
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67521F; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C3126; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 24px; padding-inline: 24px; width: 320px;">
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 44px;">
+                                7
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                                kusů
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 24px; padding-inline: 24px; width: 320px;">
+                        <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 44px;">
+                                11
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                                kusů
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="border-top-color: #3A2C3126; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; justify-content: center; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 19px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.015em; line-height: 24px;">
+                            Vyber úroveň a pokračuj.
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 16px;">
+                            Úroveň měníš kdykoliv ve svém účtu.
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div class="vyber-tier-btn"
+                            style="align-items: center; border-color: #3A2C31; border-radius: 999px; border-style: solid; border-width: 1.5px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 14px; padding-inline: 28px; cursor: pointer; transition: all 0.3s ease;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
+                                Vybrat Úroveň 1
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; background-color: #FF67520D; border-left-color: #3A2C3126; border-left-style: solid; border-left-width: 1px; border-right-color: #3A2C3126; border-right-style: solid; border-right-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div class="vyber-tier-btn"
+                            style="align-items: center; background-color: #FC7B35; border-color: #FC7B35; border-radius: 999px; border-style: solid; border-width: 1.5px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 14px; padding-inline: 28px; cursor: pointer; transition: all 0.3s ease;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
+                                Vybrat Úroveň 2 ✓
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-shrink: 0; justify-content: center; padding-block: 28px; padding-inline: 24px; width: 320px;">
+                        <div class="vyber-tier-btn"
+                            style="align-items: center; border-color: #3A2C31; border-radius: 999px; border-style: solid; border-width: 1.5px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 14px; padding-inline: 28px; cursor: pointer; transition: all 0.3s ease;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
+                                Vybrat Úroveň 3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail of Every Item Section -->
+        <div id="co-je-v-kuse"
+            style="background-color: #EFE9DC; border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: 64px; padding-bottom: 120px; padding-inline: clamp(20px, 5vw, 80px); padding-top: 140px;">
+            <div
+                style="width: 100%; max-width: 1280px; margin: 0 auto; align-items: flex-end; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; justify-content: space-between;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                        ✦ CO JE V KAŽDÉM KUSU · DETAIL
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Každý kus má<br />svůj příběh.
+                    </div>
+                </div>
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 380px; padding-bottom: 8px;">
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 18px; font-style: italic; line-height: 28px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Detail o každé části obálky — co to je, proč to dělám a v jaké úrovni, co najdeš.
+                    </div>
+                    <div
+                        style="align-items: center; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                            LEGENDA
+                        </div>
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; line-height: 14px;">
+                                je v úrovni
+                            </div>
+                        </div>
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 6px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
+                                není
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(86.4% -0.008 -0.020) 0%, oklab(71.3% -0.014 -0.041) 50%, oklab(55.1% -0.015 -0.051) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBCC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto fotopohlednice
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    VE VŠECH ÚROVNÍCH
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Fotopohlednice
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · 105×148
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Originální fotografie z mého archivu – z cest, z procházek, z momentů, které mě zastavily.
+                            Každou edici jiná a ve spojitosti s tématem edice, nikdy se neopakují. <br />Tištěna na 300g
+                            matný papír.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(92.6% 0.005 0.024) 0%, oklab(83% 0.010 0.043) 60%, oklab(61.2% 0.005 0.032) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBCC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto dopisu
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    VE VŠECH ÚROVNÍCH
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Dopis ode mě
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5 · RUKOU
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Krátký osobní dopis, vždycky ručně, vždycky k tématu měsíce. Píši o tom na co myslím, co
+                            prožívám a co se u mně děje.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(88.9% 0.008 0.036) 0%, oklab(75.2% 0.023 0.053) 55%, oklab(45.5% 0.027 0.035) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBCC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto článku
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    VE VŠECH ÚROVNÍCH
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Článek
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5 · TEXT
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Esej nebo úvaha k tématu Edice k zamyšlení, kde sdílím svůj pohled a zkušenosti.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(90.6% 0.026 0.063) 0%, oklab(75.6% 0.122 0.083) 55%, oklab(57.7% 0.138 0.091) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto samolepky
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    VE VŠECH ÚROVNÍCH
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Samolepka
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                ø 70 · VINYL
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Vinylová samolepka, navržená speciálně k edici. Nikdy se neopakuje – každý měsíc je
+                            sběratelská. Voděodolná, nalepíš na láhev, deník nebo notebook.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(81.2% -0.030 0.037) 0%, oklab(57.4% -0.038 0.038) 50%, oklab(39.5% -0.038 0.038) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto ZINE Přítomnost
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    OD ÚROVNĚ 2 ↑
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Tematický ZINE
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · 16 STRAN
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Srdce každé obálky. 16 stran ručně sešitých – doporučení knih a filmů, ukázka umění a další.
+                            Každá edice o jiné lidské zkušenosti: Přítomnost, Tvrdá práce, Přátelství, Smysl života.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(83.9% 0.025 -0.017) 0%, oklab(62.4% 0.053 -0.035) 50%, oklab(39.8% 0.056 -0.036) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto plakátu
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    OD ÚROVNĚ 2 ↑
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Mini plakát
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5 · DESIGN
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Designovaný k tématu měsíce. Typografie, ilustrace nebo foto – vždycky něco, co můžeš
+                            pověsit nad stůl.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(93.1% -0.001 0.033) 0%, oklab(76.4% 0.002 0.083) 50%, oklab(45.1% 0.017 0.065) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto citátu
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FF6752; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    OD ÚROVNĚ 2 ↑
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Citát měsíce
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A7 · PLOTTER
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Jedna věta, která se ti vrací do hlavy celý měsíc. Psána ploterem na premium papír – žádný
+                            digitální tisk, fyzická čára inkoustu na povrchu. Sběratelské.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(89.1% 0.009 0.058) 0%, oklab(71.9% 0.026 0.098) 50%, oklab(43.8% 0.028 0.060) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto pohlednice s malbou
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    JEN V ÚROVNI 3 ★
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Pohlednice s malbou
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A5
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Obraz, který mě zasáhl, který jsem si oblíbil, nad kterým přemýšlím. Zezadu pohlednice
+                            krátce zmíním příběh malby a informace o autorovi.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(84.7% 0.016 0.039) 0%, oklab(60.4% 0.034 0.058) 50%, oklab(33.6% 0.028 0.037) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto receptové karty
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    JEN V ÚROVNI 3 ★
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Receptová karta
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                A6 · KUCHYŇ
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Během pandemie jsem začal vařit a péct. Mimo vaření jsem si zamiloval pečení. Díky tomu, že
+                            během něj jde o přesnost a každý gram. Pečení je jednoduše chemie.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    <div
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(89.6% 0.016 0.038) 0%, oklab(71.1% 0.059 0.086) 50%, oklab(39.5% 0.063 0.055) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        <div
+                            style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                            ↳ foto slosovacího lístku
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 12px;">
+                        <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="border-color: #3A2C314D; border-radius: 50%; border-style: solid; border-width: 1px; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div
+                                style="background-color: #FC7B35; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 8px; width: 8px;">
+                            </div>
+                            <div style="box-sizing: border-box; display: inline-block; padding-left: 6px;">
+                                <div
+                                    style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                    JEN V ÚROVNI 3 ★
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 28px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                                Los
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 14px;">
+                                UNIKÁT
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 22px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Každý měsíc máš možnost vyhrát ručně vyráběný zápisník. Při splnění mílníku 150 členů a
+                            otevření ZÁPISNÍKY ti ho vyrobím a automaticky pošlu.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Editions / Year 1 Section -->
+        <div id="prehled-edic"
+            style="background-color: #3A2C31; box-sizing: border-box; display: flex; flex-direction: column; gap: 80px; padding-bottom: 120px; padding-inline: clamp(20px, 5vw, 80px); padding-top: 140px;">
+            <div
+                style="width: 100%; max-width: 1280px; margin: 0 auto; align-items: flex-end; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; justify-content: space-between;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                        ✦ EDICE · ROK PRVNÍ
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Měsíční Edice
+                    </div>
+                </div>
+                <div
+                    style="box-sizing: border-box; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; width: 100%; max-width: 380px; padding-bottom: 8px;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EBB3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 20px; font-style: italic; line-height: 30px;">
+                        Každá edice o jedné lidské zkušenosti. Když se přihlásíš teď, začínáš Přítomností.
+                    </div>
+                </div>
+            </div>
+
+            <div style="box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+                <!-- Edition A01 -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #FF6752; border-style: solid; border-width: 1.5px; box-shadow: #FF6752 12px 12px 0px -1.5px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    <div
+                        style="align-items: center; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            EDICE A01
+                        </div>
+                        <div
+                            style="background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; padding-block: 4px; padding-inline: 10px;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                AKTUÁLNÍ
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 48px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 50px;">
+                            Přítomnost
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                            být tady — ne jinde
+                        </div>
+                    </div>
+                    <div
+                        style="border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding-top: 16px;">
+                        <div
+                            style="align-items: center; box-sizing: border-box; display: flex; justify-content: space-between;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; line-height: 14px;">
+                                DORUČUJU 10. ČERVENCE
+                            </div>
+                        </div>
+                        <div
+                            style="align-items: center; align-self: flex-start; border-bottom-color: #3A2C31; border-bottom-style: solid; border-bottom-width: 1.5px; box-sizing: border-box; display: flex; gap: 6px; padding-block: 4px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 700; line-height: 16px;">
+                                Detail edice
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; line-height: 16px;">
+                                →
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edition A02 -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3166; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.92; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    <div
+                        style="align-items: center; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            EDICE A02
+                        </div>
+                        <div
+                            style="border-color: #3A2C3166; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; padding-block: 3px; padding-inline: 10px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                PŘIPRAVUJE SE
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31CC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px;">
+                            Tvrdá práce
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                            co dává smysl, když to bolí
+                        </div>
+                    </div>
+                    <div
+                        style="border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding-top: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; line-height: 14px;">
+                            SRPEN 2026
+                        </div>
+                        <div
+                            style="align-items: center; align-self: flex-start; border-bottom-color: #3A2C3180; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 6px; padding-block: 4px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                                Náhled tématu
+                            </div>
+                            <div
+                                style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; line-height: 16px;">
+                                →
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edition A03 -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C314D; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.78; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    <div
+                        style="align-items: center; border-bottom-color: #3A2C312E; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            EDICE A03
+                        </div>
+                        <div
+                            style="border-color: #3A2C314D; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; padding-block: 3px; padding-inline: 10px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                ZÁŘÍ 2026
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px;">
+                            Přátelství
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                            co znamená mít někoho blízkého
+                        </div>
+                    </div>
+                    <div
+                        style="border-top-color: #3A2C312E; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding-top: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3173; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; line-height: 14px;">
+                            DRŽÍM PALEC
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 13px; font-style: italic; line-height: 16px;">
+                            brzy odhalím náhled
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edition A04 -->
+                <div
+                    style="background-color: #F4F2EB; border-color: #3A2C3138; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.65; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    <div
+                        style="align-items: center; border-bottom-color: #3A2C3126; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; line-height: 14px;">
+                            EDICE A04
+                        </div>
+                        <div
+                            style="border-color: #3A2C3138; border-radius: 999px; border-style: solid; border-width: 1px; box-sizing: border-box; padding-block: 3px; padding-inline: 10px;">
+                            <div
+                                style="box-sizing: border-box; color: #3A2C3173; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.22em; line-height: 12px;">
+                                ŘÍJEN 2026
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 38px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 42px;">
+                            Smysl života
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3173; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                            není to jedna věta
+                        </div>
+                    </div>
+                    <div
+                        style="border-top-color: #3A2C3126; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding-top: 16px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3166; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; line-height: 14px;">
+                            FINÁLE PRVNÍHO ROKU
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3166; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 13px; font-style: italic; line-height: 16px;">
+                            poslední kapitola
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="jak-to-funguje"
+            style="background-color: #EFE9DC; border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(32px, 5vw, 80px); padding-bottom: 120px; padding-inline: clamp(20px, 5vw, 80px); padding-top: 140px;">
+            <div class="steps-header"
+                style="align-items: flex-end; box-sizing: border-box; display: flex; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; justify-content: space-between; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
+                    <div
+                        style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                        ✦ TŘI KROKY · BEZ PŘEKVAPENÍ
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Jak to funguje
+                    </div>
+                </div>
+                <div
+                    style="box-sizing: border-box; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; width: 100%; max-width: 360px; padding-bottom: 8px;">
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 20px; font-style: italic; line-height: 30px;">
+                        Žádné komplikace. Přihlas se, já vyrobím, ty otevřeš schránku.
+                    </div>
+                </div>
+            </div>
+            <div class="steps-list"
+                style="box-sizing: border-box; display: flex; gap: 32px; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div class="step-card reveal reveal-d1"
+                    style="box-sizing: border-box; display: flex; flex-basis: 0; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 24px; padding-block: 36px; position: relative;">
+                    <div class="step-border-anim"
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #3A2C31;">
+                    </div>
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 96px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.03em; line-height: 96px;">
+                            I
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; line-height: 14px;">
+                            DO 5. ČERVNA
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 32px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.02em; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Přihlas se.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Vybereš Edici VÍTEJ za 99 Kč jednorázově, nebo některou z úrovní 1–3 jako měsíční předplatné.
+                        Platíš online
+                        přes platební bránu.
+                    </div>
+                    <div style="box-sizing: border-box; display: inline-block; padding-top: 4px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                            Žádné automatické odběry u VÍTEJ. U předplatného zrušíš jedním klikem.
+                        </div>
+                    </div>
+                </div>
+                <div class="step-card reveal reveal-d2"
+                    style="box-sizing: border-box; display: flex; flex-basis: 0; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 24px; padding-block: 36px; position: relative;">
+                    <div class="step-border-anim"
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #3A2C3180;">
+                    </div>
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31D9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 96px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.03em; line-height: 96px;">
+                            II
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; line-height: 14px;">
+                            6.–9. ČERVNA
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 32px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.02em; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Já vyrábím.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Tisknu, fotím, šiju, lepím. Každou edici ručně z mého pokoje.
+                    </div>
+                    <div style="box-sizing: border-box; display: inline-block; padding-top: 4px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                            Limitovaná výroba
+                        </div>
+                    </div>
+                </div>
+                <div class="step-card reveal reveal-d3"
+                    style="box-sizing: border-box; display: flex; flex-basis: 0; flex-direction: column; flex-grow: 1; flex-shrink: 1; min-width: 200px; gap: 24px; padding-block: 36px; position: relative;">
+                    <div class="step-border-anim"
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #3A2C3180;">
+                    </div>
+                    <div
+                        style="align-items: baseline; box-sizing: border-box; display: flex; justify-content: space-between;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31D9; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 96px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.03em; line-height: 96px;">
+                            III
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; line-height: 14px;">
+                            OD 10. ČERVNA
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 32px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.02em; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Tobě dorazí.
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Doručuje Česká pošta. 7–14 dní podle místa. Nedá se sledovat, ale pokud se ztratí, pošlu novou
+                        obálku
+                        zdarma.
+                    </div>
+                    <div style="box-sizing: border-box; display: inline-block; padding-top: 4px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 16px;">
+                            Doručuji po celém světě.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="faq"
+            style="background-color: #F4F2EB; border-top-color: #3A2C311F; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(32px, 5vw, 80px); flex-wrap: wrap; padding-bottom: 120px; padding-inline: clamp(20px, 5vw, 80px); padding-top: 140px;">
+            <div
+                style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
+                    ✦ ČASTÉ DOTAZY · BEZ MAGIE
+                </div>
+                <div
+                    style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                    Co se ptáš, než se přihlásíš.
+                </div>
+            </div>
+            <div
+                style="box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto;">
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                01
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Je Edice VÍTEJ jednorázová, nebo začátek předplatného?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Jednorázová. Zaplatíš 99 Kč (doručení do Česka, mimo za příplatek) jednou, dostaneš jednu obálku
+                        a tím to
+                        končí. Žádné automatické strhávání. Pokud se ti zalíbí, klikneš na Stát se členem a vybereš
+                        úroveň.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                02
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Můžu zrušit předplatné kdykoliv?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Jedním klikem ve svém účtu. Bez výpovědní lhůty, bez uvádení důvodu. Přerušíš vždy nejpozději v
+                        den platby –
+                        co už ti odešlo, dorazí.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                03
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Posíláš i na Slovensko nebo do zahraničí?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Posílám po celém světě. Česko 19 Kč, Evropa včetně Slovenska 36 Kč, zbytek světa 42 Kč. Reálná
+                        cena dopravy
+                        je 31, 48 a 54 Kč – doplácím vždy 12 Kč, abys ty zaplatil méně.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                04
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Co když mi obálka nedorazí?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Posílám jako obyčejný dopis bez sledování. Pokud do 21 dnů od expedice neukáže, napiš mi na
+                        podpora@filipuvpodivuhodnysvet.cz a já pošlu novou – zdarma. Děje se to malému procentu obálek,
+                        ale stát se
+                        to může.
+                    </div>
+                </div>
+                <div
+                    style="align-items: flex-start; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                05
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Co znamená 3 % na charitu?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Z hrubé marže každého členství (i Edice VÍTEJ) posílám 3 % konkrétní organizaci. Mění se každý
+                        kvartál –
+                        aktuální najdeš
+                        zde.
+                    </div>
+                </div>
+                <div
+                    style="align-items: center; box-sizing: border-box; display: flex; justify-content: space-between; padding-top: 40px; flex-wrap: wrap; gap: 20px; padding-bottom: 24px;">
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; flex-shrink: 0; font-family: 'Fraunces', system-ui, sans-serif; font-size: 18px; font-style: italic; font-variation-settings: 'wght' 350; font-weight: 350; line-height: 28px;">
+                        Nenašel jsi svou otázku? Napiš mi rovnou.
+                    </div>
+                    <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 600; line-height: 20px;">
+                            Všechny odpovědi
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 20px;">
+                            →
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 600; line-height: 20px; margin-left: 8px;">
+                            podpora@filipuvpodivuhodnysvet.cz
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 06 -->
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                06
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Můžu změnit tier kdykoliv?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Ano, jedním klikem ve svém účtu. Změna se projeví příští měsíc – co už jsem odeslal, dorazí v původním tieru. Žádné poplatky za přechod, žádné minimální období.
+                    </div>
+                </div>
+
+                <!-- Question 07 -->
+                <div
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                07
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Dá se obálka darovat?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Edice VÍTEJ ano – koupíš ji jednorázově a posíláš na adresu obdarovaného. U předplatného zatím musí mít obdarovaný vlastní účet. Plná dárková mechanika přijde ve druhém roce klubu.
+                    </div>
+                </div>
+
+                <!-- Question 08 -->
+                <div
+                    style="align-items: flex-start; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                08
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Co když budu cestovat? Můžu měsíc vynechat?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Pauznout ano – v účtu klikneš na Vynechat příští edici a tenhle měsíc neplatíš. Pokud cestuješ dlouho, můžeš si dočasně změnit doručovací adresu nebo přerušit úplně.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            style="align-items: center; background-color: #3A2C31; box-sizing: border-box; display: flex; flex-direction: column; gap: 48px; padding-block: 160px; padding-inline: clamp(20px, 5vw, 80px);">
+            <div
+                style="width: 100%; max-width: 1280px; margin: 0 auto; box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.28em; line-height: 16px; text-align: center;">
+                ✦ POSLEDNÍ KROK
+            </div>
+            <div
+                style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(48px, 10vw, 120px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -5.3px; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 1100px; text-align: center;">
+                Otevři schránku za 28 dní.
+            </div>
+            <div
+                style="box-sizing: border-box; color: #F4F2EBB3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 24px; font-style: italic; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 720px; text-align: center;">
+                99 Kč jednorázově. Bez předplatného, bez algoritmu, bez obrazovky. Edice VÍTEJ se uzavírá 5. června.
+            </div>
+            <div
+                style="align-items: center; box-sizing: border-box; display: flex; gap: 32px; padding-top: 24px; flex-wrap: wrap; justify-content: center;">
+                <div
+                    style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 22px; padding-inline: 44px;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 18px; font-weight: 700; line-height: 22px; text-align: center;">
+                        Vyzkoušej Edici VÍTEJ
+                    </div>
+                </div>
+                <div
+                    style="align-items: center; border-bottom-color: #F4F2EB99; border-bottom-style: solid; border-bottom-width: 1.5px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 4px;">
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 600; line-height: 20px; text-align: center;">
+                        Nebo se rovnou staň členem
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 20px; text-align: center;">
+                        →
+                    </div>
+                </div>
+            </div>
+            <div style="box-sizing: border-box; display: inline-block; padding-top: 8px;">
+                <div
+                    style="box-sizing: border-box; color: #F4F2EB66; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; font-weight: 500; line-height: 16px; text-align: center;">
+                    Doručuji Českou poštou · 7–14 dní v Česku · po celém světě
+                </div>
+            </div>
+        </div>
+        <div id="global-footer"></div>
+    </div>
+    <script src="cms-config.js"></script>
+    <script src="components.js"></script>
+    <script src="global.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náš svět · Filipův podivuhodný svět</title>
+    <meta name="description"
+        content="Konstelace šesti světů Filipova podivuhodného světa. Každá další kapitola se odemyká s počtem členů.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/Filipův%20podivuhodný%20svět_logo%202.0.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .world-wrap {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .roadmap {
+            display: flex;
+            gap: 0;
+            overflow-x: visible;
+            padding: 8px 0;
+        }
+
+        .roadmap::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .roadmap::-webkit-scrollbar-thumb {
+            background: #3A2C3133;
+        }
+
+        .milestone {
+            min-width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding-inline: 6px;
+        }
+
+        /* mobile banner hidden by default on desktop */
+        .mobile-live-banner { display: none; }
+
+        /* Ensure the top meta (number + small label) in each milestone has a consistent
+           height and alignment so numbers (like "100") line up across the roadmap. */
+        .roadmap .milestone > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            min-height: 72px;
+            /* lift the top meta slightly so numbers keep a consistent top baseline
+               while the connector lines remain vertically centered */
+            margin-top: -20px;
+        }
+
+        .roadmap-line {
+            height: 1.5px;
+            min-width: 42px;
+            flex: 1;
+            background-color: #3A2C3133;
+            /* let the line sit vertically centered in the roadmap row */
+            align-self: center;
+            margin-top: 0;
+            /* raise the connector line slightly so it visually sits between the logos */
+            transform: translateY(-20px);
+        }
+
+        .world-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        @media (max-width: 1024px) {
+            .world-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch !important;
+            }
+
+            .hero-cta a {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .final-rail {
+                flex-direction: column;
+                gap: 8px !important;
+            }
+
+            .milestone {
+                min-width: 170px;
+                gap: 14px;
+            }
+
+            .roadmap {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .roadmap-line {
+                display: none;
+            }
+            .roadmap-section {
+                display: none !important;
+            }
+            .mobile-live-banner {
+                display: block;
+                background-color: #EFE9DC;
+                border: 1px solid #3A2C311F;
+                padding: 10px 12px;
+                border-radius: 8px;
+                margin-top: 12px;
+                font-family: 'Mulish', system-ui, sans-serif;
+                color: #3A2C31;
+            }
+            .mobile-live-banner .banner-top { display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px; }
+            .mobile-live-banner .title { color:#3A2C31; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; font-size:12px; }
+            .mobile-live-banner .date { font-family:'Courier Prime', monospace; color:#3A2C3180; font-size:11px; }
+            .mobile-live-banner .members-row { display:flex; align-items:baseline; gap:10px; margin:2px 0 6px; }
+            .mobile-live-banner .members-row .big { font-family:'Fraunces', serif; font-size:40px; line-height:0.9; color:#3A2C3140; }
+            .mobile-live-banner .members-row .small { font-family:'Fraunces', serif; font-size:16px; line-height:1; color:#3A2C3173; }
+            .mobile-live-banner .sub { font-style:italic; color:#3A2C31CC; font-size:13px; margin-bottom:6px; }
+            .mobile-live-banner { box-shadow: none; }
+            .mobile-live-banner .rail { display:flex; justify-content:space-between; font-size:11px; color:#3A2C3199; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
+        }
+            /* additionally ensure the desktop live panel is hidden on small screens */
+            @media (max-width: 767px) {
+                .hero-load-scale.hero-media { display: none !important; }
+            }
+    </style>
+    <style>
+        /* Reinforce mobile layout rules at end of head to avoid preview/cache issues */
+        @media (max-width: 767px) {
+            .roadmap-section { display: none !important; }
+            .hero-load-scale.hero-media { display: none !important; }
+            .mobile-live-banner { display: block !important; }
+            .hero-section { background-color: #F3E6D5; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="paper-canvas"
+        style="background-color: #F4F2EB; box-sizing: border-box; display: flex; flex-direction: column; font-size: 12px; font-synthesis: none; height: fit-content; line-height: 16px; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; width: 100%;">
+
+        <div id="global-banner"></div>
+        <div id="global-header"></div>
+
+        <section class="hero-section" style="padding-inline: clamp(20px, 5vw, 80px); padding-top: clamp(40px, 8vw, 90px); padding-bottom: 96px;">
+            <div class="world-wrap"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 5vw, 80px); align-items: flex-start;">
+                <div style="display: flex; flex-direction: column; gap: 28px;">
+                    <div class="hero-load hero-load-d0"
+                        style="color: #FC7B35; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;">
+                        ✦ Náš svět · živý stav · květen 2026
+                    </div>
+                    <h1 class="hero-load hero-load-d1 hero-title"
+                        style="margin: 0; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(44px, 9vw, 112px); line-height: 0.98; letter-spacing: -0.03em; font-variation-settings: 'wght' 580; font-weight: 580;">
+                        Konstelace.<br>Šest světů,<br>postupně.
+                    </h1>
+                    <p class="hero-load hero-load-d2 hero-subtitle"
+                        style="margin: 0; max-width: 620px; color: #3A2C31B3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 23px; line-height: 34px; font-style: italic;">
+                        Poštovní klub je první kapitola. Když se nás sejde dost, otevřu druhou, třetí i další. Bez
+                        investorů, bez spěchu, jen s lidmi, kteří už jsou uvnitř.
+                    </p>
+                    <div class="hero-load hero-load-d3 hero-actions hero-cta"
+                        style="display: flex; align-items: center; gap: 18px; padding-top: 8px; flex-wrap: wrap;">
+                        <a href="postovni-klub.html" class="btn-primary"
+                            style="display: flex; align-items: center; background-color: #FC7B35; border-radius: 999px; padding: 18px 30px; text-decoration: none;">
+                            <span
+                                style="color: #F4F2EB; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 700;">Stát
+                                se členem</span>
+                        </a>
+                        <a href="edice-vitej.html" class="link-hover"
+                            style="display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid #3A2C31; padding-bottom: 2px; text-decoration: none;">
+                            <span
+                                style="color: #3A2C31; font-family: 'Mulish', system-ui, sans-serif; font-size: 15px; font-weight: 700;">Vyzkoušej
+                                VÍTEJ za 99 Kč</span>
+                            <span class="arrow-slide" style="color: #3A2C31; font-size: 15px;">→</span>
+                        </a>
+                    </div>
+                    <!-- Mobile compact live banner: visible only on small screens -->
+                    <div class="mobile-live-banner" aria-hidden="false">
+                        <div class="banner-top">
+                            <div class="title">Živý stav</div>
+                            <div class="date">stav k 8. 5. 2026</div>
+                        </div>
+                        <div class="members-row">
+                            <div class="big">—</div>
+                            <div class="small">/ 100</div>
+                        </div>
+                        <div class="sub">Skryto. Počítadlo zveřejním, jakmile vstoupí stý člen.</div>
+                        <div class="rail"><div>↑ panel se odemkne na 100</div><div>aktualizuje se denně</div></div>
+                    </div>
+                </div>
+
+                <div class="hero-load-scale hero-media"
+                    style="display: flex; flex-direction: column; gap: 10px; align-self: stretch; justify-content: center;">
+                    <div
+                        style="background-color: #EFE9DC; border: 1px solid #3A2C3126; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #3A2C311F; padding-bottom: 14px;">
+                            <div
+                                style="color: #3A2C31; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;">
+                                Živý stav
+                            </div>
+                            <div
+                                style="color: #3A2C3180; font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;">
+                                stav k 8. 5. 2026
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div
+                                style="color: #3A2C3199; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;">
+                                aktuální počet členů
+                            </div>
+                            <div style="display: flex; align-items: baseline; gap: 12px;">
+                                <div
+                                    style="color: #3A2C3140; font-family: 'Fraunces', system-ui, sans-serif; font-size: 86px; line-height: 0.9; letter-spacing: -0.03em;">
+                                    —
+                                </div>
+                                <div
+                                    style="color: #3A2C3173; font-family: 'Fraunces', system-ui, sans-serif; font-size: 30px; line-height: 1;">
+                                    / 100
+                                </div>
+                            </div>
+                            <div
+                                style="color: #3A2C31CC; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; line-height: 24px; font-style: italic;">
+                                Skryto. Počítadlo zveřejním, jakmile vstoupí stý člen.
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; gap: 8px; color: #3A2C3199; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">
+                        <span>↑ panel se odemkne na 100</span>
+                        <span style="font-family: 'Courier Prime', monospace;">aktualizuje se denně</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal roadmap-section" style="background-color: #3A2C310A; border-top: 1px solid #3A2C311F; border-bottom: 1px solid #3A2C311F; padding-inline: clamp(20px, 5vw, 80px); padding-block: 96px;">
+            <div class="world-wrap" style="display: flex; flex-direction: column; gap: 42px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; flex-wrap: wrap;">
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div
+                            style="color: #FF6752; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">
+                            ✦ Cesta · co kdy odemknu
+                        </div>
+                        <h2
+                            style="margin: 0; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 56px); line-height: 1.05; letter-spacing: -0.02em;">
+                            Nejdřív sto. Pak postupně.
+                        </h2>
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: 8px; background-color: #FF67521A; border: 1px solid #FF675266; padding: 10px 14px;">
+                        <span style="width: 6px; height: 6px; border-radius: 999px; background-color: #FF6752;"></span>
+                        <span
+                            style="color: #3A2C31; font-family: 'Mulish', system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;">Fáze
+                            0 · rozjezd</span>
+                    </div>
+                </div>
+
+                <div class="roadmap" style="align-items: center; position: relative;">
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 0ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div
+                                style="color: #FF6752; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">
+                                ★ ty jsi tady
+                            </div>
+                            <div
+                                style="color: #3A2C3199; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">
+                                květen 2026
+                            </div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/0M76XDE855ATSSR8E2FX4CV7QV.png" alt="Start logo" style="width: 72px; height: 72px; object-fit: cover; opacity: 0.95;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 18px; line-height: 22px;">Před startem</div>
+                            <div
+                                style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">
+                                před 100 čl.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 90ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">100</div>
+                            <div
+                                style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-align: center;">
+                                odemknu počítadlo
+                            </div>
+                        </div>
+                        <div style="height: 72px; width: 72px; display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 37px; height: 37px; border-radius: 999px; border: 6px solid #3A2C3199; background-color: #F4F2EB;"></div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div
+                                style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 18px; line-height: 22px;">
+                                Poštovní klub
+                            </div>
+                            <div
+                                style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">
+                                Počítadlo jde naživo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 180ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">150</div>
+                            <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">zápisníky</div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/74F634PY1D9A7WRG8EAF0BACGQ.png" alt="Zápisníky" style="width: 125px; height: 125px; object-fit: cover; opacity: 0.55;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">Ručně šité A6 a A5, tématické deníky.</div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 270ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">250</div>
+                            <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">kalendáře</div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/6Y3C6936K7N1YKC4Y45693YR5N.png" alt="Kalendáře" style="width: 126px; height: 125px; object-fit: cover; opacity: 0.5;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">Stolní odtrhávací, měsíční foto, A3.</div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 360ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">350</div>
+                            <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">3D tisk</div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/5583ZMNY94CFQ0T237Y80GSASP.png" alt="3D tisk" style="width: 125px; height: 125px; object-fit: cover; opacity: 0.45;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">Držáky na plakáty, magnetické zarážky.</div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 450ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">500</div>
+                            <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">plakáty</div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/3RD4Z3ZF7XY8HZ10APYXTBB2GV.png" alt="Plakáty" style="width: 125px; height: 125px; object-fit: cover; opacity: 0.4;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">Memento mori, 117 Billion People, Affinity šablony.</div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-line"></div>
+
+                    <div class="milestone reveal reveal-scale" style="transition-delay: 540ms; min-width: 130px;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 56px; justify-content: flex-end;">
+                            <div style="color: #3A2C31; font-family: 'Fraunces', serif; font-size: 32px; line-height: 32px;">1000</div>
+                            <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;">razítka</div>
+                        </div>
+                        <img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/0Y7CWAT2HQ4KWPDRX0PMS9ZK61.png" alt="Razítka" style="width: 125px; height: 125px; object-fit: cover; opacity: 0.35;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 80px;">
+                            <div style="max-width: 110px; text-align: center; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 14px; line-height: 20px; font-style: italic;">Mini razítka z mé tvorby — finále.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" style="padding-inline: clamp(20px, 5vw, 80px); padding-block: 110px;">
+            <div class="world-wrap" style="display: flex; flex-direction: column; gap: 40px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+                    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px;">
+                        <div
+                            style="color: #FF6752; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">
+                            ✦ Šest světů · co odemknu
+                        </div>
+                        <h2
+                            style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: clamp(36px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.025em;">
+                            Co každá kapitola přinese.
+                        </h2>
+                    </div>
+                    <p
+                        style="margin: 0; max-width: 360px; color: #3A2C3199; font-family: 'Fraunces', serif; font-size: 18px; line-height: 28px; font-style: italic;">
+                        Jednotlivé světy otevřu, až když to bude dávat smysl produkčně i lidsky.
+                    </p>
+                </div>
+
+                <div class="world-grid">
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #FF6752; font-family: 'Fraunces', serif; font-size: 32px;">01</div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="width: 6px; height: 6px; border-radius: 999px; background-color: #FF6752;"></span>
+                                <span style="color: #FF6752; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">aktivní</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/0M76XDE855ATSSR8E2FX4CV7QV.png" alt="Poštovní klub logo" style="width: 88px; height: 88px; object-fit: cover;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">Poštovní klub.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Tématická obálka, každý měsíc.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">Šest fyzických kusů v C5 obálce. Tříleté tematické edice (A01 Přítomnost · A02 Tvrdá práce · A03 Přátelství · A04 Smysl života) startují v červenci 2026.</p>
+                    </article>
+
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #3A2C3133; font-family: 'Fraunces', serif; font-size: 32px;">02</div>
+                            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background-color: #3A2C3166;"></span><span style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">čeká na 150 členů</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/5FV8AKHYVPC7ACFWHDT09WWPDC.png" alt="Zápisníky logo" style="width: 88px; height: 88px; object-fit: cover; opacity: 0.55;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">Zápisníky.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Ručně šité, malé, v ruce sedí.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">Formáty A6 a A5, tematické deníky, ruční vázba doma, limitované série po 50 kusech.</p>
+                    </article>
+
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #3A2C3133; font-family: 'Fraunces', serif; font-size: 32px;">03</div>
+                            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background-color: #3A2C3166;"></span><span style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">čeká na 250 členů</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/0KWSAGHZRJY7JEPFQD01VPMJ9W.png" alt="Kalendáře logo" style="width: 88px; height: 88px; object-fit: cover; opacity: 0.5;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">Kalendáře.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Stolní, odtrhávací, jeden měsíc — jedna fotka.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">A3 formát. 12 měsíců, 12 fotek, 12 citátů. Menší náklad, členové dostanou prioritu.</p>
+                    </article>
+
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #3A2C3133; font-family: 'Fraunces', serif; font-size: 32px;">04</div>
+                            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background-color: #3A2C3166;"></span><span style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">čeká na 350 členů</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/06XCR0BPHF2KWWXWTRXP1FFZ11.png" alt="3D tisk logo" style="width: 88px; height: 88px; object-fit: cover; opacity: 0.45;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">3D tisk.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Funkční drobnosti, žádný krám.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">Držáky, zarážky, organizéry. Česká výroba doma na PETG.</p>
+                    </article>
+
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #3A2C3133; font-family: 'Fraunces', serif; font-size: 32px;">05</div>
+                            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background-color: #3A2C3166;"></span><span style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">čeká na 500 členů</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/4CC476PW6NJBZS9TDPPECDVEK7.png" alt="Plakáty logo" style="width: 88px; height: 88px; object-fit: cover; opacity: 0.4;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">Plakáty.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Konceptuální věci pro stěnu.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">Memento mori, 117 Billion People a další velkoformátové edice.</p>
+                    </article>
+
+                    <article style="background-color: #FAF6E8; border: 1px solid #3A2C311A; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #3A2C3133; font-family: 'Fraunces', serif; font-size: 32px;">06</div>
+                            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background-color: #3A2C3166;"></span><span style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;">čeká na 1000 členů</span></div>
+                        </div>
+                        <div style="display: flex; align-items: center; padding-top: 4px;"><img src="https://app.paper.design/file-assets/01KR23A1KWKGF02YC89FN48H35/7GJMS2ZF6H1TDRGK9AWZT6K9PK.png" alt="Razítka logo" style="width: 88px; height: 88px; object-fit: cover; opacity: 0.35;"></div>
+                        <div style="border-top: 1px solid #3A2C311A; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                            <h3 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 40px; line-height: 44px;">Razítka.</h3>
+                            <p style="margin: 0; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 18px; line-height: 26px; font-style: italic;">Malá razítka z vlastní kresby.</p>
+                        </div>
+                        <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 16px; line-height: 26px;">Soubor tematických motivů pro deníky, dopisy a obálky jako finální milník světa.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" style="background-color: #3A2C310A; padding-inline: clamp(20px, 5vw, 80px); padding-block: 100px; border-top: 1px solid #3A2C311F; border-bottom: 1px solid #3A2C311F;">
+            <div class="world-wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px;">
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div
+                        style="color: #FF6752; font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">
+                        ✦ Proč postupně
+                    </div>
+                    <h2 style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: clamp(34px, 6vw, 64px); line-height: 1.04; letter-spacing: -0.02em;">Proč to roste pomalu?</h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 18px;">
+                    <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 19px; line-height: 32px;">Mohl bych spustit všechno naráz. Jenže pak by to nebyl živý klub, ale zásoba ve skladu. Každý nový svět otevřu až tehdy, když pro něj existují skuteční lidé, ne jen marketingový plán.</p>
+                    <p style="margin: 0; color: #3A2C31; font-family: 'Fraunces', serif; font-size: 19px; line-height: 32px;">Stovka členů znamená, že zápisníky šiju pro stovku konkrétních adres. Pět set členů znamená, že plakát visí v pěti stech skutečných pokojích. Ne v krabicích.</p>
+                    <blockquote style="margin: 4px 0 0; border-left: 2px solid #FF6752; padding-left: 18px; color: #3A2C31CC; font-family: 'Fraunces', serif; font-size: 17px; line-height: 28px; font-style: italic;">Členové, kteří jsou uvnitř od kapitoly 01, dostanou všechny další kapitoly dřív a levněji než kdokoliv zvenčí.</blockquote>
+                    <div style="color: #3A2C3199; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">— Filip · květen 2026</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" style="background-color: #3A2C31; padding-inline: clamp(20px, 5vw, 80px); padding-top: 120px; padding-bottom: 110px;">
+            <div class="world-wrap" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;">
+                <div
+                    style="color: #FF6752; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;">
+                    ✦ poslední krok · prvních 100
+                </div>
+                <h2 style="margin: 0; color: #F4F2EB; font-family: 'Fraunces', serif; font-size: clamp(48px, 10vw, 128px); line-height: 0.95; letter-spacing: -0.03em;">Buď jedním ze sta.</h2>
+                <p style="margin: 0; max-width: 760px; color: #F4F2EBCC; font-family: 'Fraunces', serif; font-size: 22px; line-height: 34px; font-style: italic;">Jakmile se nás sejde sto, zveřejním počítadlo a začnu odpočítávat ke 150. Členové z prvních 100 dostanou všechny budoucí kapitoly nejdřív a levněji.</p>
+                <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; padding-top: 6px;">
+                    <a href="postovni-klub.html" class="btn-primary"
+                        style="display: flex; align-items: center; gap: 10px; background-color: #FF6752; padding: 20px 32px; border-radius: 999px; text-decoration: none;">
+                        <span style="color: #FFFFFF; font-family: 'Mulish', sans-serif; font-size: 16px; font-weight: 700;">Stát se členem</span>
+                        <span style="color: #FFFFFF; font-size: 18px;">→</span>
+                    </a>
+                    <a href="edice-vitej.html" class="link-hover"
+                        style="display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid #F4F2EB66; padding: 18px 10px; text-decoration: none;">
+                        <span style="color: #F4F2EB; font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 600;">Vyzkoušej VÍTEJ za 99 Kč</span>
+                        <span class="arrow-slide" style="color: #F4F2EB;">→</span>
+                    </a>
+                </div>
+                <div class="final-rail"
+                    style="display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 18px; flex-wrap: wrap;">
+                    <div style="color: #F4F2EBBF; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">✦ Sto je první milník</div>
+                    <div style="color: #F4F2EB66;">·</div>
+                    <div style="color: #F4F2EBBF; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">✦ Další kapitoly nejdřív pro členy</div>
+                    <div style="color: #F4F2EB66;">·</div>
+                    <div style="color: #F4F2EBBF; font-family: 'Mulish', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">✦ Zápisy do 30. června</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="global-footer"></div>
+    </div>
+
+    <script src="cms-config.js"></script>
+    <script src="components.js"></script>
+    <script src="global.js"></script>
+</body>
+
+</html>
