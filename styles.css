@@ -1442,20 +1442,27 @@ body {
   /* Mobile navigation with burger */
   .nav-load {
     align-items: center !important;
-    gap: 12px !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
   }
 
   .nav-load .logo-hover {
-    gap: 12px !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 8px !important;
   }
 
   .nav-load .logo-hover img {
-    height: 44px !important;
+    height: 38px !important;
+    flex-shrink: 0;
   }
 
   .nav-load .logo-hover>div {
-    font-size: 18px !important;
-    line-height: 20px !important;
+    font-size: 14px !important;
+    line-height: 1.05 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-desktop-links {
@@ -1464,7 +1471,9 @@ body {
 
   .mobile-nav-menu {
     display: block;
-    margin-left: auto;
+    flex: 0 0 auto;
+    margin-left: 0;
+    align-self: center;
     position: relative;
   }
 
@@ -1477,8 +1486,9 @@ body {
     color: #3A2C31;
     border: 1px solid #3A2C312E;
     border-radius: 999px;
-    padding: 10px 14px;
+    padding: 8px 12px;
     background: #F4F2EB;
+    white-space: nowrap;
   }
 
   .mobile-nav-menu > summary::-webkit-details-marker,
