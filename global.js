@@ -405,6 +405,86 @@
         });
     }
 
+    // 11. COOKIE CONSENT BANNER
+    function initCookieConsent() {
+        if (localStorage.getItem('fpvs-cookie-consent')) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            #cookie-banner {
+                position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+                background: #2A201F; border-top: 2px solid #FC7B35;
+                padding: 18px clamp(20px, 5vw, 80px);
+                transform: translateY(100%);
+                transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+                box-sizing: border-box;
+            }
+            #cookie-banner.cookie-visible { transform: translateY(0); }
+            .cookie-inner {
+                display: flex; align-items: center; justify-content: space-between;
+                gap: 20px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto;
+            }
+            .cookie-text {
+                color: #F4F2EB; font-family: 'Fraunces', serif;
+                font-size: 15px; font-style: italic; line-height: 22px;
+                flex: 1; min-width: 200px;
+            }
+            .cookie-text a { color: #FC7B35; text-decoration: underline; }
+            .cookie-kicker {
+                display: block; margin-bottom: 4px; font-style: normal;
+                font-family: 'Mulish', sans-serif; font-size: 11px;
+                font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+                color: #FC7B35;
+            }
+            .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
+            .cookie-accept {
+                background: #FC7B35; border: none; color: #2A201F; cursor: pointer;
+                font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700;
+                letter-spacing: 0.12em; padding: 10px 22px; text-transform: uppercase;
+                transition: background 0.2s; white-space: nowrap;
+            }
+            .cookie-accept:hover { background: #E86B2A; }
+            .cookie-reject {
+                background: transparent; border: 1px solid rgba(244,242,235,0.25);
+                color: rgba(244,242,235,0.65); cursor: pointer;
+                font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 600;
+                letter-spacing: 0.08em; padding: 10px 16px; text-transform: uppercase;
+                transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+            }
+            .cookie-reject:hover { border-color: rgba(244,242,235,0.5); color: rgba(244,242,235,0.9); }
+            @media (max-width: 600px) {
+                .cookie-text { font-size: 13px; }
+                .cookie-actions { width: 100%; justify-content: flex-end; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.innerHTML = `
+            <div class="cookie-inner">
+                <div class="cookie-text">
+                    <span class="cookie-kicker">✦ Cookies &amp; soukromí</span>
+                    Používáme cookies pro zajištění základní funkčnosti webu. Více v <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásadách ochrany osobních údajů</a>.
+                </div>
+                <div class="cookie-actions">
+                    <button class="cookie-reject" id="cookie-reject">Odmítnout</button>
+                    <button class="cookie-accept" id="cookie-accept">Přijmout vše</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(banner);
+        setTimeout(() => banner.classList.add('cookie-visible'), 800);
+
+        function dismiss(choice) {
+            localStorage.setItem('fpvs-cookie-consent', choice);
+            banner.classList.remove('cookie-visible');
+            setTimeout(() => banner.remove(), 400);
+        }
+        document.getElementById('cookie-accept').addEventListener('click', () => dismiss('accepted'));
+        document.getElementById('cookie-reject').addEventListener('click', () => dismiss('rejected'));
+    }
+
     // INITIALIZE ALL
     function init() {
         initCMS();
@@ -418,6 +498,7 @@
         initUIEnhancements();
         initCountdown();
         initSmoothScroll();
+        initCookieConsent();
     }
 
     if (document.readyState === 'loading') {
