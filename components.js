@@ -177,7 +177,8 @@ const SHARED_COMPONENTS = {
                         <div class="footer-label">POMOC</div>
                         <a href="#">Časté dotazy</a>
                         <a href="#">Doprava</a>
-                        <a href="#">Zrušení</a>
+                        <a href="reklamace.html">Reklamace</a>
+                        <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
                         <a href="#">Kontakt</a>
                     </div>
                     <div class="footer-link-col">
@@ -195,7 +196,8 @@ const SHARED_COMPONENTS = {
                     ❤️ Červenec-září 2026: 3 % z hrubé marže podporuje Člověk v tísni →
                 </div>
                 <div class="footer-legal">
-                    <a href="obchodni-podminky.html">Všeobecné obchodní podmínky</a>
+                    <a href="assets/Všeobecené obchodní podmínky.pdf">Všeobecné obchodní podmínky</a>
+                    <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásady zpracování osobních údajů</a>
                 </div>
             </div>
         </div>
