@@ -195,7 +195,7 @@ const SHARED_COMPONENTS = {
                     ❤️ Červenec-září 2026: 3 % z hrubé marže podporuje Člověk v tísni →
                 </div>
                 <div class="footer-legal">
-                    <a href="#">Obchodní podmínky</a>
+                    <a href="obchodni-podminky.html">Všeobecné obchodní podmínky</a>
                 </div>
             </div>
         </div>
