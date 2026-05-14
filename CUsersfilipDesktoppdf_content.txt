@@ -1,0 +1,27 @@
+=== assets/odstoupeni-od-smlouvy.pdf ===
+Odesílatel:
+Jméno a příjmení:
+Bydliště:
+(případně e -mail, tel. číslo):
+Adresát:
+Prodávající: Filipův podivuhodný svět (B c. Filip Kubík)
+IČ: 23576138
+Se sídlem: Kuňovice 22, 257 65 Kuňovice, Česká republika
+Oznámení o odstoupení od kupní smlouvy
+Dne ………. jsem si na Vašich internetových stránkách/v internetovém obchodě …………
+objednal zboží ……….., číslo objednávky …………, v hodnotě …..….. Kč. Objednané zboží
+jsem obdržel dne ………..
+Na základě ust. § 1829 odst. 1 ve spojení s ust. § 1818 zákona č. 89/2012 Sb.,
+občanský zákoník, využívám svého zákonného práva a odstupuji od kupní smlouvy
+uzavřené prostřednictvím internetu , která se týká výše uvedeného zboží, jež Vám
+s tímto dopisem zasílám zpět, a zároveň Vás žádám o poukázání kupní ceny ve výši
+………. Kč a ……… Kč za poštovné na můj bankovní účet číslo …………. nejpozději do 14
+dnů od doručení tohoto odstoupení od smlouvy.
+V ………. dne ……….
+Jméno a příjmení spotřebitele
+(podpis)
+Přílohy:
+Doklad o koupi
+
+=== assets/Reklamacni_rad.pdf ===
+Error: [Errno 2] No such file or directory: 'assets/Reklamacni_rad.pdf'
