@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <title>Odstoupení od smlouvy · Filipův podivuhodný svět</title>
+  <meta name="description" content="Formulář pro odstoupení od kupní smlouvy do 14 dnů od obdržení zboží.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body { margin: 0; background: #F7F1E6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .paper-canvas { min-height: 100vh; background: #F7F1E6; display: flex; flex-direction: column; }
+
+    .form-page {
+      padding: 64px clamp(20px, 5vw, 80px) 96px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .page-hero { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .page-kicker {
+      color: #B65A2F; font-family: 'Mulish', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase;
+    }
+    .page-title {
+      margin: 0; color: #2A201F; font-family: 'Fraunces', serif;
+      font-size: clamp(40px, 7vw, 72px); font-weight: 500;
+      letter-spacing: -0.03em; line-height: 1;
+    }
+    .page-lead {
+      margin: 0; color: #5E524B; font-family: 'Fraunces', serif;
+      font-size: 18px; font-style: italic; line-height: 28px; max-width: 580px;
+    }
+
+    .form-card {
+      background: rgba(251, 247, 238, 0.6);
+      border: 1px solid #D9CFC2;
+      padding: 40px;
+    }
+
+    .form-section { display: flex; flex-direction: column; gap: 20px; }
+
+    .form-section-title {
+      color: #B65A2F; font-family: 'Mulish', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+      padding-bottom: 14px; border-bottom: 1px solid #D9CFC2; margin-bottom: 4px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-label {
+      color: #5E524B; font-family: 'Mulish', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .form-label .req { color: #FC7B35; }
+    .form-label .opt { color: #B0A497; font-weight: 400; }
+
+    .form-input, .form-textarea, .form-select {
+      background: #FBF7EE; border: 1px solid #D9CFC2; color: #2A201F;
+      font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.5;
+      padding: 11px 14px; transition: border-color 0.2s;
+      outline: none; width: 100%; box-sizing: border-box; -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: #FC7B35; }
+    .form-input.is-invalid, .form-textarea.is-invalid, .form-select.is-invalid { border-color: #C0392B; }
+    .form-textarea { resize: vertical; min-height: 80px; }
+
+    .input-with-suffix { display: flex; }
+    .input-with-suffix .form-input { flex: 1; border-right: none; }
+    .input-suffix {
+      background: #EDE8DF; border: 1px solid #D9CFC2; border-left: none;
+      color: #5E524B; font-family: 'Mulish', sans-serif;
+      font-size: 13px; font-weight: 600; padding: 11px 14px;
+      display: flex; align-items: center; flex-shrink: 0;
+    }
+
+    .field-error {
+      color: #C0392B; font-family: 'Mulish', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; display: none;
+    }
+
+    .form-divider { border: none; border-top: 1px solid #D9CFC2; margin: 32px 0; }
+
+    .form-note {
+      color: #5E524B; font-family: 'Fraunces', serif;
+      font-size: 14px; font-style: italic; line-height: 22px; margin: 0;
+    }
+    .form-note strong { font-style: normal; color: #2A201F; }
+
+    .form-legal {
+      color: #B0A497; font-family: 'Fraunces', serif;
+      font-size: 13px; font-style: italic; line-height: 20px; margin: 0;
+    }
+    .form-legal a { color: #B65A2F; }
+
+    .btn-submit {
+      background: #FC7B35; border: none; color: #2A201F; cursor: pointer;
+      font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.14em; padding: 14px 32px; text-transform: uppercase;
+      transition: background 0.2s, transform 0.1s; white-space: nowrap;
+    }
+    .btn-submit:hover { background: #E86B2A; }
+    .btn-submit:active { transform: scale(0.98); }
+
+    .form-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+
+    .success-box {
+      display: none; flex-direction: column; align-items: center; text-align: center;
+      gap: 16px; padding: 56px 40px;
+      background: rgba(251, 247, 238, 0.6); border: 1px solid #D9CFC2;
+    }
+    .success-box.visible { display: flex; }
+    .success-icon { color: #FC7B35; font-size: 40px; line-height: 1; }
+    .success-title { margin: 0; color: #2A201F; font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; }
+    .success-text { margin: 0; color: #5E524B; font-family: 'Fraunces', serif; font-size: 16px; font-style: italic; line-height: 26px; max-width: 480px; }
+
+    @media (max-width: 640px) {
+      .form-card { padding: 24px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-page { padding: 40px 20px 64px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="form-page">
+      <div class="page-hero">
+        <div class="page-kicker">✦ Práva zákazníka</div>
+        <h1 class="page-title">Odstoupení<br>od smlouvy.</h1>
+        <p class="page-lead">Máte právo odstoupit od kupní smlouvy do 14 dnů od obdržení zboží bez udání důvodu. Vyplňte formulář níže.</p>
+      </div>
+
+      <form id="withdrawal-form" novalidate>
+        <div class="form-card">
+
+          <!-- Kontaktní údaje -->
+          <div class="form-section">
+            <div class="form-section-title">Vaše kontaktní údaje</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="w-name">Jméno a příjmení <span class="req">*</span></label>
+                <input class="form-input" id="w-name" name="name" type="text" placeholder="Jan Novák" required>
+                <span class="field-error" id="w-name-err">Vyplňte prosím jméno.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="w-email">E-mail <span class="req">*</span></label>
+                <input class="form-input" id="w-email" name="email" type="email" placeholder="vas@email.cz" required>
+                <span class="field-error" id="w-email-err">Zadejte platný e-mail.</span>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="w-address">Bydliště (ulice, město, PSČ) <span class="req">*</span></label>
+              <input class="form-input" id="w-address" name="address" type="text" placeholder="Hlavní 1, 257 65 Čechtice" required>
+              <span class="field-error" id="w-address-err">Vyplňte prosím adresu.</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="w-phone">Telefon <span class="opt">(nepovinné)</span></label>
+                <input class="form-input" id="w-phone" name="phone" type="tel" placeholder="+420 000 000 000">
+              </div>
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Informace o objednávce -->
+          <div class="form-section">
+            <div class="form-section-title">Informace o objednávce</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="w-order-date">Datum objednávky <span class="req">*</span></label>
+                <input class="form-input" id="w-order-date" name="order-date" type="date" required>
+                <span class="field-error" id="w-order-date-err">Vyplňte datum.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="w-recv-date">Datum obdržení zboží <span class="req">*</span></label>
+                <input class="form-input" id="w-recv-date" name="recv-date" type="date" required>
+                <span class="field-error" id="w-recv-date-err">Vyplňte datum.</span>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="w-product">Název zboží <span class="req">*</span></label>
+              <input class="form-input" id="w-product" name="product" type="text" placeholder="Edice VÍTEJ – Poštovní klub" required>
+              <span class="field-error" id="w-product-err">Vyplňte název zboží.</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="w-order-num">Číslo objednávky <span class="req">*</span></label>
+                <input class="form-input" id="w-order-num" name="order-num" type="text" placeholder="2026-0001" required>
+                <span class="field-error" id="w-order-num-err">Vyplňte číslo objednávky.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="w-order-val">Hodnota objednávky <span class="req">*</span></label>
+                <div class="input-with-suffix">
+                  <input class="form-input" id="w-order-val" name="order-val" type="number" min="0" step="1" placeholder="299" required>
+                  <span class="input-suffix">Kč</span>
+                </div>
+                <span class="field-error" id="w-order-val-err">Vyplňte hodnotu.</span>
+              </div>
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Vrácení platby -->
+          <div class="form-section">
+            <div class="form-section-title">Vrácení platby</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="w-refund-price">Kupní cena k vrácení <span class="req">*</span></label>
+                <div class="input-with-suffix">
+                  <input class="form-input" id="w-refund-price" name="refund-price" type="number" min="0" step="1" placeholder="299" required>
+                  <span class="input-suffix">Kč</span>
+                </div>
+                <span class="field-error" id="w-refund-price-err">Vyplňte částku.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="w-refund-ship">Poštovné k vrácení <span class="opt">(nepovinné)</span></label>
+                <div class="input-with-suffix">
+                  <input class="form-input" id="w-refund-ship" name="refund-ship" type="number" min="0" step="1" placeholder="0">
+                  <span class="input-suffix">Kč</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="w-bank">Číslo bankovního účtu pro vrácení <span class="req">*</span></label>
+              <input class="form-input" id="w-bank" name="bank" type="text" placeholder="1234567890/0100" required>
+              <span class="field-error" id="w-bank-err">Vyplňte číslo účtu.</span>
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <div class="form-actions">
+            <p class="form-note">
+              Zboží zašlete zpět na adresu <strong>Bc. Filip Kubík, PO Box č. 3, 257 65 Čechtice</strong> spolu s dokladem o koupi.
+              Kliknutím na tlačítko se otevře váš e-mailový klient s předvyplněnou zprávou.
+            </p>
+            <button class="btn-submit" type="submit">Odeslat odstoupení →</button>
+            <p class="form-legal">
+              Vaše osobní údaje zpracováváme v souladu se
+              <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásadami ochrany osobních údajů</a>.
+            </p>
+          </div>
+
+        </div>
+      </form>
+
+      <div class="success-box" id="w-success">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Váš e-mail je připraven.</h2>
+        <p class="success-text">V e-mailovém klientu se otevřelo okno s předvyplněnou zprávou. Zkontrolujte ji a odešlete. Odpovím do 3 pracovních dnů.</p>
+      </div>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="cms-config.js"></script>
+  <script src="components.js"></script>
+  <script src="global.js"></script>
+  <script>
+    (function () {
+      var required = ['w-name', 'w-email', 'w-address', 'w-order-date', 'w-recv-date', 'w-product', 'w-order-num', 'w-order-val', 'w-refund-price', 'w-bank'];
+
+      document.getElementById('withdrawal-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var valid = true;
+        required.forEach(function (id) {
+          var el = document.getElementById(id);
+          var err = document.getElementById(id + '-err');
+          if (!el || !el.value.trim()) {
+            if (el) el.classList.add('is-invalid');
+            if (err) err.style.display = 'block';
+            valid = false;
+          } else {
+            el.classList.remove('is-invalid');
+            if (err) err.style.display = 'none';
+          }
+        });
+        if (!valid) { document.querySelector('.is-invalid').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+
+        var name     = document.getElementById('w-name').value.trim();
+        var email    = document.getElementById('w-email').value.trim();
+        var phone    = document.getElementById('w-phone').value.trim();
+        var address  = document.getElementById('w-address').value.trim();
+        var oDate    = document.getElementById('w-order-date').value;
+        var rDate    = document.getElementById('w-recv-date').value;
+        var product  = document.getElementById('w-product').value.trim();
+        var orderNum = document.getElementById('w-order-num').value.trim();
+        var orderVal = document.getElementById('w-order-val').value.trim();
+        var refPrice = document.getElementById('w-refund-price').value.trim();
+        var refShip  = document.getElementById('w-refund-ship').value.trim() || '0';
+        var bank     = document.getElementById('w-bank').value.trim();
+        var today    = new Date().toLocaleDateString('cs-CZ');
+
+        var body =
+          'OZNÁMENÍ O ODSTOUPENÍ OD KUPNÍ SMLOUVY\n\n' +
+          'Odesílatel:\n' +
+          'Jméno a příjmení: ' + name + '\n' +
+          'Bydliště: ' + address + '\n' +
+          'E-mail: ' + email + '\n' +
+          (phone ? 'Telefon: ' + phone + '\n' : '') +
+          '\n' +
+          'Dne ' + oDate + ' jsem si na Vašich internetových stránkách objednal/a zboží ' +
+          product + ', číslo objednávky ' + orderNum + ', v hodnotě ' + orderVal + ' Kč. ' +
+          'Objednané zboží jsem obdržel/a dne ' + rDate + '.\n\n' +
+          'Na základě § 1829 odst. 1 ve spojení s § 1818 zákona č. 89/2012 Sb. (občanský zákoník) ' +
+          'využívám svého zákonného práva a odstupuji od kupní smlouvy uzavřené prostřednictvím internetu, ' +
+          'která se týká výše uvedeného zboží.\n\n' +
+          'Žádám o vrácení:\n' +
+          '- Kupní ceny: ' + refPrice + ' Kč\n' +
+          '- Poštovného: ' + refShip + ' Kč\n\n' +
+          'Na bankovní účet č.: ' + bank + '\n' +
+          'Nejpozději do 14 dnů od doručení tohoto odstoupení.\n\n' +
+          'Datum: ' + today + '\n' +
+          name;
+
+        var subject = encodeURIComponent('Odstoupení od smlouvy – objednávka ' + orderNum);
+        var bodyEnc = encodeURIComponent(body);
+        window.location.href = 'mailto:podpora@filipuvpodivuhodnysvet.cz?subject=' + subject + '&body=' + bodyEnc;
+
+        document.getElementById('withdrawal-form').style.display = 'none';
+        var box = document.getElementById('w-success');
+        box.classList.add('visible');
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+  </script>
+</body>
+
+</html>
