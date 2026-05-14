@@ -70,7 +70,7 @@
       background: #FBF7EE; border: 1px solid #D9CFC2; color: #2A201F;
       font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.5;
       padding: 11px 14px; transition: border-color 0.2s;
-      outline: none; width: 100%; box-sizing: border-box; -webkit-appearance: none;
+      outline: none; width: 100%; box-sizing: border-box; -webkit-appearance: none; appearance: none;
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: #FC7B35; }
     .form-input.is-invalid, .form-textarea.is-invalid, .form-select.is-invalid { border-color: #C0392B; }
@@ -227,7 +227,6 @@
             <p class="form-note">
               K reklamaci přiložte doklad o koupi. Reklamované zboží zašlete na adresu
               <strong>Bc. Filip Kubík, PO Box č. 3, 257 65 Čechtice</strong>.
-              Kliknutím na tlačítko se otevře váš e-mailový klient s předvyplněnou zprávou.
             </p>
             <button class="btn-submit" type="submit">Odeslat reklamaci →</button>
             <p class="form-legal">
@@ -241,8 +240,8 @@
 
       <div class="success-box" id="r-success">
         <div class="success-icon">✓</div>
-        <h2 class="success-title">Váš e-mail je připraven.</h2>
-        <p class="success-text">V e-mailovém klientu se otevřelo okno s předvyplněnou reklamací. Zkontrolujte ji a odešlete. Odpovím do 3 pracovních dnů.</p>
+        <h2 class="success-title">Reklamace přijata.</h2>
+        <p class="success-text">Vaše reklamace byla úspěšně odeslána. Odpovím do 3 pracovních dnů na váš e-mail.</p>
       </div>
     </main>
 
@@ -254,9 +253,11 @@
   <script src="global.js"></script>
   <script>
     (function () {
+      var WEB3FORMS_KEY = '6a057220-f8be-4493-88e6-b88d3cb3bc85'; // získejte na web3forms.com/register
+
       var required = ['r-name', 'r-email', 'r-order-num', 'r-purchase-date', 'r-product', 'r-defect', 'r-resolution'];
 
-      document.getElementById('complaint-form').addEventListener('submit', function (e) {
+      document.getElementById('complaint-form').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         var valid = true;
@@ -285,11 +286,10 @@
         var resolution   = document.getElementById('r-resolution').value;
         var today        = new Date().toLocaleDateString('cs-CZ');
 
-        var body =
+        var message =
           'UPLATNĚNÍ REKLAMACE\n\n' +
           'Zákazník:\n' +
           'Jméno a příjmení: ' + name + '\n' +
-          'E-mail: ' + email + '\n' +
           (address ? 'Adresa: ' + address + '\n' : '') +
           (phone ? 'Telefon: ' + phone + '\n' : '') +
           '\nInformace o zboží:\n' +
@@ -298,19 +298,40 @@
           'Název zboží: ' + product + '\n' +
           '\nPopis závady:\n' + defect + '\n' +
           '\nPožadovaný způsob řešení: ' + resolution + '\n' +
-          '\nDatum podání reklamace: ' + today + '\n\n' +
-          '---\n' +
-          'K reklamaci přikládám doklad o koupi a zaslal/a jsem reklamované zboží na adresu ' +
-          'Bc. Filip Kubík, PO Box č. 3, 257 65 Čechtice.';
+          '\nDatum podání: ' + today;
 
-        var subject = encodeURIComponent('Reklamace – objednávka ' + orderNum);
-        var bodyEnc = encodeURIComponent(body);
-        window.location.href = 'mailto:podpora@filipuvpodivuhodnysvet.cz?subject=' + subject + '&body=' + bodyEnc;
+        var btn = document.querySelector('#complaint-form .btn-submit');
+        btn.disabled = true;
+        btn.textContent = 'Odesílám…';
 
-        document.getElementById('complaint-form').style.display = 'none';
-        var box = document.getElementById('r-success');
-        box.classList.add('visible');
-        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        try {
+          var res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_KEY,
+              subject: 'Reklamace – objednávka ' + orderNum,
+              from_name: name,
+              email: email,
+              message: message
+            })
+          });
+          var data = await res.json();
+          if (data.success) {
+            document.getElementById('complaint-form').style.display = 'none';
+            var box = document.getElementById('r-success');
+            box.classList.add('visible');
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Odeslat reklamaci →';
+            alert('Odeslání se nezdařilo. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = 'Odeslat reklamaci →';
+          alert('Chyba sítě. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
+        }
       });
     })();
   </script>

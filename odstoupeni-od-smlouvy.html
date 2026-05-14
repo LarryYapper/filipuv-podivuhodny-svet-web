@@ -70,7 +70,7 @@
       background: #FBF7EE; border: 1px solid #D9CFC2; color: #2A201F;
       font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.5;
       padding: 11px 14px; transition: border-color 0.2s;
-      outline: none; width: 100%; box-sizing: border-box; -webkit-appearance: none;
+      outline: none; width: 100%; box-sizing: border-box; -webkit-appearance: none; appearance: none;
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: #FC7B35; }
     .form-input.is-invalid, .form-textarea.is-invalid, .form-select.is-invalid { border-color: #C0392B; }
@@ -249,7 +249,6 @@
           <div class="form-actions">
             <p class="form-note">
               Zboží zašlete zpět na adresu <strong>Bc. Filip Kubík, PO Box č. 3, 257 65 Čechtice</strong> spolu s dokladem o koupi.
-              Kliknutím na tlačítko se otevře váš e-mailový klient s předvyplněnou zprávou.
             </p>
             <button class="btn-submit" type="submit">Odeslat odstoupení →</button>
             <p class="form-legal">
@@ -263,8 +262,8 @@
 
       <div class="success-box" id="w-success">
         <div class="success-icon">✓</div>
-        <h2 class="success-title">Váš e-mail je připraven.</h2>
-        <p class="success-text">V e-mailovém klientu se otevřelo okno s předvyplněnou zprávou. Zkontrolujte ji a odešlete. Odpovím do 3 pracovních dnů.</p>
+        <h2 class="success-title">Formulář odeslán.</h2>
+        <p class="success-text">Vaše žádost o odstoupení od smlouvy byla přijata. Odpovím do 3 pracovních dnů na váš e-mail.</p>
       </div>
     </main>
 
@@ -276,9 +275,11 @@
   <script src="global.js"></script>
   <script>
     (function () {
+      var WEB3FORMS_KEY = '6a057220-f8be-4493-88e6-b88d3cb3bc85'; // získejte na web3forms.com/register
+
       var required = ['w-name', 'w-email', 'w-address', 'w-order-date', 'w-recv-date', 'w-product', 'w-order-num', 'w-order-val', 'w-refund-price', 'w-bank'];
 
-      document.getElementById('withdrawal-form').addEventListener('submit', function (e) {
+      document.getElementById('withdrawal-form').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         var valid = true;
@@ -310,36 +311,56 @@
         var bank     = document.getElementById('w-bank').value.trim();
         var today    = new Date().toLocaleDateString('cs-CZ');
 
-        var body =
+        var message =
           'OZNÁMENÍ O ODSTOUPENÍ OD KUPNÍ SMLOUVY\n\n' +
           'Odesílatel:\n' +
           'Jméno a příjmení: ' + name + '\n' +
           'Bydliště: ' + address + '\n' +
-          'E-mail: ' + email + '\n' +
           (phone ? 'Telefon: ' + phone + '\n' : '') +
-          '\n' +
-          'Dne ' + oDate + ' jsem si na Vašich internetových stránkách objednal/a zboží ' +
-          product + ', číslo objednávky ' + orderNum + ', v hodnotě ' + orderVal + ' Kč. ' +
-          'Objednané zboží jsem obdržel/a dne ' + rDate + '.\n\n' +
-          'Na základě § 1829 odst. 1 ve spojení s § 1818 zákona č. 89/2012 Sb. (občanský zákoník) ' +
-          'využívám svého zákonného práva a odstupuji od kupní smlouvy uzavřené prostřednictvím internetu, ' +
-          'která se týká výše uvedeného zboží.\n\n' +
+          '\nDatum objednávky: ' + oDate +
+          '\nNázev zboží: ' + product +
+          '\nČíslo objednávky: ' + orderNum +
+          '\nHodnota objednávky: ' + orderVal + ' Kč' +
+          '\nDatum obdržení: ' + rDate +
+          '\n\nNa základě § 1829 odst. 1 ve spojení s § 1818 zákona č. 89/2012 Sb. odstupuji od kupní smlouvy.\n\n' +
           'Žádám o vrácení:\n' +
           '- Kupní ceny: ' + refPrice + ' Kč\n' +
-          '- Poštovného: ' + refShip + ' Kč\n\n' +
-          'Na bankovní účet č.: ' + bank + '\n' +
-          'Nejpozději do 14 dnů od doručení tohoto odstoupení.\n\n' +
-          'Datum: ' + today + '\n' +
-          name;
+          '- Poštovného: ' + refShip + ' Kč\n' +
+          'Na bankovní účet č.: ' + bank + '\n\n' +
+          'Datum: ' + today;
 
-        var subject = encodeURIComponent('Odstoupení od smlouvy – objednávka ' + orderNum);
-        var bodyEnc = encodeURIComponent(body);
-        window.location.href = 'mailto:podpora@filipuvpodivuhodnysvet.cz?subject=' + subject + '&body=' + bodyEnc;
+        var btn = document.querySelector('#withdrawal-form .btn-submit');
+        btn.disabled = true;
+        btn.textContent = 'Odesílám…';
 
-        document.getElementById('withdrawal-form').style.display = 'none';
-        var box = document.getElementById('w-success');
-        box.classList.add('visible');
-        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        try {
+          var res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_KEY,
+              subject: 'Odstoupení od smlouvy – objednávka ' + orderNum,
+              from_name: name,
+              email: email,
+              message: message
+            })
+          });
+          var data = await res.json();
+          if (data.success) {
+            document.getElementById('withdrawal-form').style.display = 'none';
+            var box = document.getElementById('w-success');
+            box.classList.add('visible');
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Odeslat odstoupení →';
+            alert('Odeslání se nezdařilo. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = 'Odeslat odstoupení →';
+          alert('Chyba sítě. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
+        }
       });
     })();
   </script>
