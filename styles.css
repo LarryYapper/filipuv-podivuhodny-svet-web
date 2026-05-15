@@ -2854,3 +2854,81 @@ body {
     padding-bottom: clamp(48px, 7vw, 72px) !important;
   }
 }
+
+/* =============================================================================
+   FULL DESKTOP (≥1120px) — the narrow-desktop block (901–1119px) handled these
+   layouts; everything below mirrors it so full desktop matches instead of
+   falling back to the stacked/scrolling inline defaults.
+   ============================================================================= */
+@media (min-width: 1120px) {
+
+  /* --- Footer: true 3-column row (left © · center charity · right legal) --- */
+  .footer-bottom {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 32px !important;
+  }
+  .footer-copyright {
+    text-align: left !important;
+    justify-self: start !important;
+  }
+  .footer-charity {
+    text-align: center !important;
+    justify-self: center !important;
+  }
+  .footer-legal {
+    display: flex !important;
+    gap: 12px 20px !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  /* --- Section header rows: title (left) + italic desc (right) side by side.
+         Covers postovni-klub "✦ CO DOSTANEŠ · POROVNÁNÍ ÚROVNÍ" and
+         "✦ CO JE V KAŽDÉM KUSU · DETAIL", and edice-vitej
+         "✦ ŠEST KUSŮ · CO DORAZÍ V OBÁLCE". --- */
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"],
+  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"] {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    gap: clamp(40px, 5vw, 80px) !important;
+  }
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:first-child {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 720px !important;
+  }
+
+  /* --- postovni-klub comparison table: flexible columns so all 3 tiers fit
+         at every desktop width (no horizontal clipping of Úroveň 3). --- */
+  .comparison-table {
+    overflow-x: visible !important;
+  }
+  .comparison-table > div {
+    min-width: 0 !important;
+  }
+  .comparison-table > div > div {
+    width: auto !important;
+    flex: 1 1 0 !important;
+    padding-inline: clamp(12px, 1.4vw, 24px) !important;
+  }
+  .comparison-table > div > div:first-child {
+    flex: 1.1 1 0 !important;
+  }
+}
+
+/* --- postovni-klub "✦ CO JE V KAŽDÉM KUSU · DETAIL": two-column card grid on
+       every width except mobile (<768px keeps the single stacked column). --- */
+@media (min-width: 768px) {
+  .paper-canvas div[style*="display: flex"][style*="flex-wrap: wrap"][style*="gap: 32px"][style*="justify-content: center"] > div[style*="max-width: 620px"] {
+    width: calc(50% - 16px) !important;
+    max-width: calc(50% - 16px) !important;
+    flex: 0 0 calc(50% - 16px) !important;
+    min-width: 0 !important;
+    flex-basis: calc(50% - 16px) !important;
+  }
+}
