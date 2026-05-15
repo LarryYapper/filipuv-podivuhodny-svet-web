@@ -167,13 +167,6 @@ const SHARED_COMPONENTS = {
                         <a href="postovni-klub.html">Stát se členem</a>
                     </div>
                     <div class="footer-link-col">
-                        <div class="footer-label">SVĚT</div>
-                        <a href="nas-svet.html">Náš rostoucí svět</a>
-                        <a href="#" class="disabled">Zápisníky · brzy</a>
-                        <a href="#" class="disabled">Kalendáře · brzy</a>
-                        <a href="#" class="disabled">3D tisk · brzy</a>
-                    </div>
-                    <div class="footer-link-col">
                         <div class="footer-label">POMOC</div>
                         <a href="#">Časté dotazy</a>
                         <a href="#">Doprava</a>

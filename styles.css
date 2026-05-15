@@ -2584,6 +2584,13 @@ body {
     flex-shrink: 0 !important;
   }
 
+  /* --- index.html: tighter section gaps --- */
+  .grow-world-section {
+    gap: 48px !important;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+  }
+
   /* --- index.html: CTA strip "První kapitolu…" — keep one row at this width --- */
   .cta-strip {
     display: flex !important;
@@ -2592,8 +2599,9 @@ body {
     align-items: center !important;
     justify-content: space-between !important;
     padding-inline: 24px !important;
-    padding-block: 18px !important;
+    padding-block: 14px !important;
     gap: 16px !important;
+    min-height: 0 !important;
   }
   .cta-strip .cta-copy {
     display: flex !important;
@@ -2680,19 +2688,20 @@ body {
   }
 
   /* --- postovni-klub.html: "CO JE V KAŽDÉM KUSU · DETAIL" feature cards two-col --- */
-  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] {
-    width: auto !important;
+  .paper-canvas div[style*="display: flex"][style*="flex-wrap: wrap"][style*="gap: 32px"][style*="justify-content: center"] > div[style*="max-width: 620px"] {
+    width: calc(50% - 16px) !important;
     max-width: calc(50% - 16px) !important;
-    flex: 0 1 calc(50% - 16px) !important;
+    flex: 0 0 calc(50% - 16px) !important;
     min-width: 0 !important;
+    flex-basis: calc(50% - 16px) !important;
   }
-  /* Inside feature card: image + content stay in row */
-  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] > div:first-child {
+  .paper-canvas div[style*="display: flex"][style*="flex-wrap: wrap"][style*="gap: 32px"][style*="justify-content: center"] > div[style*="max-width: 620px"] > div:first-child {
+    width: 180px !important;
     max-width: 180px !important;
     height: 140px !important;
-    flex-shrink: 1 !important;
+    flex: 0 0 180px !important;
   }
-  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] > div:nth-child(2) {
+  .paper-canvas div[style*="display: flex"][style*="flex-wrap: wrap"][style*="gap: 32px"][style*="justify-content: center"] > div[style*="max-width: 620px"] > div:nth-child(2) {
     min-width: 0 !important;
     flex: 1 1 0 !important;
   }
