@@ -185,6 +185,8 @@ const SHARED_COMPONENTS = {
                         <div class="footer-label">SLEDUJ</div>
                         <a href="#">Instagram</a>
                         <a href="#">TikTok</a>
+                        <a href="#">Threads</a>
+                        <a href="#">YouTube</a>
                     </div>
                 </div>
             </div>
@@ -196,8 +198,9 @@ const SHARED_COMPONENTS = {
                     ❤️ Červenec-září 2026: 3 % z hrubé marže podporuje Člověk v tísni →
                 </div>
                 <div class="footer-legal">
-                    <a href="assets/Všeobecené obchodní podmínky.pdf">Všeobecné obchodní podmínky</a>
-                    <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásady zpracování osobních údajů</a>
+                    <a href="assets/Všeobecené obchodní podmínky.pdf" target="_blank">Všeobecné obchodní podmínky</a>
+                    <a href="assets/Reklamační řád.pdf" target="_blank">Reklamační řád</a>
+                    <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásady ochrany osobních údajů</a>
                 </div>
             </div>
         </div>

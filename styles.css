@@ -466,7 +466,7 @@ svg {
 }
 
 /* Make the homepage flexible on narrower desktops and phones */
-@media (max-width: 1120px) {
+@media (max-width: 900px) {
   .nav-load {
     align-items: flex-start !important;
     gap: 18px !important;
@@ -631,7 +631,7 @@ svg {
 }
 
 /* Make the homepage flexible on narrower desktops and phones */
-@media (max-width: 1120px) {
+@media (max-width: 900px) {
   .nav-load {
     align-items: flex-start !important;
     gap: 18px !important;
@@ -2414,5 +2414,201 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
+
+/* =============================================================================
+   NARROW DESKTOP FIXES (≈1024–1119px) — keep desktop layout, compress sizes
+   ============================================================================= */
+@media (min-width: 901px) and (max-width: 1119px) {
+
+  /* --- Header: keep menu on one line --- */
+  .main-navigation {
+    padding-inline: clamp(16px, 3vw, 32px) !important;
+    gap: 16px !important;
+    flex-wrap: nowrap !important;
+  }
+  .logo-hover {
+    gap: 12px !important;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  .logo-hover img {
+    height: 52px !important;
+  }
+  .logo-text {
+    font-size: 18px !important;
+    white-space: nowrap;
+  }
+  .nav-desktop-links {
+    gap: 20px !important;
+    flex-shrink: 0;
+  }
+  .nav-link {
+    font-size: 15px !important;
+  }
+  .nav-utility-wrap {
+    padding-left: 12px !important;
+    gap: 12px !important;
+  }
+  .nav-utility {
+    font-size: 14px !important;
+  }
+
+  /* --- Footer: keep 4 link cols in a row, brand on top --- */
+  .footer-grid {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  .footer-brand {
+    max-width: 100% !important;
+  }
+  .footer-links-container {
+    width: 100% !important;
+    gap: 24px !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+  }
+  .footer-link-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .footer-link-col a {
+    font-size: 13px !important;
+  }
+  .footer-bottom {
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    align-items: center !important;
+  }
+  .footer-bottom > div {
+    flex: 0 1 auto !important;
+  }
+  .footer-charity,
+  .footer-copyright,
+  .footer-legal {
+    font-size: 11px !important;
+  }
+  .footer-legal {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  /* --- Tier cards: keep 3 in a row --- */
+  .tier-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+  .tier-card,
+  .tier-card-featured {
+    padding-inline: 18px !important;
+    padding-block: 24px !important;
+  }
+
+  /* --- Generic: keep 3-col grids 3-col on narrow desktop --- */
+  .paper-canvas [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+
+  /* --- Sub-brand grid: prevent overflow scroll, compress --- */
+  .sub-brand-grid {
+    gap: 12px !important;
+    overflow-x: visible !important;
+    flex-wrap: nowrap !important;
+    padding-inline: 0 !important;
+  }
+  .sub-brand-grid > div {
+    max-width: 165px !important;
+  }
+
+  /* --- Hero: keep 2-col, smaller title --- */
+  .hero-section {
+    gap: 32px !important;
+    padding-inline: clamp(16px, 3vw, 40px) !important;
+  }
+  .hero-title {
+    font-size: clamp(40px, 6vw, 64px) !important;
+  }
+
+  /* --- Edition strip (Sleduj cestu): keep "follow" block visible --- */
+  .edition-strip-follow {
+    flex-shrink: 0 !important;
+  }
+
+  /* --- index.html: "S každým členem" / CTA strip: stack copy + actions --- */
+  .cta-strip {
+    padding-inline: 24px !important;
+    padding-block: 24px !important;
+    gap: 20px !important;
+    flex-wrap: nowrap !important;
+  }
+  .cta-strip .cta-copy {
+    flex-direction: column !important;
+    gap: 8px !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+  .cta-strip .cta-actions {
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 12px !important;
+  }
+  .cta-strip .cta-title {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+  }
+
+  /* --- Edice VÍTEJ: keep title left + desc right --- */
+  .paper-canvas div[style*="max-width: 1280px"][style*="space-between"][style*="flex-end"] {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  /* --- "Otevři stránku tierů" + "S každým členem" sections: stay right --- */
+  .paper-canvas a[style*="border-radius: 999px"][style*="border-style: solid"] {
+    flex-shrink: 0 !important;
+  }
+
+  /* --- postovni-klub.html: keep comparison table scroll visible --- */
+  .comparison-table {
+    overflow-x: auto !important;
+  }
+  .mobile-swipe-hint {
+    display: flex !important;
+  }
+
+  /* --- postovni-klub.html: "CO JE V KAŽDÉM KUSU · DETAIL" two-col --- */
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] {
+    flex-wrap: nowrap !important;
+  }
+
+  /* --- postovni-klub.html: "Otevři schránku" big heading clamp --- */
+  .paper-canvas div[style*="font-size: clamp(48px, 10vw, 120px)"] {
+    font-size: clamp(48px, 8vw, 88px) !important;
+  }
+
+  /* --- edice-vitej.html: 4 step row stay nowrap --- */
+  .paper-canvas div[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  /* --- nas-svet.html: cesta milestones row uncramped --- */
+  .paper-canvas div[style*="overflow-x: auto"][style*="display: flex"][style*="gap"] {
+    padding-inline: 8px !important;
+  }
+
+  /* --- dobro.html: reasons row single-row --- */
+  .paper-canvas div[style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: clamp"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  /* --- Generic: keep hero-media on right at this width --- */
+  .hero-media {
+    max-width: 100% !important;
+    margin-inline: 0 !important;
   }
 }
