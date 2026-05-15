@@ -21,7 +21,7 @@ const SHARED_COMPONENTS = {
                     </div>
                 </div>
                 <div class="top-banner-actions" style="align-items: center; box-sizing: border-box; display: flex; gap: 40px; flex-wrap: wrap;">
-                    <div style="align-items: baseline; box-sizing: border-box; display: flex; gap: 8px;">
+                    <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
                         <div id="countdown-prefix"
                             style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
                             ZBÝVÁ
@@ -187,9 +187,9 @@ const SHARED_COMPONENTS = {
                 <div class="footer-copyright">
                     © 2026 Filipův podivuhodný svět · OSVČ Bc. Filip Kubík
                 </div>
-                <div class="footer-charity">
+                <a href="dobro.html" class="footer-charity" style="text-decoration: none; color: inherit;">
                     ❤️ Červenec-září 2026: 3 % z hrubé marže podporuje Člověk v tísni →
-                </div>
+                </a>
                 <div class="footer-legal">
                     <a href="assets/Všeobecené obchodní podmínky.pdf" target="_blank">Všeobecné obchodní podmínky</a>
                     <a href="assets/Reklamační řád.pdf" target="_blank">Reklamační řád</a>

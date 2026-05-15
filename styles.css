@@ -2585,13 +2585,15 @@ body {
   }
 
   /* --- index.html: tighter section gaps --- */
-  .grow-world-section {
-    gap: 48px !important;
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
+  .grow-world-section,
+  .paper-canvas .grow-world-section {
+    gap: 40px !important;
+    padding-top: 64px !important;
+    padding-bottom: 40px !important;
   }
 
-  /* --- index.html: CTA strip "První kapitolu…" — keep one row at this width --- */
+  /* --- index.html: CTA strip "První kapitolu…" — keep ONE compact row --- */
+  .grow-world-section .cta-strip,
   .cta-strip {
     display: flex !important;
     flex-direction: row !important;
@@ -2599,9 +2601,14 @@ body {
     align-items: center !important;
     justify-content: space-between !important;
     padding-inline: 24px !important;
-    padding-block: 14px !important;
+    padding-block: 12px !important;
     gap: 16px !important;
+    height: auto !important;
     min-height: 0 !important;
+    max-height: none !important;
+    grid-template-rows: none !important;
+    grid-template-columns: none !important;
+    grid-template-areas: none !important;
   }
   .cta-strip .cta-copy {
     display: flex !important;
