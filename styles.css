@@ -2479,7 +2479,7 @@ body {
   .footer-bottom {
     flex-wrap: nowrap !important;
     gap: 16px !important;
-    align-items: center !important;
+    align-items: flex-start !important;
   }
   .footer-bottom > div {
     flex: 1 1 0 !important;
@@ -2504,7 +2504,7 @@ body {
     font-size: 11px !important;
   }
 
-  /* --- Tier cards: keep 3 in a row, equalize price eye-level --- */
+  /* --- Tier cards: keep 3 in a row, equalize price eye-level (no gap) --- */
   .tier-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 16px !important;
@@ -2513,35 +2513,31 @@ body {
   .tier-card-featured {
     padding-inline: 18px !important;
     padding-block: 24px !important;
-    gap: 20px !important;
+    gap: 16px !important;
   }
-  /* Title block (eyebrow + headline + tagline) — uniform min-height + smaller text */
+  /* Title block — no fixed min-height, content packs tight; tagline reserves 3 lines */
   .tier-card > div:nth-child(2),
   .tier-card-featured > div:nth-child(2) {
-    min-height: 138px !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
-  /* Tier name (eyebrow) */
   .tier-card > div:nth-child(2) > div:nth-child(1),
   .tier-card-featured > div:nth-child(2) > div:nth-child(1) {
     font-size: 10px !important;
   }
-  /* Tier headline e.g. "Pro start." */
   .tier-card > div:nth-child(2) > div:nth-child(2),
   .tier-card-featured > div:nth-child(2) > div:nth-child(2) {
-    font-size: 24px !important;
-    line-height: 28px !important;
+    font-size: 22px !important;
+    line-height: 26px !important;
   }
-  /* Tier tagline (italic) */
   .tier-card > div:nth-child(2) > div:nth-child(3),
   .tier-card-featured > div:nth-child(2) > div:nth-child(3) {
-    font-size: 13px !important;
-    line-height: 18px !important;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    min-height: 51px !important;
   }
-  /* Image placeholder shorter */
   .tier-card > div:nth-child(1),
   .tier-card-featured > div:nth-child(1) {
-    height: 150px !important;
+    height: 140px !important;
   }
 
   /* --- Generic: keep 3-col grids 3-col on narrow desktop --- */
@@ -2550,23 +2546,28 @@ body {
     gap: 20px !important;
   }
 
-  /* --- Sub-brand grid in "S každým členem": center + smaller cards, no right gap --- */
+  /* --- Sub-brand grid in "S každým členem": center + shrink to content --- */
   .sub-brand-grid {
-    gap: 12px !important;
+    display: flex !important;
+    gap: 14px !important;
     overflow-x: visible !important;
     flex-wrap: nowrap !important;
     padding-inline: 0 !important;
     justify-content: center !important;
-    width: 100% !important;
+    align-items: flex-start !important;
+    align-self: center !important;
+    width: auto !important;
+    max-width: max-content !important;
+    margin-inline: auto !important;
   }
   .sub-brand-grid > div {
-    max-width: 138px !important;
+    max-width: 130px !important;
     min-width: 0 !important;
-    flex: 0 1 138px !important;
+    flex: 0 0 130px !important;
   }
   .sub-brand-grid > div > div:nth-child(2) {
-    height: 110px !important;
-    width: 110px !important;
+    height: 104px !important;
+    width: 104px !important;
   }
 
   /* --- Hero: keep 2-col, smaller title --- */
@@ -2583,33 +2584,39 @@ body {
     flex-shrink: 0 !important;
   }
 
-  /* --- index.html: CTA strip "První kapitolu…" — compact stacked variant --- */
+  /* --- index.html: CTA strip "První kapitolu…" — keep one row at this width --- */
   .cta-strip {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     padding-inline: 24px !important;
     padding-block: 18px !important;
     gap: 16px !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
   }
   .cta-strip .cta-copy {
+    display: flex !important;
     flex-direction: column !important;
-    gap: 6px !important;
+    gap: 4px !important;
     flex: 1 1 auto !important;
     min-width: 0 !important;
+    align-items: flex-start !important;
   }
   .cta-strip .cta-actions {
-    flex-direction: column !important;
-    align-items: flex-end !important;
-    gap: 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
     flex-shrink: 0 !important;
   }
   .cta-strip .cta-title {
-    font-size: 22px !important;
+    font-size: 20px !important;
     line-height: 1.2 !important;
   }
   .cta-strip .cta-subtext {
     font-size: 12px !important;
-    line-height: 17px !important;
+    line-height: 16px !important;
     max-width: 100% !important;
   }
   .cta-strip .cta-primary {
@@ -2628,10 +2635,12 @@ body {
   .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"] {
     flex-wrap: nowrap !important;
     align-items: flex-start !important;
+    gap: 32px !important;
   }
   .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:first-child {
-    flex-shrink: 1 !important;
+    flex: 1 1 0 !important;
     min-width: 0 !important;
+    max-width: 600px !important;
   }
 
   /* --- "Otevři stránku tierů" + similar pill CTAs: stay right --- */
@@ -2672,7 +2681,20 @@ body {
 
   /* --- postovni-klub.html: "CO JE V KAŽDÉM KUSU · DETAIL" feature cards two-col --- */
   .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] {
-    max-width: 450px !important;
+    width: auto !important;
+    max-width: calc(50% - 16px) !important;
+    flex: 0 1 calc(50% - 16px) !important;
+    min-width: 0 !important;
+  }
+  /* Inside feature card: image + content stay in row */
+  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] > div:first-child {
+    max-width: 180px !important;
+    height: 140px !important;
+    flex-shrink: 1 !important;
+  }
+  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] > div:nth-child(2) {
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
   }
 
   /* --- postovni-klub.html: "Otevři schránku" big heading clamp --- */
@@ -2696,15 +2718,38 @@ body {
     flex-wrap: nowrap !important;
     overflow-x: visible !important;
     padding-inline: 0 !important;
+    align-items: center !important;
   }
   .milestone {
     min-width: 100px !important;
     flex: 1 1 0 !important;
+    align-items: center !important;
   }
-  .milestone img,
+  /* Top row (eyebrow + period or number + label) — uniform height, top-aligned */
+  .milestone > div:first-child {
+    min-height: 80px !important;
+    justify-content: flex-start !important;
+  }
+  /* Image / circle wrapper — fixed 88×88, centered */
+  .milestone img {
+    width: 88px !important;
+    height: 88px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
   .milestone > div:nth-child(2) {
     width: 88px !important;
     height: 88px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+  /* Bottom title block — uniform height, top-aligned */
+  .milestone > div:nth-child(3) {
+    min-height: 88px !important;
+    justify-content: flex-start !important;
   }
   .roadmap-line {
     min-width: 16px !important;
