@@ -188,7 +188,7 @@ const SHARED_COMPONENTS = {
                     © 2026 Filipův podivuhodný svět · OSVČ Bc. Filip Kubík
                 </div>
                 <a href="dobro.html" class="footer-charity" style="color: #FF6752;">
-                    ❤️ Červenec-září 2026: 3 % z hrubé marže podporuje Člověk v tísni →
+                    ❤️ Květen-červen 2026: 3 % z hrubé marže podporuje Člověk v tísni →
                 </a>
                 <div class="footer-legal">
                     <a href="assets/Všeobecené obchodní podmínky.pdf" target="_blank">Všeobecné obchodní podmínky</a>
