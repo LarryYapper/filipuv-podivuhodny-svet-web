@@ -2825,3 +2825,32 @@ body {
     padding-bottom: 48px !important;
   }
 }
+
+/* =============================================================================
+   FINAL CTA BANNERS — compact top/bottom padding on every page
+   (index.html, postovni-klub.html, etc.). Base rule, applies at all widths.
+   ============================================================================= */
+.cta-strip {
+  padding-block: 16px !important;
+}
+
+/* index.html: the light section right after the CTA banner carried an inline
+   padding-top:140px, which was the real "huge gap under the buttons". Trim it
+   on tablet/desktop (mobile keeps its own smaller spacing). */
+@media (min-width: 768px) {
+  .grow-world-section + div {
+    padding-top: 56px !important;
+  }
+}
+
+/* =============================================================================
+   FINAL CTA SECTION ("✦ POSLEDNÍ KROK") — small top/bottom padding on every
+   page (index.html, postovni-klub.html, edice-vitej.html, o-mne.html). The
+   inline styles carried padding-top:140px / padding-block:160px.
+   ============================================================================= */
+@media (min-width: 768px) {
+  .final-cta-section {
+    padding-top: clamp(48px, 7vw, 72px) !important;
+    padding-bottom: clamp(48px, 7vw, 72px) !important;
+  }
+}
