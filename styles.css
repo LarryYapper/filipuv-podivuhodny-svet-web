@@ -2482,21 +2482,29 @@ body {
     align-items: center !important;
   }
   .footer-bottom > div {
-    flex: 0 1 auto !important;
+    flex: 1 1 0 !important;
+    min-width: 0;
   }
-  .footer-charity,
-  .footer-copyright,
-  .footer-legal {
+  .footer-copyright {
+    text-align: left !important;
+    font-size: 11px !important;
+  }
+  .footer-charity {
+    text-align: center !important;
     font-size: 11px !important;
   }
   .footer-legal {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    display: flex !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+    font-size: 11px !important;
+  }
+  .footer-legal a {
+    font-size: 11px !important;
   }
 
-  /* --- Tier cards: keep 3 in a row --- */
+  /* --- Tier cards: keep 3 in a row, equalize price eye-level --- */
   .tier-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 16px !important;
@@ -2505,6 +2513,35 @@ body {
   .tier-card-featured {
     padding-inline: 18px !important;
     padding-block: 24px !important;
+    gap: 20px !important;
+  }
+  /* Title block (eyebrow + headline + tagline) — uniform min-height + smaller text */
+  .tier-card > div:nth-child(2),
+  .tier-card-featured > div:nth-child(2) {
+    min-height: 138px !important;
+    gap: 8px !important;
+  }
+  /* Tier name (eyebrow) */
+  .tier-card > div:nth-child(2) > div:nth-child(1),
+  .tier-card-featured > div:nth-child(2) > div:nth-child(1) {
+    font-size: 10px !important;
+  }
+  /* Tier headline e.g. "Pro start." */
+  .tier-card > div:nth-child(2) > div:nth-child(2),
+  .tier-card-featured > div:nth-child(2) > div:nth-child(2) {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+  /* Tier tagline (italic) */
+  .tier-card > div:nth-child(2) > div:nth-child(3),
+  .tier-card-featured > div:nth-child(2) > div:nth-child(3) {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
+  /* Image placeholder shorter */
+  .tier-card > div:nth-child(1),
+  .tier-card-featured > div:nth-child(1) {
+    height: 150px !important;
   }
 
   /* --- Generic: keep 3-col grids 3-col on narrow desktop --- */
@@ -2513,15 +2550,23 @@ body {
     gap: 20px !important;
   }
 
-  /* --- Sub-brand grid: prevent overflow scroll, compress --- */
+  /* --- Sub-brand grid in "S každým členem": center + smaller cards, no right gap --- */
   .sub-brand-grid {
     gap: 12px !important;
     overflow-x: visible !important;
     flex-wrap: nowrap !important;
     padding-inline: 0 !important;
+    justify-content: center !important;
+    width: 100% !important;
   }
   .sub-brand-grid > div {
-    max-width: 165px !important;
+    max-width: 138px !important;
+    min-width: 0 !important;
+    flex: 0 1 138px !important;
+  }
+  .sub-brand-grid > div > div:nth-child(2) {
+    height: 110px !important;
+    width: 110px !important;
   }
 
   /* --- Hero: keep 2-col, smaller title --- */
@@ -2538,72 +2583,165 @@ body {
     flex-shrink: 0 !important;
   }
 
-  /* --- index.html: "S každým členem" / CTA strip: stack copy + actions --- */
+  /* --- index.html: CTA strip "První kapitolu…" — compact stacked variant --- */
   .cta-strip {
     padding-inline: 24px !important;
-    padding-block: 24px !important;
-    gap: 20px !important;
+    padding-block: 18px !important;
+    gap: 16px !important;
     flex-wrap: nowrap !important;
+    align-items: center !important;
   }
   .cta-strip .cta-copy {
     flex-direction: column !important;
-    gap: 8px !important;
-    flex: 1 1 0 !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
   }
   .cta-strip .cta-actions {
     flex-direction: column !important;
     align-items: flex-end !important;
-    gap: 12px !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
   }
   .cta-strip .cta-title {
-    font-size: 26px !important;
-    line-height: 1.15 !important;
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+  }
+  .cta-strip .cta-subtext {
+    font-size: 12px !important;
+    line-height: 17px !important;
+    max-width: 100% !important;
+  }
+  .cta-strip .cta-primary {
+    padding-block: 12px !important;
+    padding-inline: 22px !important;
+  }
+  .cta-strip .cta-primary > div {
+    font-size: 14px !important;
+  }
+  .cta-strip .cta-secondary > div {
+    font-size: 14px !important;
   }
 
-  /* --- Edice VÍTEJ: keep title left + desc right --- */
-  .paper-canvas div[style*="max-width: 1280px"][style*="space-between"][style*="flex-end"] {
+  /* --- Edice VÍTEJ and similar "section header + desc" rows: nowrap, shrink left --- */
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"],
+  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"] {
     flex-wrap: nowrap !important;
     align-items: flex-start !important;
   }
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:first-child {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+  }
 
-  /* --- "Otevři stránku tierů" + "S každým členem" sections: stay right --- */
+  /* --- "Otevři stránku tierů" + similar pill CTAs: stay right --- */
   .paper-canvas a[style*="border-radius: 999px"][style*="border-style: solid"] {
     flex-shrink: 0 !important;
   }
 
-  /* --- postovni-klub.html: keep comparison table scroll visible --- */
-  .comparison-table {
-    overflow-x: auto !important;
+  /* --- postovni-klub.html hero (Tři úrovně. Jeden klub.): nowrap + smaller image --- */
+  .paper-canvas div[style*="max-width: 1280px"][style*="align-items: center"][style*="flex-wrap: wrap"][style*="space-between"] {
+    flex-wrap: nowrap !important;
+    gap: 32px !important;
   }
-  .mobile-swipe-hint {
-    display: flex !important;
+  .paper-canvas div[style*="aspect-ratio: 3/2"][style*="max-width: 600px"] {
+    max-width: 380px !important;
+    flex-shrink: 1 !important;
   }
 
-  /* --- postovni-klub.html: "CO JE V KAŽDÉM KUSU · DETAIL" two-col --- */
-  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] {
-    flex-wrap: nowrap !important;
+  /* --- postovni-klub.html: comparison table — narrower columns so all 3 tiers fit --- */
+  .comparison-table {
+    overflow-x: visible !important;
+  }
+  .comparison-table > div {
+    min-width: 0 !important;
+  }
+  .comparison-table > div > div {
+    width: auto !important;
+    flex: 1 1 0 !important;
+    padding-inline: 12px !important;
+  }
+  .comparison-table > div > div:first-child {
+    flex: 1.1 1 0 !important;
+  }
+  .comparison-table [data-cms="tier-listek-price"],
+  .comparison-table [data-cms="tier-dopis-price"],
+  .comparison-table [data-cms="tier-balicek-price"] {
+    font-size: 26px !important;
+  }
+
+  /* --- postovni-klub.html: "CO JE V KAŽDÉM KUSU · DETAIL" feature cards two-col --- */
+  .paper-canvas div[style*="max-width: 620px"][style*="background-color: #F4F2EB"][style*="border-color: #3A2C3126"] {
+    max-width: 450px !important;
   }
 
   /* --- postovni-klub.html: "Otevři schránku" big heading clamp --- */
   .paper-canvas div[style*="font-size: clamp(48px, 10vw, 120px)"] {
-    font-size: clamp(48px, 8vw, 88px) !important;
+    font-size: clamp(48px, 8vw, 84px) !important;
+    letter-spacing: -2.5px !important;
   }
 
-  /* --- edice-vitej.html: 4 step row stay nowrap --- */
-  .paper-canvas div[style*="grid-template-columns: repeat(4, 1fr)"] {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 16px !important;
+  /* --- edice-vitej.html: 4 steps stay 4-in-row (flex variant) --- */
+  .paper-canvas div[style*="border-top: 2px solid #3A2C31"][style*="flex-basis: 0px"] {
+    min-width: 0 !important;
+    padding-inline: 18px !important;
+  }
+  .paper-canvas div[style*="font-size: 56px"][style*="line-height: 56px"] {
+    font-size: 40px !important;
+    line-height: 40px !important;
   }
 
-  /* --- nas-svet.html: cesta milestones row uncramped --- */
-  .paper-canvas div[style*="overflow-x: auto"][style*="display: flex"][style*="gap"] {
-    padding-inline: 8px !important;
+  /* --- nas-svet.html: roadmap milestones uncrammed + razítka visible --- */
+  .roadmap {
+    flex-wrap: nowrap !important;
+    overflow-x: visible !important;
+    padding-inline: 0 !important;
+  }
+  .milestone {
+    min-width: 100px !important;
+    flex: 1 1 0 !important;
+  }
+  .milestone img,
+  .milestone > div:nth-child(2) {
+    width: 88px !important;
+    height: 88px !important;
+  }
+  .roadmap-line {
+    min-width: 16px !important;
+    flex: 1 1 0 !important;
   }
 
-  /* --- dobro.html: reasons row single-row --- */
-  .paper-canvas div[style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: clamp"] {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  /* --- dobro.html: principles single-row --- */
+  .principles {
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+    padding-inline: clamp(16px, 3vw, 40px) !important;
+  }
+  .principle {
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+  }
+  .principle-divider {
+    flex-shrink: 0 !important;
+  }
+
+  /* --- dobro.html: hero receipt visible/not cut off --- */
+  .hero {
+    gap: 40px !important;
+    padding-inline: clamp(16px, 3vw, 40px) !important;
+  }
+  .hero-text {
+    max-width: 520px !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+  .hero-receipt {
+    flex: 0 0 360px !important;
+    max-width: 360px !important;
+  }
+  .dobro .hero-title,
+  .hero .hero-title {
+    font-size: clamp(56px, 9vw, 84px) !important;
   }
 
   /* --- Generic: keep hero-media on right at this width --- */
