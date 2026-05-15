@@ -2044,6 +2044,83 @@
         </div>
         <div id="global-footer"></div>
     </div>
+    <script>
+        // Úroveň (tier) selection + redirect to order pages
+        (function () {
+            var ORDER_PAGES = {
+                1: 'postovni-klub-uroven-1-objednavka.html',
+                2: 'postovni-klub-uroven-2-objednavka.html',
+                3: 'postovni-klub-uroven-3-objednavka.html'
+            };
+            var STICKY_NAMES = ['ÚROVEŇ 1', 'ÚROVEŇ 2', 'ÚROVEŇ 3'];
+            var VYBER_NAMES = ['Vybrat Úroveň 1', 'Vybrat Úroveň 2', 'Vybrat Úroveň 3'];
+
+            var selectedTier = 2;
+
+            var stickyBar = document.querySelector('.sticky-bar');
+            var stickyBtns = stickyBar ? stickyBar.querySelectorAll('.sticky-tier-btn') : [];
+            var stickyCta = stickyBar ? stickyBar.querySelector('.btn-primary') : null;
+            var stickyCtaText = document.getElementById('sticky-checkout-text');
+            var vyberBtns = document.querySelectorAll('.vyber-tier-btn');
+
+            function styleSticky() {
+                stickyBtns.forEach(function (btn, i) {
+                    var tier = i + 1;
+                    var on = tier === selectedTier;
+                    var kids = btn.children;
+                    btn.style.backgroundColor = on ? '#FC7B35' : 'transparent';
+                    btn.style.borderColor = on ? '#FC7B35' : '#F4F2EB40';
+                    if (kids[0]) {
+                        kids[0].style.color = on ? '#F4F2EBD9' : '#F4F2EB99';
+                        kids[0].textContent = STICKY_NAMES[i] + (on ? ' ✓' : '');
+                    }
+                    if (kids[1]) kids[1].style.color = '#F4F2EB';
+                    if (kids[2]) kids[2].style.color = on ? '#F4F2EBBF' : '#F4F2EB80';
+                });
+                if (stickyCtaText) stickyCtaText.textContent = 'Pokračovat s Úrovní ' + selectedTier;
+            }
+
+            function styleVyber() {
+                vyberBtns.forEach(function (btn, i) {
+                    var tier = i + 1;
+                    var on = tier === selectedTier;
+                    var label = btn.querySelector('div');
+                    btn.style.backgroundColor = on ? '#FC7B35' : 'transparent';
+                    btn.style.borderColor = on ? '#FC7B35' : '#3A2C31';
+                    if (label) {
+                        label.style.color = on ? '#F4F2EB' : '#3A2C31';
+                        label.textContent = VYBER_NAMES[i] + (on ? ' ✓' : '');
+                    }
+                });
+            }
+
+            function select(tier) {
+                selectedTier = tier;
+                styleSticky();
+                styleVyber();
+            }
+
+            stickyBtns.forEach(function (btn, i) {
+                btn.addEventListener('click', function () { select(i + 1); });
+            });
+
+            if (stickyCta) {
+                stickyCta.style.cursor = 'pointer';
+                stickyCta.addEventListener('click', function () {
+                    window.location.href = ORDER_PAGES[selectedTier];
+                });
+            }
+
+            vyberBtns.forEach(function (btn, i) {
+                btn.addEventListener('click', function () {
+                    select(i + 1);
+                    if (stickyBar) stickyBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            select(selectedTier);
+        })();
+    </script>
     <script src="cms-config.js"></script>
     <script src="components.js"></script>
     <script src="global.js"></script>
