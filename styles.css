@@ -2811,3 +2811,17 @@ body {
     margin-inline: 0 !important;
   }
 }
+
+/* =============================================================================
+   WIDE DESKTOP (≥1120px) — collapse the empty space below the CTA strip
+   The narrow-desktop block above stops at 1119px, so on full desktop the
+   .grow-world-section kept gap:96px / padding-top:140px / padding-bottom:120px.
+   ============================================================================= */
+@media (min-width: 1120px) {
+  .grow-world-section,
+  .paper-canvas .grow-world-section {
+    gap: 48px !important;
+    padding-top: 80px !important;
+    padding-bottom: 48px !important;
+  }
+}
