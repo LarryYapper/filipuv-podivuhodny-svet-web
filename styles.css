@@ -1042,41 +1042,51 @@ body {
   box-shadow: none;
 }
 
+/* Single source of truth for the CTA strip at every desktop width (>=768px).
+   Was a 2-col grid whose right track had min-width:320px and stretched
+   .cta-actions, while .cta-actions right-aligned its buttons -> the empty
+   left part of that track was the "huge gap" on narrower desktop. Flex with
+   a growing copy block leaves no slack for space-between to inflate. */
 .cta-strip {
   align-items: center !important;
-  display: grid !important;
-  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
-  gap: 20px 28px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  grid-template-areas: none !important;
 }
 
 .cta-copy {
   align-items: flex-start !important;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
   flex-wrap: nowrap !important;
-  gap: 16px !important;
-  min-width: 0;
+  gap: 4px !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
 }
 
 .cta-title {
-  font-size: 28px !important;
-  line-height: 32px !important;
-  flex: 0 1 auto;
+  font-size: 26px !important;
+  line-height: 1.2 !important;
 }
 
 .cta-subtext {
-  font-size: 12px !important;
+  font-size: 13px !important;
   line-height: 18px !important;
-  max-width: 320px !important;
-  flex: 1 1 260px;
+  max-width: 520px !important;
 }
 
 .cta-actions {
   align-items: center !important;
   display: flex !important;
+  flex-direction: row !important;
   flex-wrap: nowrap !important;
   gap: 16px !important;
-  justify-content: flex-end;
+  flex-shrink: 0 !important;
 }
 
 .cta-primary {
@@ -2647,7 +2657,7 @@ body {
 
   /* --- Edice VÍTEJ and similar "section header + desc" rows: nowrap, shrink left --- */
   .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"],
-  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"] {
+  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"]:not(.cta-strip) {
     flex-wrap: nowrap !important;
     align-items: flex-start !important;
     gap: 32px !important;
@@ -2892,7 +2902,7 @@ body {
          "✦ CO JE V KAŽDÉM KUSU · DETAIL", and edice-vitej
          "✦ ŠEST KUSŮ · CO DORAZÍ V OBÁLCE". --- */
   .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"],
-  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"] {
+  .paper-canvas div[style*="align-items: center"][style*="space-between"][style*="flex-wrap: wrap"][style*="max-width: 1280px"]:not(.cta-strip) {
     flex-wrap: nowrap !important;
     align-items: flex-start !important;
     gap: clamp(40px, 5vw, 80px) !important;

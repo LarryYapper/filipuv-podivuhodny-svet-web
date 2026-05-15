@@ -485,6 +485,46 @@
         document.getElementById('cookie-reject').addEventListener('click', () => dismiss('rejected'));
     }
 
+    // 12. TIER SELECTION → ORDER PAGE WIRING (postovni-klub.html)
+    function initTierCheckout() {
+        const ORDER = {
+            1: 'postovni-klub-uroven-1-objednavka.html',
+            2: 'postovni-klub-uroven-2-objednavka.html',
+            3: 'postovni-klub-uroven-3-objednavka.html'
+        };
+
+        function go(url) {
+            if (url) window.location.href = url;
+        }
+
+        function bind(el, url) {
+            if (!el || !url) return;
+            el.style.cursor = 'pointer';
+            el.setAttribute('role', 'link');
+            el.setAttribute('tabindex', '0');
+            el.addEventListener('click', () => go(url));
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    go(url);
+                }
+            });
+        }
+
+        // Tier buttons map to tiers by DOM order (1, 2, 3)
+        function wire(buttons) {
+            buttons.forEach((btn, i) => bind(btn, ORDER[i + 1]));
+        }
+        wire(document.querySelectorAll('.sticky-tier-btn'));
+        wire(document.querySelectorAll('.vyber-tier-btn'));
+
+        // Sticky express checkout → Tier 2 (the recommended default it names)
+        const checkoutText = document.getElementById('sticky-checkout-text');
+        if (checkoutText) {
+            bind(checkoutText.parentElement, ORDER[2]);
+        }
+    }
+
     // INITIALIZE ALL
     function init() {
         initCMS();
@@ -498,6 +538,7 @@
         initUIEnhancements();
         initCountdown();
         initSmoothScroll();
+        initTierCheckout();
         initCookieConsent();
     }
 

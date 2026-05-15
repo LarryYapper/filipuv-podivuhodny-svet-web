@@ -99,6 +99,135 @@
       margin-top: 1px;
     }
 
+    .intro-photo {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      border-radius: 20px;
+      background: #3A2C310D;
+      border: 1px dashed #3A2C3133;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .intro-photo span {
+      color: #3A2C3166;
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .back-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid #3A2C3133;
+      background: transparent;
+      color: #3A2C31;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 250ms ease-out, transform 300ms ease-out;
+    }
+
+    .back-link:hover {
+      background: #3A2C310A;
+      transform: translateY(-2px);
+    }
+
+    .steps {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-family: 'Mulish', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #3A2C3159;
+    }
+
+    .steps-now {
+      color: #FC7B35;
+    }
+
+    .steps-sep {
+      color: #3A2C3140;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .order-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #F4F2EB;
+      border: 1px solid #3A2C311F;
+    }
+
+    .order-summary-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .order-summary-row span {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .order-summary-row strong {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .order-summary-note {
+      font-size: 13px;
+      color: #3A2C3199;
+      line-height: 1.4;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .trust-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #3A2C31D9;
+    }
+
+    .trust-list li::before {
+      content: '✓';
+      color: #FC7B35;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
     .aside {
       background: #FBF7EE;
       border: 1px solid rgba(58, 44, 49, 0.12);
@@ -163,16 +292,43 @@
     <div class="wrap">
       <section class="intro">
         <div class="kicker">Poštovní klub · Úroveň 2 Plnohodnotný</div>
+        <div class="steps" aria-hidden="true">
+          <span>Výběr úrovně</span>
+          <span class="steps-sep">→</span>
+          <span class="steps-now">Objednávka</span>
+          <span class="steps-sep">→</span>
+          <span>Hotovo</span>
+        </div>
         <h1>Pokračuj s Úrovní 2 za 139 Kč měsíčně.</h1>
         <p class="lead">Měsíční předplatné Poštovního klubu na plnohodnotné úrovni — můj favorit, plná obálka každý měsíc.</p>
         <ul class="bullets">
           <li>Úroveň 2 „Plnohodnotný“ — 139 Kč měsíčně, poštovné po Česku v ceně.</li>
           <li>Předplatné měníš nebo rušíš kdykoliv ve svém účtu.</li>
-          <li>Po objednávce tě stránka přesměruje na poděkování.</li>
+          <li>První obálku posílám hned příští měsíc — pak každý měsíc znovu.</li>
         </ul>
+
+        <div class="intro-photo" aria-hidden="true">
+          <span>Foto · Úroveň 2 Plnohodnotný</span>
+        </div>
+
+        <a class="back-link" href="postovni-klub.html">
+          <span aria-hidden="true">←</span> Zpět na výběr úrovní
+        </a>
       </section>
 
       <aside class="aside" aria-label="Objednávkový formulář Úroveň 2">
+        <div class="order-summary">
+          <div class="order-summary-row">
+            <span>Úroveň 2 „Plnohodnotný“</span>
+            <strong>139 Kč / měsíc</strong>
+          </div>
+          <div class="order-summary-note">Poštovné po Česku v ceně · účtováno měsíčně</div>
+        </div>
+        <ul class="trust-list">
+          <li>Zrušíš nebo změníš kdykoliv jedním klikem — bez smlouvy, bez závazku</li>
+          <li>Platba bezpečně přes SimpleShop</li>
+          <li>První obálka ti dorazí do schránky příští měsíc</li>
+        </ul>
         <p class="form-note">Vyplň formulář a dokonči objednávku.</p>
         <div class="form-shell">
           <!-- www.SimpleShop.cz form — Úroveň 2 Plnohodnotný -->

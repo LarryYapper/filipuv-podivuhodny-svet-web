@@ -248,6 +248,49 @@
       color: #B65A2F;
     }
 
+    .wait {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding-top: 40px;
+      border-top: 1px solid #D9CFC2;
+    }
+
+    .wait-copy {
+      margin: 0;
+      max-width: 560px;
+      color: #5E524B;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(16px, 2.6vw, 19px);
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .wait-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 1px solid #2A201F;
+      color: #2A201F;
+      background: transparent;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .wait-cta:hover {
+      background: #2A201F;
+      color: #F7F1E6;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 1080px) {
       .dekuji-page {
         gap: 64px;
@@ -352,8 +395,8 @@
         <div class="hero-tag">✦ Děkuji ✦</div>
         <h1 class="hero-title">Hotovo.</h1>
         <div class="hero-copy">
-          <p class="hero-copy-main">Tvoje objednávka je přijatá, potvrzení už je v e-mailu.</p>
-          <p class="hero-copy-sub">Vyrábím a odesílám ručně. Níže vidíš, co se bude dít dál.</p>
+          <p class="hero-copy-main">Tvoje objednávka dorazila ke mně — potvrzení už máš v e-mailu.</p>
+          <p class="hero-copy-sub">Všechno tady chystám ručně, jeden kus po druhém. Co se bude dít dál, vidíš níž.</p>
         </div>
       </section>
 
@@ -368,27 +411,33 @@
           <article class="step">
             <div class="step-num"><span>01</span><span>teď</span></div>
             <h3 class="step-title">Objednávka přijatá.</h3>
-            <p class="step-copy">Vše se uloží v systému a já dostan objednávku k rukám.</p>
+            <p class="step-copy">Uložila se a já ji mám u sebe. Potvrzení ti právě přišlo na e-mail.</p>
           </article>
 
           <article class="step">
-            <div class="step-num"><span>02</span><span>2–3 dny</span></div>
-            <h3 class="step-title">Příprava běží.</h3>
-            <p class="step-copy">Podle typu objednávky vyrábím, balím nebo připravuju odeslání.</p>
+            <div class="step-num"><span>02</span><span>tento týden</span></div>
+            <h3 class="step-title">Chystám to ručně.</h3>
+            <p class="step-copy">Sednu si k tomu osobně — vyrobím, podepíšu a zabalím tvoji zásilku.</p>
           </article>
 
           <article class="step">
-            <div class="step-num"><span>03</span><span>3–5 dní</span></div>
-            <h3 class="step-title">Potvrzení dorazí.</h3>
-            <p class="step-copy">E-mail s potvrzením a informacemi o dalších krocích.</p>
+            <div class="step-num"><span>03</span><span>brzy</span></div>
+            <h3 class="step-title">Míří k tobě.</h3>
+            <p class="step-copy">Jakmile je hotovo, putuje rovnou do tvojí poštovní schránky.</p>
           </article>
 
           <article class="step">
-            <div class="step-num"><span>04</span><span>pak</span></div>
-            <h3 class="step-title">V tvé schránce.</h3>
-            <p class="step-copy">Jakmile je hotovo, dorazí k tobě nebo se stáhne podle typu.</p>
+            <div class="step-num"><span>04</span><span>a pak?</span></div>
+            <h3 class="step-title">U klubu i příští měsíc.</h3>
+            <p class="step-copy">Předplatné Poštovního klubu se opakuje každý měsíc. Úroveň změníš nebo zrušíš kdykoli ve svém účtu — bez závazku.</p>
           </article>
         </div>
+      </section>
+
+      <section class="wait">
+        <div class="next-kicker">✦ Než dorazí pošta</div>
+        <p class="wait-copy">Mezitím se můžeš porozhlédnout, do čeho ses právě pustil.</p>
+        <a class="wait-cta" href="nas-svet.html">Prohlédni si náš svět →</a>
       </section>
 
       <section class="support">
