@@ -91,7 +91,7 @@ const SHARED_COMPONENTS = {
                         <a href="nas-svet.html" class="mobile-nav-link">Náš svět</a>
                         <a href="dobro.html" class="mobile-nav-link">Dobro</a>
                         <a href="o-mne.html" class="mobile-nav-link">O mně</a>
-                        <a href="sprava-predplatneho.html" class="mobile-nav-link">Účet</a>
+                        <a href="sprava-predplatneho.html" class="mobile-nav-link">Členství</a>
                     </div>
                     <div class="mobile-nav-footer">
                         <a href="postovni-klub.html" class="btn-primary-shared">
@@ -131,7 +131,7 @@ const SHARED_COMPONENTS = {
                 <a href="dobro.html" class="nav-link">Dobro</a>
                 <a href="o-mne.html" class="nav-link">O mně</a>
                 <div class="nav-utility-wrap">
-                    <a href="sprava-predplatneho.html" class="nav-utility" style="text-decoration: none;">Účet</a>
+                    <a href="sprava-predplatneho.html" class="nav-utility" style="text-decoration: none;">Členství</a>
                 </div>
             </div>
         </div>

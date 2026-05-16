@@ -90,6 +90,31 @@
 
     .form-divider { border: none; border-top: 1px solid #D9CFC2; margin: 32px 0; }
 
+    /* Conditional blocks driven by request type */
+    .cond { display: none; flex-direction: column; gap: 20px; }
+    .cond.visible { display: flex; }
+
+    /* Disclaimer callout */
+    .form-disclaimer {
+      background: rgba(252, 123, 53, 0.08); border: 1px solid #E8C3A4;
+      border-left: 3px solid #FC7B35; padding: 14px 18px;
+      color: #5E524B; font-family: 'Fraunces', serif;
+      font-size: 14px; font-style: italic; line-height: 22px; margin: 0;
+    }
+
+    /* Reason / option radio list */
+    .radio-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #D9CFC2; background: #FBF7EE; }
+    .radio-item {
+      display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+      padding: 13px 16px; border-bottom: 1px solid #E7DECF;
+      color: #2A201F; font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.4;
+      transition: background 0.15s;
+    }
+    .radio-item:last-child { border-bottom: none; }
+    .radio-item:hover { background: rgba(252, 123, 53, 0.06); }
+    .radio-item input { accent-color: #FC7B35; margin: 3px 0 0; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; }
+    .radio-list.is-invalid { border-color: #C0392B; }
+
     .form-note {
       color: #5E524B; font-family: 'Fraunces', serif;
       font-size: 14px; font-style: italic; line-height: 22px; margin: 0;
@@ -142,9 +167,9 @@
 
     <main class="form-page">
       <div class="page-hero">
-        <div class="page-kicker">✦ Klientská zóna</div>
+        <div class="page-kicker">✦ Účet</div>
         <h1 class="page-title">Správa předplatného.</h1>
-        <p class="page-lead">Potřebujete změnit doručovací adresu nebo upravit své členství? Napište našemu archivu – každou depeši čtu osobně a brzy se vám ozvu.</p>
+        <p class="page-lead">Potřebuješ změnit doručovací adresu, upravit nebo ukončit své členství? Napiš mi – obratem vyřídím a ozvu se.</p>
       </div>
 
       <form id="account-form" novalidate>
@@ -152,7 +177,7 @@
 
           <!-- Kontaktní údaje -->
           <div class="form-section">
-            <div class="form-section-title">Vaše kontaktní údaje</div>
+            <div class="form-section-title">Tvoje kontaktní údaje</div>
             <div class="form-row">
               <div class="form-group full">
                 <label class="form-label" for="s-email">E-mail <span class="req">*</span></label>
@@ -166,24 +191,318 @@
 
           <!-- Váš požadavek -->
           <div class="form-section">
-            <div class="form-section-title">Váš požadavek</div>
+            <div class="form-section-title">Tvůj požadavek</div>
+
+            <p class="form-disclaimer">
+              Simpleshop nenabízí automatickou správu předplatného z Tvojí strany,
+              musíme to tedy provést touto cestou. Omlouvám se za komplikace.
+            </p>
+
             <div class="form-group">
               <label class="form-label" for="s-type">Druh požadavku <span class="req">*</span></label>
               <select class="form-select" id="s-type" name="type" required>
-                <option value="">Vyberte povahu žádosti</option>
-                <option value="Změna doručovací adresy">Změna doručovací adresy</option>
-                <option value="Reklamace nedoručené nebo poškozené zásilky">Reklamace nedoručené nebo poškozené zásilky</option>
-                <option value="Pozastavení členství (dovolená / pauza)">Pozastavení členství (dovolená / pauza)</option>
-                <option value="Změna úrovně předplatného">Změna úrovně předplatného</option>
-                <option value="Obecný dotaz / jiný požadavek">Obecný dotaz / jiný požadavek</option>
-                <option value="Ukončení členství v klubu">Ukončení členství v klubu</option>
+                <option value="">Vyber povahu žádosti</option>
+                <option value="Změna doručovací adresy" data-key="address">Změna doručovací adresy</option>
+                <option value="Změna úrovně předplatného" data-key="tier">Změna úrovně předplatného</option>
+                <option value="Pozastavení členství (dovolená / pauza)" data-key="pause">Pozastavení členství (dovolená / pauza)</option>
+                <option value="Ukončení členství v klubu" data-key="cancel">Ukončení členství v klubu</option>
+                <option value="Obecný dotaz / jiný požadavek" data-key="general">Obecný dotaz / jiný požadavek</option>
               </select>
-              <span class="field-error" id="s-type-err">Zvolte prosím druh požadavku.</span>
+              <span class="field-error" id="s-type-err">Zvol prosím druh požadavku.</span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="s-message">Nová adresa / Vaše zpráva <span class="req">*</span></label>
-              <textarea class="form-textarea" id="s-message" name="message" placeholder="Sepište zde novou doručovací adresu (jméno, ulice, město, PSČ), případně podrobnosti svého požadavku…" required></textarea>
-              <span class="field-error" id="s-message-err">Napište prosím podrobnosti svého požadavku.</span>
+
+            <!-- Změna doručovací adresy -->
+            <div class="cond" data-when="address">
+              <div class="form-row">
+                <div class="form-group full">
+                  <label class="form-label" for="a-name">Jméno a příjmení <span class="req">*</span></label>
+                  <input class="form-input" id="a-name" type="text" placeholder="Jan Novák">
+                  <span class="field-error" id="a-name-err">Vyplň prosím jméno a příjmení.</span>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="a-street">Ulice a číslo popisné <span class="req">*</span></label>
+                  <input class="form-input" id="a-street" type="text" placeholder="Dlouhá 123/45">
+                  <span class="field-error" id="a-street-err">Vyplň prosím ulici a číslo popisné.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="a-city">Město / obec <span class="req">*</span></label>
+                  <input class="form-input" id="a-city" type="text" placeholder="Praha">
+                  <span class="field-error" id="a-city-err">Vyplň prosím město.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="a-zip">PSČ <span class="req">*</span></label>
+                  <input class="form-input" id="a-zip" type="text" inputmode="numeric" placeholder="110 00">
+                  <span class="field-error" id="a-zip-err">Vyplň prosím PSČ.</span>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="a-country">Země <span class="req">*</span></label>
+                  <select class="form-select" id="a-country">
+                    <option value="Česko" selected>Česko</option>
+                    <option value="Slovensko">Slovensko</option>
+                    <option value="" disabled>──────────</option>
+                    <option value="Afghánistán">Afghánistán</option>
+                    <option value="Albánie">Albánie</option>
+                    <option value="Alžírsko">Alžírsko</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Antigua a Barbuda">Antigua a Barbuda</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Arménie">Arménie</option>
+                    <option value="Austrálie">Austrálie</option>
+                    <option value="Ázerbájdžán">Ázerbájdžán</option>
+                    <option value="Bahamy">Bahamy</option>
+                    <option value="Bahrajn">Bahrajn</option>
+                    <option value="Bangladéš">Bangladéš</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belgie">Belgie</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Bělorusko">Bělorusko</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bhútán">Bhútán</option>
+                    <option value="Bolívie">Bolívie</option>
+                    <option value="Bosna a Hercegovina">Bosna a Hercegovina</option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazílie">Brazílie</option>
+                    <option value="Brunej">Brunej</option>
+                    <option value="Bulharsko">Bulharsko</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Burundi">Burundi</option>
+                    <option value="Cookovy ostrovy">Cookovy ostrovy</option>
+                    <option value="Čad">Čad</option>
+                    <option value="Černá Hora">Černá Hora</option>
+                    <option value="Čína">Čína</option>
+                    <option value="Dánsko">Dánsko</option>
+                    <option value="Demokratická republika Kongo">Demokratická republika Kongo</option>
+                    <option value="Dominika">Dominika</option>
+                    <option value="Dominikánská republika">Dominikánská republika</option>
+                    <option value="Džibutsko">Džibutsko</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Ekvádor">Ekvádor</option>
+                    <option value="Eritrea">Eritrea</option>
+                    <option value="Estonsko">Estonsko</option>
+                    <option value="Esvatini">Esvatini</option>
+                    <option value="Etiopie">Etiopie</option>
+                    <option value="Fidži">Fidži</option>
+                    <option value="Filipíny">Filipíny</option>
+                    <option value="Finsko">Finsko</option>
+                    <option value="Francie">Francie</option>
+                    <option value="Gabon">Gabon</option>
+                    <option value="Gambie">Gambie</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Gruzie">Gruzie</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guinea">Guinea</option>
+                    <option value="Guinea-Bissau">Guinea-Bissau</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Chorvatsko">Chorvatsko</option>
+                    <option value="Indie">Indie</option>
+                    <option value="Indonésie">Indonésie</option>
+                    <option value="Irák">Irák</option>
+                    <option value="Írán">Írán</option>
+                    <option value="Irsko">Irsko</option>
+                    <option value="Island">Island</option>
+                    <option value="Itálie">Itálie</option>
+                    <option value="Izrael">Izrael</option>
+                    <option value="Jamajka">Jamajka</option>
+                    <option value="Japonsko">Japonsko</option>
+                    <option value="Jemen">Jemen</option>
+                    <option value="Jihoafrická republika">Jihoafrická republika</option>
+                    <option value="Jižní Korea">Jižní Korea</option>
+                    <option value="Jižní Súdán">Jižní Súdán</option>
+                    <option value="Jordánsko">Jordánsko</option>
+                    <option value="Kambodža">Kambodža</option>
+                    <option value="Kamerun">Kamerun</option>
+                    <option value="Kanada">Kanada</option>
+                    <option value="Kapverdy">Kapverdy</option>
+                    <option value="Katar">Katar</option>
+                    <option value="Kazachstán">Kazachstán</option>
+                    <option value="Keňa">Keňa</option>
+                    <option value="Kiribati">Kiribati</option>
+                    <option value="Kolumbie">Kolumbie</option>
+                    <option value="Komory">Komory</option>
+                    <option value="Kongo">Kongo</option>
+                    <option value="Kosovo">Kosovo</option>
+                    <option value="Kostarika">Kostarika</option>
+                    <option value="Kuba">Kuba</option>
+                    <option value="Kuvajt">Kuvajt</option>
+                    <option value="Kypr">Kypr</option>
+                    <option value="Kyrgyzstán">Kyrgyzstán</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Lesotho">Lesotho</option>
+                    <option value="Libanon">Libanon</option>
+                    <option value="Libérie">Libérie</option>
+                    <option value="Libye">Libye</option>
+                    <option value="Lichtenštejnsko">Lichtenštejnsko</option>
+                    <option value="Litva">Litva</option>
+                    <option value="Lotyšsko">Lotyšsko</option>
+                    <option value="Lucembursko">Lucembursko</option>
+                    <option value="Madagaskar">Madagaskar</option>
+                    <option value="Maďarsko">Maďarsko</option>
+                    <option value="Malajsie">Malajsie</option>
+                    <option value="Malawi">Malawi</option>
+                    <option value="Maledivy">Maledivy</option>
+                    <option value="Mali">Mali</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Maroko">Maroko</option>
+                    <option value="Marshallovy ostrovy">Marshallovy ostrovy</option>
+                    <option value="Mauricius">Mauricius</option>
+                    <option value="Mauritánie">Mauritánie</option>
+                    <option value="Mexiko">Mexiko</option>
+                    <option value="Mikronésie">Mikronésie</option>
+                    <option value="Moldavsko">Moldavsko</option>
+                    <option value="Monako">Monako</option>
+                    <option value="Mongolsko">Mongolsko</option>
+                    <option value="Mosambik">Mosambik</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="Namibie">Namibie</option>
+                    <option value="Nauru">Nauru</option>
+                    <option value="Německo">Německo</option>
+                    <option value="Nepál">Nepál</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Nigérie">Nigérie</option>
+                    <option value="Nikaragua">Nikaragua</option>
+                    <option value="Nizozemsko">Nizozemsko</option>
+                    <option value="Norsko">Norsko</option>
+                    <option value="Nový Zéland">Nový Zéland</option>
+                    <option value="Omán">Omán</option>
+                    <option value="Pákistán">Pákistán</option>
+                    <option value="Palau">Palau</option>
+                    <option value="Palestina">Palestina</option>
+                    <option value="Panama">Panama</option>
+                    <option value="Papua-Nová Guinea">Papua-Nová Guinea</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Pobřeží slonoviny">Pobřeží slonoviny</option>
+                    <option value="Polsko">Polsko</option>
+                    <option value="Portugalsko">Portugalsko</option>
+                    <option value="Rakousko">Rakousko</option>
+                    <option value="Rovníková Guinea">Rovníková Guinea</option>
+                    <option value="Rumunsko">Rumunsko</option>
+                    <option value="Rusko">Rusko</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="Řecko">Řecko</option>
+                    <option value="Salvador">Salvador</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="San Marino">San Marino</option>
+                    <option value="Saúdská Arábie">Saúdská Arábie</option>
+                    <option value="Senegal">Senegal</option>
+                    <option value="Severní Korea">Severní Korea</option>
+                    <option value="Severní Makedonie">Severní Makedonie</option>
+                    <option value="Seychely">Seychely</option>
+                    <option value="Sierra Leone">Sierra Leone</option>
+                    <option value="Singapur">Singapur</option>
+                    <option value="Slovinsko">Slovinsko</option>
+                    <option value="Somálsko">Somálsko</option>
+                    <option value="Spojené arabské emiráty">Spojené arabské emiráty</option>
+                    <option value="Spojené království">Spojené království</option>
+                    <option value="Spojené státy americké">Spojené státy americké</option>
+                    <option value="Srbsko">Srbsko</option>
+                    <option value="Srí Lanka">Srí Lanka</option>
+                    <option value="Středoafrická republika">Středoafrická republika</option>
+                    <option value="Súdán">Súdán</option>
+                    <option value="Surinam">Surinam</option>
+                    <option value="Sýrie">Sýrie</option>
+                    <option value="Šalomounovy ostrovy">Šalomounovy ostrovy</option>
+                    <option value="Španělsko">Španělsko</option>
+                    <option value="Švédsko">Švédsko</option>
+                    <option value="Švýcarsko">Švýcarsko</option>
+                    <option value="Tádžikistán">Tádžikistán</option>
+                    <option value="Tanzanie">Tanzanie</option>
+                    <option value="Thajsko">Thajsko</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Trinidad a Tobago">Trinidad a Tobago</option>
+                    <option value="Tunisko">Tunisko</option>
+                    <option value="Turecko">Turecko</option>
+                    <option value="Turkmenistán">Turkmenistán</option>
+                    <option value="Tuvalu">Tuvalu</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Ukrajina">Ukrajina</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Uzbekistán">Uzbekistán</option>
+                    <option value="Vanuatu">Vanuatu</option>
+                    <option value="Vatikán">Vatikán</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Východní Timor">Východní Timor</option>
+                    <option value="Zambie">Zambie</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+                  </select>
+                  <span class="field-error" id="a-country-err">Vyber prosím zemi.</span>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="a-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
+                  <textarea class="form-textarea" id="a-note" placeholder="Cokoliv, co bych měl k adrese vědět…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Změna úrovně předplatného -->
+            <div class="cond" data-when="tier">
+              <div class="form-group">
+                <label class="form-label" for="t-level">Nová úroveň předplatného <span class="req">*</span></label>
+                <select class="form-select" id="t-level">
+                  <option value="">Vyber novou úroveň</option>
+                  <option value="Start (119 Kč / měsíčně)">Start — 119 Kč / měsíčně</option>
+                  <option value="Klasik (139 Kč / měsíčně)">Klasik — 139 Kč / měsíčně</option>
+                  <option value="Sběratel (250 Kč / měsíčně)">Sběratel — 250 Kč / měsíčně</option>
+                </select>
+                <span class="field-error" id="t-level-err">Vyber prosím novou úroveň.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="t-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
+                <textarea class="form-textarea" id="t-note" placeholder="Od kdy si přeješ změnu uplatnit apod.…"></textarea>
+              </div>
+            </div>
+
+            <!-- Pozastavení členství -->
+            <div class="cond" data-when="pause">
+              <div class="form-group">
+                <label class="form-label" for="p-length">Délka pauzy <span class="req">*</span></label>
+                <select class="form-select" id="p-length">
+                  <option value="">Vyber délku pauzy</option>
+                  <option value="1 měsíc">1 měsíc</option>
+                  <option value="2 měsíce">2 měsíce</option>
+                  <option value="3 měsíce">3 měsíce</option>
+                </select>
+                <span class="field-error" id="p-length-err">Vyber prosím délku pauzy.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="p-note">Od kdy / poznámka <span class="opt">— nepovinné</span></label>
+                <textarea class="form-textarea" id="p-note" placeholder="Od kterého měsíce má pauza začít apod.…"></textarea>
+              </div>
+            </div>
+
+            <!-- Ukončení členství -->
+            <div class="cond" data-when="cancel">
+              <div class="form-group">
+                <label class="form-label">Důvod ukončení <span class="req">*</span></label>
+                <div class="radio-list" id="c-reason-list">
+                  <label class="radio-item"><input type="radio" name="c-reason" value="Cena je pro mě příliš vysoká"><span>Cena je pro mě příliš vysoká</span></label>
+                  <label class="radio-item"><input type="radio" name="c-reason" value="Obsah zásilek mě neoslovil"><span>Obsah zásilek mě neoslovil</span></label>
+                  <label class="radio-item"><input type="radio" name="c-reason" value="Nemám čas zásilky využít"><span>Nemám čas zásilky využít</span></label>
+                  <label class="radio-item"><input type="radio" name="c-reason" value="Mění se mi životní situace (stěhování apod.)"><span>Mění se mi životní situace (stěhování apod.)</span></label>
+                  <label class="radio-item"><input type="radio" name="c-reason" value="Jiný důvod"><span>Jiný důvod (popíšu níže)</span></label>
+                </div>
+                <span class="field-error" id="c-reason-err">Vyber prosím důvod ukončení.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="c-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
+                <textarea class="form-textarea" id="c-note" placeholder="Cokoliv, co mi chceš k ukončení sdělit…"></textarea>
+              </div>
+            </div>
+
+            <!-- Obecný dotaz -->
+            <div class="cond" data-when="general">
+              <div class="form-group">
+                <label class="form-label" for="g-message">Tvoje zpráva <span class="req">*</span></label>
+                <textarea class="form-textarea" id="g-message" placeholder="Sem napiš podrobnosti svého požadavku…"></textarea>
+                <span class="field-error" id="g-message-err">Napiš prosím podrobnosti svého požadavku.</span>
+              </div>
             </div>
 
             <!-- Honeypot: bots fill this, lidé ho nevidí -->
@@ -198,8 +517,7 @@
 
           <div class="form-actions">
             <p class="form-note">
-              Žádost vyřídím bez zbytečného odkladu. U <strong>změny adresy</strong> ji uplatním na nejbližší další zásilku;
-              u <strong>ukončení členství</strong> vám potvrdím datum poslední obálky.
+              Žádost vyřídím bez zbytečného odkladu.
             </p>
             <button class="btn-submit" type="submit">Odeslat zprávu →</button>
             <p class="form-legal">
@@ -213,8 +531,8 @@
 
       <div class="success-box" id="s-success">
         <div class="success-icon">✦</div>
-        <h2 class="success-title">Depeše přijata.</h2>
-        <p class="success-text">Vaše depeše byla úspěšně odeslána do archivu. Náš kurátor se jí bude v brzké době věnovat.</p>
+        <h2 class="success-title">Zpráva odeslána.</h2>
+        <p class="success-text">Díky za trpělivost, já Ti odpovím co nejdříve.</p>
       </div>
     </main>
 
@@ -228,36 +546,111 @@
     (function () {
       var WEB3FORMS_KEY = '88c74b95-6fc2-4ce4-8bdd-c49ee8b1b791';
 
-      var required = ['s-email', 's-type', 's-message'];
+      var typeEl  = document.getElementById('s-type');
+      var conds   = document.querySelectorAll('.cond');
+
+      // Required text/select field ids per request key.
+      var fieldsByKey = {
+        address: ['a-name', 'a-street', 'a-city', 'a-zip', 'a-country'],
+        tier:    ['t-level'],
+        pause:   ['p-length'],
+        cancel:  [],          // validated via radio group below
+        general: ['g-message']
+      };
+
+      function currentKey() {
+        var opt = typeEl.options[typeEl.selectedIndex];
+        return opt ? (opt.getAttribute('data-key') || '') : '';
+      }
+
+      function clearErrors() {
+        document.querySelectorAll('.is-invalid').forEach(function (el) { el.classList.remove('is-invalid'); });
+        document.querySelectorAll('.field-error').forEach(function (el) { el.style.display = 'none'; });
+      }
+
+      // Show only the block matching the selected request type.
+      typeEl.addEventListener('change', function () {
+        var key = currentKey();
+        conds.forEach(function (block) {
+          block.classList.toggle('visible', block.getAttribute('data-when') === key);
+        });
+        clearErrors();
+      });
+
+      function fail(el, errId) {
+        if (el) el.classList.add('is-invalid');
+        var err = document.getElementById(errId);
+        if (err) err.style.display = 'block';
+      }
 
       document.getElementById('account-form').addEventListener('submit', async function (e) {
         e.preventDefault();
+        clearErrors();
 
         var valid = true;
-        required.forEach(function (id) {
-          var el = document.getElementById(id);
-          var err = document.getElementById(id + '-err');
-          if (!el || !el.value.trim()) {
-            if (el) el.classList.add('is-invalid');
-            if (err) err.style.display = 'block';
-            valid = false;
-          } else {
-            el.classList.remove('is-invalid');
-            if (err) err.style.display = 'none';
-          }
-        });
-        if (!valid) { document.querySelector('.is-invalid').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+        var emailEl = document.getElementById('s-email');
+        var email   = emailEl.value.trim();
+        if (!email) { fail(emailEl, 's-email-err'); valid = false; }
 
-        var email   = document.getElementById('s-email').value.trim();
-        var type    = document.getElementById('s-type').value;
-        var msg     = document.getElementById('s-message').value.trim();
+        var key = currentKey();
+        if (!key) { fail(typeEl, 's-type-err'); valid = false; }
+
+        (fieldsByKey[key] || []).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el || !el.value.trim()) { fail(el, id + '-err'); valid = false; }
+        });
+
+        // Termination reason is a radio group — validate separately.
+        if (key === 'cancel' && !document.querySelector('input[name="c-reason"]:checked')) {
+          var list = document.getElementById('c-reason-list');
+          if (list) list.classList.add('is-invalid');
+          var rerr = document.getElementById('c-reason-err');
+          if (rerr) rerr.style.display = 'block';
+          valid = false;
+        }
+
+        if (!valid) {
+          var firstBad = document.querySelector('.is-invalid');
+          if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        var type    = typeEl.value;
         var today   = new Date().toLocaleDateString('cs-CZ');
+        var v        = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+        var optLine  = function (label, val) { return val ? label + ': ' + val + '\n' : ''; };
+
+        var detail = '';
+        if (key === 'address') {
+          detail =
+            'Jméno a příjmení: ' + v('a-name') + '\n' +
+            'Ulice a č.p.: '     + v('a-street') + '\n' +
+            'Město / obec: '     + v('a-city') + '\n' +
+            'PSČ: '              + v('a-zip') + '\n' +
+            'Země: '             + v('a-country') + '\n' +
+            optLine('Poznámka', v('a-note'));
+        } else if (key === 'tier') {
+          detail =
+            'Nová úroveň: ' + v('t-level') + '\n' +
+            optLine('Poznámka', v('t-note'));
+        } else if (key === 'pause') {
+          detail =
+            'Délka pauzy: ' + v('p-length') + '\n' +
+            optLine('Od kdy / poznámka', v('p-note'));
+        } else if (key === 'cancel') {
+          var reason = document.querySelector('input[name="c-reason"]:checked');
+          detail =
+            'Důvod ukončení: ' + (reason ? reason.value : '') + '\n' +
+            optLine('Poznámka', v('c-note'));
+        } else if (key === 'general') {
+          detail = 'Zpráva:\n' + v('g-message') + '\n';
+        }
 
         var message =
           'SPRÁVA PŘEDPLATNÉHO\n\n' +
           'E-mail člena: ' + email + '\n' +
           'Druh požadavku: ' + type + '\n\n' +
-          'Nová adresa / zpráva:\n' + msg + '\n\n' +
+          detail + '\n' +
           'Datum podání: ' + today;
 
         var btn = document.querySelector('#account-form .btn-submit');
