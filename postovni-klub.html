@@ -27,6 +27,18 @@
             /* Firefox */
         }
 
+        /* Keep the 4 Edice cards in a single row on desktop (incl. 1366×768) */
+        @media (min-width: 1100px) {
+            .edice-grid {
+                flex-wrap: nowrap !important;
+            }
+
+            .edice-grid > div {
+                flex: 1 1 0 !important;
+                min-width: 0 !important;
+            }
+        }
+
         /* Stack A6 format text below item title in detail cards — only on smaller desktop */
         @media (max-width: 1150px) {
             #co-je-v-kuse [style*="align-items: baseline"] {
@@ -891,7 +903,7 @@
                         </div>
                         <div
                             style="box-sizing: border-box; color: #3A2C3199; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 13px; font-style: italic; line-height: 16px;">
-                            každý měsíc, každý do tvé schránky
+                            každý měsíc do Tvé schránky
                         </div>
                     </div>
                     <div
@@ -1133,9 +1145,9 @@
 
                 <!-- Feature Card -->
                 <div
-                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
+                    style="background-color: #F4F2EB; border-color: #3A2C3126; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 24px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 620px;">
                     <div
-                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(88.9% 0.008 0.036) 0%, oklab(75.2% 0.023 0.053) 55%, oklab(45.5% 0.027 0.035) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%; max-width: 260px;">
+                        style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(88.9% 0.008 0.036) 0%, oklab(75.2% 0.023 0.053) 55%, oklab(45.5% 0.027 0.035) 100%); background-origin: border-box; border-color: #3A2C312E; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-shrink: 0; height: 160px; padding-block: 12px; padding-inline: 12px; width: 100%;">
                         <div
                             style="box-sizing: border-box; color: #F4F2EBCC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
                             ↳ foto článku
@@ -1526,7 +1538,7 @@
                     style="box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 720px;">
                     <div
                         style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; line-height: 16px;">
-                        ✦ EDICE · ROK PRVNÍ
+                        ✦ EDICE
                     </div>
                     <div
                         style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
@@ -1542,7 +1554,8 @@
                 </div>
             </div>
 
-            <div style="box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+            <div class="edice-grid"
+                style="box-sizing: border-box; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
                 <!-- Edition A01 -->
                 <div
                     style="background-color: #F4F2EB; border-color: #FF6752; border-style: solid; border-width: 1.5px; box-shadow: #FF6752 12px 12px 0px -1.5px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
@@ -1563,12 +1576,11 @@
                     <div
                         style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
                         <div
-                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 48px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 50px;">
-                            Přítomnost
-                        </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31B3; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
-                            být tady — ne jinde
+                            style="align-items: flex-end; background-image: linear-gradient(in oklab 160deg, oklab(88% 0.006 0.030) 0%, oklab(70% 0.012 0.040) 55%, oklab(52% 0.014 0.045) 100%); background-origin: border-box; border-color: #FF675259; border-style: dashed; border-width: 1.5px; box-sizing: border-box; display: flex; flex-grow: 1; min-height: 220px; padding-block: 12px; padding-inline: 12px; width: 100%;">
+                            <div
+                                style="box-sizing: border-box; color: #F4F2EBCC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 11px; font-style: italic; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 14px;">
+                                ↳ sem přijde má fotka
+                            </div>
                         </div>
                     </div>
                     <div
@@ -1596,7 +1608,7 @@
 
                 <!-- Edition A02 -->
                 <div
-                    style="background-color: #F4F2EB; border-color: #3A2C3166; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.92; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    style="background-color: #F4F2EB; border-color: #3A2C3166; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; filter: grayscale(1); height: auto; min-height: 460px; opacity: 0.92; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
                     <div
                         style="align-items: center; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
                         <div
@@ -1613,12 +1625,12 @@
                     </div>
                     <div
                         style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31CC; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C31CC; display: inline-block; filter: blur(11px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px; user-select: none;">
                             Tvrdá práce
                         </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; filter: blur(7px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px; user-select: none;">
                             co dává smysl, když to bolí
                         </div>
                     </div>
@@ -1644,7 +1656,7 @@
 
                 <!-- Edition A03 -->
                 <div
-                    style="background-color: #F4F2EB; border-color: #3A2C314D; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.78; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    style="background-color: #F4F2EB; border-color: #3A2C314D; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; filter: grayscale(1); height: auto; min-height: 460px; opacity: 0.78; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
                     <div
                         style="align-items: center; border-bottom-color: #3A2C312E; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
                         <div
@@ -1661,12 +1673,12 @@
                     </div>
                     <div
                         style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C31A6; display: inline-block; filter: blur(11px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 44px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 48px; user-select: none;">
                             Přátelství
                         </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C3180; display: inline-block; filter: blur(7px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px; user-select: none;">
                             co znamená mít někoho blízkého
                         </div>
                     </div>
@@ -1685,7 +1697,7 @@
 
                 <!-- Edition A04 -->
                 <div
-                    style="background-color: #F4F2EB; border-color: #3A2C3138; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; height: auto; min-height: 460px; opacity: 0.65; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
+                    style="background-color: #F4F2EB; border-color: #3A2C3138; border-style: solid; border-width: 1px; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; filter: grayscale(1); height: auto; min-height: 460px; opacity: 0.65; padding-block: 24px; padding-inline: 24px; width: 100%; max-width: 300px;">
                     <div
                         style="align-items: center; border-bottom-color: #3A2C3126; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; justify-content: space-between; padding-bottom: 16px;">
                         <div
@@ -1702,12 +1714,12 @@
                     </div>
                     <div
                         style="box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-grow: 1; flex-shrink: 1; gap: 14px; justify-content: center; padding-block: 32px;">
-                        <div
-                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 38px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 42px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C318C; display: inline-block; filter: blur(11px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 38px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 42px; user-select: none;">
                             Smysl života
                         </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C3173; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px;">
+                        <div aria-hidden="true"
+                            style="box-sizing: border-box; color: #3A2C3173; display: inline-block; filter: blur(7px); font-family: 'Fraunces', system-ui, sans-serif; font-size: 16px; font-style: italic; line-height: 22px; user-select: none;">
                             není to jedna věta
                         </div>
                     </div>
