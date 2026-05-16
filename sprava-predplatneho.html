@@ -235,6 +235,11 @@
                   <span class="field-error" id="a-zip-err">Vyplň prosím PSČ.</span>
                 </div>
                 <div class="form-group full">
+                  <label class="form-label" for="a-country">Země <span class="req">*</span></label>
+                  <input class="form-input" id="a-country" name="country" type="text" value="Česká republika" placeholder="Česká republika">
+                  <span class="field-error" id="a-country-err">Vyplň prosím zemi doručení.</span>
+                </div>
+                <div class="form-group full">
                   <label class="form-label" for="a-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
                   <textarea class="form-textarea" id="a-note" placeholder="Cokoliv, co bych měl k adrese vědět…"></textarea>
                 </div>
@@ -351,7 +356,7 @@
 
       // Required text/select field ids per request key.
       var fieldsByKey = {
-        address: ['a-name', 'a-street', 'a-city', 'a-zip'],
+        address: ['a-name', 'a-street', 'a-city', 'a-zip', 'a-country'],
         tier:    ['t-level'],
         pause:   ['p-length'],
         cancel:  [],          // validated via radio group below
@@ -427,6 +432,7 @@
             'Ulice a č.p.: '     + v('a-street') + '\n' +
             'Město / obec: '     + v('a-city') + '\n' +
             'PSČ: '              + v('a-zip') + '\n' +
+            'Země: '             + v('a-country') + '\n' +
             optLine('Poznámka', v('a-note'));
         } else if (key === 'tier') {
           detail =
