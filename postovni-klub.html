@@ -27,6 +27,14 @@
             /* Firefox */
         }
 
+        /* Stack A6 format text below item title in detail cards */
+        #co-je-v-kuse [style*="align-items: baseline"] {
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            gap: 4px;
+        }
+
     </style>
 </head>
 
@@ -203,17 +211,6 @@
                         style="box-sizing: border-box; color: #F4F2EB80; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 500; line-height: 14px;">
                         / měsíc
                     </div>
-                </div>
-            </div>
-            <div class="btn-primary"
-                style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 10px; padding-block: 12px; padding-inline: 24px; cursor: pointer;">
-                <div id="sticky-checkout-text"
-                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
-                    Pokračovat s Úrovní 2
-                </div>
-                <div
-                    style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 18px;">
-                    →
                 </div>
             </div>
         </div>
