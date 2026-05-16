@@ -84,7 +84,7 @@ const SHARED_COMPONENTS = {
                                 </div>
                             </summary>
                             <div class="mobile-submenu">
-                                <a href="postovni-klub.html" class="mobile-nav-link sub-link">O klubu</a>
+                                <a href="postovni-klub.html" class="mobile-nav-link sub-link">Úrovně členství</a>
                                 <a href="edice-vitej.html" class="mobile-nav-link sub-link">Edice VÍTEJ</a>
                             </div>
                         </details>
@@ -123,7 +123,7 @@ const SHARED_COMPONENTS = {
                         </div>
                     </summary>
                     <div class="dropdown-menu">
-                        <a href="postovni-klub.html" class="dropdown-link">O klubu</a>
+                        <a href="postovni-klub.html" class="dropdown-link">Úrovně členství</a>
                         <a href="edice-vitej.html" class="dropdown-link">Edice VÍTEJ</a>
                     </div>
                 </details>

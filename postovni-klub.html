@@ -27,12 +27,14 @@
             /* Firefox */
         }
 
-        /* Stack A6 format text below item title in detail cards */
-        #co-je-v-kuse [style*="align-items: baseline"] {
-            flex-direction: column !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
-            gap: 4px;
+        /* Stack A6 format text below item title in detail cards — only on smaller desktop */
+        @media (max-width: 1150px) {
+            #co-je-v-kuse [style*="align-items: baseline"] {
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: flex-start !important;
+                gap: 4px;
+            }
         }
 
     </style>
