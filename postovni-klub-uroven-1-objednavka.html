@@ -146,27 +146,19 @@
       transform: translateY(-2px);
     }
 
-    .steps {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .form-step {
+      margin: 0 0 14px;
       font-family: 'Mulish', sans-serif;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #3A2C3159;
+      color: #3A2C314D;
     }
 
-    .steps-now {
-      color: #FC7B35;
-    }
-
-    .steps-sep {
-      color: #3A2C3140;
-      font-weight: 600;
-      letter-spacing: 0;
+    .form-step strong {
+      color: #3A2C3199;
+      font-weight: 700;
     }
 
     .order-summary {
@@ -340,13 +332,6 @@
     <div class="wrap">
       <section class="intro">
         <div class="kicker">Poštovní klub · Úroveň 1 Start</div>
-        <div class="steps" aria-hidden="true">
-          <span>Výběr úrovně</span>
-          <span class="steps-sep">→</span>
-          <span class="steps-now">Objednávka</span>
-          <span class="steps-sep">→</span>
-          <span>Hotovo</span>
-        </div>
         <h1>Začni s Úrovní 1 za 119 Kč měsíčně.</h1>
         <p class="lead">Měsíční předplatné Poštovního klubu na startovní úrovni.</p>
 
@@ -379,6 +364,7 @@
         </ul>
         <p class="form-note">Vyplň formulář a dokonči objednávku.</p>
         <div class="form-shell">
+          <p class="form-step">Krok 2 / 3 &middot; <strong>Objedn&aacute;vka</strong></p>
           <!-- SimpleShop forms — Úroveň 1 Start (CZ / EU / World) -->
           <div class="form-region" data-region="cz">
             <!-- www.SimpleShop.cz form#148180 start -->
