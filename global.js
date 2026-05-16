@@ -465,7 +465,7 @@
             <div class="cookie-inner">
                 <div class="cookie-text">
                     <span class="cookie-kicker">✦ Cookies &amp; soukromí</span>
-                    Používáme cookies pro zajištění základní funkčnosti webu. Více v <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásadách ochrany osobních údajů</a>.
+                    Používám cookies pro zajištění základní funkčnosti webu. Více v <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásadách ochrany osobních údajů</a>.
                 </div>
                 <div class="cookie-actions">
                     <button class="cookie-reject" id="cookie-reject">Odmítnout</button>
