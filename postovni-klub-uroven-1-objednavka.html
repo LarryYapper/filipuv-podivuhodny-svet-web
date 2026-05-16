@@ -43,14 +43,16 @@
     .intro {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 14px;
       position: sticky;
-      top: 32px;
+      top: 0;
+      min-height: 100vh;
+      justify-content: center;
     }
 
     .kicker {
       color: #FC7B35;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.24em;
       text-transform: uppercase;
@@ -59,7 +61,7 @@
     h1 {
       margin: 0;
       font-family: 'Fraunces', serif;
-      font-size: clamp(44px, 7vw, 84px);
+      font-size: clamp(24px, 3vw, 36px);
       font-weight: 600;
       line-height: 0.96;
       letter-spacing: -0.03em;
@@ -69,7 +71,7 @@
       margin: 0;
       max-width: 52ch;
       font-family: 'Fraunces', serif;
-      font-size: clamp(20px, 2.8vw, 26px);
+      font-size: clamp(14px, 1.6vw, 17px);
       font-style: italic;
       line-height: 1.45;
       color: rgba(58, 44, 49, 0.82);
@@ -77,7 +79,7 @@
 
     .bullets {
       display: grid;
-      gap: 12px;
+      gap: 9px;
       padding: 0;
       margin: 0;
       list-style: none;
@@ -85,10 +87,10 @@
 
     .bullets li {
       display: flex;
-      gap: 12px;
+      gap: 9px;
       align-items: flex-start;
       line-height: 1.5;
-      font-size: 15px;
+      font-size: 13px;
     }
 
     .bullets li::before {
@@ -101,7 +103,7 @@
 
     .intro-photo {
       width: 100%;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 3 / 2; max-width: 220px;
       border-radius: 20px;
       background: #3A2C310D;
       border: 1px dashed #3A2C3133;
@@ -114,7 +116,7 @@
     .intro-photo span {
       color: #3A2C3166;
       font-family: 'Mulish', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.16em;
@@ -127,13 +129,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 7px 13px;
       border-radius: 999px;
       border: 1px solid #3A2C3133;
       background: transparent;
       color: #3A2C31;
       font-family: 'Mulish', sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       text-decoration: none;
       transition: background-color 250ms ease-out, transform 300ms ease-out;
@@ -201,6 +203,7 @@
       font-size: 13px;
       color: #3A2C3199;
       line-height: 1.4;
+      margin: 0;
     }
 
     .trust-list {
@@ -251,6 +254,9 @@
       overflow: visible;
       background: transparent;
       border: 0;
+      border-top: 1px solid #3A2C311F;
+      padding-top: 22px;
+      margin-top: 4px;
     }
 
     .form-shell > div {
@@ -259,6 +265,48 @@
 
     .form-shell a {
       color: #3A2C31;
+    }
+
+    .region-toggle {
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      background: #F4F2EB;
+      border: 1px solid #3A2C311F;
+      border-radius: 999px;
+    }
+
+    .region-toggle button {
+      flex: 1;
+      appearance: none;
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #3A2C3199;
+      cursor: pointer;
+      transition: background-color 200ms ease, color 200ms ease;
+    }
+
+    .region-toggle button:hover {
+      color: #3A2C31;
+    }
+
+    .region-toggle button.is-active {
+      background: #FC7B35;
+      color: #FFFFFF;
+    }
+
+    .region-toggle button:focus-visible {
+      outline: 2px solid #FC7B35;
+      outline-offset: 2px;
+    }
+
+    .form-region[hidden] {
+      display: none;
     }
 
     @media (max-width: 980px) {
@@ -313,20 +361,34 @@
 
       <aside class="aside" aria-label="Objednávkový formulář Úroveň 1">
         <div class="order-summary">
-          <div class=”order-summary-row”>
+          <div class="order-summary-row">
             <span>Úroveň 1 „Start”</span>
             <strong>119 Kč / měsíc</strong>
           </div>
-          <p class=”order-summary-note”>Poštovné po Česku v ceně · účtováno měsíčně</p>
-        <ul class=”trust-list”>
+          <p class="order-summary-note" data-region-note>+ poštovné po Česku 19 Kč / měsíc · účtováno měsíčně</p>
+        </div>
+        <div class="region-toggle" role="tablist" aria-label="Region doručení">
+          <button type="button" data-region="cz" class="is-active" role="tab" aria-selected="true" data-note="+ poštovné po Česku 19 Kč / měsíc · účtováno měsíčně">Česko</button>
+          <button type="button" data-region="eu" role="tab" aria-selected="false" data-note="+ poštovné do Evropy 29 Kč / měsíc · účtováno měsíčně">EU</button>
+          <button type="button" data-region="world" role="tab" aria-selected="false" data-note="+ poštovné do Světa 35 Kč / měsíc · účtováno měsíčně">Svět</button>
+        </div>
+        <ul class="trust-list">
           <li>Zrušíš nebo změníš kdykoliv jedním klikem – bez smlouvy, bez závazku</li>
           <li>Platba bezpečně přes SimpleShop</li>
           <li>První obálka ti dorazí do schránky 10.-15. dne v měsíci</li>
         </ul>
         <p class="form-note">Vyplň formulář a dokonči objednávku.</p>
         <div class="form-shell">
-          <!-- www.SimpleShop.cz form — Úroveň 1 Start -->
-          <div data-SimpleShopForm="PLACEHOLDER_FORM_ID_UROVEN_1"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=98197" target="_blank">SimpleShop.cz</a>.</div></div>
+          <!-- SimpleShop forms — Úroveň 1 Start (CZ / EU / World) -->
+          <div class="form-region" data-region="cz">
+            <div data-SimpleShopForm="PLACEHOLDER_FORM_ID_UROVEN_1_CZ"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=98197" target="_blank">SimpleShop.cz</a>.</div></div>
+          </div>
+          <div class="form-region" data-region="eu" hidden>
+            <div data-SimpleShopForm="PLACEHOLDER_FORM_ID_UROVEN_1_EU"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=98197" target="_blank">SimpleShop.cz</a>.</div></div>
+          </div>
+          <div class="form-region" data-region="world" hidden>
+            <div data-SimpleShopForm="PLACEHOLDER_FORM_ID_UROVEN_1_WORLD"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=98197" target="_blank">SimpleShop.cz</a>.</div></div>
+          </div>
           <script>
            (function(i, s, o, g, r, a, m){
             i[r] = i[r] || function(){
@@ -339,9 +401,40 @@
             a.src = g;
             m.parentNode.insertBefore(a, m)
            })(window, document, "script", "https://form.simpleshop.cz/prj/js/SimpleShopService.js", "sss");
-           sss("createForm", "PLACEHOLDER_FORM_ID_UROVEN_1");
+           sss("createForm", "PLACEHOLDER_FORM_ID_UROVEN_1_CZ");
           </script>
-          <!-- www.SimpleShop.cz form — Úroveň 1 Start end -->
+          <script>
+           (function () {
+             var script = document.currentScript;
+             var aside = script.closest('.aside');
+             var toggle = aside.querySelector('.region-toggle');
+             var note = aside.querySelector('[data-region-note]');
+             var regions = aside.querySelectorAll('.form-region');
+             var created = { cz: true };
+             toggle.addEventListener('click', function (e) {
+               var btn = e.target.closest('button[data-region]');
+               if (!btn) return;
+               var r = btn.getAttribute('data-region');
+               toggle.querySelectorAll('button[data-region]').forEach(function (b) {
+                 var on = b === btn;
+                 b.classList.toggle('is-active', on);
+                 b.setAttribute('aria-selected', on ? 'true' : 'false');
+               });
+               regions.forEach(function (reg) {
+                 reg.hidden = reg.getAttribute('data-region') !== r;
+               });
+               if (btn.dataset.note) note.textContent = btn.dataset.note;
+               if (!created[r]) {
+                 var holder = aside.querySelector('.form-region[data-region="' + r + '"] [data-SimpleShopForm]');
+                 if (holder && window.sss) {
+                   sss('createForm', holder.getAttribute('data-SimpleShopForm'));
+                   created[r] = true;
+                 }
+               }
+             });
+           })();
+          </script>
+          <!-- SimpleShop forms — Úroveň 1 Start end -->
         </div>
       </aside>
     </div>
