@@ -30,13 +30,13 @@ const CMS_CONFIG = {
             frequency: "měsíčně"
         },
         dopis: {
-            name: "Plnohodnotný",
+            name: "Klasik",
             image: "assets/Dopis.png",
             price: "139 Kč",
             frequency: "měsíčně"
         },
         balicek: {
-            name: "Sběratelský",
+            name: "Sběratel",
             image: "assets/Bal%C3%ADek.png",
             price: "250 Kč",
             frequency: "měsíčně"
