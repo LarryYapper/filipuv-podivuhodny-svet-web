@@ -259,9 +259,15 @@
       flex-wrap: wrap;
     }
 
-    .claim-input {
+    .claim-input-wrap {
       flex: 1;
       min-width: 260px;
+      display: flex;
+    }
+
+    .claim-input {
+      width: 100%;
+      min-width: 0;
       padding: 18px 20px;
       border-top: 1px solid #1A161466;
       border-left: 1px solid #1A161466;
@@ -288,6 +294,51 @@
       padding: 18px 28px;
       text-decoration: none;
       white-space: nowrap;
+    }
+
+    .claim-btn:disabled,
+    .claim-btn.loading {
+      cursor: wait;
+      opacity: 0.9;
+    }
+
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      border-color: #ffffff #ffffff #ffffff transparent;
+      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+
+    @keyframes ml-form-embedSubmitLoad {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
     }
 
     .alfa-footnote {
@@ -456,8 +507,11 @@
         flex-direction: column;
       }
 
-      .claim-input {
+      .claim-input-wrap {
         min-width: 0;
+      }
+
+      .claim-input {
         border-right: 1px solid #1A161466;
       }
 
@@ -511,9 +565,29 @@
               <div class="claim-time">trvá 30 vteřin</div>
             </div>
 
-            <div class="claim-form">
-              <div class="claim-input">tvůj@email.cz</div>
-              <a class="claim-btn" href="#"><span>Pošli mi PDF</span><span>→</span></a>
+            <div id="mlb2-41414757" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41414757">
+              <div class="ml-form-align-center">
+                <div class="ml-form-embedWrapper embedForm">
+                  <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                    <form class="claim-form ml-block-form" action="https://assets.mailerlite.com/jsonp/2355923/forms/187745764827465050/subscribe" method="post" target="_blank">
+                      <div class="claim-input-wrap">
+                        <label class="sr-only" for="ml-email">E-mail</label>
+                        <input id="ml-email" class="claim-input" aria-label="E-mail" aria-required="true" type="email" name="fields[email]" placeholder="tvůj@email.cz" autocomplete="email" required>
+                      </div>
+
+                      <button type="submit" class="claim-btn primary">Pošli mi PDF</button>
+
+                      <button disabled="disabled" style="display: none;" type="button" class="claim-btn loading">
+                        <div class="ml-form-embedSubmitLoad"></div>
+                        <span class="sr-only">Loading...</span>
+                      </button>
+
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -550,6 +624,19 @@
   <script src="cms-config.js"></script>
   <script src="components.js"></script>
   <script src="global.js"></script>
+  <script>
+    function ml_webform_success_41414757() {
+      try {
+        window.top.location.href = 'edice-alfa-dekuji.html';
+      } catch (e) {
+        window.location.href = 'edice-alfa-dekuji.html';
+      }
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/2355923/forms/187745764827465050/takel");
+  </script>
 </body>
 
 </html>
