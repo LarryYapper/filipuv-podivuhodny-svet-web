@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <base href="/">  <title>Edice Alfa: Děkuji · Filipuv podivuhodny svet</title>
+  <meta name="description" content="Potvrzení po odeslání e-mailu pro Edici Alfa.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #F4EFE0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .paper-canvas {
+      width: 100%;
+      background: #F4EFE0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alfa-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .alfa-reveal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      padding: 80px 48px 64px;
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: #FC7B35;
+      border-radius: 999px;
+    }
+
+    .tier-badge-star {
+      color: #F4F2EB;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    .tier-badge-text {
+      color: #F4F2EB;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .thank-card {
+      width: min(760px, 100%);
+      background: #FAF6E8;
+      border: 1px solid #1A16141A;
+      box-shadow: 0 24px 48px -12px #1A16141F, 0 2px 4px #1A161414;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 64px 72px;
+    }
+
+    .doc-meta {
+      border-bottom: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 24px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .meta-key {
+      width: 88px;
+      flex-shrink: 0;
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 8px;
+    }
+
+    .hero-copy-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-copy-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 8vw, 84px);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .hero-copy-sub {
+      margin: 0;
+      max-width: 560px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 32px;
+    }
+
+    .hero-note {
+      color: #3A2C3199;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-style: italic;
+      line-height: 24px;
+    }
+
+    .next-step {
+      display: flex;
+      gap: 28px;
+      padding: 24px;
+      background: #F4EFE0;
+      border: 1px solid #1A16141A;
+    }
+
+    .envelope-preview {
+      width: 180px;
+      height: 240px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1px dashed #1A161466;
+      box-shadow: 0 2px 8px #1A16140F;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .envelope-header {
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      line-height: 12px;
+      text-transform: uppercase;
+    }
+
+    .envelope-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .envelope-title {
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    .envelope-subtitle {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 12px;
+      text-transform: uppercase;
+    }
+
+    .envelope-footer {
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      line-height: 10px;
+      text-transform: uppercase;
+    }
+
+    .next-copy-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .next-kicker {
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .next-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 24px;
+    }
+
+    .next-item-dot {
+      color: #FC7B35;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .cta-row {
+      border-top: 1px dashed #1A161433;
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cta-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-title {
+      color: #1A1614;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .cta-time {
+      color: #1A161499;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      line-height: 14px;
+      text-transform: uppercase;
+    }
+
+    .cta-form {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: nowrap;
+    }
+
+    .cta-input {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      min-height: 58px;
+      border: 1px solid #1A161466;
+      border-right: none;
+      padding: 0 20px;
+      background: #FFFFFF;
+      color: #1A1614;
+      font-family: 'Courier Prime', monospace;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 0 32px;
+      border-radius: 0;
+      border: 1px solid #FC7B35;
+      background: #FC7B35;
+      color: #F4F2EB;
+      text-decoration: none;
+      font-family: 'Mulish', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 22px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background: #E86A1F;
+      border-color: #E86A1F;
+    }
+
+    .cta-note {
+      color: #3A2C3199;
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-style: italic;
+      line-height: 22px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .rare-footnote {
+      border-top: 1px dashed #1A161433;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding-top: 24px;
+      color: #1A161499;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .rare-footnote span:first-child {
+      color: #FC7B35;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      line-height: 20px;
+      flex-shrink: 0;
+    }
+
+    .about-vitej {
+      border-top: 1px dashed #1A161433;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 64px;
+      padding: 80px 48px;
+      justify-content: center;
+    }
+
+    .about-vitej-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .about-vitej-head {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-vitej-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .about-vitej-title {
+      margin: 0;
+      color: #1A1614;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.07;
+      text-align: center;
+    }
+
+    .about-vitej-copy {
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      color: #3A2C31CC;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 28px;
+    }
+
+    .about-vitej-copy p {
+      margin: 0;
+    }
+
+    .about-vitej-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .about-vitej-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 44px;
+      border-radius: 999px;
+      background: #FC7B35;
+      color: #F4F2EB;
+      text-decoration: none;
+      font-family: 'Mulish', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 22px;
+    }
+
+    .about-vitej-note {
+      color: #3A2C3199;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .about-vitej-image {
+      flex-shrink: 0;
+      width: 280px;
+      height: 420px;
+      background: #F4EFE0;
+      border: 2px solid #1A161433;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1A161466;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .alfa-reveal {
+        padding: 56px 20px 40px;
+        gap: 28px;
+      }
+
+      .thank-card {
+        padding: 32px 22px;
+        gap: 24px;
+      }
+
+      .tier-badge {
+        padding: 10px 20px;
+      }
+
+      .next-step {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .envelope-preview {
+        width: 100%;
+        height: auto;
+        min-height: 180px;
+      }
+
+      .cta-form {
+        flex-wrap: wrap;
+      }
+
+      .cta-input {
+        flex: 1 0 100%;
+        border-right: 1px solid #1A161466;
+      }
+
+      .cta-btn {
+        flex: 1 0 100%;
+      }
+
+      .about-vitej {
+        flex-direction: column;
+        align-items: center;
+        padding: 64px 20px;
+      }
+
+      .about-vitej-content {
+        max-width: 100%;
+      }
+
+      .about-vitej-image {
+        width: 200px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="alfa-wrap">
+      <section class="alfa-reveal">
+        <div class="tier-badge">
+          <div class="tier-badge-star">★</div>
+          <div class="tier-badge-text">Děkuji</div>
+        </div>
+
+        <article class="thank-card">
+          <div class="doc-meta">
+            <div class="meta-row"><div class="meta-key">stav</div><div class="meta-value">e-mail odeslán</div></div>
+            <div class="meta-row"><div class="meta-key">další krok</div><div class="meta-value">Odměna na Tebe čeká v e-mailu</div></div>
+          </div>
+
+          <div class="hero-copy">
+            <div class="hero-copy-kicker">✦ Hotovo</div>
+            <h1 class="hero-copy-title">Tvá odměna je na cestě.</h1>
+            <p class="hero-copy-sub">Zkontroluj svůj e-mail.</p>
+            <p class="hero-note">Kdyby nic nepřišlo, podívej se ještě do spamu nebo složky s hromadnou poštou.</p>
+          </div>
+
+          <div class="cta-row">
+            <div class="cta-head">
+              <div class="cta-title">✦ zpět na Edici VÍTEJ</div>
+              <div class="cta-time">bez dalších kroků</div>
+            </div>
+
+            <div class="cta-form">
+              <div class="cta-input">hotovo</div>
+              <a class="cta-btn" href="edice-vitej.html"><span>Pokračovat na web</span><span>→</span></a>
+            </div>
+
+            <p class="cta-note">Jsi hotový. Odměnu najdeš ve své e-mailové schránce během chvilky.</p>
+
+            <div class="rare-footnote">
+              <span>★</span>
+              <span>e-mail potvrzen · odměna čeká v doručené poště</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="about-vitej">
+        <div class="about-vitej-content">
+          <div class="about-vitej-head">
+            <div class="about-vitej-kicker">✦ co dál</div>
+            <h2 class="about-vitej-title">Prozkoumej Edici VÍTEJ.</h2>
+          </div>
+
+          <div class="about-vitej-copy">
+            <p>Jednorázová ochutnávka poštovního klubu za 99 Kč.</p>
+          </div>
+
+          <div class="about-vitej-cta">
+            <a class="about-vitej-btn" href="edice-vitej.html"><span>Prozkoumat Edici VÍTEJ</span><span>→</span></a>
+          </div>
+        </div>
+
+        <div class="about-vitej-image">Potvrzení<br>placeholder photo</div>
+      </section>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="cms-config.js"></script>
+  <script src="components.js"></script>
+  <script src="global.js"></script>
+</body>
+
+</html>
