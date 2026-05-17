@@ -479,6 +479,30 @@
       .cta { padding-top: 96px; }
       .mobile-break { display: inline; }
     }
+
+    /* Tablet portrait (≈721–900px, e.g. 820×1180): overrides the ≤820 stack */
+    @media (min-width: 721px) and (max-width: 900px) {
+      /* Hero number grid: all four stats in a single row */
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .stat { padding: 24px 14px 22px; min-height: 0; }
+      .stat-number { font-size: 46px; }
+
+      /* Subsequent sections: title fixed on the left, body wraps to its right
+         and spills full-width below it when long (e.g. "Kam jsem šel") */
+      .two-col { display: block; }
+      .two-col::after { content: ""; display: block; clear: both; }
+      .two-col > div:first-child {
+        float: left;
+        width: 250px;
+        margin: 0 44px 18px 0;
+      }
+      .two-col > .body-copy {
+        display: block !important;
+        max-width: none !important;
+      }
+      .two-col > .body-copy > * { margin: 0 0 16px 0; }
+      .two-col > .body-copy > *:last-child { margin-bottom: 0; }
+    }
   </style>
 </head>
 <body>

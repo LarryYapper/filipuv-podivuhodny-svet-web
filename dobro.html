@@ -1176,6 +1176,61 @@
         width: 100%;
       }
     }
+
+    /* Tablet portrait (≈721–1024px, e.g. 820×1180): override the ≤1024 stack */
+    @media (min-width: 721px) and (max-width: 1024px) {
+      /* Keep the receipt to the right of the hero copy, just smaller */
+      .hero {
+        flex-direction: row;
+        gap: 40px;
+        align-items: flex-start;
+      }
+      .hero-receipt {
+        flex: 0 0 340px;
+        max-width: 340px;
+      }
+      .hero-title {
+        font-size: clamp(56px, 9vw, 84px);
+      }
+      .hero-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+      }
+      .receipt-card {
+        padding: 28px 22px 24px;
+        gap: 14px;
+      }
+      .receipt-amount-number {
+        font-size: 40px;
+      }
+
+      /* Principles → 2×2 grid: drop the middle divider, vertically centre the
+         remaining two so they sit between 01–02 and 03–04 */
+      .principle {
+        flex: 1 1 40%;
+        min-width: 0;
+      }
+      .principle-divider {
+        align-self: center;
+        height: 96px;
+      }
+      .principles > div:nth-child(4) {
+        display: none;
+      }
+
+      /* Charita kvartálu / Tento měsíc: centre the kicker + title block */
+      .section-header-row.center-tablet {
+        align-items: center;
+        text-align: center;
+      }
+      .section-header-row.center-tablet .section-header {
+        align-items: center;
+        max-width: 100%;
+      }
+      .section-header-row.center-tablet .section-subtitle {
+        max-width: 560px;
+      }
+    }
   </style>
 </head>
 
@@ -1263,7 +1318,7 @@ Organizace je určena na čtvrtletí, převod dělám sám, záznam je veřejný
 
   <!-- Partner Section -->
   <section class="section light">
-    <div class="section-header-row">
+    <div class="section-header-row center-tablet">
       <div class="section-header">
         <div class="section-kicker">✦ Charita kvartálu · Q2 2026</div>
         <h2 class="section-title">Člověk
@@ -1310,7 +1365,7 @@ v tísni.</h2>
 
   <!-- Ledger Section -->
   <section class="section dark">
-    <div class="section-header-row">
+    <div class="section-header-row center-tablet">
       <div class="section-header">
         <div class="section-kicker">✦ Tento měsíc · stav k 8. 5. 2026</div>
         <h2 class="section-title">Květen

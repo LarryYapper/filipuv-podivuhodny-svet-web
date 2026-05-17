@@ -2912,9 +2912,12 @@ body {
     min-width: 0 !important;
     max-width: 720px !important;
   }
+}
 
-  /* --- postovni-klub comparison table: flexible columns so all 3 tiers fit
-         at every desktop width (no horizontal clipping of Úroveň 3). --- */
+/* --- postovni-klub comparison table: flexible columns so all 3 tiers fit
+       at every width ≥901px (no horizontal clipping of Úroveň 3). Below 901px
+       the table switches to the single-tier toggle view (see tablet block). --- */
+@media (min-width: 901px) {
   .comparison-table {
     overflow-x: visible !important;
   }
@@ -2940,5 +2943,232 @@ body {
     flex: 0 0 calc(50% - 16px) !important;
     min-width: 0 !important;
     flex-basis: calc(50% - 16px) !important;
+  }
+}
+
+/* =============================================================================
+   TABLET PORTRAIT (768–900px, e.g. 820×1180 iPad/Air portrait)
+   Dedicated layout for the dead-zone between phone (<768) and the
+   narrow-desktop block (901–1119). Placed last so it wins the cascade over
+   the generic max-width:900 / 980 / 1120 stacking rules.
+   ============================================================================= */
+@media (min-width: 768px) and (max-width: 900px) {
+
+  /* --- Top banner: stack into two centered rows --- */
+  .top-banner-inner {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+  .top-banner-copy {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .top-banner-actions {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* --- Hero CTAs: keep side by side but horizontally centered --- */
+  .hero-actions {
+    justify-content: center !important;
+  }
+
+  /* --- Edition strip: drop the social-follow block, push the shipping note
+         under the title, smaller + grey (mirrors the phone treatment) --- */
+  .edition-strip {
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+  .edition-strip-inner {
+    justify-content: center !important;
+  }
+  .edition-strip-main {
+    flex-direction: column !important;
+    gap: 4px !important;
+    align-items: flex-start !important;
+  }
+  .edition-strip-subtitle {
+    font-size: 11px !important;
+    line-height: 14px !important;
+    color: #3A2C318C !important;
+  }
+  .edition-strip-follow {
+    display: none !important;
+  }
+
+  /* --- Section header rows ("Co je v Edici VÍTEJ", "Vstup do podivuhodného
+         světa", "Co dostaneš v obálce", comparison header): keep the italic
+         subheader to the RIGHT of the title and make it smaller --- */
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    gap: 28px !important;
+  }
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:first-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:last-child {
+    flex: 0 1 300px !important;
+    max-width: 300px !important;
+  }
+  .paper-canvas div[style*="align-items: flex-end"][style*="space-between"][style*="flex-wrap: wrap"] > div:last-child > div {
+    font-size: 15px !important;
+    line-height: 23px !important;
+  }
+
+  /* --- "Co dostaneš v obálce" grid (edice-vitej, auto-fit 380px): force two
+         columns like the home page instead of collapsing to one --- */
+  .paper-canvas [style*="grid-template-columns: repeat(auto-fit, minmax(380px, 1fr))"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* --- 80 Kč pricing banner: price on the left, "+ POŠTOVNÉ" and the
+         buttons stacked into a right-hand column --- */
+  .pricing-row {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    gap: 18px 40px !important;
+    align-items: start !important;
+  }
+  .price-left {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: center !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  .price-middle {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    border-left: none !important;
+    padding-inline: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  .price-actions {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 20px !important;
+  }
+  .price-actions .btn-primary {
+    width: auto !important;
+  }
+  .price-actions .link-hover {
+    margin-top: 0 !important;
+    text-align: left !important;
+  }
+
+  /* --- Membership tiers: keep all three in a single row, scaled down --- */
+  .tier-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+  .tier-card,
+  .tier-card-featured {
+    min-width: 0 !important;
+    padding-inline: 16px !important;
+    padding-block: 22px !important;
+    gap: 16px !important;
+  }
+  .tier-card-featured {
+    box-shadow: #FC7B35 6px 6px 0px -2px !important;
+  }
+  /* Scale the oversized type inside the tier cards to fit ~225px columns */
+  .tier-grid [style*="font-size: clamp(28px, 5vw, 56px)"] {
+    font-size: 30px !important;
+  }
+  .tier-grid [style*="font-size: 36px"] {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+  .tier-grid [style*="font-size: 16px"] {
+    font-size: 13px !important;
+  }
+  .tier-grid [style*="font-size: 15px"] {
+    font-size: 12px !important;
+  }
+}
+
+/* =============================================================================
+   COMPARISON TABLE — narrow devices (≤900px): fixed first column + a tier
+   toggle so only the selected Úroveň column shows next to the labels, instead
+   of a 1280px horizontal scroll.
+   ============================================================================= */
+.ct-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-swipe-hint {
+    display: none !important;
+  }
+
+  .ct-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .ct-toggle-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    cursor: pointer;
+    text-align: center;
+    padding: 12px 10px;
+    border: 1px solid #3A2C3133;
+    background: #3A2C310A;
+    color: #3A2C31;
+    font-family: 'Mulish', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .ct-toggle-btn[aria-pressed="true"] {
+    background: #FC7B35;
+    border-color: #FC7B35;
+    color: #F4F2EB;
+  }
+
+  /* Collapse the fixed 1280px / 320px-per-column table to fit the viewport */
+  .comparison-table {
+    overflow-x: visible !important;
+  }
+  .comparison-table > div {
+    min-width: 0 !important;
+  }
+  .comparison-table > div > div {
+    width: auto !important;
+  }
+  .comparison-table > div > div:nth-child(1) {
+    flex: 0 0 44% !important;
+  }
+  .comparison-table > div > div:nth-child(2),
+  .comparison-table > div > div:nth-child(3),
+  .comparison-table > div > div:nth-child(4) {
+    flex: 1 1 0 !important;
+  }
+
+  /* Show only the active tier column (default = Úroveň 2) */
+  .comparison-table[data-ct="1"] > div > div:nth-child(3),
+  .comparison-table[data-ct="1"] > div > div:nth-child(4),
+  .comparison-table[data-ct="2"] > div > div:nth-child(2),
+  .comparison-table[data-ct="2"] > div > div:nth-child(4),
+  .comparison-table[data-ct="3"] > div > div:nth-child(2),
+  .comparison-table[data-ct="3"] > div > div:nth-child(3) {
+    display: none !important;
   }
 }

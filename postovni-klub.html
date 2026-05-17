@@ -279,8 +279,17 @@
                 <span>← Posuň tabulku pro srovnání →</span>
             </div>
 
-            <!-- Table Wrapper: Enables horizontal scroll on mobile to avoid squashing -->
-            <div class="comparison-table"
+            <!-- Tier toggle: shown ≤900px so the table can display the labels
+                 column + one chosen tier instead of scrolling horizontally -->
+            <div class="ct-toggle" role="group" aria-label="Vyber úroveň pro srovnání">
+                <button type="button" class="ct-toggle-btn" data-ct-set="1">Úroveň 1</button>
+                <button type="button" class="ct-toggle-btn" data-ct-set="2" aria-pressed="true">Úroveň 2 · tip</button>
+                <button type="button" class="ct-toggle-btn" data-ct-set="3">Úroveň 3</button>
+            </div>
+
+            <!-- Table Wrapper: ≥901px shows all tiers; ≤900px shows labels + the
+                 tier selected via .ct-toggle (data-ct attribute) -->
+            <div class="comparison-table" data-ct="2"
                 style="box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; overflow-x: auto; padding-top: 16px;">
 
                 <!-- Table Header Row -->
@@ -2130,5 +2139,24 @@
     <script src="cms-config.js"></script>
     <script src="components.js"></script>
     <script src="global.js"></script>
+    <script>
+        // Comparison-table tier toggle (active ≤900px via CSS)
+        (function () {
+            var table = document.querySelector('.comparison-table[data-ct]');
+            var buttons = document.querySelectorAll('.ct-toggle-btn');
+            if (!table || !buttons.length) return;
+            function select(tier) {
+                table.setAttribute('data-ct', tier);
+                buttons.forEach(function (b) {
+                    b.setAttribute('aria-pressed', b.getAttribute('data-ct-set') === tier ? 'true' : 'false');
+                });
+            }
+            buttons.forEach(function (b) {
+                b.addEventListener('click', function () {
+                    select(b.getAttribute('data-ct-set'));
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
