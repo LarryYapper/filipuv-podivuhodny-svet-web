@@ -1,0 +1,21 @@
+.table-selecting-mode td.td-t8mfm8 {
+  letter-spacing: 0px;
+}
+
+.table-selecting-mode td.td-ay8no8 { letter-spacing: 0px; }
+
+.table-xvrk4n { max-width: 600px; }
+
+@media (min-width: 481px) and (max-width: 769px) {.table-selecting-mode td.td-t8mfm8 {
+  letter-spacing: normal;
+}
+
+.table-selecting-mode td.td-ay8no8 { letter-spacing: normal; }}
+
+@media (max-width: 481px) {.table-selecting-mode td.td-t8mfm8 {
+  letter-spacing: normal;
+}
+
+.table-selecting-mode td.td-ay8no8 { letter-spacing: normal; }
+
+.table-xvrk4n { max-width: 390px; }}
