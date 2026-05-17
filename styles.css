@@ -2983,7 +2983,9 @@ body {
     justify-content: center !important;
     flex: 0 1 auto !important;
   }
-  .nav-load .nav-desktop-links {
+  /* Higher specificity than the .nav-load>div:last-child rule in the
+     max-width:900 block, so the links actually center */
+  .nav-load.main-navigation .nav-desktop-links {
     width: 100% !important;
     justify-content: center !important;
     flex-wrap: wrap !important;
@@ -3050,39 +3052,39 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  /* --- 80 Kč pricing banner: price on the left, "+ POŠTOVNÉ" and the
-         buttons stacked into a right-hand column --- */
+  /* --- 80 Kč pricing banner: price, "+ POŠTOVNÉ" and the buttons sit in one
+         row, all aligned to the same top edge (button level with the text) --- */
   .pricing-row {
-    display: grid !important;
-    grid-template-columns: auto 1fr !important;
-    gap: 18px 40px !important;
-    align-items: start !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 20px 36px !important;
   }
   .price-left {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    align-self: start !important;
+    align-self: flex-start !important;
     width: auto !important;
     max-width: none !important;
+    flex: 0 0 auto !important;
   }
   .price-middle {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    align-self: start !important;
+    align-self: flex-start !important;
     border-left: none !important;
     padding-inline: 0 !important;
     width: auto !important;
     max-width: none !important;
+    flex: 1 1 auto !important;
   }
   .price-actions {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
+    align-self: flex-start !important;
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     justify-content: flex-start !important;
-    gap: 20px !important;
+    gap: 16px 20px !important;
+    flex: 0 0 auto !important;
   }
   .price-actions .btn-primary {
     width: auto !important;
@@ -3132,9 +3134,10 @@ body {
   display: none;
 }
 
-/* Smooth fade when switching tiers in the narrow toggle view */
+/* Subtle slide + fade when switching tiers in the narrow toggle view */
 .comparison-table {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  will-change: opacity, transform;
 }
 
 @media (max-width: 900px) {
