@@ -2146,7 +2146,14 @@
             var buttons = document.querySelectorAll('.ct-toggle-btn');
             if (!table || !buttons.length) return;
             function select(tier) {
-                table.setAttribute('data-ct', tier);
+                if (table.getAttribute('data-ct') === tier) return;
+                table.style.opacity = '0';
+                window.setTimeout(function () {
+                    table.setAttribute('data-ct', tier);
+                    requestAnimationFrame(function () {
+                        table.style.opacity = '1';
+                    });
+                }, 150);
                 buttons.forEach(function (b) {
                     b.setAttribute('aria-pressed', b.getAttribute('data-ct-set') === tier ? 'true' : 'false');
                 });

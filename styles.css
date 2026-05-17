@@ -2970,8 +2970,29 @@ body {
     justify-content: center !important;
   }
 
-  /* --- Hero CTAs: keep side by side but horizontally centered --- */
-  .hero-actions {
+  /* --- Main menu: logo + title centered on row 1, nav links centered on
+         row 2 --- */
+  .nav-load.main-navigation {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+  .nav-load .logo-hover {
+    width: 100% !important;
+    justify-content: center !important;
+    flex: 0 1 auto !important;
+  }
+  .nav-load .nav-desktop-links {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 20px 28px !important;
+  }
+
+  /* --- Hero CTAs: only the home-page hero centers; other heroes (e.g.
+         edice-vitej) keep their natural left alignment with the copy --- */
+  .hero-section .hero-actions {
     justify-content: center !important;
   }
 
@@ -2980,14 +3001,18 @@ body {
   .edition-strip {
     white-space: normal !important;
     overflow: visible !important;
+    justify-content: center !important;
   }
   .edition-strip-inner {
     justify-content: center !important;
+    text-align: center !important;
   }
   .edition-strip-main {
     flex-direction: column !important;
     gap: 4px !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
   .edition-strip-subtitle {
     font-size: 11px !important;
@@ -3035,14 +3060,15 @@ body {
   }
   .price-left {
     grid-column: 1 !important;
-    grid-row: 1 / span 2 !important;
-    align-self: center !important;
+    grid-row: 1 !important;
+    align-self: start !important;
     width: auto !important;
     max-width: none !important;
   }
   .price-middle {
     grid-column: 2 !important;
     grid-row: 1 !important;
+    align-self: start !important;
     border-left: none !important;
     padding-inline: 0 !important;
     width: auto !important;
@@ -3106,6 +3132,11 @@ body {
   display: none;
 }
 
+/* Smooth fade when switching tiers in the narrow toggle view */
+.comparison-table {
+  transition: opacity 0.2s ease;
+}
+
 @media (max-width: 900px) {
   .mobile-swipe-hint {
     display: none !important;
@@ -3160,6 +3191,21 @@ body {
   .comparison-table > div > div:nth-child(3),
   .comparison-table > div > div:nth-child(4) {
     flex: 1 1 0 !important;
+  }
+
+  /* One consistent divider between the fixed label column and whichever tier
+     is shown (tier 3's cell has no own border, so put it on the label cell) */
+  .comparison-table > div > div:nth-child(1) {
+    border-right: 1px solid #3A2C3126 !important;
+  }
+  .comparison-table > div:first-child > div:nth-child(1) {
+    border-right-color: #F4F2EB1F !important;
+  }
+  .comparison-table > div > div:nth-child(2),
+  .comparison-table > div > div:nth-child(3),
+  .comparison-table > div > div:nth-child(4) {
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
   }
 
   /* Show only the active tier column (default = Úroveň 2) */

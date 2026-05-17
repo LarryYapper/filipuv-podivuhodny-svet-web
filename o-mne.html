@@ -487,21 +487,33 @@
       .stat { padding: 24px 14px 22px; min-height: 0; }
       .stat-number { font-size: 46px; }
 
-      /* Subsequent sections: title fixed on the left, body wraps to its right
-         and spills full-width below it when long (e.g. "Kam jsem šel") */
-      .two-col { display: block; }
-      .two-col::after { content: ""; display: block; clear: both; }
-      .two-col > div:first-child {
+      /* Subsequent sections: title fixed on the left, body kept in a column to
+         its right. Short copy stays in that right column. */
+      .two-col {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+      }
+
+      /* Long sections (marked .two-col-wide, e.g. "Kam jsem šel"): title floats
+         left so the long body wraps right of it and then spills full-width
+         below the title. */
+      .two-col.two-col-wide {
+        display: block;
+      }
+      .two-col.two-col-wide::after { content: ""; display: block; clear: both; }
+      .two-col.two-col-wide > div:first-child {
         float: left;
         width: 250px;
         margin: 0 44px 18px 0;
       }
-      .two-col > .body-copy {
+      .two-col.two-col-wide > .body-copy {
         display: block !important;
         max-width: none !important;
       }
-      .two-col > .body-copy > * { margin: 0 0 16px 0; }
-      .two-col > .body-copy > *:last-child { margin-bottom: 0; }
+      .two-col.two-col-wide > .body-copy > * { margin: 0 0 16px 0; }
+      .two-col.two-col-wide > .body-copy > *:last-child { margin-bottom: 0; }
     }
   </style>
 </head>
@@ -568,7 +580,7 @@
     </section>
 
     <section class="section story-section story-card">
-      <div class="container two-col">
+      <div class="container two-col two-col-wide">
         <div>
           <div class="eyebrow">✦ kam jsem šel</div>
           <h2 class="section-title">Praha.<br>Malta.<br>Taipei.<br>Richmond.<br>A opět domů.</h2>
