@@ -168,8 +168,14 @@
                     padding-inline: 12px !important;
                     padding-block: 8px !important;
                 }
+            }
+
+            /* Hide the 'ÚROVEŇ X' name ONLY between 485–767px. At ≤484 the
+               #16 block below brings it back as the first line, so it must
+               not be hidden there (was hidden before -> names invisible). */
+            @media (min-width: 485px) and (max-width: 767px) {
                 .sticky-tier-btn div:first-child {
-                    display: none !important; /* Hide 'ÚROVEŇ X' text on tiny screens if needed, or just make it smaller */
+                    display: none !important;
                 }
             }
 
@@ -993,7 +999,7 @@
                     </div>
                 </div>
 
-                <div
+                <div class="tier-select-row"
                     style="border-top-color: #3A2C3126; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; min-width: 1280px;">
                     <div
                         style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; justify-content: center; padding-block: 28px; padding-inline: 24px; width: 320px;">
@@ -2136,8 +2142,8 @@
                 ✦ POSLEDNÍ KROK
             </div>
             <div
-                style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(48px, 10vw, 120px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -5.3px; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 1100px; text-align: center;">
-                Otevři schránku<span class="title-break-sep" aria-hidden="true" style="display:block; width:80px; height:1px; background:#F4F2EB66; margin:18px auto;"></span>za 28 dní.
+                style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(48px, 10vw, 120px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 1100px; text-align: center;">
+                Otevři schránku<br>za 28 dní.
             </div>
             <div
                 style="box-sizing: border-box; color: #F4F2EBB3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 24px; font-style: italic; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 720px; text-align: center;">

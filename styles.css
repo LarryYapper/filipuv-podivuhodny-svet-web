@@ -3354,35 +3354,42 @@ body {
 
 /* #12: keep the tier toggle pinned to the top while the user scrolls inside
    the comparison ("Co dostaneš / srovnání úrovní") section, so they can switch
-   Úroveň at any point. Sits just below the global sticky select-bar. */
+   Úroveň at any point. It sits ON TOP of (and visually replaces) the global
+   sticky select-bar while you're inside this section, so z-index must beat the
+   bar's z-index:100. Negative horizontal margin + padding makes it a full-bleed
+   solid strip so table rows scroll cleanly underneath. */
 @media (max-width: 900px) {
   .ct-toggle {
+    position: -webkit-sticky;
     position: sticky;
-    top: 60px; /* clears the global .sticky-bar (sticky, top:0) */
-    z-index: 90;
+    top: 0;
+    z-index: 101;
     background: #F4F2EB;
-    padding-block: 12px;
-    margin-bottom: 4px;
-    box-shadow: 0 8px 16px -12px rgba(58, 44, 49, 0.45);
+    padding-block: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 10px 20px -14px rgba(58, 44, 49, 0.5);
   }
 }
 
 /* #15: the final "Vyber úroveň a pokračuj" select row keeps ALL THREE buttons
-   visible on one row at ≤900/768px instead of the single-tier collapse the
-   rest of the comparison table uses. */
+   visible on one row at ≤900px (covers the <804px the user reported) instead
+   of the single-tier collapse the rest of the comparison table uses.
+   Targeted via an explicit .tier-select-row class (more robust than :has()),
+   with enough specificity (+ !important) to beat the data-ct collapse rules. */
 @media (max-width: 900px) {
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) {
+  .comparison-table[data-ct] .tier-select-row {
+    min-width: 0 !important;
     flex-wrap: wrap !important;
     row-gap: 12px !important;
   }
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) > div:first-child {
+  .comparison-table[data-ct] .tier-select-row > div:nth-child(1) {
     flex: 1 1 100% !important;
     width: 100% !important;
     border-left: none !important;
     align-items: flex-start !important;
     padding-block: 16px !important;
   }
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) > div:not(:first-child) {
+  .comparison-table[data-ct] .tier-select-row > div:nth-child(n+2) {
     display: flex !important;
     flex: 1 1 0 !important;
     min-width: 0 !important;
@@ -3392,21 +3399,56 @@ body {
     border-left: none !important;
     border-right: none !important;
   }
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn {
+  .comparison-table[data-ct] .tier-select-row .vyber-tier-btn {
     width: 100% !important;
     padding-inline: 8px !important;
   }
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn div {
+  .comparison-table[data-ct] .tier-select-row .vyber-tier-btn div {
     font-size: 12px !important;
     white-space: nowrap;
     text-align: center;
   }
 }
 @media (max-width: 420px) {
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn {
+  .comparison-table[data-ct] .tier-select-row .vyber-tier-btn {
     padding-inline: 4px !important;
   }
-  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn div {
+  .comparison-table[data-ct] .tier-select-row .vyber-tier-btn div {
     font-size: 10.5px !important;
+  }
+}
+
+/* =============================================================================
+   INDEX HERO — kill the empty space below the placeholder photo (update-5 #1)
+   ============================================================================= */
+
+/* >850px (two-column hero): the photo column was vertically centered in a row
+   whose height is driven by the taller text column, leaving a big empty band
+   below the (shorter) placeholder. Stretch the media column and let the
+   placeholder fill the full row height so there is no dead space. */
+@media (min-width: 851px) {
+  .hero-section {
+    align-items: stretch !important;
+  }
+  .hero-section .hero-media {
+    align-self: stretch !important;
+    justify-content: stretch !important;
+  }
+  .hero-section .hero-media > div {
+    aspect-ratio: auto !important;
+    height: 100% !important;
+    min-height: 380px;
+  }
+}
+
+/* ≤850px (single-column hero): tighten the stack so the placeholder isn't
+   followed by an oversized gap before the next section. */
+@media (max-width: 850px) {
+  .hero-section {
+    row-gap: 24px !important;
+    gap: 24px !important;
+  }
+  .hero-section .hero-media > div {
+    aspect-ratio: 4 / 5 !important;
   }
 }

@@ -527,9 +527,16 @@
         border-bottom: none !important;
       }
       .stat:last-child { border-right: none !important; }
-      .stat-number { font-size: 26px !important; line-height: 1.1 !important; }
+      .stat-number { font-size: 24px !important; line-height: 1.1 !important; }
       .stat-label { font-size: 10px !important; }
-      .stat-copy { display: none !important; } /* drop long copy so 4 fit cleanly */
+      /* keep the meaning visible (e.g. "365 dní → plánování"), just compact,
+         so the four stats still fit one row */
+      .stat-copy {
+        display: block !important;
+        font-size: 9px !important;
+        line-height: 1.3 !important;
+        margin-top: 4px !important;
+      }
 
       /* #23 — "✦ čtyři místa, ze kterých čerpám" gallery → 2-column grid */
       .story-section .gallery {
@@ -541,11 +548,13 @@
          rule flattens .final-cta-section padding to 12px) */
       .final-cta-section { padding-top: 56px !important; }
 
-      /* #25 — remove the gap between the two CTA buttons */
+      /* #25 — remove the gap between the two CTA buttons, but add clear
+         space ABOVE the "Vyzkoušej Edici VÍTEJ" button block (update-5) */
       .final-cta-section > div:nth-child(4) {
         gap: 4px !important;
         row-gap: 4px !important;
-        padding-top: 4px !important;
+        margin-top: 28px !important;
+        padding-top: 0 !important;
       }
     }
 
