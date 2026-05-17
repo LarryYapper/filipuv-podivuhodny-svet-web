@@ -39,6 +39,11 @@
             }
         }
 
+        /* #13 (update-4): "Měsíční Edice" — show only the first two editions */
+        .edice-grid > div:nth-child(n+3) {
+            display: none !important;
+        }
+
         /* Stack A6 format text below item title in detail cards — only on smaller desktop */
         @media (max-width: 1150px) {
             #co-je-v-kuse [style*="align-items: baseline"] {
@@ -165,6 +170,38 @@
                 }
                 .sticky-tier-btn div:first-child {
                     display: none !important; /* Hide 'ÚROVEŇ X' text on tiny screens if needed, or just make it smaller */
+                }
+            }
+
+            /* #16 (update-4): <484 — keep all three tier buttons on one row,
+               but bring the NAME back as the first line and stack the price
+               below it, with taller buttons. */
+            @media (max-width: 484px) {
+                .sticky-bar > div:last-child {
+                    flex: 1 1 100% !important;
+                    flex-wrap: nowrap !important;
+                    gap: 6px !important;
+                }
+                .sticky-tier-btn {
+                    flex: 1 1 0 !important;
+                    flex-wrap: wrap !important;
+                    justify-content: center !important;
+                    align-items: baseline !important;
+                    row-gap: 2px !important;
+                    column-gap: 5px !important;
+                    padding-block: 11px !important;
+                    padding-inline: 8px !important;
+                    text-align: center !important;
+                }
+                .sticky-tier-btn div:first-child {
+                    display: block !important;
+                    flex: 1 0 100% !important;
+                    text-align: center !important;
+                    font-size: 10px !important;
+                    letter-spacing: 0.12em !important;
+                }
+                .sticky-tier-btn div:nth-child(2) {
+                    font-size: 15px !important;
                 }
             }
         </style>

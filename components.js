@@ -91,9 +91,12 @@ const SHARED_COMPONENTS = {
                         <a href="nas-svet.html" class="mobile-nav-link">Náš svět</a>
                         <a href="dobro.html" class="mobile-nav-link">Dobro</a>
                         <a href="o-mne.html" class="mobile-nav-link">O mně</a>
-                        <a href="sprava-predplatneho.html" class="mobile-nav-link">Členství</a>
+                        <a href="sprava-predplatneho.html" class="mobile-nav-link mobile-nav-utility">Členství</a>
                     </div>
                     <div class="mobile-nav-footer">
+                        <a href="edice-vitej.html" class="btn-line-shared">
+                            <span>Vyzkoušej Edici VÍTEJ</span>
+                        </a>
                         <a href="postovni-klub.html" class="btn-primary-shared">
                             <span>Stát se členem</span>
                         </a>
@@ -116,6 +119,7 @@ const SHARED_COMPONENTS = {
                 <details class="nav-desktop-details">
                     <summary class="nav-link" style="display: block !important; list-style: none !important;">
                         <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                            <img src="assets/Filipův%20podivuhodný%20svět_PK_logo%202.0.png" alt="" class="nav-pk-logo">
                             Poštovní klub
                             <span class="nav-arrow">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>

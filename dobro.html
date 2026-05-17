@@ -1231,6 +1231,59 @@
         max-width: 560px;
       }
     }
+
+    /* ---- update-4: dobro mobile (<484px) ---- */
+    @media (max-width: 484px) {
+      /* #18 — center the receipt horizontally */
+      .hero-receipt {
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+      }
+      .receipt-card {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* #19 — center "Charita kvartálu" + "Člověk v tísni" header (and the
+         "Tento měsíc · stav k" header, same component) */
+      .section-header-row {
+        align-items: center;
+        text-align: center;
+      }
+      .section-header {
+        align-items: center;
+        max-width: 100%;
+      }
+      .section-header .section-kicker,
+      .section-header .section-title,
+      .section-subtitle {
+        text-align: center;
+      }
+
+      /* #20 — center the ledger header ("Květen 2026" / "stav k …") */
+      .ledger-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+      .ledger-title-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* #21 — keep "2026 · měsíc 1 z Q2" on a single line in the narrow column */
+      .ledger-period {
+        white-space: nowrap;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+      }
+    }
   </style>
 </head>
 

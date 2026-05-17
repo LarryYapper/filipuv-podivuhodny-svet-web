@@ -515,6 +515,47 @@
       .two-col.two-col-wide > .body-copy > * { margin: 0 0 16px 0; }
       .two-col.two-col-wide > .body-copy > *:last-child { margin-bottom: 0; }
     }
+
+    /* ---- update-4: o-mne mobile (<484px) ---- */
+    @media (max-width: 484px) {
+      /* #22 — keep the four number stats on a single row */
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+      .stat {
+        padding: 14px 6px !important;
+        min-height: 0 !important;
+        border-right: 1px solid var(--line) !important;
+        border-bottom: none !important;
+      }
+      .stat:last-child { border-right: none !important; }
+      .stat-number { font-size: 26px !important; line-height: 1.1 !important; }
+      .stat-label { font-size: 10px !important; }
+      .stat-copy { display: none !important; } /* drop long copy so 4 fit cleanly */
+
+      /* #23 — "✦ čtyři místa, ze kterých čerpám" gallery → 2-column grid */
+      .story-section .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+      }
+
+      /* #24 — restore breathing room above the final CTA (the global mobile
+         rule flattens .final-cta-section padding to 12px) */
+      .final-cta-section { padding-top: 56px !important; }
+
+      /* #25 — remove the gap between the two CTA buttons */
+      .final-cta-section > div:nth-child(4) {
+        gap: 4px !important;
+        row-gap: 4px !important;
+        padding-top: 4px !important;
+      }
+    }
+
+    /* #26 — loosen the very tight (-5.3px) kerning of "Otevři první obálku" */
+    @media (min-width: 768px) {
+      .final-cta-section > div:nth-child(2) { letter-spacing: -0.01em !important; }
+    }
+    @media (max-width: 767px) {
+      .final-cta-section > div:nth-child(2) { letter-spacing: 0 !important; }
+    }
   </style>
 </head>
 <body>

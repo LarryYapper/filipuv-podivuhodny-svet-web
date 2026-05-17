@@ -789,11 +789,37 @@ svg {
     gap: 20px !important;
   }
 
-  /* Hero Section */
+  /* Hero Section: collapse the auto-fit grid to ONE centered column so the
+     intro text ("Žádné notifikace...") is horizontally centered and the
+     placeholder photo no longer leaves a huge gap from row stretching. */
   .hero-section {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     flex-direction: column !important;
     text-align: center !important;
     align-items: center !important;
+    justify-items: center !important;
+  }
+
+  .hero-section > div {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .hero-section .hero-actions,
+  .hero-section .hero-note {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .hero-media {
+    width: 100% !important;
+    max-width: 360px !important;
+    margin-top: 8px !important;
+  }
+
+  .hero-media > div {
+    aspect-ratio: 3/4 !important;
   }
 
   .hero-text {
@@ -3234,5 +3260,153 @@ body {
   .comparison-table.ct-anim.ct-dir-prev[data-ct="2"] > div > div:nth-child(3),
   .comparison-table.ct-anim.ct-dir-prev[data-ct="3"] > div > div:nth-child(4) {
     animation: ctSlideFromLeft 0.24s ease both;
+  }
+}
+
+/* =============================================================================
+   SHARED COMPONENT FIXES (update-4)
+   ============================================================================= */
+
+/* PK logo to the left of "Poštovní klub" in the desktop nav */
+.nav-pk-logo {
+  height: 26px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Distinguish "Členství" in the mobile menu like the desktop nav (muted) */
+.mobile-nav-link.mobile-nav-utility {
+  color: #F4F2EB99 !important;
+  opacity: 1 !important;
+}
+.mobile-nav-link.mobile-nav-utility:hover,
+.mobile-nav-link.mobile-nav-utility:active {
+  color: #FC7B35 !important;
+}
+
+/* "Line" (outlined) secondary button in the mobile menu footer */
+.btn-line-shared {
+  align-items: center;
+  background-color: transparent;
+  border: 1.5px solid rgba(244, 242, 235, 0.45);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  padding-block: 15px;
+  padding-inline: 24px;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.btn-line-shared span {
+  color: #F4F2EB;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.btn-line-shared:hover {
+  border-color: #FC7B35;
+}
+.btn-line-shared:hover span {
+  color: #FC7B35;
+}
+
+/* <=484px: kill the 14px cream gutter the global wrappers inherit so the
+   banner / nav / footer bleed to the screen edges (removes the "white bars"),
+   then put the gutter back on the bars themselves (border-box -> bg spans edge
+   to edge). */
+@media (max-width: 484px) {
+  #global-banner,
+  #global-header,
+  #global-footer {
+    padding-inline: 0 !important;
+  }
+  .top-banner,
+  .main-navigation,
+  .main-footer {
+    padding-inline: 18px !important;
+  }
+}
+
+/* #14 (update-4): the index final-CTA heading ("Otevři schránku za 28 dní")
+   had an extremely tight inline letter-spacing (-5.3px) that crammed the
+   glyphs together on desktop — loosen it (the ≤767 rule already opens it up
+   on phones). */
+@media (min-width: 768px) {
+  .final-cta-section .final-cta-title {
+    letter-spacing: -0.01em !important;
+  }
+}
+
+/* #7 (update-4): on phones add space above the final-CTA button block
+   ("Vyzkoušej Edici VÍTEJ") so it isn't glued to the paragraph above. */
+@media (max-width: 484px) {
+  .final-cta-section .final-cta-actions {
+    padding-top: 22px !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* =============================================================================
+   POŠTOVNÍ KLUB — comparison/srovnání section (update-4)
+   ============================================================================= */
+
+/* #12: keep the tier toggle pinned to the top while the user scrolls inside
+   the comparison ("Co dostaneš / srovnání úrovní") section, so they can switch
+   Úroveň at any point. Sits just below the global sticky select-bar. */
+@media (max-width: 900px) {
+  .ct-toggle {
+    position: sticky;
+    top: 60px; /* clears the global .sticky-bar (sticky, top:0) */
+    z-index: 90;
+    background: #F4F2EB;
+    padding-block: 12px;
+    margin-bottom: 4px;
+    box-shadow: 0 8px 16px -12px rgba(58, 44, 49, 0.45);
+  }
+}
+
+/* #15: the final "Vyber úroveň a pokračuj" select row keeps ALL THREE buttons
+   visible on one row at ≤900/768px instead of the single-tier collapse the
+   rest of the comparison table uses. */
+@media (max-width: 900px) {
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) {
+    flex-wrap: wrap !important;
+    row-gap: 12px !important;
+  }
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) > div:first-child {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    border-left: none !important;
+    align-items: flex-start !important;
+    padding-block: 16px !important;
+  }
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) > div:not(:first-child) {
+    display: flex !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    padding-inline: 6px !important;
+    padding-block: 16px !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn {
+    width: 100% !important;
+    padding-inline: 8px !important;
+  }
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn div {
+    font-size: 12px !important;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn {
+    padding-inline: 4px !important;
+  }
+  .comparison-table[data-ct] > div:has(.vyber-tier-btn) .vyber-tier-btn div {
+    font-size: 10.5px !important;
   }
 }

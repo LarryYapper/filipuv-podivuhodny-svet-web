@@ -147,6 +147,99 @@
                 border-bottom: 1px solid #3A2C311F;
             }
         }
+
+        /* ---- update-4 fixes ---- */
+
+        /* #8: "80 Kč jednorázově" pricing banner — like the index hero, when it
+           wraps on tablet widths center it instead of leaving space-between
+           gaps; drop the now-floating divider border. */
+        @media (max-width: 900px) {
+            .pricing-banner-bleed .pricing-row {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            .pricing-banner-bleed .price-left,
+            .pricing-banner-bleed .price-middle,
+            .pricing-banner-bleed .price-actions {
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .pricing-banner-bleed .price-middle {
+                border-left: none !important;
+                padding-inline: 0 !important;
+                max-width: 100% !important;
+            }
+            .pricing-banner-bleed .price-left {
+                align-items: center !important;
+            }
+            /* #10: breathing room above the "Vyzkoušej za 99 Kč" button */
+            .pricing-banner-bleed .price-actions {
+                margin-top: 12px !important;
+            }
+        }
+
+        /* #9: <484 — keep the 99 Kč price + "Objednej za 99 Kč" button aligned
+           to the LEFT, in line with the hero text (not centered/stretched). */
+        @media (max-width: 484px) {
+            .edition-hero .hero-content,
+            .edition-hero .hero-content > div {
+                text-align: left !important;
+                align-items: flex-start !important;
+            }
+            .edition-hero .hero-actions {
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                gap: 18px !important;
+            }
+            .edition-hero .hero-actions > a.btn-primary-shared {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            /* extra space above the "Vyzkoušej za 99 Kč" banner button too */
+            .pricing-banner-bleed .price-actions {
+                margin-top: 18px !important;
+            }
+        }
+
+        /* #11 + #14: Final CTA — smaller button, more air between the text
+           block and the button, compact non-stacked notes, looser heading
+           tracking and no forced extra blank line. */
+        .final-cta-section h2 {
+            letter-spacing: -0.01em !important;
+        }
+        @media (max-width: 767px) {
+            .final-cta-section {
+                gap: 28px !important;
+                padding-block: 64px !important;
+            }
+            .final-cta-section h2 {
+                font-size: clamp(34px, 11vw, 52px) !important;
+                line-height: 1.05 !important;
+                letter-spacing: 0 !important;
+            }
+            .final-cta-section h2 br {
+                display: none !important;
+            }
+            .final-cta-section .btn-primary-shared {
+                height: 56px !important;
+                padding-inline: 28px !important;
+            }
+            .final-cta-section .btn-primary-shared span {
+                font-size: 16px !important;
+            }
+            /* notes row: keep on as few rows as possible, smaller, tighter */
+            .final-cta-section > div:last-child {
+                gap: 10px 18px !important;
+                margin-top: 8px !important;
+            }
+            .final-cta-section > div:last-child span {
+                font-size: 10px !important;
+                letter-spacing: 0.12em !important;
+            }
+            .final-cta-section > div:last-child > span {
+                display: none !important; /* drop the "·" separators when wrapped */
+            }
+        }
     </style>
 </head>
 
