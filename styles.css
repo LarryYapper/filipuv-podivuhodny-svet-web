@@ -3052,39 +3052,36 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  /* --- 80 Kč pricing banner: price, "+ POŠTOVNÉ" and the buttons sit in one
-         row, all aligned to the same top edge (button level with the text) --- */
+  /* --- 80 Kč pricing banner: three columns side by side, all top-aligned —
+         1. price (80 Kč), 2. + POŠTOVNÉ, 3. buttons --- */
   .pricing-row {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 20px 36px !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    align-items: start !important;
+    gap: 16px 32px !important;
   }
   .price-left {
-    align-self: flex-start !important;
+    grid-column: 1 !important;
+    align-self: start !important;
     width: auto !important;
     max-width: none !important;
-    flex: 0 0 auto !important;
   }
   .price-middle {
-    align-self: flex-start !important;
+    grid-column: 2 !important;
+    align-self: start !important;
     border-left: none !important;
     padding-inline: 0 !important;
     width: auto !important;
     max-width: none !important;
-    flex: 1 1 auto !important;
   }
   .price-actions {
-    align-self: flex-start !important;
+    grid-column: 3 !important;
+    align-self: start !important;
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    gap: 16px 20px !important;
-    flex: 0 0 auto !important;
+    gap: 12px !important;
   }
   .price-actions .btn-primary {
     width: auto !important;
@@ -3134,10 +3131,15 @@ body {
   display: none;
 }
 
-/* Subtle slide + fade when switching tiers in the narrow toggle view */
-.comparison-table {
-  transition: opacity 0.22s ease, transform 0.22s ease;
-  will-change: opacity, transform;
+/* Subtle slide + fade applied ONLY to the tier column when switching tiers
+   in the narrow toggle view (the fixed label column stays put) */
+@keyframes ctSlideFromRight {
+  from { opacity: 0; transform: translateX(22px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ctSlideFromLeft {
+  from { opacity: 0; transform: translateX(-22px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 900px) {
@@ -3219,5 +3221,18 @@ body {
   .comparison-table[data-ct="3"] > div > div:nth-child(2),
   .comparison-table[data-ct="3"] > div > div:nth-child(3) {
     display: none !important;
+  }
+
+  /* Animate ONLY the freshly shown tier column (nth-child of the active
+     tier) — never the fixed "CO DOSTANEŠ KAŽDÝ MĚSÍC" label column */
+  .comparison-table.ct-anim.ct-dir-next[data-ct="1"] > div > div:nth-child(2),
+  .comparison-table.ct-anim.ct-dir-next[data-ct="2"] > div > div:nth-child(3),
+  .comparison-table.ct-anim.ct-dir-next[data-ct="3"] > div > div:nth-child(4) {
+    animation: ctSlideFromRight 0.24s ease both;
+  }
+  .comparison-table.ct-anim.ct-dir-prev[data-ct="1"] > div > div:nth-child(2),
+  .comparison-table.ct-anim.ct-dir-prev[data-ct="2"] > div > div:nth-child(3),
+  .comparison-table.ct-anim.ct-dir-prev[data-ct="3"] > div > div:nth-child(4) {
+    animation: ctSlideFromLeft 0.24s ease both;
   }
 }

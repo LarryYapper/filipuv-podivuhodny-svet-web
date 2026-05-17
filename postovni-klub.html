@@ -2145,29 +2145,19 @@
             var table = document.querySelector('.comparison-table[data-ct]');
             var buttons = document.querySelectorAll('.ct-toggle-btn');
             if (!table || !buttons.length) return;
-            var SHIFT = 22; // px — subtle slide distance
             function select(tier) {
                 var cur = table.getAttribute('data-ct');
                 if (cur === tier) return;
-                var dir = (parseInt(tier, 10) > parseInt(cur, 10)) ? 1 : -1;
+                var next = parseInt(tier, 10) > parseInt(cur, 10);
                 buttons.forEach(function (b) {
                     b.setAttribute('aria-pressed', b.getAttribute('data-ct-set') === tier ? 'true' : 'false');
                 });
-                // Slide the current column out in the travel direction + fade
-                table.style.opacity = '0';
-                table.style.transform = 'translateX(' + (dir * SHIFT) + 'px)';
-                window.setTimeout(function () {
-                    table.setAttribute('data-ct', tier);
-                    // Place the incoming column on the opposite side with no
-                    // transition, then animate it back to rest
-                    table.style.transition = 'none';
-                    table.style.transform = 'translateX(' + (dir * -SHIFT) + 'px)';
-                    requestAnimationFrame(function () {
-                        table.style.transition = '';
-                        table.style.opacity = '1';
-                        table.style.transform = 'translateX(0)';
-                    });
-                }, 160);
+                // Reset animation classes, force reflow so it re-triggers every
+                // switch (incl. 2→3), then swap the column and replay.
+                table.classList.remove('ct-anim', 'ct-dir-next', 'ct-dir-prev');
+                void table.offsetWidth;
+                table.setAttribute('data-ct', tier);
+                table.classList.add('ct-anim', next ? 'ct-dir-next' : 'ct-dir-prev');
             }
             buttons.forEach(function (b) {
                 b.addEventListener('click', function () {
