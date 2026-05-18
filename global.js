@@ -5,6 +5,47 @@
  */
 
 (function() {
+    const GA_MEASUREMENT_ID = 'G-7MFENEZZ3N';
+
+    function getCookieConsent() {
+        try {
+            return localStorage.getItem('fpvs-cookie-consent');
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function setAnalyticsConsent(choice) {
+        if (typeof window.gtag !== 'function') return;
+
+        window.gtag('consent', 'update', {
+            analytics_storage: choice === 'accepted' ? 'granted' : 'denied'
+        });
+    }
+
+    function initAnalytics() {
+        if (window.__fpvsAnalyticsLoaded) return;
+        if (getCookieConsent() !== 'accepted') return;
+
+        window.__fpvsAnalyticsLoaded = true;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        script.setAttribute('data-fpvs-analytics', 'true');
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('consent', 'default', {
+            analytics_storage: 'denied'
+        });
+        window.gtag('config', GA_MEASUREMENT_ID);
+
+        setAnalyticsConsent('accepted');
+    }
+
     // 1. BACK TO TOP BUTTON
     function initBackToTop() {
         if (document.querySelector('.back-to-top')) return;
@@ -407,7 +448,7 @@
 
     // 11. COOKIE CONSENT BANNER
     function initCookieConsent() {
-        if (localStorage.getItem('fpvs-cookie-consent')) return;
+        if (getCookieConsent()) return;
 
         const style = document.createElement('style');
         style.textContent = `
@@ -477,7 +518,15 @@
         setTimeout(() => banner.classList.add('cookie-visible'), 800);
 
         function dismiss(choice) {
-            localStorage.setItem('fpvs-cookie-consent', choice);
+            try {
+                localStorage.setItem('fpvs-cookie-consent', choice);
+            } catch (error) {
+                // Ignore storage failures and keep the popup flow working.
+            }
+            setAnalyticsConsent(choice);
+            if (choice === 'accepted') {
+                initAnalytics();
+            }
             banner.classList.remove('cookie-visible');
             setTimeout(() => banner.remove(), 400);
         }
@@ -540,6 +589,7 @@
         initSmoothScroll();
         initTierCheckout();
         initCookieConsent();
+        initAnalytics();
     }
 
     if (document.readyState === 'loading') {
