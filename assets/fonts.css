@@ -1,0 +1,25 @@
+/* Local font definitions — place WOFF2 font files in /assets/fonts/ */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/Fraunces-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('/assets/fonts/Mulish-Variable.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallbacks and small helper */
+:root {
+  --font-sans: 'Mulish', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Optionally allow other pages to include this file before styles.css */
