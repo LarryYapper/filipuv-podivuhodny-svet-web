@@ -127,18 +127,27 @@
         const spacer = document.createElement('div');
         spacer.className = 'nav-spacer';
         spacer.style.display = 'none';
-        spacer.style.height = nav.offsetHeight + 'px';
+        let navHeight = nav.getBoundingClientRect().height;
+        spacer.style.height = navHeight + 'px';
         nav.parentNode.insertBefore(spacer, nav);
 
         const banner = document.querySelector('.top-banner');
-        const stickyThreshold = banner ? banner.offsetHeight : 50;
+        let stickyThreshold = banner ? banner.getBoundingClientRect().height : 50;
+
+        function refreshMeasurements() {
+            navHeight = nav.getBoundingClientRect().height;
+            if (!nav.classList.contains('is-sticky')) {
+                spacer.style.height = navHeight + 'px';
+            }
+            stickyThreshold = banner ? banner.getBoundingClientRect().height : 50;
+        }
 
         function handleScroll() {
             if (window.pageYOffset > stickyThreshold) {
                 if (!nav.classList.contains('is-sticky')) {
                     nav.classList.add('is-sticky');
                     spacer.style.display = 'block';
-                    spacer.style.height = nav.offsetHeight + 'px';
+                    spacer.style.height = navHeight + 'px';
                 }
             } else {
                 if (nav.classList.contains('is-sticky')) {
@@ -149,11 +158,11 @@
         }
 
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', () => {
-            if (!nav.classList.contains('is-sticky')) {
-                spacer.style.height = nav.offsetHeight + 'px';
-            }
-        });
+        window.addEventListener('resize', refreshMeasurements);
+        if (typeof ResizeObserver !== 'undefined') {
+            const navObserver = new ResizeObserver(refreshMeasurements);
+            navObserver.observe(nav);
+        }
         
         // Run once on load
         handleScroll();

@@ -15,9 +15,14 @@
   <!-- Load custom fonts from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet">
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet">
+  </noscript>
   <link rel="icon" type="image/png" href="assets/Filipův%20podivuhodný%20svět_logo%202.0.png">
 
   <link rel="stylesheet" href="styles.css">
@@ -1456,9 +1461,9 @@
 
 
   </div>
-  <script src="cms-config.js"></script>
-  <script src="components.js"></script>
-  <script src="global.js"></script>
+  <script src="cms-config.js" defer></script>
+  <script src="components.js" defer></script>
+  <script src="global.js" defer></script>
 </body>
 
 </html>
