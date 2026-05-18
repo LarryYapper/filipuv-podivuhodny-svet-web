@@ -2202,12 +2202,12 @@
                 buttons.forEach(function (b) {
                     b.setAttribute('aria-pressed', b.getAttribute('data-ct-set') === tier ? 'true' : 'false');
                 });
-                // Reset animation classes, force reflow so it re-triggers every
-                // switch (incl. 2→3), then swap the column and replay.
+                // Reset animation classes, then set the new column and replay
                 table.classList.remove('ct-anim', 'ct-dir-next', 'ct-dir-prev');
-                void table.offsetWidth;
                 table.setAttribute('data-ct', tier);
-                table.classList.add('ct-anim', next ? 'ct-dir-next' : 'ct-dir-prev');
+                requestAnimationFrame(function () {
+                    table.classList.add('ct-anim', next ? 'ct-dir-next' : 'ct-dir-prev');
+                });
             }
             buttons.forEach(function (b) {
                 b.addEventListener('click', function () {
