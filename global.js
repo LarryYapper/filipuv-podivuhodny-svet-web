@@ -118,12 +118,25 @@
         });
     }
 
-    // 3. STICKY NAVIGATION LOGIC (Robust Fixed Fallback)
+    // 3. STICKY NAVIGATION LOGIC (toggle after passing banner)
     function initStickyNav() {
         const nav = document.querySelector('.main-navigation');
         if (!nav) return;
 
-        nav.classList.add('is-sticky');
+        const banner = document.getElementById('global-banner');
+        const bannerHeight = banner ? banner.offsetHeight : 0;
+
+        function updateSticky() {
+            if (window.pageYOffset > bannerHeight) {
+                nav.classList.add('is-sticky');
+            } else {
+                nav.classList.remove('is-sticky');
+            }
+        }
+
+        // run on init and on scroll
+        updateSticky();
+        window.addEventListener('scroll', updateSticky);
     }
 
     // 4. REVEAL ANIMATIONS (Intersection Observer)
