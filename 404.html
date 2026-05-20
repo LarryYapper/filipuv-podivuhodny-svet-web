@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>404 — Stránka nenalezena · Filipův podivuhodný svět</title>
+  <meta name="description" content="Stránka nenalezena (404) — Filipův podivuhodný svět">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .notfound-page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .notfound-code {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(56px, 12vw, 160px);
+      color: #3A2C31;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .notfound-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 4.5vw, 48px);
+      color: #3A2C31;
+      margin: 0;
+    }
+
+    .notfound-copy {
+      max-width: 720px;
+      color: #3A2C31B3;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 28px;
+    }
+
+    .notfound-actions { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+    .btn-ghost { padding:12px 20px; border-radius:999px; border:1px solid #3A2C31; background:transparent; text-decoration:none; color:#3A2C31; font-family:'Mulish',sans-serif; font-weight:700; }
+    .btn-primary { padding:12px 20px; border-radius:999px; background:#FC7B35; color:#F4F2EB; text-decoration:none; font-family:'Mulish',sans-serif; font-weight:700; }
+
+    @media (max-width:760px) {
+      .notfound-page { padding:48px 18px 80px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <main class="notfound-page">
+      <h1 class="notfound-code">404</h1>
+      <h2 class="notfound-title">Stránka nenalezena</h2>
+      <p class="notfound-copy">Omlouvám se — tato stránka už tu není nebo možná nikdy neexistovala. Můžeš se vrátit na domovskou stránku nebo mě kontaktovat.</p>
+
+      <div class="notfound-actions">
+        <a href="index.html" class="btn-primary">Domů</a>
+        <a href="kontakt.html" class="btn-ghost">Kontakt</a>
+      </div>
+    </main>
+
+    <div id="global-footer"></div>
+  </div>
+
+  <script src="components.js"></script>
+  <script src="global.js" defer></script>
+</body>
+
+</html>
