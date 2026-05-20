@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>Kontakt · Filipův podivuhodný svět</title>
+  <meta name="description" content="Kontaktujte Filipa — email, telefon nebo podpora.">
+  <link rel="icon" type="image/png" href="assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .kontakt-page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .kontakt-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .kontakt-kicker {
+      color: #FC7B35;
+      font-family: 'Mulish', system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .kontakt-title {
+      margin: 0;
+      color: #3A2C31;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 580;
+      line-height: 1.02;
+    }
+
+    .kontakt-card {
+      background: #F4F2EB;
+      border: 1px solid rgba(58,44,49,0.08);
+      padding: 28px;
+      border-radius: 8px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .kontakt-item {
+      min-width: 220px;
+    }
+
+    .kontakt-label {
+      display: block;
+      color: #3A2C31B3;
+      font-family: 'Mulish', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .kontakt-value {
+      color: #3A2C31;
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    @media (max-width:760px) {
+      .kontakt-page { padding: 40px 18px 80px; }
+      .kontakt-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="paper-canvas">
+    <div id="global-banner"></div>
+    <div id="global-header"></div>
+
+    <div class="kontakt-page">
+      <header class="kontakt-hero">
+        <div class="kontakt-kicker">✦ Kontakt</div>
+        <h1 class="kontakt-title">Napište nebo zavolejte</h1>
+        <p style="max-width:680px;color:#3A2C31B3;font-family:'Fraunces',serif;font-size:18px;font-style:italic;line-height:28px;margin:0;">Rád pomohu s dotazy ohledně objednávek nebo obsahu klubu. Níže najdete přímé kontakty.</p>
+      </header>
+
+      <section class="kontakt-card" aria-labelledby="kontakt-heading">
+        <div class="kontakt-item">
+          <span class="kontakt-label">Email</span>
+          <div class="kontakt-value">filip@filipuvpodivuhodnysvet.cz</div>
+        </div>
+
+        <div class="kontakt-item">
+          <span class="kontakt-label">Telefon</span>
+          <div class="kontakt-value">+420 734 395 526</div>
+        </div>
+
+        <div class="kontakt-item">
+          <span class="kontakt-label">Podpora</span>
+          <div class="kontakt-value">podpora@filipuvpodivuhodnysvet.cz</div>
+        </div>
+      </section>
+
+    </div>
+
+    <div id="global-footer"></div>
+  </div>
+
+</body>
+
+</html>

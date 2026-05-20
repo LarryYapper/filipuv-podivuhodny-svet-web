@@ -91,6 +91,7 @@ const SHARED_COMPONENTS = {
                         <a href="nas-svet.html" class="mobile-nav-link">Náš svět</a>
                         <a href="dobro.html" class="mobile-nav-link">Dobro</a>
                         <a href="o-mne.html" class="mobile-nav-link">O mně</a>
+                        <a href="kontakt.html" class="mobile-nav-link">Kontakt</a>
                         <a href="sprava-predplatneho.html" class="mobile-nav-link mobile-nav-utility">Členství</a>
                     </div>
                     <div class="mobile-nav-footer">
@@ -176,7 +177,7 @@ const SHARED_COMPONENTS = {
                         <a href="#">Doprava</a>
                         <a href="reklamace.html">Reklamace</a>
                         <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
-                        <a href="#">Kontakt</a>
+                        <a href="kontakt.html">Kontakt</a>
                     </div>
                     <div class="footer-link-col">
                         <div class="footer-label">SLEDUJ</div>
