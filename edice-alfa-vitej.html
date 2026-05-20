@@ -583,7 +583,7 @@
           <div class="prize-statement">
             <div class="prize-kicker">✦ ★ ✦ vzácná výhra · cca 10 % karet</div>
             <h1 class="prize-title">Celá obálka.<br>Zdarma.</h1>
-            <p class="prize-desc">Edici VÍTEJ ti pošlu kompletně zdarma. Šest fyzických kusů, poštovné zdarma — jen vyplníš adresu.</p>
+            <p class="prize-desc">Edici VÍTEJ Ti pošlu kompletně zdarma. Šest fyzických kusů, poštovné zdarma — jen vyplníš adresu.</p>
             <p class="prize-note">Máš v rukou jednu z nejvzácnějších karet. Asi 10 ze 100 lidí se jí dočká. Ušetříš 99 Kč — celá obálka včetně poštovného.</p>
           </div>
 
@@ -603,29 +603,29 @@
               <div class="item-row"><span class="item-dot">·</span><span>ZINE o klubu</span></div>
               <div class="item-row"><span class="item-dot">·</span><span>Samolepka</span></div>
               <div class="item-row"><span class="item-dot">·</span><span>Citát měsíce</span></div>
-              <div class="item-row"><span class="item-dot">·</span><span>Dopisní papír</span></div>
-              <div class="item-row"><span class="item-dot">·</span><span>Letáček s programem</span></div>
+              <div class="item-row"><span class="item-dot">·</span><span>Dopis ode mě</span></div>
+              <div class="item-row"><span class="item-dot">·</span><span>Receptová karta</span></div>
             </div>
           </div>
 
           <div class="redemption-form">
             <div class="form-header">
               <div class="form-title">✦ Vyzvedni si VÍTEJ zdarma</div>
-              <div class="form-time">0 Kč · platný do 5. 6. 2026</div>
+              <div class="form-time">0 Kč · platný do 7. 6. 2026</div>
             </div>
 
             <div class="form-row">
               <div class="form-input-wrap">
-                <div class="form-code" data-code-value>ALFA·RR·8K9P</div>
+                <div class="form-code" data-code-value>VITEJVKLUBU</div>
               </div>
-              <a class="form-btn" href="edice-vitej.html"><span>Vyzvedni si VÍTEJ zdarma</span><span>→</span></a>
+              <a class="form-btn" href="edice-vitej-objednavka.html"><span>Vyzvedni si VÍTEJ zdarma</span><span>→</span></a>
             </div>
 
             <p class="form-note">Kód se přidá automaticky. Vyplníš jen adresu — šest kusů ti pošlu zdarma. Objednat můžeš do 5. 6. 2026.</p>
 
             <div class="rarity-footnote">
               <span>★</span>
-              <span>vzácná výhra · cca 10 % karet · ušetříš 99 Kč – celá obálka zdarma</span>
+              <span>vzácná výhra · pouze 3 karty · ušetříš 99-115 Kč – celá obálka zdarma</span>
             </div>
           </div>
         </article>
@@ -639,7 +639,7 @@
           </div>
 
           <div class="about-vitej-copy">
-            <p>Edice VÍTEJ je první obálka mého poštovního klubu. Šest fysických kusů — fotopohlednice, ZINE o klubu, samolepka, citát měsíce, dopisní papír a letáček — za 99 Kč včetně poštovného po Česku. Jednorázově. Žádné předplatné, žádný algoritmus, žádné automatické strhávání.</p>
+            <p>Edice VÍTEJ je první obálka mého poštovního klubu. Šest fysických kusů — fotopohlednice, ZINE o klubu, samolepka, citát měsíce, dopis od mě a receptová karta – za 99 Kč včetně poštovného po Česku. Jednorázově. Žádné předplatné, žádný algoritmus, žádné automatické strhávání.</p>
             <p>První vlnu vyrábím ručně doma — 250 obálek. Když se rozeberou, otevřu druhou vlnu pro další edici.</p>
           </div>
 
@@ -668,9 +668,9 @@
       }
 
       document.addEventListener('DOMContentLoaded', function () {
-        var code = getCodeFromUrl() || 'ALFA·RR·8K9P';
+        var code = getCodeFromUrl() || 'VITEJVKLUBU';
         var validCodes = window.CODE_DATABASE && Array.isArray(window.CODE_DATABASE.ALFA_CODES) ? window.CODE_DATABASE.ALFA_CODES : [];
-        var finalCode = validCodes.indexOf(code) !== -1 ? code : 'ALFA·RR·8K9P';
+        var finalCode = validCodes.indexOf(code) !== -1 ? code : 'VITEJVKLUBU';
         var codeNode = document.querySelector('[data-code-value]');
         var statusNode = document.querySelector('[data-code-status]');
 
@@ -679,7 +679,7 @@
         }
 
         if (statusNode) {
-          statusNode.textContent = 'kód ' + finalCode + ' · platný do 5. 6. 2026';
+          statusNode.textContent = 'kód ' + finalCode + ' · platný do 7. 6. 2026';
         }
       });
     })();
