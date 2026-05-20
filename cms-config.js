@@ -6,7 +6,7 @@
 const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
-        desktopText: "Edice VÍTEJ – objednávky do 5. června 20:00 · doručení od 10. června",
+        desktopText: "Edice VÍTEJ – objednávky do 7. června 23:59 · odesíláme 11. června",
         mobileText: "Edice VÍTEJ – objednávky",
         deadlineDate: "2026-06-05T20:00:00+02:00", // ISO 8601 format (YYYY-MM-DDTHH:MM:SS+HH:MM)
         link: "edice-vitej.html"
@@ -15,8 +15,8 @@ const CMS_CONFIG = {
     // 2. GLOBAL DEADLINES & DATES
     // Use these strings in your HTML with data-cms="deadline-vitej" etc.
     dates: {
-        vitejClosure: "5. června",
-        nextShipping: "10. června",
+        vitejClosure: "7. června 23:59",
+        nextShipping: "11. června",
         currentMonth: "Květen"
     },
 

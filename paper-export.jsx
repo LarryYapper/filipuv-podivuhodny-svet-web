@@ -11,8 +11,8 @@ export default function () {
           <div style={{ boxSizing: 'border-box', color: '#FC7B35', display: 'inline-block', fontFamily: '"Fraunces", system-ui, sans-serif', fontSize: '14px', fontVariationSettings: '"wght" 580', fontWeight: 580, lineHeight: '18px', whiteSpaceCollapse: 'preserve' }}>
             ✦
           </div>
-          <div style={{ boxSizing: 'border-box', color: '#3A2C31', display: 'inline-block', fontFamily: '"MulishRoman-SemiBold", "Mulish", system-ui, sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '18px' }}>
-            Edice VÍTEJ se uzavírá 5. června · doručuju 10. června
+            <div style={{ boxSizing: 'border-box', color: '#3A2C31', display: 'inline-block', fontFamily: '"MulishRoman-SemiBold", "Mulish", system-ui, sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '18px' }}>
+            Edice VÍTEJ se uzavírá 7. června 23:59 · doručuji 11. června
           </div>
         </div>
         <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', gap: '24px' }}>
@@ -955,7 +955,7 @@ export default function () {
                 I
               </div>
               <div style={{ boxSizing: 'border-box', color: '#3A2C318C', display: 'inline-block', fontFamily: '"MulishRoman-Bold", "Mulish", system-ui, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', lineHeight: '14px' }}>
-                DO 5. ČERVNA
+                DO 7. ČERVNA 23:59
               </div>
             </div>
             <div style={{ boxSizing: 'border-box', color: '#3A2C31', fontFamily: '"Fraunces", system-ui, sans-serif', fontSize: '32px', fontVariationSettings: '"wght" 580', fontWeight: 580, letterSpacing: '-0.02em', lineHeight: '36px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px', marginTop: '0px' }}>
@@ -997,7 +997,7 @@ export default function () {
                 III
               </div>
               <div style={{ boxSizing: 'border-box', color: '#3A2C318C', display: 'inline-block', fontFamily: '"MulishRoman-Bold", "Mulish", system-ui, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', lineHeight: '14px' }}>
-                OD 10. ČERVNA
+                OD 11. ČERVNA
               </div>
             </div>
             <div style={{ boxSizing: 'border-box', color: '#3A2C31', fontFamily: '"Fraunces", system-ui, sans-serif', fontSize: '32px', fontVariationSettings: '"wght" 580', fontWeight: 580, letterSpacing: '-0.02em', lineHeight: '36px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px', marginTop: '0px' }}>
@@ -1128,7 +1128,7 @@ export default function () {
           Otevři schránku za 28 dní.
         </div>
         <div style={{ boxSizing: 'border-box', color: '#F4F2EBB3', fontFamily: '"Fraunces", system-ui, sans-serif', fontSize: '24px', fontStyle: 'italic', lineHeight: '36px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px', marginTop: '0px', maxWidth: '720px', textAlign: 'center' }}>
-          99 Kč jednorázově. Bez předplatného, bez algoritmu, bez obrazovky. Edice VÍTEJ se uzavírá 5. června.
+          99 Kč jednorázově. Bez předplatného, bez algoritmu, bez obrazovky. Edice VÍTEJ se uzavírá 7. června 23:59.
         </div>
         <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', gap: '32px', paddingTop: '24px' }}>
           <div style={{ alignItems: 'center', backgroundColor: '#FC7B35', borderRadius: '999px', boxSizing: 'border-box', display: 'flex', justifyContent: 'center', paddingBlock: '22px', paddingInline: '44px' }}>
