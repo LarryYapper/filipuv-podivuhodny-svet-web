@@ -176,6 +176,7 @@ const SHARED_COMPONENTS = {
                         <a href="#">Časté dotazy</a>
                         <a href="#">Doprava</a>
                         <a href="reklamace.html">Reklamace</a>
+                        <a href="opakovane-platby.html">Opakované platby</a>
                         <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
                         <a href="kontakt.html">Kontakt</a>
                     </div>
