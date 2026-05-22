@@ -599,18 +599,6 @@
   <script src="cms-config.js"></script>
   <script src="components.js"></script>
   <script src="global.js"></script>
-  <script>
-    (function () {
-      var gate = document.querySelector('[data-launch-gate]');
-      if (!gate) return;
-
-      var cutoff = new Date(2026, 5, 1);
-      if (new Date() < cutoff) {
-        gate.hidden = false;
-        document.body.classList.add('is-gated');
-      }
-    })();
-  </script>
 </body>
 
 </html>

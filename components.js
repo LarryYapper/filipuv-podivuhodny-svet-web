@@ -175,8 +175,8 @@ const SHARED_COMPONENTS = {
                         <div class="footer-label">POMOC</div>
                         <a href="#">Časté dotazy</a>
                         <a href="#">Doprava</a>
+                        <a href="sprava-predplatneho.html">Správa předplatného</a>
                         <a href="reklamace.html">Reklamace</a>
-                        <a href="opakovane-platby.html">Opakované platby</a>
                         <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
                         <a href="kontakt.html">Kontakt</a>
                     </div>
@@ -200,6 +200,7 @@ const SHARED_COMPONENTS = {
                     <a href="assets/Všeobecené obchodní podmínky.pdf" target="_blank">Všeobecné obchodní podmínky</a>
                     <a href="assets/Reklamační řád.pdf" target="_blank">Reklamační řád</a>
                     <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásady ochrany osobních údajů</a>
+                    <a href="opakovane-platby.html">Opakované platby</a>
                 </div>
             </div>
         </div>
