@@ -16,8 +16,8 @@ const SHARED_COMPONENTS = {
                     </div>
                     <div class="top-banner-text"
                         style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px;">
-                        <span class="desktop-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.desktopText : 'Edice VÍTEJ se uzavírá 7. června 23:59 · doručuji 11. června'}</span>
-                        <span class="mobile-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.mobileText : 'Edice VÍTEJ končí 7. června 23:59'}</span>
+                        <span class="desktop-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.desktopText : 'Edice VÍTEJ – objednávky do 10. června 23:59 · odesílám 15. června'}</span>
+                        <span class="mobile-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.mobileText : 'Edice VÍTEJ – objednávky do 10. června 23:59 · odesílám 15. června'}</span>
                     </div>
                 </div>
                 <div class="top-banner-actions" style="align-items: center; box-sizing: border-box; display: flex; gap: 40px; flex-wrap: wrap;">
