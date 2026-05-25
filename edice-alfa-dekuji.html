@@ -483,9 +483,11 @@
 
     .about-vitej-image {
       flex-shrink: 0;
-      width: 280px;
-      height: 420px;
+      width: 440px;
+      height: auto;
+      aspect-ratio: 3 / 2;
       background: #F4EFE0;
+      overflow: hidden;
       border: 2px solid #1A161433;
       border-radius: 8px;
       display: flex;
@@ -546,8 +548,9 @@
       }
 
       .about-vitej-image {
-        width: 200px;
-        height: 300px;
+        width: 100%;
+        max-width: 360px;
+        height: auto;
       }
     }
   </style>
