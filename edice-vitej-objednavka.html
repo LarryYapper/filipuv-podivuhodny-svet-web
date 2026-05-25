@@ -44,10 +44,9 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      position: sticky;
-      top: 50%;
-      transform: translateY(-50%);
+      position: relative;
       align-self: start;
+      will-change: transform;
     }
 
     .kicker {
@@ -333,6 +332,60 @@
   <script src="cms-config.js"></script>
   <script src="components.js"></script>
   <script src="global.js"></script>
+  <script>
+    // Keep the left intro column vertically centered in the viewport as you
+    // scroll: at the top of the page it sits at its natural top, and it drifts
+    // down to stay centered against the (taller) order form, clamped so it
+    // never rises above the section top nor falls past the form's bottom.
+    (function () {
+      var intro = document.querySelector('.intro');
+      var aside = document.querySelector('.aside');
+      if (!intro || !aside) return;
+      var ticking = false;
+
+      function currentY() {
+        var m = /translateY\(([-0-9.]+)px\)/.exec(intro.style.transform || '');
+        return m ? parseFloat(m[1]) : 0;
+      }
+
+      function update() {
+        ticking = false;
+        if (window.matchMedia('(max-width: 980px)').matches) {
+          if (intro.style.transform) intro.style.transform = '';
+          return;
+        }
+        var vh = window.innerHeight;
+        var introH = intro.offsetHeight;
+        var maxTravel = Math.max(0, aside.offsetHeight - introH);
+        // intro's natural top in the viewport (with the current transform removed)
+        var naturalTop = intro.getBoundingClientRect().top - currentY();
+        var desired = (vh - introH) / 2;       // center the column in the viewport
+        var y = desired - naturalTop;
+        if (y < 0) y = 0;
+        if (y > maxTravel) y = maxTravel;
+        intro.style.transform = 'translateY(' + y + 'px)';
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', update);
+      window.addEventListener('load', update);
+      // The order form loads asynchronously and changes height — re-measure.
+      if (window.ResizeObserver) {
+        new ResizeObserver(update).observe(aside);
+      } else {
+        setTimeout(update, 1000);
+        setTimeout(update, 2500);
+      }
+      update();
+    })();
+  </script>
 </body>
 
 </html>
