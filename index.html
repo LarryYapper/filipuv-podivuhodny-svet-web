@@ -21,6 +21,14 @@
   <link rel="preload" href="/assets/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Mulish-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Mulish-Italic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+    @media (max-width: 900px) {
+      .vitej-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 600px) {
+      .vitej-cards-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
 <link rel="canonical" href="https://filipuvpodivuhodnysvet.cz/index.html">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://filipuvpodivuhodnysvet.cz#website", "url": "https://filipuvpodivuhodnysvet.cz", "name": "Filipův podivuhodný svět", "publisher": {"@id": "https://filipuvpodivuhodnysvet.cz#organization"}, "potentialAction": {"@type": "SearchAction", "target": "https://filipuvpodivuhodnysvet.cz/?s={search_term_string}", "query-input": "required name=search_term_string"}}, {"@type": "Organization", "@id": "https://filipuvpodivuhodnysvet.cz#organization", "name": "Filipův podivuhodný svět", "legalName": "Bc. Filip Kubík", "url": "https://filipuvpodivuhodnysvet.cz", "logo": "https://filipuvpodivuhodnysvet.cz/assets/Filip%C5%AFv%20podivuhodn%C3%BD%20sv%C4%9Bt_logo%202.0.png", "contactPoint": [{"@type": "ContactPoint", "email": "filip@filipuvpodivuhodnysvet.cz", "contactType": "customer service"}]}]}</script>
 </head>
@@ -153,7 +161,7 @@
           </div>
         </div>
       </div>
-      <div
+      <div class="vitej-cards-grid"
         style="box-sizing: border-box; display: grid; grid-template-columns:repeat(3,1fr); gap: 32px; width: 100%; max-width: 1280px; margin: 0 auto; justify-items: center;">
         <div
           style="box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 24px; width: 100%; max-width: 405px;">
