@@ -7,7 +7,7 @@ const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
         desktopText: "Edice VÍTEJ – objednávky do 10. června 23:59 · odesílám 15. června",
-        mobileText: "Edice VÍTEJ – objednávky do 10. června 23:59 · odesílám 15. června",
+        mobileText: "Edice VÍTEJ · objednávky do 10. 6. 23:59 · odesílám 15. 6.",
         deadlineDate: "2026-06-10T23:59:00+02:00", // ISO 8601 format (YYYY-MM-DDTHH:MM:SS+HH:MM)
         link: "edice-vitej.html"
     },
