@@ -330,6 +330,8 @@
             <p class="form-note">
               Žádost vyřídím bez zbytečného odkladu.
             </p>
+            <div class="h-captcha" data-captcha="true" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+            <span class="field-error" id="s-captcha-err">Potvrďte prosím, že nejste robot.</span>
             <button class="btn-submit" type="submit">Odeslat zprávu →</button>
             <p class="form-legal">
               Vaše osobní údaje zpracovávám v souladu se
@@ -426,6 +428,18 @@
           return;
         }
 
+        // hCaptcha — ochrana proti botům
+        var captchaField = document.querySelector('#account-form textarea[name=h-captcha-response]');
+        var captchaToken = captchaField ? captchaField.value : '';
+        var captchaErr   = document.getElementById('s-captcha-err');
+        if (!captchaToken) {
+          if (captchaErr) captchaErr.style.display = 'block';
+          var capEl = document.querySelector('#account-form .h-captcha');
+          if (capEl) capEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        if (captchaErr) captchaErr.style.display = 'none';
+
         var type    = typeEl.value;
         var today   = new Date().toLocaleDateString('cs-CZ');
         var v        = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
@@ -478,6 +492,7 @@
               from_name: 'Klientská zóna – podivuhodný svět',
               email: email,
               botcheck: document.querySelector('#account-form [name="botcheck"]').value,
+              'h-captcha-response': captchaToken,
               message: message
             })
           });
@@ -490,16 +505,19 @@
           } else {
             btn.disabled = false;
             btn.textContent = 'Odeslat zprávu →';
+            if (window.hcaptcha) hcaptcha.reset();
             alert('Odeslání se nezdařilo. Napište mi prosím na podpora@filipuvpodivuhodnysvet.cz');
           }
         } catch (err) {
           btn.disabled = false;
           btn.textContent = 'Odeslat zprávu →';
+          if (window.hcaptcha) hcaptcha.reset();
           alert('Chyba sítě. Napište mi prosím na podpora@filipuvpodivuhodnysvet.cz');
         }
       });
     })();
   </script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </body>
 
 </html>

@@ -256,6 +256,8 @@
             <p class="form-note">
               Zboží zašlete zpět na adresu <strong>Bc. Filip Kubík, PO Box č. 3, 257 65 Čechtice</strong> spolu s dokladem o koupi.
             </p>
+            <div class="h-captcha" data-captcha="true" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+            <span class="field-error" id="w-captcha-err">Potvrďte prosím, že nejste robot.</span>
             <button class="btn-submit" type="submit">Odeslat odstoupení →</button>
             <p class="form-legal">
               Vaše osobní údaje zpracováváme v souladu se
@@ -303,6 +305,18 @@
         });
         if (!valid) { document.querySelector('.is-invalid').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
 
+        // hCaptcha — ochrana proti botům
+        var captchaField = document.querySelector('#withdrawal-form textarea[name=h-captcha-response]');
+        var captchaToken = captchaField ? captchaField.value : '';
+        var captchaErr   = document.getElementById('w-captcha-err');
+        if (!captchaToken) {
+          if (captchaErr) captchaErr.style.display = 'block';
+          var capEl = document.querySelector('#withdrawal-form .h-captcha');
+          if (capEl) capEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        if (captchaErr) captchaErr.style.display = 'none';
+
         var name     = document.getElementById('w-name').value.trim();
         var email    = document.getElementById('w-email').value.trim();
         var phone    = document.getElementById('w-phone').value.trim();
@@ -348,6 +362,7 @@
               subject: 'Odstoupení od smlouvy – objednávka ' + orderNum,
               from_name: name,
               email: email,
+              'h-captcha-response': captchaToken,
               message: message
             })
           });
@@ -360,16 +375,19 @@
           } else {
             btn.disabled = false;
             btn.textContent = 'Odeslat odstoupení →';
+            if (window.hcaptcha) hcaptcha.reset();
             alert('Odeslání se nezdařilo. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
           }
         } catch (err) {
           btn.disabled = false;
           btn.textContent = 'Odeslat odstoupení →';
+          if (window.hcaptcha) hcaptcha.reset();
           alert('Chyba sítě. Napište nám na podpora@filipuvpodivuhodnysvet.cz');
         }
       });
     })();
   </script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </body>
 
 </html>
