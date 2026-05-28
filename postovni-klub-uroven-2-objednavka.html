@@ -442,12 +442,12 @@
   <div class="launch-gate" data-launch-gate hidden aria-modal="true" role="dialog" aria-labelledby="launch-gate-title" aria-describedby="launch-gate-description">
     <div class="launch-gate__card">
       <div class="launch-gate__kicker">Dočasně uzavřeno</div>
-      <h2 id="launch-gate-title">Objednávky Úrovní otevřeny od 1. června.</h2>
+      <h2 id="launch-gate-title">Objednávky Úrovní otevřeny od 10. června.</h2>
       <p id="launch-gate-description">Do té doby můžeš vyzkoušet Edici VÍTEJ za 99 Kč.</p>
       <div class="launch-gate__actions">
         <a class="launch-gate__button" href="edice-vitej.html">Vyzkoušej Edici VÍTEJ</a>
       </div>
-      <div class="launch-gate__fineprint">Jakmile nastane 1. červen, tato brána se sama skryje a stránka bude dostupná.</div>
+      <div class="launch-gate__fineprint">Jakmile nastane 10. červen, tato brána se sama skryje a stránka bude dostupná.</div>
     </div>
   </div>
   <main class="page">
@@ -599,6 +599,18 @@
   <script src="cms-config.js"></script>
   <script src="components.js"></script>
   <script src="global.js"></script>
+  <script>
+    (function () {
+      var gate = document.querySelector('[data-launch-gate]');
+      if (!gate) return;
+
+      var cutoff = new Date(2026, 5, 10);
+      if (new Date() < cutoff) {
+        gate.hidden = false;
+        document.body.classList.add('is-gated');
+      }
+    })();
+  </script>
 </body>
 
 </html>
