@@ -6,10 +6,20 @@
 const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
-        desktopText: "Edice VÍTEJ – objednávky do 10. června 23:59 · odesílám 15. června",
-        mobileText: "Edice VÍTEJ · objednávky do 10. 6. 23:59 · odesílám 15. 6.",
-        deadlineDate: "2026-06-10T23:59:00+02:00", // ISO 8601 format (YYYY-MM-DDTHH:MM:SS+HH:MM)
-        link: "edice-vitej.html"
+        // --- Launch dispatch (Velký den odeslání) ---
+        // Countdown targets this date first. Copy below is shown until it passes.
+        desktopText: "Edice VÍTEJ · objednávky otevřené · Velký den odeslání 15. června",
+        mobileText: "Objednávky otevřené · Velký den odeslání 15. 6.",
+        deadlineDate: "2026-06-15T08:00:00+02:00", // ISO 8601 (YYYY-MM-DDTHH:MM:SS+HH:MM) — Velký den odeslání
+        link: "edice-vitej.html",
+
+        // --- Recurring dispatch (Den odeslání) ---
+        // After deadlineDate passes, the countdown automatically rolls to this
+        // weekday every week. To STOP recurring, set recurringWeekday to null.
+        recurringWeekday: 1,          // 0=neděle, 1=pondělí, 2=úterý ... (1 = každé pondělí)
+        recurringTime: "08:00",       // local dispatch time HH:MM
+        recurringDesktopText: "Edice VÍTEJ · objednávky otevřené · Den odeslání každé pondělí",
+        recurringMobileText: "Objednávky otevřené · Den odeslání každé pondělí"
     },
 
     // 2. GLOBAL DEADLINES & DATES

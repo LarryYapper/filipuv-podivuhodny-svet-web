@@ -275,21 +275,62 @@
     // 7. COUNTDOWN TIMER
     function initCountdown() {
         if (typeof CMS_CONFIG === 'undefined' || !CMS_CONFIG.banner) return;
-        
-        const DEADLINE = new Date(CMS_CONFIG.banner.deadlineDate).getTime();
+
+        const cfg = CMS_CONFIG.banner;
+        const LAUNCH = new Date(cfg.deadlineDate).getTime();
         const countdownPrefix = document.getElementById('countdown-prefix');
         const countdownNum = document.getElementById('countdown-num');
         const countdownLabel = document.getElementById('countdown-label');
-        
+        const desktopCopy = document.querySelector('#global-banner .desktop-copy');
+        const mobileCopy = document.querySelector('#global-banner .mobile-copy');
+
         if (!countdownNum || !countdownLabel) return;
+
+        // Decide which dispatch day the countdown targets right now.
+        // Before LAUNCH passes -> the launch date (Velký den odeslání).
+        // After it -> the next recurring weekday (default pondělí), rolling weekly,
+        // unless recurrence is disabled (recurringWeekday == null).
+        function computeTarget(now) {
+            if (now < LAUNCH || cfg.recurringWeekday == null) {
+                return { target: LAUNCH, recurring: false };
+            }
+            const parts = String(cfg.recurringTime || '08:00').split(':');
+            const h = Number(parts[0]) || 0;
+            const m = Number(parts[1]) || 0;
+            const t = new Date(now);
+            t.setHours(h, m, 0, 0); // today's dispatch time
+            let delta = (cfg.recurringWeekday - t.getDay() + 7) % 7;
+            if (delta === 0 && now >= t.getTime()) {
+                // It's the dispatch weekday and the time has passed:
+                // celebrate for the rest of today before rolling to next week.
+                return { target: t.getTime(), recurring: true };
+            }
+            t.setDate(t.getDate() + delta);
+            return { target: t.getTime(), recurring: true };
+        }
+
+        let copyMode = null; // null | false (launch) | true (recurring) — avoids redundant DOM writes
+        function applyCopy(recurring) {
+            if (copyMode === recurring) return;
+            copyMode = recurring;
+            if (recurring) {
+                if (desktopCopy && cfg.recurringDesktopText) desktopCopy.textContent = cfg.recurringDesktopText;
+                if (mobileCopy && cfg.recurringMobileText) mobileCopy.textContent = cfg.recurringMobileText;
+            } else {
+                if (desktopCopy && cfg.desktopText) desktopCopy.textContent = cfg.desktopText;
+                if (mobileCopy && cfg.mobileText) mobileCopy.textContent = cfg.mobileText;
+            }
+        }
 
         function update() {
             const now = Date.now();
-            const diff = DEADLINE - now;
+            const state = computeTarget(now);
+            applyCopy(state.recurring);
+            const diff = state.target - now;
             if (diff <= 0) {
-                if (countdownPrefix) countdownPrefix.textContent = '';
-                countdownNum.textContent = '0';
-                countdownLabel.textContent = 'UZAVŘENO';
+                if (countdownPrefix) countdownPrefix.textContent = 'DNES JE';
+                countdownNum.textContent = '✦';
+                countdownLabel.textContent = state.recurring ? 'DEN ODESLÁNÍ' : 'VELKÝ DEN ODESLÁNÍ';
                 return;
             }
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
