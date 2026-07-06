@@ -8,9 +8,9 @@ const CMS_CONFIG = {
     banner: {
         // --- Launch dispatch (Velký den odeslání) ---
         // Countdown targets this date first. Copy below is shown until it passes.
-        desktopText: "Edice VÍTEJ · objednávky otevřené · Velký den odeslání 15. června",
-        mobileText: "Objednávky otevřené · Velký den odeslání 15. 6.",
-        deadlineDate: "2026-06-15T08:00:00+02:00", // ISO 8601 (YYYY-MM-DDTHH:MM:SS+HH:MM) — Velký den odeslání
+        desktopText: "Edice A01 Přítomnost · objednávky otevřené · Velký den odeslání 20. července",
+        mobileText: "Objednávky otevřené · Velký den odeslání 20. 7.",
+        deadlineDate: "2026-07-20T08:00:00+02:00", // ISO 8601 (YYYY-MM-DDTHH:MM:SS+HH:MM) — Velký den odeslání
         link: "edice-vitej.html",
 
         // --- Recurring dispatch (Den odeslání) ---
