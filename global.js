@@ -287,7 +287,7 @@
         if (!countdownNum || !countdownLabel) return;
 
         // Decide which dispatch day the countdown targets right now.
-        // Before LAUNCH passes -> the launch date (Velký den odeslání).
+        // Before LAUNCH passes -> the launch date (Velký odesílací den).
         // After it -> the next recurring weekday (default pondělí), rolling weekly,
         // unless recurrence is disabled (recurringWeekday == null).
         function computeTarget(now) {
@@ -330,7 +330,7 @@
             if (diff <= 0) {
                 if (countdownPrefix) countdownPrefix.textContent = 'DNES JE';
                 countdownNum.textContent = '✦';
-                countdownLabel.textContent = state.recurring ? 'DEN ODESLÁNÍ' : 'VELKÝ DEN ODESLÁNÍ';
+                countdownLabel.textContent = state.recurring ? 'DEN ODESLÁNÍ' : 'VELKÝ ODESÍLACÍ DEN';
                 return;
             }
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
