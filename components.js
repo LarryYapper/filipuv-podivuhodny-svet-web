@@ -9,50 +9,52 @@ const SHARED_COMPONENTS = {
             style="align-items: center; background-color: #3A2C310D; border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 32px; justify-content: space-between; padding-block: 14px; padding-inline: clamp(20px, 5vw, 80px); flex-wrap: wrap; width: 100%;">
             <div class="top-banner-inner"
                 style="align-items: center; box-sizing: border-box; display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto; gap: 32px;">
-                <div class="top-banner-copy" style="align-items: center; box-sizing: border-box; display: flex; gap: 16px;">
-                    <div
-                        style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 14px; font-variation-settings: 'wght' 580; font-weight: 580; line-height: 18px;">
-                        ✦
-                    </div>
-                    <div class="top-banner-text"
-                        style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px;">
-                        <span class="desktop-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.desktopText : 'Edice A01 Přítomnost · objednávky otevřené'}</span>
-                        <span class="mobile-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.mobileText : 'Edice A01 Přítomnost · objednávky otevřené'}</span>
-                    </div>
-                </div>
-                <div class="top-banner-actions" style="align-items: center; box-sizing: border-box; display: flex; gap: 40px; flex-wrap: wrap;">
-                    <div class="top-banner-countdowns">
-                        <style>
-                            .top-banner-countdowns{box-sizing:border-box;display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
-                            .top-banner-countdowns .cd-row{display:flex;align-items:center;gap:8px;line-height:1;}
-                            .top-banner-countdowns .cd-label{font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;color:#3A2C31;text-transform:uppercase;white-space:nowrap;}
-                            .top-banner-countdowns .cd-sep{color:#3A2C3140;font-size:11px;line-height:1;}
-                            .top-banner-countdowns .cd-val{font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;color:#FC7B35;white-space:nowrap;}
-                            @media (max-width:767px){.top-banner-countdowns{align-items:center;gap:2px;}.top-banner-countdowns .cd-label{font-size:9px;letter-spacing:0.08em;}.top-banner-countdowns .cd-val{font-size:11px;}}
-                        </style>
-                        <div id="cd-launch" class="cd-row">
-                            <span class="cd-label">Velký odesílací den</span>
-                            <span class="cd-sep">·</span>
-                            <span id="cd-launch-val" class="cd-val">za 14 dní</span>
+                <div class="edition-bar">
+                    <style>
+                        .edition-bar{box-sizing:border-box;width:100%;display:flex;flex-direction:column;gap:6px;}
+                        .edition-bar .edition-row{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding-block:6px;}
+                        .edition-bar .edition-row:not(:last-child){border-bottom:1px solid #3A2C3114;}
+                        .edition-bar .edition-info{display:flex;align-items:baseline;gap:8px;min-width:0;flex-wrap:wrap;font-family:'Mulish',system-ui,sans-serif;}
+                        .edition-bar .edition-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:14px;font-weight:580;line-height:1;align-self:center;}
+                        .edition-bar .edition-name{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
+                        .edition-bar .edition-sep{color:#3A2C3140;}
+                        .edition-bar .edition-desc{color:#3A2C31CC;font-size:13px;font-weight:600;}
+                        .edition-bar .edition-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
+                        .edition-bar .edition-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
+                        @media (max-width:767px){
+                            .edition-bar{gap:0;}
+                            .edition-bar .edition-row{gap:6px 12px;padding-block:8px;}
+                            .edition-bar .edition-name{font-size:11px;letter-spacing:0.02em;white-space:normal;}
+                            .edition-bar .edition-desc,.edition-bar .edition-val{font-size:11px;}
+                            .edition-bar .edition-cta{font-size:12px;}
+                        }
+                    </style>
+                    <div id="cd-launch" class="edition-row">
+                        <div class="edition-info">
+                            <span class="edition-mark">✦</span>
+                            <span class="edition-name">Edice A01 Přítomnost</span>
+                            <span class="edition-sep">·</span>
+                            <span class="edition-desc">odesíláme <span id="cd-launch-val" class="edition-val">za 12 dní</span></span>
                         </div>
-                        <div id="cd-recurring" class="cd-row">
-                            <span class="cd-label">Den odeslání</span>
-                            <span class="cd-sep">·</span>
-                            <span id="cd-recurring-val" class="cd-val">za 2 dny</span>
-                        </div>
+                        <a href="postovni-klub.html" class="link-hover edition-cta">
+                            <span class="desktop-copy">Do poštovního klubu</span>
+                            <span class="mobile-copy">Do klubu</span>
+                            <span class="arrow-slide" style="line-height:18px;">→</span>
+                        </a>
                     </div>
-                    <a href="edice-vitej.html" class="link-hover"
-                        style="align-items: center; border-bottom-color: #3A2C31; border-bottom-style: solid; border-bottom-width: 1.5px; box-sizing: border-box; display: flex; gap: 6px; padding-bottom: 2px; cursor: pointer; text-decoration: none;">
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; line-height: 18px;">
+                    <div id="cd-recurring" class="edition-row">
+                        <div class="edition-info">
+                            <span class="edition-mark">✦</span>
+                            <span class="edition-name">Edice VÍTEJ</span>
+                            <span class="edition-sep">·</span>
+                            <span class="edition-desc">odesíláme každé pondělí (<span id="cd-recurring-val" class="edition-val">za 5 dní</span>)</span>
+                        </div>
+                        <a href="edice-vitej.html" class="link-hover edition-cta">
                             <span class="desktop-copy">Vyzkoušej za 99 Kč</span>
                             <span class="mobile-copy">99 Kč</span>
-                        </div>
-                        <div class="arrow-slide"
-                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; line-height: 18px;">
-                            →
-                        </div>
-                    </a>
+                            <span class="arrow-slide" style="line-height:18px;">→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
