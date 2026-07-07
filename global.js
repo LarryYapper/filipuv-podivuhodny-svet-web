@@ -278,87 +278,78 @@
 
         const cfg = CMS_CONFIG.banner;
         const LAUNCH = new Date(cfg.deadlineDate).getTime();
-        const countdownPrefix = document.getElementById('countdown-prefix');
-        const countdownNum = document.getElementById('countdown-num');
-        const countdownLabel = document.getElementById('countdown-label');
-        const desktopCopy = document.querySelector('#global-banner .desktop-copy');
-        const mobileCopy = document.querySelector('#global-banner .mobile-copy');
 
-        if (!countdownNum || !countdownLabel) return;
+        // Two countdowns shown together in the bar:
+        //  • launch row (#cd-launch)  -> Velký odesílací den (deadlineDate)
+        //  • recurring row (#cd-recurring) -> Den odeslání (weekly recurringWeekday)
+        const launchRow = document.getElementById('cd-launch');
+        const launchVal = document.getElementById('cd-launch-val');
+        const recurringRow = document.getElementById('cd-recurring');
+        const recurringVal = document.getElementById('cd-recurring-val');
 
-        // Decide which dispatch day the countdown targets right now.
-        // Before LAUNCH passes -> the launch date (Velký odesílací den).
-        // After it -> the next recurring weekday (default pondělí), rolling weekly,
-        // unless recurrence is disabled (recurringWeekday == null).
-        function computeTarget(now) {
-            if (now < LAUNCH || cfg.recurringWeekday == null) {
-                return { target: LAUNCH, recurring: false };
-            }
+        if (!launchVal && !recurringVal) return;
+
+        // End of the launch calendar day — keep celebrating "dnes" until then,
+        // then hide the launch row (the big send day is over).
+        const launchDayEnd = (function () {
+            const d = new Date(LAUNCH);
+            d.setHours(23, 59, 59, 999);
+            return d.getTime();
+        })();
+
+        // Czech accusative "za N <jednotka>" with correct inflection.
+        function inflect(n, one, few, many) {
+            if (n === 1) return one;
+            if (n >= 2 && n <= 4) return few;
+            return many;
+        }
+        function remainingText(diff) {
+            if (diff <= 0) return 'dnes ✦';
+            const days = Math.floor(diff / 86400000);
+            if (days > 0) return 'za ' + days + ' ' + inflect(days, 'den', 'dny', 'dní');
+            const hours = Math.floor(diff / 3600000);
+            if (hours > 0) return 'za ' + hours + ' ' + inflect(hours, 'hodinu', 'hodiny', 'hodin');
+            const minutes = Math.max(1, Math.floor(diff / 60000));
+            return 'za ' + minutes + ' ' + inflect(minutes, 'minutu', 'minuty', 'minut');
+        }
+
+        // Next recurring dispatch weekday (e.g. every pondělí) at recurringTime.
+        function nextRecurring(now) {
+            if (cfg.recurringWeekday == null) return null;
             const parts = String(cfg.recurringTime || '08:00').split(':');
             const h = Number(parts[0]) || 0;
             const m = Number(parts[1]) || 0;
             const t = new Date(now);
-            t.setHours(h, m, 0, 0); // today's dispatch time
+            t.setHours(h, m, 0, 0);
             let delta = (cfg.recurringWeekday - t.getDay() + 7) % 7;
             if (delta === 0 && now >= t.getTime()) {
-                // It's the dispatch weekday and the time has passed:
-                // celebrate for the rest of today before rolling to next week.
-                return { target: t.getTime(), recurring: true };
+                // Dispatch day, time passed: celebrate for the rest of today.
+                return t.getTime();
             }
             t.setDate(t.getDate() + delta);
-            return { target: t.getTime(), recurring: true };
-        }
-
-        let copyMode = null; // null | false (launch) | true (recurring) — avoids redundant DOM writes
-        function applyCopy(recurring) {
-            if (copyMode === recurring) return;
-            copyMode = recurring;
-            if (recurring) {
-                if (desktopCopy && cfg.recurringDesktopText) desktopCopy.textContent = cfg.recurringDesktopText;
-                if (mobileCopy && cfg.recurringMobileText) mobileCopy.textContent = cfg.recurringMobileText;
-            } else {
-                if (desktopCopy && cfg.desktopText) desktopCopy.textContent = cfg.desktopText;
-                if (mobileCopy && cfg.mobileText) mobileCopy.textContent = cfg.mobileText;
-            }
+            return t.getTime();
         }
 
         function update() {
             const now = Date.now();
-            const state = computeTarget(now);
-            applyCopy(state.recurring);
-            const diff = state.target - now;
-            if (diff <= 0) {
-                if (countdownPrefix) countdownPrefix.textContent = 'DNES JE';
-                countdownNum.textContent = '✦';
-                countdownLabel.textContent = state.recurring ? 'DEN ODESLÁNÍ' : 'VELKÝ ODESÍLACÍ DEN';
-                return;
-            }
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-            if (countdownPrefix) {
-                // Correct Czech inflection for "Zbývá":
-                // 1 unit: ZBÝVÁ
-                // 2-4 units: ZBÝVAJÍ
-                // 5+ units: ZBÝVÁ
-                const val = days > 0 ? days : (hours > 0 ? hours : minutes);
-                if (val === 1 || val >= 5 || val === 0) {
-                    countdownPrefix.textContent = 'ZBÝVÁ';
+            if (launchVal) {
+                if (now > launchDayEnd) {
+                    if (launchRow) launchRow.style.display = 'none';
                 } else {
-                    countdownPrefix.textContent = 'ZBÝVAJÍ';
+                    if (launchRow) launchRow.style.display = '';
+                    launchVal.textContent = remainingText(LAUNCH - now);
                 }
             }
 
-            if (days > 0) {
-                countdownNum.textContent = days;
-                countdownLabel.textContent = days === 1 ? 'DEN' : (days < 5 ? 'DNY' : 'DNÍ');
-            } else if (hours > 0) {
-                countdownNum.textContent = hours;
-                countdownLabel.textContent = hours === 1 ? 'HODINA' : (hours < 5 ? 'HODINY' : 'HODIN');
-            } else {
-                countdownNum.textContent = minutes;
-                countdownLabel.textContent = minutes === 1 ? 'MINUTA' : (minutes < 5 ? 'MINUTY' : 'MINUT');
+            if (recurringVal) {
+                const target = nextRecurring(now);
+                if (target == null) {
+                    if (recurringRow) recurringRow.style.display = 'none';
+                } else {
+                    if (recurringRow) recurringRow.style.display = '';
+                    recurringVal.textContent = remainingText(target - now);
+                }
             }
         }
         update();

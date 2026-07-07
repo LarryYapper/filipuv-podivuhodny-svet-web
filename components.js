@@ -16,23 +16,29 @@ const SHARED_COMPONENTS = {
                     </div>
                     <div class="top-banner-text"
                         style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 18px;">
-                        <span class="desktop-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.desktopText : 'Edice A01 Přítomnost · objednávky otevřené · Velký odesílací den 20. července'}</span>
-                        <span class="mobile-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.mobileText : 'Objednávky otevřené · Velký odesílací den 20. 7.'}</span>
+                        <span class="desktop-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.desktopText : 'Edice A01 Přítomnost · objednávky otevřené'}</span>
+                        <span class="mobile-copy">${(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) ? CMS_CONFIG.banner.mobileText : 'Edice A01 Přítomnost · objednávky otevřené'}</span>
                     </div>
                 </div>
                 <div class="top-banner-actions" style="align-items: center; box-sizing: border-box; display: flex; gap: 40px; flex-wrap: wrap;">
-                    <div style="align-items: center; box-sizing: border-box; display: flex; gap: 8px;">
-                        <div id="countdown-prefix"
-                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
-                            ZBÝVÁ
+                    <div class="top-banner-countdowns">
+                        <style>
+                            .top-banner-countdowns{box-sizing:border-box;display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+                            .top-banner-countdowns .cd-row{display:flex;align-items:center;gap:8px;line-height:1;}
+                            .top-banner-countdowns .cd-label{font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;color:#3A2C31;text-transform:uppercase;white-space:nowrap;}
+                            .top-banner-countdowns .cd-sep{color:#3A2C3140;font-size:11px;line-height:1;}
+                            .top-banner-countdowns .cd-val{font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;color:#FC7B35;white-space:nowrap;}
+                            @media (max-width:767px){.top-banner-countdowns{align-items:center;gap:2px;}.top-banner-countdowns .cd-label{font-size:9px;letter-spacing:0.08em;}.top-banner-countdowns .cd-val{font-size:11px;}}
+                        </style>
+                        <div id="cd-launch" class="cd-row">
+                            <span class="cd-label">Velký odesílací den</span>
+                            <span class="cd-sep">·</span>
+                            <span id="cd-launch-val" class="cd-val">za 14 dní</span>
                         </div>
-                        <div id="countdown-num" class="countdown-num"
-                            style="box-sizing: border-box; color: #FC7B35; display: inline-block; font-family: 'Fraunces', system-ui, sans-serif; font-size: 24px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.02em; line-height: 28px;">
-                            28
-                        </div>
-                        <div id="countdown-label"
-                            style="box-sizing: border-box; color: #3A2C31; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; line-height: 14px;">
-                            DNÍ
+                        <div id="cd-recurring" class="cd-row">
+                            <span class="cd-label">Den odeslání</span>
+                            <span class="cd-sep">·</span>
+                            <span id="cd-recurring-val" class="cd-val">za 2 dny</span>
                         </div>
                     </div>
                     <a href="edice-vitej.html" class="link-hover"
