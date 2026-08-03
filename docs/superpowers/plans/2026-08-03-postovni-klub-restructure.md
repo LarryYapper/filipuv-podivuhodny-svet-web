@@ -525,7 +525,7 @@ git commit -m "Point shared banner, nav and footer at the single edition"
 - Consumes: `CMS_CONFIG.edition` (Task 2), `data-cms="edition-*"` (Task 3).
 - Produces: URL `postovni-klub-objednavka.html`, linked from Tasks 4, 6, 7, 8.
 
-**Note on postage:** the old order pages advertise `19 / 29 / 35 Kč` while `postovni-klub.html` advertises `19 / 36 / 42 Kč`. The spec settles on **19 / 36 / 42** — use those.
+**Note on postage (confirmed by Filip):** real shipping costs 31 / 48 / 54 Kč (CZ / Evropa / Svět); Filip absorbs 12 Kč of every one, so the customer pays **19 / 36 / 42 Kč**. The `19 / 29 / 35 Kč` on the old order pages is stale — use 19 / 36 / 42.
 
 - [ ] **Step 1: Copy the existing page as the base**
 
@@ -1033,8 +1033,10 @@ Line 1497 has three faults: it cites `Úroveň 2`, it doubles the currency (`3 4
 Replace the paragraph with:
 
 ```html
-        <p class="essay-paragraph">Tři procenta jsou dost, aby to znamenalo reálné peníze — z jedné edice to dělá 3,09 Kč, za celý rok šesti edic 18,54 Kč, z jedné Edice VÍTEJ 1,22 Kč. Když přijde sto členů, je to 1 854 Kč za rok. A když jich přijde tisíc, je to 18 540 Kč.</p>
+        <p class="essay-paragraph">Tři procenta jsou dost, aby to znamenalo reálné peníze — z jedné edice to dělá 3,06 Kč, za celý rok šesti edic 18,38 Kč, z jedné Edice VÍTEJ 1,22 Kč. Když přijde sto členů, je to 1 838 Kč za rok. A když jich přijde tisíc, je to 18 376 Kč.</p>
 ```
+
+(3 % ze superhrubého zisku 1, jak to Filip počítá: 149 − 46,91 = 102,09 Kč, z toho 3 % = 3,06 Kč. Figure for Edice VÍTEJ comes straight from the cost sheet.)
 
 Line 1498 contains the typo `Každá koruna má se počítá.` — fix to `Každá koruna se počítá.`
 
@@ -1166,4 +1168,5 @@ These block the site from taking money and cannot be done in code:
 3. **Add cover images** `assets/edice-a01.png` and `assets/edice-a02.png`.
 4. **Check the VOP PDF** (`assets/Všeobecené obchodní podmínky.pdf`) for subscription and recurring-payment clauses.
 5. **Email the VÍTEJ recipients** via MailerLite about the new format.
-6. **Confirm the postage figures.** The old order pages said `19 / 29 / 35 Kč`; the club page said `19 / 36 / 42 Kč`. This plan uses **19 / 36 / 42** throughout — correct it everywhere if that is wrong.
+6. ~~Confirm the postage figures.~~ **Resolved 2026-08-03** — 19 / 36 / 42 Kč is correct (31 / 48 / 54 Kč real cost minus the 12 Kč Filip absorbs). The `19 / 29 / 35 Kč` on the old order pages was stale and dies with them.
+7. **Fix the postage line in the cost sheet.** It carries 11 Kč; the real out-of-pocket is 12 Kč per envelope.

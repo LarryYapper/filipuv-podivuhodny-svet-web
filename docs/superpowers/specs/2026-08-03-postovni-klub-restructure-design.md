@@ -104,8 +104,14 @@ tom, co přesně obsahuje řádek „(+) Úroveň 1".
 | Obálka C5 | 5,00 |
 | Odesílatel samolepka | 0,75 |
 | Inkoust | 5,50 |
-| Poštovné | 11,00 |
-| **Výroba celkem** | **32,82** |
+| Poštovné (doplatek z vlastní kapsy) | 12,00 |
+| **Výroba celkem** | **33,82** |
+
+**Jak funguje poštovné.** Skutečná cena zásilky je 31 Kč po Česku, 48 Kč do
+Evropy a 54 Kč do světa. Z každé Filip doplácí 12 Kč, takže zákazník platí
+**19 / 36 / 42 Kč** bez ohledu na destinaci. Náklad na obálku je proto vždycky
+12 Kč. (V tabulce nákladů je na tomto řádku 11 Kč — o korunu míň, nejspíš ještě
+před zdražením. Stojí za opravu.)
 
 **Poplatky** (sazby odvozené z tabulky: SimpleShop 4,72 % a ComGate 1,0 %
 z částky včetně poštovného, referenční kód 2 % z ceny)
@@ -123,16 +129,16 @@ z částky včetně poštovného, referenční kód 2 % z ceny)
 | | Úroveň 2 (dnes) | Nová edice |
 |---|---|---|
 | Cena | 139 Kč | **149 Kč** |
-| Variabilní náklady | 48,80 Kč | **45,91 Kč** |
-| Superhrubý zisk 1 | 90,20 Kč (64,9 %) | **103,09 Kč (69,2 %)** |
-| Charita 3 % | 2,71 Kč | 3,09 Kč |
+| Variabilní náklady | 49,80 Kč | **46,91 Kč** |
+| Superhrubý zisk 1 | 89,20 Kč (64,2 %) | **102,09 Kč (68,5 %)** |
+| Charita 3 % | 2,68 Kč | 3,06 Kč |
 | Honoráře | 6,50 Kč | 6,50 Kč |
-| **Hrubý zisk** | **80,99 Kč (58,3 %)** | **93,50 Kč (62,8 %)** |
+| **Hrubý zisk** | **80,02 Kč (57,6 %)** | **92,53 Kč (62,1 %)** |
 
 Náklady klesají o vyřazený mini plakát (3,27 Kč) a oznámení o eshopu (0,39 Kč);
 poplatky mírně rostou s vyšší cenou.
 
-Při 11 obálkách na edici a 6 edicích ročně to dělá **~6 200 Kč hrubého zisku za
+Při 11 obálkách na edici a 6 edicích ročně to dělá **~6 100 Kč hrubého zisku za
 rok** — za šest výrobních víkendů a zhruba hodinu týdně na expedici.
 
 > **Opravená chyba v tabulce (vyřešeno 2026-08-03).** Buňka „(+) Úroveň 1"
