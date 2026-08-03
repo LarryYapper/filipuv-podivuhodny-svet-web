@@ -6,20 +6,16 @@
 const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
-        // --- Launch dispatch (Velký odesílací den) ---
-        // Countdown targets this date first. Copy below is shown until it passes.
-        desktopText: "Edice A01 Přítomnost · objednávky otevřené",
-        mobileText: "Edice A01 Přítomnost · objednávky otevřené",
-        deadlineDate: "2026-07-20T08:00:00+02:00", // ISO 8601 (YYYY-MM-DDTHH:MM:SS+HH:MM) — Velký odesílací den
-        link: "edice-vitej.html",
+        desktopText: "Edice A02 Ticho · objednávky otevřené",
+        mobileText: "Edice A02 Ticho · objednávky otevřené",
+        deadlineDate: "2026-10-05T08:00:00+02:00", // shodné s edition.dispatchDate
+        link: "postovni-klub.html",
 
-        // --- Recurring dispatch (Den odeslání) ---
-        // After deadlineDate passes, the countdown automatically rolls to this
-        // weekday every week. To STOP recurring, set recurringWeekday to null.
-        recurringWeekday: 1,          // 0=neděle, 1=pondělí, 2=úterý ... (1 = každé pondělí)
-        recurringTime: "08:00",       // local dispatch time HH:MM
-        recurringDesktopText: "Edice VÍTEJ · objednávky otevřené · Den odeslání každé pondělí",
-        recurringMobileText: "Objednávky otevřené · Den odeslání každé pondělí"
+        // Expedice probíhá jeden pevný den v týdnu ze zásoby.
+        recurringWeekday: 1,          // 0=neděle, 1=pondělí ...
+        recurringTime: "08:00",
+        recurringDesktopText: "Objednávky otevřené · expedice každé pondělí",
+        recurringMobileText: "Expedice každé pondělí"
     },
 
     // 2. GLOBAL DEADLINES & DATES
@@ -30,28 +26,35 @@ const CMS_CONFIG = {
         currentMonth: "Červen"
     },
 
-    // 3. TIER IMAGES & PRICES
-    // Used on postovni-klub.html and in dynamic overviews
-    tiers: {
-        listek: {
-            name: "Start",
-            image: "assets/L%C3%ADstek.png", // Ensure this path is correct
-            price: "119 Kč",
-            frequency: "měsíčně"
-        },
-        dopis: {
-            name: "Klasik",
-            image: "assets/Dopis.png",
-            price: "139 Kč",
-            frequency: "měsíčně"
-        },
-        balicek: {
-            name: "Sběratel",
-            image: "assets/Bal%C3%ADek.png",
-            price: "250 Kč",
-            frequency: "měsíčně"
+    // 3. CURRENT EDITION
+    // The only block that changes when a new edition ships.
+    edition: {
+        number: "A02",
+        name: "Ticho",
+        price: 149,
+        postage: { cz: 19, eu: 36, world: 42 },
+        status: "available",          // available | last_pieces | sold_out
+        dispatchDate: "2026-10-05T08:00:00+02:00",
+        cover: "assets/edice-a02.png",
+        // SimpleShop form IDs — replace with the real ones once the
+        // 149 Kč product exists. Empty string renders the fallback notice.
+        formIds: { cz: "", eu: "", world: "" }
+    },
+
+    // 4. ARCHIVE — newest first. Same shape as `edition`.
+    // An edition with status "sold_out" needs no formIds.
+    archive: [
+        {
+            number: "A01",
+            name: "Přítomnost",
+            price: 149,
+            postage: { cz: 19, eu: 36, world: 42 },
+            status: "sold_out",
+            dispatchDate: "2026-07-20T08:00:00+02:00",
+            cover: "assets/edice-a01.png",
+            formIds: { cz: "", eu: "", world: "" }
         }
-    }
+    ]
 };
 
 // Export for use in global.js and other scripts if needed
