@@ -32,9 +32,9 @@ const SHARED_COMPONENTS = {
                     <div id="cd-launch" class="edition-row">
                         <div class="edition-info">
                             <span class="edition-mark">✦</span>
-                            <span class="edition-name">Edice A01 Přítomnost</span>
+                            <span class="edition-name">Edice <span data-cms="edition-number"></span> <span data-cms="edition-name"></span></span>
                             <span class="edition-sep">·</span>
-                            <span class="edition-desc">odesíláme <span id="cd-launch-val" class="edition-val">za 12 dní</span></span>
+                            <span class="edition-desc">odesílám <span id="cd-launch-val" class="edition-val">za pár dní</span></span>
                         </div>
                         <a href="postovni-klub.html" class="link-hover edition-cta">
                             <span class="desktop-copy">Do poštovního klubu</span>
@@ -47,7 +47,7 @@ const SHARED_COMPONENTS = {
                             <span class="edition-mark">✦</span>
                             <span class="edition-name">Edice VÍTEJ</span>
                             <span class="edition-sep">·</span>
-                            <span class="edition-desc">odesíláme každé pondělí (<span id="cd-recurring-val" class="edition-val">za 5 dní</span>)</span>
+                            <span class="edition-desc">expeduji každé pondělí (<span id="cd-recurring-val" class="edition-val">za pár dní</span>)</span>
                         </div>
                         <a href="edice-vitej.html" class="link-hover edition-cta">
                             <span class="desktop-copy">Vyzkoušej za 99 Kč</span>
@@ -92,22 +92,23 @@ const SHARED_COMPONENTS = {
                                 </div>
                             </summary>
                             <div class="mobile-submenu">
+                                <a href="postovni-klub.html" class="mobile-nav-link sub-link">Aktuální edice</a>
+                                <a href="edice.html" class="mobile-nav-link sub-link">Všechny edice</a>
                                 <a href="edice-vitej.html" class="mobile-nav-link sub-link">Edice VÍTEJ</a>
-                                <a href="postovni-klub.html" class="mobile-nav-link sub-link">Úrovně členství</a>
                             </div>
                         </details>
                         <a href="nas-svet.html" class="mobile-nav-link">Náš svět</a>
                         <a href="dobro.html" class="mobile-nav-link">Dobro</a>
                         <a href="o-mne.html" class="mobile-nav-link">O mně</a>
                         <a href="kontakt.html" class="mobile-nav-link">Kontakt</a>
-                        <a href="sprava-predplatneho.html" class="mobile-nav-link mobile-nav-utility">Členství</a>
+                        <a href="sprava-predplatneho.html" class="mobile-nav-link mobile-nav-utility">Moje objednávka</a>
                     </div>
                     <div class="mobile-nav-footer">
                         <a href="edice-vitej.html" class="btn-line-shared">
                             <span>Vyzkoušej Edici VÍTEJ</span>
                         </a>
-                        <a href="postovni-klub.html" class="btn-primary-shared">
-                            <span>Stát se členem</span>
+                        <a href="postovni-klub-objednavka.html" class="btn-primary-shared">
+                            <span>Objednat edici</span>
                         </a>
                         <div class="mobile-nav-socials">
                             <a href="#" aria-label="TikTok">
@@ -136,15 +137,16 @@ const SHARED_COMPONENTS = {
                         </div>
                     </summary>
                     <div class="dropdown-menu">
+                        <a href="postovni-klub.html" class="dropdown-link">Aktuální edice</a>
+                        <a href="edice.html" class="dropdown-link">Všechny edice</a>
                         <a href="edice-vitej.html" class="dropdown-link">Edice VÍTEJ</a>
-                        <a href="postovni-klub.html" class="dropdown-link">Úrovně členství</a>
                     </div>
                 </details>
                 <a href="nas-svet.html" class="nav-link">Náš svět</a>
                 <a href="dobro.html" class="nav-link">Dobro</a>
                 <a href="o-mne.html" class="nav-link">O mně</a>
                 <div class="nav-utility-wrap">
-                    <a href="sprava-predplatneho.html" class="nav-utility" style="text-decoration: none;">Členství</a>
+                    <a href="sprava-predplatneho.html" class="nav-utility" style="text-decoration: none;">Moje objednávka</a>
                 </div>
             </div>
         </div>
@@ -157,7 +159,7 @@ const SHARED_COMPONENTS = {
                         <img src="https://raw.githubusercontent.com/LarryYapper/filipuv-podivuhodny-svet-web/main/assets/logo.png" alt="Filipův podivuhodniý svět">
                     </div>
                     <div class="footer-tagline">
-                        Úkryt před ruchem světa. <br />Měsíční obálka, která tě vytrhne z proudu.
+                        Úkryt před ruchem světa. <br />Obálka každé dva měsíce, která tě vytrhne z proudu.
                     </div>
                     <div class="footer-newsletter">
                         <div class="footer-label">DEJ MI VĚDĚT</div>
@@ -174,16 +176,16 @@ const SHARED_COMPONENTS = {
                 <div class="footer-links-container">
                     <div class="footer-link-col">
                         <div class="footer-label">KLUB</div>
+                        <a href="postovni-klub.html">Aktuální edice</a>
+                        <a href="edice.html">Všechny edice</a>
                         <a href="edice-vitej.html">Edice VÍTEJ</a>
-                        <a href="postovni-klub.html">Úrovně členství</a>
-                        <a href="#">Všechny edice</a>
-                        <a href="postovni-klub.html">Stát se členem</a>
+                        <a href="postovni-klub-objednavka.html">Objednat</a>
                     </div>
                     <div class="footer-link-col">
                         <div class="footer-label">POMOC</div>
-                        <a href="#">Časté dotazy</a>
+                        <a href="postovni-klub.html#faq">Časté dotazy</a>
                         <a href="#">Doprava</a>
-                        <a href="sprava-predplatneho.html">Správa předplatného</a>
+                        <a href="sprava-predplatneho.html">Moje objednávka</a>
                         <a href="reklamace.html">Reklamace</a>
                         <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
                         <a href="kontakt.html">Kontakt</a>
@@ -208,7 +210,6 @@ const SHARED_COMPONENTS = {
                     <a href="assets/Všeobecené obchodní podmínky.pdf" target="_blank">Všeobecné obchodní podmínky</a>
                     <a href="assets/Reklamační řád.pdf" target="_blank">Reklamační řád</a>
                     <a href="assets/Zasady_ochrany_osobnich_udaju_Web.pdf" target="_blank">Zásady ochrany osobních údajů</a>
-                    <a href="opakovane-platby.html">Opakované platby</a>
                 </div>
             </div>
         </div>
