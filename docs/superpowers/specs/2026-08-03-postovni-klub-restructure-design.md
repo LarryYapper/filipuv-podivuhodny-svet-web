@@ -186,6 +186,8 @@ archive: [ /* stejná struktura pro starší edice, včetně A01 Přítomnost */
 | `sprava-predplatneho.html` | Z „Správy předplatného" se stává **„Moje objednávka"** — změna adresy, dotaz k zásilce, reklamace. Volba „Změna úrovně předplatného" se ruší. Formulářová mechanika (odeslání e-mailem) zůstává. |
 | `edice-vitej.html` | Jen texty: odkazy na „úrovně" → „edice", sjednocení jazyka. |
 | `nas-svet.html` | Klub je tu popsaný jako „první kapitola. Když se nás sejde dost, otevřu druhou, třetí i další." Ten růstový slib je v rozporu se zmenšováním provozu — přeformulovat na klidnější ambici. Sjednotit rytmus („měsíční" → „každé dva měsíce") a odkazy na klub. |
+| `dobro.html` | Účetní tabulka programu Dobro má řádky Úroveň 1 / 2 / 3 se starými cenami (ř. 1449–1466) — nahradit jedním řádkem edice. Všechny počty jsou zatím nulové, žádná skutečná historie darů se tím nepřepisuje. V eseji (ř. 1497) přepočítat částky; jsou i věcně špatně — u Edice VÍTEJ je uvedeno 2,48 Kč, podle tabulky je to 1,22 Kč. Opravit i zdvojené „Kč Kč" (ř. 1497) a překlep „Každá koruna má se počítá" (ř. 1498). |
+| `dekuji.html` | Děkovací stránka po objednávce slibuje: „Předplatné Poštovního klubu se opakuje každý měsíc. Úroveň změníš nebo zrušíš kdykoli ve svém účtu" (ř. 449). Žádný účet ani opakování neexistuje — přepsat na jednorázovou objednávku edice. |
 | `components.js` | Lišta edice = stav aktuální edice z configu. V navigaci „Úrovně členství" → „Aktuální edice", přibývá „Všechny edice". Patička: pryč „Správa předplatného" a „Opakované platby", tagline „Měsíční obálka" → „Obálka každé dva měsíce". |
 | `global.js` | Odpočet míří na `dispatchDate` edice místo týdenního opakování. |
 | `cms-config.js` | Viz 5.2. |
@@ -205,9 +207,13 @@ archive: [ /* stejná struktura pro starší edice, včetně A01 Přítomnost */
 | `postovni-klub-uroven-{1,2,3}-objednavka.html` | Nahradit přesměrovacím útržkem (meta refresh + odkaz) na novou objednávkovou stránku. Staré URL nesmí končit 404. |
 | `opakovane-platby.html` | Žádné opakované platby neexistují — ComGate je zakázal. Stránku smazat, odkaz v patičce odebrat, URL přesměrovat na obchodní podmínky. |
 
-**Beze změny:** `dobro.html`, `o-mne.html`, `kontakt.html`,
-`reklamace.html`, `odstoupeni-od-smlouvy.html`, `dekuji.html`, `404.html`,
-`edice-alfa-*.html` (archiv), `emails/`, `styles.css` (drobnosti podle potřeby).
+**Beze změny:** `o-mne.html`, `kontakt.html`, `reklamace.html`,
+`odstoupeni-od-smlouvy.html`, `404.html`, `edice-alfa-*.html` (archiv),
+`edice-vitej-objednavka.html`, `emails/`, `styles.css` (drobnosti podle potřeby).
+
+Tyhle stránky sice slovo „předplatné" obsahují, ale v záporu — „Žádné
+předplatné, žádný algoritmus, žádné automatické strhávání." To po změně platí
+dál a je to naopak přesně ten vzkaz, který má web nést. **Nemazat.**
 
 nas-svet.html and the explainer on the home page about the new sub-brands. Keep them, but do not base them on subscriber count. Make them as future sub-brands. and reorder them. It is Poštovní klub now, 3D tisk jako druhý. Keep the rest. 
 
