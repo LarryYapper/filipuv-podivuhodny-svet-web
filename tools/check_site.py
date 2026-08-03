@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import NamedTuple
 
@@ -34,6 +35,14 @@ REDIRECT_STUBS = {
     "postovni-klub-uroven-1-objednavka.html",
     "postovni-klub-uroven-2-objednavka.html",
     "postovni-klub-uroven-3-objednavka.html",
+}
+
+# Elements with no closing tag in HTML. A bare "<br>" or "<img ...>" must
+# never be treated as an opener waiting for a "</br>"/"</img>" that will
+# never come.
+VOID_ELEMENTS = {
+    "area", "base", "br", "col", "embed", "hr", "img", "input",
+    "link", "meta", "param", "source", "track", "wbr",
 }
 
 FORBIDDEN = [
@@ -106,10 +115,86 @@ def find_broken_links(root: Path) -> list[Violation]:
     return out
 
 
+class _TagBalanceParser(HTMLParser):
+    """Walks one file's tags and flags anything that doesn't nest cleanly.
+
+    HTMLParser already puts <script>/<style> bodies into CDATA mode (verified
+    against this repo's inline scripts, several of which contain "<" from
+    comparisons like `if (y < 0)` inside template literals), so their
+    contents never reach handle_starttag/handle_endtag in the first place —
+    no special-casing needed here for that.
+    """
+
+    def __init__(self, filename: str) -> None:
+        super().__init__(convert_charrefs=True)
+        self.filename = filename
+        self.stack: list[tuple[str, int]] = []
+        self.violations: list[Violation] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in VOID_ELEMENTS:
+            return
+        self.stack.append((tag, self.getpos()[0]))
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        # Explicit XHTML-style self-close ("<br />", "<div />") never opens
+        # anything, even for tags that aren't in VOID_ELEMENTS.
+        return
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in VOID_ELEMENTS:
+            return
+        line = self.getpos()[0]
+        if self.stack and self.stack[-1][0] == tag:
+            self.stack.pop()
+            return
+        for i in range(len(self.stack) - 2, -1, -1):
+            if self.stack[i][0] == tag:
+                open_tag, open_line = self.stack[-1]
+                self.violations.append(Violation(
+                    self.filename, line, "unbalanced-html",
+                    f"</{tag}> closes out of order: <{open_tag}> opened at "
+                    f"line {open_line} is still open",
+                ))
+                del self.stack[i:]
+                return
+        self.violations.append(Violation(
+            self.filename, line, "unbalanced-html",
+            f"</{tag}> has no matching opening tag",
+        ))
+
+
+def find_unbalanced_html(root: Path) -> list[Violation]:
+    """Catch unclosed/mismatched tags a line-range deletion could introduce.
+
+    Upcoming edits delete large HTML regions by line number. There is no
+    browser available here to render the result, so a "</div>" that gets
+    deleted along with everything else in its range would silently break the
+    page layout and nobody would notice until a human opened it. This walks
+    every root-level page with a real HTML parser and a tag stack so that
+    kind of breakage shows up as a violation instead.
+    """
+    out: list[Violation] = []
+    for path in sorted(root.glob("*.html")):
+        parser = _TagBalanceParser(path.name)
+        parser.feed(path.read_text(encoding="utf-8"))
+        out.extend(parser.violations)
+        for tag, line in reversed(parser.stack):
+            out.append(Violation(
+                path.name, line, "unbalanced-html",
+                f"Unclosed <{tag}> opened at line {line}",
+            ))
+    return out
+
+
 def main() -> int:
-    violations = find_forbidden_copy(ROOT) + find_broken_links(ROOT)
+    violations = (
+        find_forbidden_copy(ROOT)
+        + find_broken_links(ROOT)
+        + find_unbalanced_html(ROOT)
+    )
     if not violations:
-        print("OK — no stale copy, no broken links.")
+        print("OK — no stale copy, no broken links, no unbalanced HTML.")
         return 0
     by_rule: dict[str, list[Violation]] = {}
     for v in violations:
