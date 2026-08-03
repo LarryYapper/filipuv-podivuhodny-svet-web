@@ -4,3 +4,6 @@
 # Zaemit AI tool config (auto-generated)
 .mcp.json
 emails
+
+# Subagent-driven development scratch (ledger, briefs, review packages)
+.superpowers/
