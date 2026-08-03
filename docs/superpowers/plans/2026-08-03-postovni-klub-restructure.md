@@ -627,6 +627,15 @@ The old page hardcodes form IDs `jDe3z` / `qGMrN` / `5QzP2`, which belong to the
               if (!ids[region]) { missing = true; return; }
               var mount = document.createElement('div');
               mount.setAttribute('data-SimpleShopForm', ids[region]);
+              // The inner <div> is REQUIRED. SimpleShop's _createForm runs
+              // querySelector("[data-SimpleShopForm='ID'] > div").setAttribute(...)
+              // with no null check; against a childless mount it throws a
+              // TypeError that aborts its whole queued-call loop, so NO region's
+              // form renders — including the default one. Every SimpleShop-issued
+              // snippet ships this placeholder child for exactly this reason.
+              var placeholder = document.createElement('div');
+              placeholder.textContent = 'Prodejní formulář je vytvořen v systému SimpleShop.cz.';
+              mount.appendChild(placeholder);
               host.appendChild(mount);
             });
 
