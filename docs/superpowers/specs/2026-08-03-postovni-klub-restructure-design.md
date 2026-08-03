@@ -53,8 +53,7 @@ Přítomnost`.
 **Vyřazeno:** mini plakát, stírací los, receptová karta, oznámení o eshopu,
 samostatný článek (jeho obsah se přesouvá dovnitř ZINE).
 
-**Narozeninové přání** přestává být měsíčním závazkem. Přání se přiloží do té
-edice, která vyjde nejblíž narozeninám příjemce — bez slibu konkrétního měsíce.
+**Narozeninové přání** se ruší.
 
 ### 2.3 Edice VÍTEJ zůstává beze změny
 
@@ -89,30 +88,61 @@ neslibuje.
 
 ## 4. Ekonomika
 
-Počítáno stejnou metodou jako v tabulce nákladů (superhrubý zisk 1 = cena bez
-poštovného − variabilní náklady).
+Spočítáno **zdola z jednotlivých položek**, ne z mezisoučtů — aby nezáleželo na
+tom, co přesně obsahuje řádek „(+) Úroveň 1".
+
+**Výrobní náklady na obálku**
+
+| Položka | Kč |
+|---|---|
+| Fotopohlednice | 3,81 |
+| Dopis | 0,80 |
+| ZINE obal | 3,81 |
+| ZINE obsah | 1,09 |
+| Karta s citátem | 0,41 |
+| Samolepka | 0,65 |
+| Obálka C5 | 5,00 |
+| Odesílatel samolepka | 0,75 |
+| Inkoust | 5,50 |
+| Poštovné | 11,00 |
+| **Výroba celkem** | **32,82** |
+
+**Poplatky** (sazby odvozené z tabulky: SimpleShop 4,72 % a ComGate 1,0 %
+z částky včetně poštovného, referenční kód 2 % z ceny)
+
+| Položka | Kč |
+|---|---|
+| SimpleShop (4,72 % ze 168) | 7,93 |
+| ComGate (1,0 % ze 168) | 1,68 |
+| Elektřina | 0,50 |
+| Členský / referenční kód | 2,98 |
+| **Poplatky celkem** | **13,09** |
+
+**Výsledek**
 
 | | Úroveň 2 (dnes) | Nová edice |
 |---|---|---|
-| Cena | 139 Kč | 149 Kč |
-| Variabilní náklady | 59,56 Kč | **~56,5 Kč** |
-| Superhrubý zisk 1 | 79,44 Kč (57,2 %) | **~92,5 Kč (62 %)** |
-| Charita 3 % | 2,38 Kč | ~2,78 Kč |
+| Cena | 139 Kč | **149 Kč** |
+| Variabilní náklady | 48,80 Kč | **45,91 Kč** |
+| Superhrubý zisk 1 | 90,20 Kč (64,9 %) | **103,09 Kč (69,2 %)** |
+| Charita 3 % | 2,71 Kč | 3,09 Kč |
 | Honoráře | 6,50 Kč | 6,50 Kč |
-| **Hrubý zisk** | **70,56 Kč (50,8 %)** | **~83 Kč (55,8 %)** |
+| **Hrubý zisk** | **80,99 Kč (58,3 %)** | **93,50 Kč (62,8 %)** |
 
 Náklady klesají o vyřazený mini plakát (3,27 Kč) a oznámení o eshopu (0,39 Kč);
 poplatky mírně rostou s vyšší cenou.
 
-Při 11 obálkách na edici a 6 edicích ročně to dělá **~5 500 Kč hrubého zisku za
+Při 11 obálkách na edici a 6 edicích ročně to dělá **~6 200 Kč hrubého zisku za
 rok** — za šest výrobních víkendů a zhruba hodinu týdně na expedici.
 
-> **Dvě poznámky k číslům.** (1) V původním shrnutí jsem odhadl 52 Kč nákladů a
-> ~90 Kč zisku; po dopočtu z tabulky je přesnější 56,5 Kč a ~83 Kč. (2) V
-> tabulce se u Úrovně 2 zdá, že poplatky (SimpleShop, ComGate, elektřina,
-> referenční kód) jsou započítány dvakrát — jednou uvnitř položky „(+) Úroveň 1"
-> a podruhé zvlášť. Pokud je to opravdu duplicita, skutečné náklady jsou o
-> ~12 Kč nižší a zisk odpovídajícím způsobem vyšší. **Stojí za ověření.**
+> **Nesrovnalost v tabulce, kterou stojí za to jednou zkontrolovat.** Podle
+> zadání má „(+) Úroveň 1" obsahovat jen výrobní náklady. Ty ale dávají 25,90 Kč
+> (26,40 Kč s elektřinou), zatímco v buňce je **36,66 Kč** — tedy přesně
+> celkový variabilní náklad Úrovně 1 včetně poplatků (řádek 24). Že se do
+> mezisoučtu dostala plná částka, potvrzuje i součet: 59,56 Kč u Úrovně 2 vyjde
+> jen s 36,66; s 25,90 by vyšlo 48,80 Kč. Buď je popisek řádku, nebo odkaz ve
+> vzorci mimo. Čísla výše počítají s výrobou 25,90 Kč, protože to odpovídá
+> zadanému záměru. (Čtu exportované hodnoty, ne vzorce — ověření zabere minutu.)
 
 ---
 
@@ -157,6 +187,7 @@ archive: [ /* stejná struktura pro starší edice, včetně A01 Přítomnost */
 | `index.html` | Sekce „Úrovně členství" (~ř. 495–800) nahrazena blokem jedné edice. Hero a meta popisky „měsíční" → „každé dva měsíce". Časté dotazy přepsány. |
 | `sprava-predplatneho.html` | Z „Správy předplatného" se stává **„Moje objednávka"** — změna adresy, dotaz k zásilce, reklamace. Volba „Změna úrovně předplatného" se ruší. Formulářová mechanika (odeslání e-mailem) zůstává. |
 | `edice-vitej.html` | Jen texty: odkazy na „úrovně" → „edice", sjednocení jazyka. |
+| `nas-svet.html` | Klub je tu popsaný jako „první kapitola. Když se nás sejde dost, otevřu druhou, třetí i další." Ten růstový slib je v rozporu se zmenšováním provozu — přeformulovat na klidnější ambici. Sjednotit rytmus („měsíční" → „každé dva měsíce") a odkazy na klub. |
 | `components.js` | Lišta edice = stav aktuální edice z configu. V navigaci „Úrovně členství" → „Aktuální edice", přibývá „Všechny edice". Patička: pryč „Správa předplatného" a „Opakované platby", tagline „Měsíční obálka" → „Obálka každé dva měsíce". |
 | `global.js` | Odpočet míří na `dispatchDate` edice místo týdenního opakování. |
 | `cms-config.js` | Viz 5.2. |
@@ -176,15 +207,21 @@ archive: [ /* stejná struktura pro starší edice, včetně A01 Přítomnost */
 | `postovni-klub-uroven-{1,2,3}-objednavka.html` | Nahradit přesměrovacím útržkem (meta refresh + odkaz) na novou objednávkovou stránku. Staré URL nesmí končit 404. |
 | `opakovane-platby.html` | Žádné opakované platby neexistují — ComGate je zakázal. Stránku smazat, odkaz v patičce odebrat, URL přesměrovat na obchodní podmínky. |
 
-**Beze změny:** `nas-svet.html`, `dobro.html`, `o-mne.html`, `kontakt.html`,
+**Beze změny:** `dobro.html`, `o-mne.html`, `kontakt.html`,
 `reklamace.html`, `odstoupeni-od-smlouvy.html`, `dekuji.html`, `404.html`,
 `edice-alfa-*.html` (archiv), `emails/`, `styles.css` (drobnosti podle potřeby).
+
+nas-svet.html and the explainer on the home page about the new sub-brands. Keep them, but do not base them on subscriber count. Make them as future sub-brands. and reorder them. It is Poštovní klub now, 3D tisk jako druhý. Keep the rest. 
 
 ### 5.4 Jazyk napříč webem
 
 Systematicky odstranit: „předplatné", „měsíční", „úroveň", „členství",
 „zrušíš jedním klikem", „automatické strhávání". Nahradit: „edice",
 „každé dva měsíce", „objednávka", „člen klubu".
+
+Zrušené narozeninové přání zmizí i z textů — dnes je slíbené v `postovni-klub.html`
+(ř. 597 a 601, „v měsíci tvých narozenin"). Je to jediný výskyt na webu, ale je
+to slib, který by po změně nebyl splněn.
 
 Celkem 171 výskytů v 16 souborech — projít všechny, ne jen ty zjevné.
 
@@ -201,7 +238,8 @@ Tyhle věci kód nevyřeší a bez nich web nebude fungovat:
    je upravit. PDF nejde měnit z kódu.
 3. **Poslat e-mail příjemcům Edice VÍTEJ** přes MailerLite s vysvětlením nové
    podoby klubu; slevové kódy platí dál.
-4. **Ověřit dvojí započtení poplatků** v tabulce nákladů (viz poznámka v části 4).
+4. **Zkontrolovat buňku „(+) Úroveň 1"** v tabulce nákladů — má obsahovat
+   25,90 Kč (jen výroba), je v ní 36,66 Kč (viz poznámka v části 4).
 
 ---
 
