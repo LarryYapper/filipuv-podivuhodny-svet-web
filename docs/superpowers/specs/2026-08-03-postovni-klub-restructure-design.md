@@ -135,14 +135,12 @@ poplatky mírně rostou s vyšší cenou.
 Při 11 obálkách na edici a 6 edicích ročně to dělá **~6 200 Kč hrubého zisku za
 rok** — za šest výrobních víkendů a zhruba hodinu týdně na expedici.
 
-> **Nesrovnalost v tabulce, kterou stojí za to jednou zkontrolovat.** Podle
-> zadání má „(+) Úroveň 1" obsahovat jen výrobní náklady. Ty ale dávají 25,90 Kč
-> (26,40 Kč s elektřinou), zatímco v buňce je **36,66 Kč** — tedy přesně
-> celkový variabilní náklad Úrovně 1 včetně poplatků (řádek 24). Že se do
-> mezisoučtu dostala plná částka, potvrzuje i součet: 59,56 Kč u Úrovně 2 vyjde
-> jen s 36,66; s 25,90 by vyšlo 48,80 Kč. Buď je popisek řádku, nebo odkaz ve
-> vzorci mimo. Čísla výše počítají s výrobou 25,90 Kč, protože to odpovídá
-> zadanému záměru. (Čtu exportované hodnoty, ne vzorce — ověření zabere minutu.)
+> **Opravená chyba v tabulce (vyřešeno 2026-08-03).** Buňka „(+) Úroveň 1"
+> obsahovala 36,66 Kč — celkový variabilní náklad Úrovně 1 včetně poplatků —
+> místo samotné výroby za 25,90 Kč. Poplatky se tím započítaly dvakrát a
+> variabilní náklady Úrovně 2 vycházely na 59,56 Kč místo 48,80 Kč. Filip vzorec
+> opravil. Marže u dosavadních úrovní byly tedy podhodnocené zhruba o 11 Kč na
+> obálku; čísla výše už počítají se správnou hodnotou.
 
 ---
 
@@ -238,8 +236,8 @@ Tyhle věci kód nevyřeší a bez nich web nebude fungovat:
    je upravit. PDF nejde měnit z kódu.
 3. **Poslat e-mail příjemcům Edice VÍTEJ** přes MailerLite s vysvětlením nové
    podoby klubu; slevové kódy platí dál.
-4. **Zkontrolovat buňku „(+) Úroveň 1"** v tabulce nákladů — má obsahovat
-   25,90 Kč (jen výroba), je v ní 36,66 Kč (viz poznámka v části 4).
+4. ~~Zkontrolovat buňku „(+) Úroveň 1" v tabulce nákladů.~~ **Hotovo 2026-08-03** —
+   vzorec opraven, viz poznámka v části 4.
 
 ---
 
