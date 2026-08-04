@@ -27,7 +27,8 @@
             }
         }
 
-        /* #13 (update-4): "Měsíční Edice" — show only the first two editions */
+        /* Přehled edic teaser: show only the two nearest editions; the full
+           list lives on edice.html */
         .edice-grid > div:nth-child(n+3) {
             display: none !important;
         }
@@ -742,7 +743,7 @@
                 </div>
                 <div
                     style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(32px, 6vw, 72px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                    Co se ptáš, než se přihlásíš.
+                    Co se ptáš, než objednáš.
                 </div>
             </div>
             <div
@@ -760,15 +761,12 @@
                         </div>
                         <div
                             style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                            Je Edice VÍTEJ jednorázová, nebo začátek předplatného?
+                            Opakuje se platba?
                         </div>
                     </div>
                     <div
                         style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Jednorázová. Zaplatíš 99 Kč (doručení do Česka, mimo za příplatek) jednou, dostaneš jednu obálku
-                        a tím to
-                        končí. Žádné automatické strhávání. Pokud se ti zalíbí, klikneš na Stát se členem a vybereš
-                        úroveň.
+                        Ne. Každá objednávka je jednorázová — nic se nestrhává.
                     </div>
                 </div>
                 <div
@@ -783,14 +781,12 @@
                         </div>
                         <div
                             style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                            Můžu zrušit předplatné kdykoliv?
+                            Jak často vychází edice?
                         </div>
                     </div>
                     <div
                         style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Jedním klikem ve svém účtu. Bez výpovědní lhůty, bez uvádení důvodu. Přerušíš vždy nejpozději v
-                        den platby –
-                        co už ti odešlo, dorazí.
+                        Každé dva měsíce, šestkrát za rok.
                     </div>
                 </div>
                 <div
@@ -839,7 +835,7 @@
                     </div>
                 </div>
                 <div
-                    style="align-items: flex-start; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
                     <div
                         style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
                         <div style="box-sizing: border-box; display: inline-block; padding-top: 6px;">
@@ -855,12 +851,36 @@
                     </div>
                     <div
                         style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Z hrubé marže každého členství (i Edice VÍTEJ) posílám 3 % konkrétní organizaci. Mění se každý
+                        Z hrubé marže každé edice posílám 3 % konkrétní organizaci. Mění se každý
                         kvartál –
                         aktuální najdeš
                         <a href="dobro.html" style="color: #FC7B35; text-decoration: underline;">zde</a>.
                     </div>
                 </div>
+                <!-- Question 06 -->
+                <div
+                    style="align-items: flex-start; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
+                    <div
+                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
+                        <div
+                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
+                            <div
+                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
+                                06
+                            </div>
+                        </div>
+                        <div
+                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                            Dá se obálka darovat?
+                        </div>
+                    </div>
+                    <div
+                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
+                        Ano. Objednáš edici a jako doručovací adresu vyplníš adresu obdarovaného — je to
+                        jednorázový nákup, takže obdarovaný nemusí nic řešit ani rušit.
+                    </div>
+                </div>
+
                 <div
                     style="align-items: center; box-sizing: border-box; display: flex; justify-content: space-between; padding-top: 40px; flex-wrap: wrap; gap: 20px; padding-bottom: 24px;">
                     <div
@@ -883,74 +903,6 @@
                     </div>
                 </div>
 
-                <!-- Question 06 -->
-                <div
-                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
-                    <div
-                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
-                        <div
-                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
-                            <div
-                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
-                                06
-                            </div>
-                        </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                            Můžu změnit tier kdykoliv?
-                        </div>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Ano, jedním klikem ve svém účtu. Změna se projeví příští měsíc – co už jsem odeslal, dorazí v původním tieru. Žádné poplatky za přechod, žádné minimální období.
-                    </div>
-                </div>
-
-                <!-- Question 07 -->
-                <div
-                    style="align-items: flex-start; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
-                    <div
-                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
-                        <div
-                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
-                            <div
-                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
-                                07
-                            </div>
-                        </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                            Dá se obálka darovat?
-                        </div>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Edice VÍTEJ ano – koupíš ji jednorázově a posíláš na adresu obdarovaného. U předplatného zatím musí mít obdarovaný vlastní účet. Plná dárková mechanika přijde ve druhém roce klubu.
-                    </div>
-                </div>
-
-                <!-- Question 08 -->
-                <div
-                    style="align-items: flex-start; border-bottom-color: #3A2C3133; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #3A2C3133; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; display: flex; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; padding-block: 40px;">
-                    <div
-                        style="align-items: flex-start; box-sizing: border-box; display: flex; flex-shrink: 0; gap: 24px; width: 100%; max-width: 540px;">
-                        <div
-                            style="box-sizing: border-box; display: inline-block; flex-shrink: 0; padding-top: 6px; width: 22px;">
-                            <div
-                                style="box-sizing: border-box; color: #FF6752; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; line-height: 18px;">
-                                08
-                            </div>
-                        </div>
-                        <div
-                            style="box-sizing: border-box; color: #3A2C31; font-family: 'Fraunces', system-ui, sans-serif; font-size: 26px; font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.018em; line-height: 32px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                            Co když budu cestovat? Můžu měsíc vynechat?
-                        </div>
-                    </div>
-                    <div
-                        style="box-sizing: border-box; color: #3A2C31C7; flex-basis: 0%; flex-grow: 1; flex-shrink: 1; min-width: 300px; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 26px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">
-                        Pauznout ano – v účtu klikneš na Vynechat příští edici a tenhle měsíc neplatíš. Pokud cestuješ dlouho, můžeš si dočasně změnit doručovací adresu nebo přerušit úplně.
-                    </div>
-                </div>
             </div>
         </div>
         <div class="final-cta-section"
@@ -961,32 +913,32 @@
             </div>
             <div
                 style="box-sizing: border-box; color: #F4F2EB; font-family: 'Fraunces', system-ui, sans-serif; font-size: clamp(48px, 10vw, 120px); font-variation-settings: 'wght' 580; font-weight: 580; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 1100px; text-align: center;">
-                Otevři schránku<br>za 28 dní.
+                Otevři schránku<br>za pár dní.
             </div>
             <div
                 style="box-sizing: border-box; color: #F4F2EBB3; font-family: 'Fraunces', system-ui, sans-serif; font-size: 24px; font-style: italic; line-height: 36px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px; max-width: 720px; text-align: center;">
-                99 Kč jednorázově. Bez předplatného, bez algoritmu, bez obrazovky. Edice VÍTEJ se uzavírá 10. června 23:59.
+                149 Kč jednorázově. Bez předplatného, bez algoritmu, bez obrazovky. Expeduju každé pondělí.
             </div>
             <div
                 style="align-items: center; box-sizing: border-box; display: flex; gap: 32px; padding-top: 24px; flex-wrap: wrap; justify-content: center;">
-                <div
-                    style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 22px; padding-inline: 44px;">
+                <a class="edition-order-btn" href="postovni-klub-objednavka.html"
+                    style="align-items: center; background-color: #FC7B35; border-radius: 999px; box-sizing: border-box; display: flex; justify-content: center; padding-block: 22px; padding-inline: 44px; text-decoration: none;">
                     <div
                         style="box-sizing: border-box; color: #F4F2EB; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 18px; font-weight: 700; line-height: 22px; text-align: center;">
-                        Vyzkoušej Edici VÍTEJ
+                        Objednat edici
                     </div>
-                </div>
-                <div
-                    style="align-items: center; border-bottom-color: #F4F2EB99; border-bottom-style: solid; border-bottom-width: 1.5px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 4px;">
+                </a>
+                <a href="edice.html"
+                    style="align-items: center; border-bottom-color: #F4F2EB99; border-bottom-style: solid; border-bottom-width: 1.5px; box-sizing: border-box; display: flex; gap: 8px; padding-block: 4px; text-decoration: none;">
                     <div
                         style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; font-weight: 600; line-height: 20px; text-align: center;">
-                        Nebo se rovnou staň členem
+                        Nebo si prohlédni všechny edice
                     </div>
                     <div
                         style="box-sizing: border-box; color: #F4F2EBD9; display: inline-block; font-family: 'Mulish', system-ui, sans-serif; font-size: 16px; line-height: 20px; text-align: center;">
                         →
                     </div>
-                </div>
+                </a>
             </div>
             <div style="box-sizing: border-box; display: inline-block; padding-top: 8px;">
                 <div
