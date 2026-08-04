@@ -393,6 +393,12 @@
               if (!ids[region]) { missing = true; return; }
               var mount = document.createElement('div');
               mount.setAttribute('data-SimpleShopForm', ids[region]);
+              // SimpleShop's _createForm dereferences "[data-SimpleShopForm=...] > div"
+              // with no null check — without this inner div it throws and aborts
+              // the vendor's queued-call replay for every later region. Do not remove.
+              var placeholder = document.createElement('div');
+              placeholder.textContent = 'Prodejní formulář je vytvořen v systému SimpleShop.cz.';
+              mount.appendChild(placeholder);
               host.appendChild(mount);
             });
 
