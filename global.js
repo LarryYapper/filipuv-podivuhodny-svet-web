@@ -594,9 +594,14 @@
 
     // INITIALIZE ALL
     function init() {
-        initCMS();
         initFavicon();
+        // initComponents() injects the banner, and the banner template is the
+        // only place [data-cms] elements exist (components.js). initCMS() scans
+        // for them once and never re-runs, so it MUST come after — otherwise
+        // the top bar renders "Edice ·" with no number and no name on every
+        // page. Do not move initCMS() back above initComponents().
         initComponents();
+        initCMS();
         initBackToTop();
         initMobileMenu();
         initStickyNav();
