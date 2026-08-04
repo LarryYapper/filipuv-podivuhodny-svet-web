@@ -563,7 +563,13 @@
 
     // 12. EDITION ORDER WIRING
     function initEditionCheckout() {
-        const ORDER_URL = 'postovni-klub-objednavka.html';
+        // Each edition owns a permanent order page (so SimpleShop orders and
+        // MailerLite webhooks can tell editions apart, and older editions stay
+        // sellable from stock). The config names the current one; the generic
+        // postovni-klub-objednavka.html URL remains as a fallback rocker.
+        const ORDER_URL = (typeof CMS_CONFIG !== 'undefined'
+            && CMS_CONFIG.edition
+            && CMS_CONFIG.edition.orderPage) || 'postovni-klub-objednavka.html';
         const soldOut = typeof CMS_CONFIG !== 'undefined'
             && CMS_CONFIG.edition
             && CMS_CONFIG.edition.status === 'sold_out';
