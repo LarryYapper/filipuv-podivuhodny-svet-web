@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
-  <title>Správa předplatného · Filipův podivuhodný svět</title>
+  <title>Moje objednávka · Filipův podivuhodný svět</title>
   <meta name="description" content="Klientská zóna pro změnu doručovací adresy nebo úpravu členství v klubu.">
   <meta name="robots" content="noindex, nofollow">
 
@@ -158,10 +158,10 @@
       .form-page { padding: 40px 20px 64px; }
     }
   </style>
-<link rel="canonical" href="https://example.com/sprava-predplatneho.html">
-<meta property="og:title" content="Správa předplatného · Filipův podivuhodný svět">
-<meta property="og:description" content="Správa předplatného · Filipův podivuhodný svět">
-<meta property="og:url" content="https://example.com/sprava-predplatneho.html">
+<link rel="canonical" href="https://filipuvpodivuhodnysvet.cz/sprava-predplatneho.html">
+<meta property="og:title" content="Moje objednávka · Filipův podivuhodný svět">
+<meta property="og:description" content="Moje objednávka · Filipův podivuhodný svět">
+<meta property="og:url" content="https://filipuvpodivuhodnysvet.cz/sprava-predplatneho.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -174,7 +174,7 @@
     <main class="form-page">
       <div class="page-hero">
         <div class="page-kicker">✦ Členství</div>
-        <h1 class="page-title">Správa předplatného.</h1>
+        <h1 class="page-title">Moje objednávka.</h1>
         <p class="page-lead">Potřebuješ změnit doručovací adresu, upravit nebo ukončit své členství? Napiš mi – obratem vyřídím a ozvu se.</p>
       </div>
 
@@ -200,8 +200,7 @@
             <div class="form-section-title">Tvůj požadavek</div>
 
             <p class="form-disclaimer">
-              Simpleshop nenabízí automatickou správu předplatného z Tvojí strany,
-              musíme to tedy provést touto cestou. Omlouvám se za komplikace.
+              Objednávky vyřizuju ručně. Napiš mi, co potřebuješ, a ozvu se ti.
             </p>
 
             <div class="form-group">
@@ -209,7 +208,6 @@
               <select class="form-select" id="s-type" name="type" required>
                 <option value="">Vyber povahu žádosti</option>
                 <option value="Změna doručovací adresy" data-key="address">Změna doručovací adresy</option>
-                <option value="Změna úrovně předplatného" data-key="tier">Změna úrovně předplatného</option>
                 <option value="Pozastavení členství (dovolená / pauza)" data-key="pause">Pozastavení členství (dovolená / pauza)</option>
                 <option value="Ukončení členství v klubu" data-key="cancel">Ukončení členství v klubu</option>
                 <option value="Obecný dotaz / jiný požadavek" data-key="general">Obecný dotaz / jiný požadavek</option>
@@ -249,24 +247,6 @@
                   <label class="form-label" for="a-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
                   <textarea class="form-textarea" id="a-note" placeholder="Cokoliv, co bych měl k adrese vědět…"></textarea>
                 </div>
-              </div>
-            </div>
-
-            <!-- Změna úrovně předplatného -->
-            <div class="cond" data-when="tier">
-              <div class="form-group">
-                <label class="form-label" for="t-level">Nová úroveň předplatného <span class="req">*</span></label>
-                <select class="form-select" id="t-level">
-                  <option value="">Vyber novou úroveň</option>
-                  <option value="Start (119 Kč / měsíčně)">Start — 119 Kč / měsíčně</option>
-                  <option value="Klasik (139 Kč / měsíčně)">Klasik — 139 Kč / měsíčně</option>
-                  <option value="Sběratel (250 Kč / měsíčně)">Sběratel — 250 Kč / měsíčně</option>
-                </select>
-                <span class="field-error" id="t-level-err">Vyber prosím novou úroveň.</span>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="t-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
-                <textarea class="form-textarea" id="t-note" placeholder="Od kdy si přeješ změnu uplatnit apod.…"></textarea>
               </div>
             </div>
 
@@ -365,7 +345,6 @@
       // Required text/select field ids per request key.
       var fieldsByKey = {
         address: ['a-name', 'a-street', 'a-city', 'a-zip', 'a-country'],
-        tier:    ['t-level'],
         pause:   ['p-length'],
         cancel:  [],          // validated via radio group below
         general: ['g-message']
@@ -454,10 +433,6 @@
             'PSČ: '              + v('a-zip') + '\n' +
             'Země: '             + v('a-country') + '\n' +
             optLine('Poznámka', v('a-note'));
-        } else if (key === 'tier') {
-          detail =
-            'Nová úroveň: ' + v('t-level') + '\n' +
-            optLine('Poznámka', v('t-note'));
         } else if (key === 'pause') {
           detail =
             'Délka pauzy: ' + v('p-length') + '\n' +
@@ -472,7 +447,7 @@
         }
 
         var message =
-          'SPRÁVA PŘEDPLATNÉHO\n\n' +
+          'MOJE OBJEDNÁVKA\n\n' +
           'E-mail člena: ' + email + '\n' +
           'Druh požadavku: ' + type + '\n\n' +
           detail + '\n' +
@@ -488,7 +463,7 @@
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
               access_key: WEB3FORMS_KEY,
-              subject: 'Správa předplatného – ' + type,
+              subject: 'Moje objednávka – ' + type,
               from_name: 'Klientská zóna – podivuhodný svět',
               email: email,
               botcheck: document.querySelector('#account-form [name="botcheck"]').value,
