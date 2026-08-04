@@ -55,6 +55,10 @@ FORBIDDEN = [
     (r"narozenin", "cancelled-item"),
     (r"měsíční\s+předplatné", "recurring-payment"),
     (r"jedním\s+klikem", "cancel-promise"),
+    # "Become a member" no longer matches the model — visitors order an
+    # edition, they don't join. Catches the infinitive ("Stát se členem")
+    # and the imperative ("staň (se) členem"), both found live on the site.
+    (r"[Ss]tát\s+se\s+členem|staň\s+(?:se\s+)?(?:\w+\s+)?členem", "membership-cta"),
 ]
 
 # "Žádné předplatné" / "bez předplatného" are fine and must survive; an
