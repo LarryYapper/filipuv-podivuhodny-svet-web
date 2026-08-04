@@ -59,6 +59,12 @@ FORBIDDEN = [
     # edition, they don't join. Catches the infinitive ("Stát se členem")
     # and the imperative ("staň (se) členem"), both found live on the site.
     (r"[Ss]tát\s+se\s+členem|staň\s+(?:se\s+)?(?:\w+\s+)?členem", "membership-cta"),
+    # Editions ship every two months. Matches the bare cadence claim
+    # ("každý měsíc", "každého měsíce") but deliberately NOT the adjective
+    # "měsíční", because the planned tear-off calendar is genuinely a
+    # monthly product ("Stolní odtrhávací, měsíční foto, A3") and that copy
+    # is correct as written.
+    (r"každ[ýého]{1,3}\s+měsíc", "wrong-cadence"),
 ]
 
 # "Žádné předplatné" / "bez předplatného" are fine and must survive; an
