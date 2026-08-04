@@ -331,6 +331,11 @@
 <meta property="og:url" content="https://filipuvpodivuhodnysvet.cz/postovni-klub-objednavka.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<!-- Pure data, no DOM access. Must load in <head>: classic scripts run in
+     document order, and the inline form-mounting script further down the body
+     reads CMS_CONFIG. Loaded from the body it would arrive too late and the
+     checkout would render empty. Do not move back down. -->
+<script src="cms-config.js"></script>
 </head>
 
 <body>
@@ -427,7 +432,8 @@
              var toggle = aside.querySelector('.region-toggle');
              var note = aside.querySelector('[data-region-note]');
              var regions = aside.querySelectorAll('.form-region');
-             var created = { cz: true };
+             // All three regions are mounted eagerly by the script above, so
+             // this handler only shows/hides them — it never creates a form.
              toggle.addEventListener('click', function (e) {
                var btn = e.target.closest('button[data-region]');
                if (!btn) return;
@@ -441,13 +447,6 @@
                  reg.hidden = reg.getAttribute('data-region') !== r;
                });
                if (btn.dataset.note) note.textContent = btn.dataset.note;
-               if (!created[r]) {
-                 var holder = aside.querySelector('.form-region[data-region="' + r + '"] [data-SimpleShopForm]');
-                 if (holder && window.sss) {
-                   sss('createForm', holder.getAttribute('data-SimpleShopForm'));
-                   created[r] = true;
-                 }
-               }
              });
            })();
           </script>
@@ -458,7 +457,6 @@
 
   <div id="global-footer"></div>
 
-  <script src="cms-config.js"></script>
   <script src="components.js"></script>
   <script src="global.js"></script>
 </body>
