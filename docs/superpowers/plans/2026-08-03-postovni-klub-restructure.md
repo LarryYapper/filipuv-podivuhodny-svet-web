@@ -150,9 +150,17 @@ def find_forbidden_copy(root: Path) -> list[Violation]:
 
 
 def find_broken_links(root: Path) -> list[Violation]:
+    """Check every internal .html link, including the nav and footer.
+
+    components.js holds the site's primary navigation as a template string,
+    so it must be scanned too — a typo there breaks every page at once.
+    """
     out: list[Violation] = []
     href = re.compile(r'href="([^"#?:]+\.html)')
-    for path in sorted(root.glob("*.html")):
+    targets = sorted(root.glob("*.html")) + [root / "components.js"]
+    for path in targets:
+        if not path.exists():
+            continue
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             for target in href.findall(line):
                 if not (root / target).exists():
@@ -506,6 +514,8 @@ Delete line 211 entirely — `<a href="opakovane-platby.html">Opakované platby<
 Run: `grep -n "Úrovně členství\|Správa předplatného\|opakovane-platby\|Měsíční obálka\|Stát se členem" components.js`
 Expected: no output.
 
+**Expected transient failure:** `python tools/check_site.py` will now report `broken-link` for `edice.html` and `postovni-klub-objednavka.html` from `components.js`, because those pages do not exist until Tasks 5 and 6. That is correct behaviour, not a defect — do not "fix" it by removing the links. Every other rule must be clean.
+
 - [ ] **Step 6: Commit**
 
 ```bash
@@ -617,6 +627,15 @@ The old page hardcodes form IDs `jDe3z` / `qGMrN` / `5QzP2`, which belong to the
               if (!ids[region]) { missing = true; return; }
               var mount = document.createElement('div');
               mount.setAttribute('data-SimpleShopForm', ids[region]);
+              // The inner <div> is REQUIRED. SimpleShop's _createForm runs
+              // querySelector("[data-SimpleShopForm='ID'] > div").setAttribute(...)
+              // with no null check; against a childless mount it throws a
+              // TypeError that aborts its whole queued-call loop, so NO region's
+              // form renders — including the default one. Every SimpleShop-issued
+              // snippet ships this placeholder child for exactly this reason.
+              var placeholder = document.createElement('div');
+              placeholder.textContent = 'Prodejní formulář je vytvořen v systému SimpleShop.cz.';
+              mount.appendChild(placeholder);
               host.appendChild(mount);
             });
 

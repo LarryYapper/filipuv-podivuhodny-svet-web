@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <title>Objednávka edice · Filipův podivuhodný svět</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Objednávka aktuální edice Poštovního klubu.">
+  <script src="cms-config.js"></script>
+  <style>
+    body {
+      background: #F4F2EB;
+      color: #3A2C31;
+      font-family: 'Fraunces', Georgia, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      text-align: center;
+    }
+
+    a { color: #FC7B35; }
+  </style>
+</head>
+
+<body>
+  <!-- Každá edice má vlastní objednávkovou stránku (kvůli rozlišení objednávek
+       v SimpleShopu a webhookům v MailerLite). Tahle adresa je jen rozcestník
+       na tu, která je zrovna aktuální — proto ji čte z cms-config.js.
+       Když vyjde nová edice, stačí přepsat edition.orderPage v configu. -->
+  <p>Přesměrovávám tě na objednávku aktuální edice…<br>
+    <a id="order-link" href="postovni-klub.html">Pokračovat ručně</a>
+  </p>
+  <script>
+    (function () {
+      var page = (typeof CMS_CONFIG !== 'undefined'
+        && CMS_CONFIG.edition
+        && CMS_CONFIG.edition.orderPage) || 'postovni-klub.html';
+      var link = document.getElementById('order-link');
+      if (link) link.setAttribute('href', page);
+      window.location.replace(page);
+    })();
+  </script>
+</body>
+
+</html>

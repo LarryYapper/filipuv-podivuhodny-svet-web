@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
-  <title>Správa předplatného · Filipův podivuhodný svět</title>
-  <meta name="description" content="Klientská zóna pro změnu doručovací adresy nebo úpravu členství v klubu.">
+  <title>Moje objednávka · Filipův podivuhodný svět</title>
+  <meta name="description" content="Klientská zóna pro změnu doručovací adresy, dotazy k zásilce a reklamace obsahu edice.">
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,24 +102,12 @@
       font-size: 14px; font-style: italic; line-height: 22px; margin: 0;
     }
 
-    /* Reason / option radio list */
-    .radio-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #D9CFC2; background: #FBF7EE; }
-    .radio-item {
-      display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
-      padding: 13px 16px; border-bottom: 1px solid #E7DECF;
-      color: #2A201F; font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.4;
-      transition: background 0.15s;
-    }
-    .radio-item:last-child { border-bottom: none; }
-    .radio-item:hover { background: rgba(252, 123, 53, 0.06); }
-    .radio-item input { accent-color: #FC7B35; margin: 3px 0 0; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; }
-    .radio-list.is-invalid { border-color: #C0392B; }
-
     .form-note {
       color: #5E524B; font-family: 'Fraunces', serif;
       font-size: 14px; font-style: italic; line-height: 22px; margin: 0;
     }
     .form-note strong { font-style: normal; color: #2A201F; }
+    .form-note a { color: #B65A2F; }
 
     .form-legal {
       color: #B0A497; font-family: 'Fraunces', serif;
@@ -158,10 +146,10 @@
       .form-page { padding: 40px 20px 64px; }
     }
   </style>
-<link rel="canonical" href="https://example.com/sprava-predplatneho.html">
-<meta property="og:title" content="Správa předplatného · Filipův podivuhodný svět">
-<meta property="og:description" content="Správa předplatného · Filipův podivuhodný svět">
-<meta property="og:url" content="https://example.com/sprava-predplatneho.html">
+<link rel="canonical" href="https://filipuvpodivuhodnysvet.cz/sprava-predplatneho.html">
+<meta property="og:title" content="Moje objednávka · Filipův podivuhodný svět">
+<meta property="og:description" content="Moje objednávka · Filipův podivuhodný svět">
+<meta property="og:url" content="https://filipuvpodivuhodnysvet.cz/sprava-predplatneho.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -173,9 +161,9 @@
 
     <main class="form-page">
       <div class="page-hero">
-        <div class="page-kicker">✦ Členství</div>
-        <h1 class="page-title">Správa předplatného.</h1>
-        <p class="page-lead">Potřebuješ změnit doručovací adresu, upravit nebo ukončit své členství? Napiš mi – obratem vyřídím a ozvu se.</p>
+        <div class="page-kicker">✦ Zákaznická podpora</div>
+        <h1 class="page-title">Moje objednávka.</h1>
+        <p class="page-lead">Potřebuješ změnit doručovací adresu, zeptat se na svou zásilku nebo reklamovat obsah edice? Napiš mi – obratem vyřídím a ozvu se.</p>
       </div>
 
       <form id="account-form" novalidate>
@@ -200,8 +188,7 @@
             <div class="form-section-title">Tvůj požadavek</div>
 
             <p class="form-disclaimer">
-              Simpleshop nenabízí automatickou správu předplatného z Tvojí strany,
-              musíme to tedy provést touto cestou. Omlouvám se za komplikace.
+              Objednávky vyřizuju ručně. Napiš mi, co potřebuješ, a ozvu se ti.
             </p>
 
             <div class="form-group">
@@ -209,9 +196,8 @@
               <select class="form-select" id="s-type" name="type" required>
                 <option value="">Vyber povahu žádosti</option>
                 <option value="Změna doručovací adresy" data-key="address">Změna doručovací adresy</option>
-                <option value="Změna úrovně předplatného" data-key="tier">Změna úrovně předplatného</option>
-                <option value="Pozastavení členství (dovolená / pauza)" data-key="pause">Pozastavení členství (dovolená / pauza)</option>
-                <option value="Ukončení členství v klubu" data-key="cancel">Ukončení členství v klubu</option>
+                <option value="Dotaz k zásilce" data-key="shipment">Dotaz k zásilce (kde je moje edice)</option>
+                <option value="Reklamace obsahu edice" data-key="complaint">Reklamace obsahu edice</option>
                 <option value="Obecný dotaz / jiný požadavek" data-key="general">Obecný dotaz / jiný požadavek</option>
               </select>
               <span class="field-error" id="s-type-err">Zvol prosím druh požadavku.</span>
@@ -252,59 +238,36 @@
               </div>
             </div>
 
-            <!-- Změna úrovně předplatného -->
-            <div class="cond" data-when="tier">
+            <!-- Dotaz k zásilce -->
+            <div class="cond" data-when="shipment">
               <div class="form-group">
-                <label class="form-label" for="t-level">Nová úroveň předplatného <span class="req">*</span></label>
-                <select class="form-select" id="t-level">
-                  <option value="">Vyber novou úroveň</option>
-                  <option value="Start (119 Kč / měsíčně)">Start — 119 Kč / měsíčně</option>
-                  <option value="Klasik (139 Kč / měsíčně)">Klasik — 139 Kč / měsíčně</option>
-                  <option value="Sběratel (250 Kč / měsíčně)">Sběratel — 250 Kč / měsíčně</option>
-                </select>
-                <span class="field-error" id="t-level-err">Vyber prosím novou úroveň.</span>
+                <label class="form-label" for="z-order">Číslo objednávky <span class="opt">— nepovinné</span></label>
+                <input class="form-input" id="z-order" type="text" placeholder="2026-0001">
               </div>
               <div class="form-group">
-                <label class="form-label" for="t-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
-                <textarea class="form-textarea" id="t-note" placeholder="Od kdy si přeješ změnu uplatnit apod.…"></textarea>
+                <label class="form-label" for="z-message">Na co se ptáš <span class="req">*</span></label>
+                <textarea class="form-textarea" id="z-message" placeholder="Kdy edici odesíláš, kam už dorazila, co dělat, když nepřišla…"></textarea>
+                <span class="field-error" id="z-message-err">Napiš prosím, na co se ptáš.</span>
               </div>
             </div>
 
-            <!-- Pozastavení členství -->
-            <div class="cond" data-when="pause">
+            <!-- Reklamace obsahu edice -->
+            <div class="cond" data-when="complaint">
               <div class="form-group">
-                <label class="form-label" for="p-length">Délka pauzy <span class="req">*</span></label>
-                <select class="form-select" id="p-length">
-                  <option value="">Vyber délku pauzy</option>
-                  <option value="1 měsíc">1 měsíc</option>
-                  <option value="2 měsíce">2 měsíce</option>
-                  <option value="3 měsíce">3 měsíce</option>
-                </select>
-                <span class="field-error" id="p-length-err">Vyber prosím délku pauzy.</span>
+                <label class="form-label" for="k-order">Číslo objednávky <span class="req">*</span></label>
+                <input class="form-input" id="k-order" type="text" placeholder="2026-0001">
+                <span class="field-error" id="k-order-err">Vyplň prosím číslo objednávky.</span>
               </div>
               <div class="form-group">
-                <label class="form-label" for="p-note">Od kdy / poznámka <span class="opt">— nepovinné</span></label>
-                <textarea class="form-textarea" id="p-note" placeholder="Od kterého měsíce má pauza začít apod.…"></textarea>
+                <label class="form-label" for="k-defect">Co je poškozené nebo chybí <span class="req">*</span></label>
+                <textarea class="form-textarea" id="k-defect" placeholder="Popiš prosím závadu co nejpřesněji – co je poškozeno, co v obálce chybí…"></textarea>
+                <span class="field-error" id="k-defect-err">Popiš prosím, co je poškozené nebo chybí.</span>
               </div>
-            </div>
-
-            <!-- Ukončení členství -->
-            <div class="cond" data-when="cancel">
-              <div class="form-group">
-                <label class="form-label">Důvod ukončení <span class="req">*</span></label>
-                <div class="radio-list" id="c-reason-list">
-                  <label class="radio-item"><input type="radio" name="c-reason" value="Cena je pro mě příliš vysoká"><span>Cena je pro mě příliš vysoká</span></label>
-                  <label class="radio-item"><input type="radio" name="c-reason" value="Obsah zásilek mě neoslovil"><span>Obsah zásilek mě neoslovil</span></label>
-                  <label class="radio-item"><input type="radio" name="c-reason" value="Nemám čas zásilky využít"><span>Nemám čas zásilky využít</span></label>
-                  <label class="radio-item"><input type="radio" name="c-reason" value="Mění se mi životní situace (stěhování apod.)"><span>Mění se mi životní situace (stěhování apod.)</span></label>
-                  <label class="radio-item"><input type="radio" name="c-reason" value="Jiný důvod"><span>Jiný důvod (popíšu níže)</span></label>
-                </div>
-                <span class="field-error" id="c-reason-err">Vyber prosím důvod ukončení.</span>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="c-note">Doplňující poznámka <span class="opt">— nepovinné</span></label>
-                <textarea class="form-textarea" id="c-note" placeholder="Cokoliv, co mi chceš k ukončení sdělit…"></textarea>
-              </div>
+              <p class="form-note">
+                Na rychlé vyřízení tohle stačí. Když chceš reklamaci uplatnit formálně, vyplň
+                <a href="reklamace.html">reklamační formulář</a> – vyřídím ji bez zbytečného odkladu,
+                nejpozději do 30 dnů.
+              </p>
             </div>
 
             <!-- Obecný dotaz -->
@@ -362,13 +325,13 @@
       var typeEl  = document.getElementById('s-type');
       var conds   = document.querySelectorAll('.cond');
 
-      // Required text/select field ids per request key.
+      // Required text/select field ids per request key. Every id here must
+      // exist in the markup above and have a matching "<id>-err" span.
       var fieldsByKey = {
-        address: ['a-name', 'a-street', 'a-city', 'a-zip', 'a-country'],
-        tier:    ['t-level'],
-        pause:   ['p-length'],
-        cancel:  [],          // validated via radio group below
-        general: ['g-message']
+        address:   ['a-name', 'a-street', 'a-city', 'a-zip', 'a-country'],
+        shipment:  ['z-message'],
+        complaint: ['k-order', 'k-defect'],
+        general:   ['g-message']
       };
 
       function currentKey() {
@@ -413,15 +376,6 @@
           if (!el || !el.value.trim()) { fail(el, id + '-err'); valid = false; }
         });
 
-        // Termination reason is a radio group — validate separately.
-        if (key === 'cancel' && !document.querySelector('input[name="c-reason"]:checked')) {
-          var list = document.getElementById('c-reason-list');
-          if (list) list.classList.add('is-invalid');
-          var rerr = document.getElementById('c-reason-err');
-          if (rerr) rerr.style.display = 'block';
-          valid = false;
-        }
-
         if (!valid) {
           var firstBad = document.querySelector('.is-invalid');
           if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -454,26 +408,21 @@
             'PSČ: '              + v('a-zip') + '\n' +
             'Země: '             + v('a-country') + '\n' +
             optLine('Poznámka', v('a-note'));
-        } else if (key === 'tier') {
+        } else if (key === 'shipment') {
           detail =
-            'Nová úroveň: ' + v('t-level') + '\n' +
-            optLine('Poznámka', v('t-note'));
-        } else if (key === 'pause') {
+            optLine('Číslo objednávky', v('z-order')) +
+            'Dotaz:\n' + v('z-message') + '\n';
+        } else if (key === 'complaint') {
           detail =
-            'Délka pauzy: ' + v('p-length') + '\n' +
-            optLine('Od kdy / poznámka', v('p-note'));
-        } else if (key === 'cancel') {
-          var reason = document.querySelector('input[name="c-reason"]:checked');
-          detail =
-            'Důvod ukončení: ' + (reason ? reason.value : '') + '\n' +
-            optLine('Poznámka', v('c-note'));
+            'Číslo objednávky: ' + v('k-order') + '\n' +
+            'Popis závady:\n' + v('k-defect') + '\n';
         } else if (key === 'general') {
           detail = 'Zpráva:\n' + v('g-message') + '\n';
         }
 
         var message =
-          'SPRÁVA PŘEDPLATNÉHO\n\n' +
-          'E-mail člena: ' + email + '\n' +
+          'MOJE OBJEDNÁVKA\n\n' +
+          'E-mail: ' + email + '\n' +
           'Druh požadavku: ' + type + '\n\n' +
           detail + '\n' +
           'Datum podání: ' + today;
@@ -488,7 +437,7 @@
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
               access_key: WEB3FORMS_KEY,
-              subject: 'Správa předplatného – ' + type,
+              subject: 'Moje objednávka – ' + type,
               from_name: 'Klientská zóna – podivuhodný svět',
               email: email,
               botcheck: document.querySelector('#account-form [name="botcheck"]').value,

@@ -277,7 +277,11 @@
         if (typeof CMS_CONFIG === 'undefined' || !CMS_CONFIG.banner) return;
 
         const cfg = CMS_CONFIG.banner;
-        const LAUNCH = new Date(cfg.deadlineDate).getTime();
+        // Dispatch date lives on the edition; the banner date is the fallback.
+        const edition = (typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.edition) || null;
+        const LAUNCH = new Date(
+            (edition && edition.dispatchDate) || cfg.deadlineDate
+        ).getTime();
 
         // Two countdowns shown together in the bar:
         //  • launch row (#cd-launch)  -> Velký odesílací den (deadlineDate)
@@ -437,22 +441,33 @@
                 }
             }
 
-            // Handle Tiers (Images, Prices, Names)
-            if (key.startsWith('tier-')) {
-                const parts = key.split('-'); // [tier, tierId, property]
-                const tierId = parts[1];
-                const prop = parts[2];
-                if (CMS_CONFIG.tiers[tierId] && CMS_CONFIG.tiers[tierId][prop]) {
-                    const value = CMS_CONFIG.tiers[tierId][prop];
-                    if (prop === 'image') {
-                        if (el.tagName === 'IMG') {
-                            el.src = value;
-                        } else {
-                            el.style.backgroundImage = `url('${value}')`;
-                        }
+            // Handle Edition (name, number, price, cover, status)
+            if (key.startsWith('edition-')) {
+                const ed = CMS_CONFIG.edition;
+                if (!ed) return;
+
+                const prop = key.slice('edition-'.length);
+                const value = ed[prop];
+                if (value === undefined || value === null) return;
+
+                if (prop === 'cover') {
+                    if (el.tagName === 'IMG') {
+                        el.src = value;
                     } else {
-                        el.textContent = value;
+                        el.style.backgroundImage = `url('${value}')`;
                     }
+                } else if (prop === 'price') {
+                    el.textContent = value + ' Kč';
+                } else if (prop === 'status') {
+                    const labels = {
+                        available: 'k dispozici',
+                        last_pieces: 'poslední kusy',
+                        sold_out: 'doprodáno'
+                    };
+                    el.textContent = labels[value] || value;
+                    el.setAttribute('data-status', value);
+                } else {
+                    el.textContent = value;
                 }
             }
         });
@@ -546,51 +561,53 @@
         document.getElementById('cookie-reject').addEventListener('click', () => dismiss('rejected'));
     }
 
-    // 12. TIER SELECTION → ORDER PAGE WIRING (postovni-klub.html)
-    function initTierCheckout() {
-        const ORDER = {
-            1: 'postovni-klub-uroven-1-objednavka.html',
-            2: 'postovni-klub-uroven-2-objednavka.html',
-            3: 'postovni-klub-uroven-3-objednavka.html'
-        };
+    // 12. EDITION ORDER WIRING
+    function initEditionCheckout() {
+        // Each edition owns a permanent order page (so SimpleShop orders and
+        // MailerLite webhooks can tell editions apart, and older editions stay
+        // sellable from stock). The config names the current one; the generic
+        // postovni-klub-objednavka.html URL remains as a fallback rocker.
+        const ORDER_URL = (typeof CMS_CONFIG !== 'undefined'
+            && CMS_CONFIG.edition
+            && CMS_CONFIG.edition.orderPage) || 'postovni-klub-objednavka.html';
+        const soldOut = typeof CMS_CONFIG !== 'undefined'
+            && CMS_CONFIG.edition
+            && CMS_CONFIG.edition.status === 'sold_out';
 
-        function go(url) {
-            if (url) window.location.href = url;
-        }
-
-        function bind(el, url) {
-            if (!el || !url) return;
+        document.querySelectorAll('.edition-order-btn').forEach(el => {
+            if (soldOut) {
+                el.setAttribute('aria-disabled', 'true');
+                el.style.opacity = '0.5';
+                el.style.pointerEvents = 'none';
+                return;
+            }
+            if (el.tagName === 'A') {
+                el.setAttribute('href', ORDER_URL);
+                return;
+            }
             el.style.cursor = 'pointer';
             el.setAttribute('role', 'link');
             el.setAttribute('tabindex', '0');
-            el.addEventListener('click', () => go(url));
+            el.addEventListener('click', () => { window.location.href = ORDER_URL; });
             el.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    go(url);
+                    window.location.href = ORDER_URL;
                 }
             });
-        }
-
-        // Tier buttons map to tiers by DOM order (1, 2, 3)
-        function wire(buttons) {
-            buttons.forEach((btn, i) => bind(btn, ORDER[i + 1]));
-        }
-        wire(document.querySelectorAll('.sticky-tier-btn'));
-        wire(document.querySelectorAll('.vyber-tier-btn'));
-
-        // Sticky express checkout → Tier 2 (the recommended default it names)
-        const checkoutText = document.getElementById('sticky-checkout-text');
-        if (checkoutText) {
-            bind(checkoutText.parentElement, ORDER[2]);
-        }
+        });
     }
 
     // INITIALIZE ALL
     function init() {
-        initCMS();
         initFavicon();
+        // initComponents() injects the banner, and the banner template is the
+        // only place [data-cms] elements exist (components.js). initCMS() scans
+        // for them once and never re-runs, so it MUST come after — otherwise
+        // the top bar renders "Edice ·" with no number and no name on every
+        // page. Do not move initCMS() back above initComponents().
         initComponents();
+        initCMS();
         initBackToTop();
         initMobileMenu();
         initStickyNav();
@@ -599,7 +616,7 @@
         initUIEnhancements();
         initCountdown();
         initSmoothScroll();
-        initTierCheckout();
+        initEditionCheckout();
         initCookieConsent();
         initAnalytics();
     }
