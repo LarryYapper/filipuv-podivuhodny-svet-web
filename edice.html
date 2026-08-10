@@ -61,12 +61,21 @@
       return isNaN(d) ? '' : 'v ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
     }
 
+    // Náhled edice: radiální přechod z barvy edice do bílé. Střed se roztáhne
+    // přes celý rámeček (proto ellipse + closest-side), takže přechod sedí na
+    // jakýkoli poměr stran stejně jako SVG s preserveAspectRatio="none".
+    function previewBackground(ed) {
+      if (!ed.gradient) return '';
+      return ' background-image: radial-gradient(ellipse closest-side at 50% 50%, '
+        + ed.gradient + ' 10%, #ffffff 100%);';
+    }
+
     // Planned editions have no price, no form and no order page yet — they
     // exist so visitors can see the rhythm ahead, not to be bought.
     function upcomingCard(ed) {
       return ''
         + '<div class="reveal" style="display: flex; flex-direction: column; gap: 16px; background-color: #FFFFFF4D; border: 1px dashed #3A2C3133; border-radius: 24px; padding: 24px;">'
-        + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D;"></div>'
+        + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D;' + previewBackground(ed) + '"></div>'
         + '  <div style="color: #3A2C3166; font-family: \'Mulish\', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em;">EDICE ' + ed.number + '</div>'
         + '  <div style="color: #3A2C31A6; font-family: \'Fraunces\', serif; font-size: 28px; font-variation-settings: \'wght\' 580; line-height: 1.15;">' + ed.name + '</div>'
         + '  <div style="color: #3A2C3199; font-family: \'Mulish\', sans-serif; font-size: 13px; font-weight: 600;">připravuji · odesílám ' + shipMonth(ed.dispatchDate) + '</div>'
@@ -79,7 +88,7 @@
       var orderHref = ed.orderPage || 'postovni-klub-objednavka.html';
       return ''
         + '<div class="reveal" style="display: flex; flex-direction: column; gap: 16px; background-color: #FFFFFF80; border: 1px solid #3A2C311F; border-radius: 24px; padding: 24px;">'
-        + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D; background-size: cover; background-position: center;"'
+        + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D; background-size: cover; background-position: center;' + previewBackground(ed) + '"'
         + (ed.cover ? ' data-cover="' + ed.cover + '"' : '') + '></div>'
         + '  <div style="display: flex; align-items: baseline; gap: 8px;">'
         + '    <span style="color: ' + accent + '; font-family: \'Mulish\', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em;">EDICE ' + ed.number + '</span>'
@@ -104,8 +113,14 @@
 
     grid.innerHTML = html.join('');
 
+    // Obálku nasadíme přes přechod až ve chvíli, kdy se opravdu načte.
+    // Kdybychom ji nasadili rovnou, chybějící soubor by přechod přepsal
+    // prázdným místem.
     grid.querySelectorAll('[data-cover]').forEach(function (el) {
-      el.style.backgroundImage = "url('" + el.getAttribute('data-cover') + "')";
+      var src = el.getAttribute('data-cover');
+      var img = new Image();
+      img.onload = function () { el.style.backgroundImage = "url('" + src + "')"; };
+      img.src = src;
     });
   })();
   </script>

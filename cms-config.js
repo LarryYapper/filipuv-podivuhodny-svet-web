@@ -57,6 +57,7 @@ const CMS_CONFIG = {
         postage: { cz: 19, eu: 36, world: 42 }, // volí se uvnitř formuláře
         status: "available",          // available | last_pieces | sold_out
         dispatchDate: "2026-08-20T08:00:00+02:00",
+        gradient: "#a7c957",          // barva náhledu v katalogu, viz `gradient` u upcoming
         cover: "assets/edice-a01.png",
         orderPage: "edice-a01-objednavka.html",
         formId: "YPDQ4"               // SimpleShop: "Filipova Edice"
@@ -64,11 +65,14 @@ const CMS_CONFIG = {
 
     // 5. UPCOMING — plánované edice, nejbližší první. Zatím bez formuláře.
     // Odesílám každé dva měsíce; přes zimu je delší pauza (říjen → leden).
+    // `gradient` je barva náhledu edice v katalogu (edice.html). Vykreslí se
+    // jako radiální přechod z téhle barvy do bílé — dokud edice nemá vlastní
+    // `cover`, drží náhledu tvář. Když `cover` doplníš, fotka přechod překryje.
     upcoming: [
-        { number: "A02", name: "Tvrdá práce",  dispatchDate: "2026-10-20T08:00:00+02:00" },
-        { number: "A03", name: "Přátelství",   dispatchDate: "2027-01-20T08:00:00+01:00" },
-        { number: "A04", name: "Smysl života", dispatchDate: "2027-03-20T08:00:00+01:00" },
-        { number: "A05", name: "Láska",        dispatchDate: "2027-05-20T08:00:00+02:00" }
+        { number: "A02", name: "Tvrdá práce",  gradient: "#a96737", dispatchDate: "2026-10-20T08:00:00+02:00" },
+        { number: "A03", name: "Přátelství",   gradient: "#5878da", dispatchDate: "2027-01-20T08:00:00+01:00" },
+        { number: "A04", name: "Smysl života", gradient: "#eecf6d", dispatchDate: "2027-03-20T08:00:00+01:00" },
+        { number: "A05", name: "Láska",        gradient: "#e15181", dispatchDate: "2027-05-20T08:00:00+02:00" }
     ],
 
     // 6. ARCHIVE — doprodané nebo odeslané edice, nejnovější první.
