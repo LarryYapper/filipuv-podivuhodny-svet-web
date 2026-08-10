@@ -26,13 +26,30 @@ const CMS_CONFIG = {
         recurringMobileText: "Expedice každé pondělí"
     },
 
-    // 2. GLOBAL DATES
-    // Use these strings in your HTML with data-cms="date-<key>".
-    dates: {
-        nextShipping: "20. srpna"
+    // 2. DORUČENÍ — jak dlouho jde zásilka po expedici. Jediné místo, kde je
+    // tahle lhůta napsaná; stránky si z ní počítají i konkrétní data.
+    delivery: {
+        minDays: 7,
+        maxDays: 14
     },
 
-    // 3. CURRENT EDITION — the block that changes when a new edition ships.
+    // 3. GLOBAL DATES
+    // V HTML se používají přes data-cms="date-<klíč>". Většina klíčů se
+    // POČÍTÁ SAMA z `edition.dispatchDate`, `banner.recurring*` a `delivery`,
+    // takže se žádné datum nepíše do stránky ručně a nemůže zestárnout:
+    //
+    //   date-nextDispatch    → nejbližší pravidelná expedice    "10. srpna"
+    //   date-orderCutoff     → večer před expedicí              "9. srpna 23:59"
+    //   date-deliveryWindow  → kdy dorazí po nejbližší expedici "17.–24. srpna"
+    //   date-editionDispatch → odeslání aktuální edice          "20. srpna"
+    //   date-editionDelivery → kdy dorazí aktuální edice        "27. srpna – 3. září"
+    //   date-deliveryDays    → doručovací lhůta                 "7–14 dní"
+    //
+    // Sem se píše jen datum, které chceš natvrdo přebít (ruční hodnota má
+    // přednost před vypočítanou). Normálně nech prázdné.
+    dates: {},
+
+    // 4. CURRENT EDITION — the block that changes when a new edition ships.
     edition: {
         number: "A01",
         name: "Přítomnost",
@@ -45,7 +62,7 @@ const CMS_CONFIG = {
         formId: "YPDQ4"               // SimpleShop: "Filipova Edice"
     },
 
-    // 4. UPCOMING — plánované edice, nejbližší první. Zatím bez formuláře.
+    // 5. UPCOMING — plánované edice, nejbližší první. Zatím bez formuláře.
     // Odesílám každé dva měsíce; přes zimu je delší pauza (říjen → leden).
     upcoming: [
         { number: "A02", name: "Tvrdá práce",  dispatchDate: "2026-10-20T08:00:00+02:00" },
@@ -54,7 +71,7 @@ const CMS_CONFIG = {
         { number: "A05", name: "Láska",        dispatchDate: "2027-05-20T08:00:00+02:00" }
     ],
 
-    // 5. ARCHIVE — doprodané nebo odeslané edice, nejnovější první.
+    // 6. ARCHIVE — doprodané nebo odeslané edice, nejnovější první.
     // Stejný tvar jako `edition`. Edice se statusem "sold_out" nepotřebuje
     // formId ani orderPage — v katalogu se zobrazí jako doprodaná.
     archive: []

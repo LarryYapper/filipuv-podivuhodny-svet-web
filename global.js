@@ -426,18 +426,100 @@
     }
 
     // 10. CMS DATA INJECTION
+
+    // Czech months in genitive — "10. srpna", ne "10. srpen".
+    const CZ_MONTHS_GENITIVE = ['ledna', 'února', 'března', 'dubna', 'května', 'června',
+        'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'];
+
+    function formatCzechDate(date) {
+        return date.getDate() + '. ' + CZ_MONTHS_GENITIVE[date.getMonth()];
+    }
+
+    // "17.–24. srpna" uvnitř jednoho měsíce, "27. srpna – 3. září" přes měsíce.
+    function formatCzechRange(from, to) {
+        if (from.getFullYear() === to.getFullYear() && from.getMonth() === to.getMonth()) {
+            return from.getDate() + '.–' + formatCzechDate(to);
+        }
+        return formatCzechDate(from) + ' – ' + formatCzechDate(to);
+    }
+
+    function addDays(date, days) {
+        const d = new Date(date.getTime());
+        d.setDate(d.getDate() + days);
+        return d;
+    }
+
+    // Nejbližší pravidelná expedice (např. každé pondělí v 08:00) — stejné
+    // pravidlo, jaké používá odpočet v liště, aby si datum a časovač
+    // neodporovaly. Rozdíl: když dnešní expedice už proběhla, posouváme se na
+    // další týden — "pošlu" nesmí ukazovat na dávku, která je už pryč.
+    function nextDispatchDate(now) {
+        const cfg = (typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.banner) || {};
+        if (cfg.recurringWeekday == null) return null;
+        const parts = String(cfg.recurringTime || '08:00').split(':');
+        const t = new Date(now.getTime());
+        t.setHours(Number(parts[0]) || 0, Number(parts[1]) || 0, 0, 0);
+        let delta = (cfg.recurringWeekday - t.getDay() + 7) % 7;
+        if (delta === 0 && now.getTime() >= t.getTime()) delta = 7;
+        t.setDate(t.getDate() + delta);
+        return t;
+    }
+
+    // Data odvozená z CMS_CONFIG. Díky tomu není žádné datum napsané ve dvou
+    // místech — v configu se mění jen dispatchDate / delivery a stránky se
+    // přepočítají samy.
+    function computedDates() {
+        const cfg = (typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG) || {};
+        const delivery = cfg.delivery || {};
+        const minDays = Number(delivery.minDays) || 0;
+        const maxDays = Number(delivery.maxDays) || 0;
+        const hasWindow = minDays > 0 && maxDays > 0;
+        const out = {};
+
+        if (hasWindow) out.deliveryDays = minDays + '–' + maxDays + ' dní';
+
+        const dispatch = nextDispatchDate(new Date());
+        if (dispatch) {
+            out.nextDispatch = formatCzechDate(dispatch);
+            // Uzávěrka = večer před expedicí.
+            out.orderCutoff = formatCzechDate(addDays(dispatch, -1)) + ' 23:59';
+            if (hasWindow) {
+                out.deliveryWindow = formatCzechRange(addDays(dispatch, minDays), addDays(dispatch, maxDays));
+            }
+        }
+
+        const editionDispatch = cfg.edition && cfg.edition.dispatchDate
+            ? new Date(cfg.edition.dispatchDate)
+            : null;
+        if (editionDispatch && !isNaN(editionDispatch.getTime())) {
+            out.editionDispatch = formatCzechDate(editionDispatch);
+            if (hasWindow) {
+                out.editionDelivery = formatCzechRange(
+                    addDays(editionDispatch, minDays),
+                    addDays(editionDispatch, maxDays)
+                );
+            }
+        }
+
+        return out;
+    }
+
     function initCMS() {
         if (typeof CMS_CONFIG === 'undefined') return;
+
+        const derivedDates = computedDates();
 
         // Auto-inject dates into elements with data-cms attribute
         document.querySelectorAll('[data-cms]').forEach(el => {
             const key = el.getAttribute('data-cms');
-            
-            // Handle Dates
+
+            // Handle Dates — ruční řetězec v CMS_CONFIG.dates má přednost,
+            // jinak se použije odvozené datum.
             if (key.startsWith('date-')) {
                 const dateKey = key.replace('date-', '');
-                if (CMS_CONFIG.dates[dateKey]) {
-                    el.textContent = CMS_CONFIG.dates[dateKey];
+                const value = (CMS_CONFIG.dates && CMS_CONFIG.dates[dateKey]) || derivedDates[dateKey];
+                if (value) {
+                    el.textContent = value;
                 }
             }
 
