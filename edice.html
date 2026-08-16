@@ -61,12 +61,12 @@
       return isNaN(d) ? '' : 'v ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
     }
 
-    // Náhled edice: radiální přechod z barvy edice do bílé. Střed se roztáhne
-    // přes celý rámeček (proto ellipse + closest-side), takže přechod sedí na
-    // jakýkoli poměr stran stejně jako SVG s preserveAspectRatio="none".
+    // Náhled edice: radiální přechod z barvy edice do bílé. Přechod končí až
+    // v rozích (farthest-corner), takže vyplní celý rámeček — s closest-side
+    // by dobělal už uprostřed hran a v rozích by zůstal bílý ovál.
     function previewBackground(ed) {
       if (!ed.gradient) return '';
-      return ' background-image: radial-gradient(ellipse closest-side at 50% 50%, '
+      return ' background-image: radial-gradient(ellipse farthest-corner at 50% 50%, '
         + ed.gradient + ' 10%, #ffffff 100%);';
     }
 
