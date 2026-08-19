@@ -56,7 +56,7 @@ const CMS_CONFIG = {
         price: 149,
         postage: { cz: 19, eu: 36, world: 42 }, // volí se uvnitř formuláře
         status: "available",          // available | last_pieces | sold_out
-        dispatchDate: "2026-08-20T08:00:00+02:00",
+        dispatchDate: "2026-08-24T08:00:00+02:00",
         gradient: "#a7c957",          // barva náhledu v katalogu, viz `gradient` u upcoming
         cover: "assets/edice-a01.png",
         orderPage: "edice-a01-objednavka.html",
