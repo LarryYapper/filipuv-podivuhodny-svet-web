@@ -22,8 +22,8 @@ const CMS_CONFIG = {
         // Expedice probíhá jeden pevný den v týdnu ze zásoby.
         recurringWeekday: 1,          // 0=neděle, 1=pondělí ...
         recurringTime: "08:00",
-        recurringDesktopText: "Objednávky otevřené · expedice každé pondělí",
-        recurringMobileText: "Expedice každé pondělí"
+        recurringDesktopText: "Objednávky otevřené · odesílám každé pondělí",
+        recurringMobileText: "Odesílám každé pondělí"
     },
 
     // 2. DORUČENÍ — jak dlouho jde zásilka po expedici. Jediné místo, kde je
