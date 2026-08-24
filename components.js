@@ -47,7 +47,7 @@ const SHARED_COMPONENTS = {
                             <span class="edition-mark">✦</span>
                             <span class="edition-name">Edice VÍTEJ</span>
                             <span class="edition-sep">·</span>
-                            <span class="edition-desc">odesílám <b>každé pondělí</b> (<span id="cd-recurring-val" class="edition-val">za pár dní</span>)</span>
+                            <span class="edition-desc">odesílám obálky <b>každé pondělí</b> (<span id="cd-recurring-val" class="edition-val">za pár dní</span>)</span>
                         </div>
                         <a href="edice-vitej.html" class="link-hover edition-cta">
                             <span class="desktop-copy">Vyzkoušej za 99 Kč</span>

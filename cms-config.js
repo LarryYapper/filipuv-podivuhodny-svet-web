@@ -13,72 +13,119 @@
  *   4. Sem doplň novou `edition` z `upcoming` a nahraj obálku do assets/.
  */
 
+const SHARED_PRICE = 149;
+const SHARED_POSTAGE = { cz: 19, eu: 36, world: 42 };
+
+function makeOrderPage(number) {
+    return "edice-" + String(number).toLowerCase() + "-objednavka.html";
+}
+
+const EDITIONS = [
+    {
+        number: "A01",
+        name: "Přítomnost",
+        price: SHARED_PRICE,
+        postage: SHARED_POSTAGE,
+        status: "available",
+        dispatchDate: "2026-08-24T08:00:00+02:00",
+        gradient: "#a7c957",
+        cover: "assets/edice-a01.png",
+        detailImages: [],
+        orderPage: makeOrderPage("A01"),
+        formId: "YPDQ4"
+    },
+    {
+        number: "A02",
+        name: "Tvrdá práce",
+        price: SHARED_PRICE,
+        postage: SHARED_POSTAGE,
+        status: "preorder",
+        dispatchDate: "2026-10-20T08:00:00+02:00",
+        gradient: "#a96737",
+        cover: "assets/edice-a02.png",
+        detailImages: [],
+        orderPage: makeOrderPage("A02"),
+        formId: "5Q4zw"
+    },
+    {
+        number: "A03",
+        name: "Přátelství",
+        price: SHARED_PRICE,
+        postage: SHARED_POSTAGE,
+        status: "upcoming",
+        dispatchDate: "2027-01-20T08:00:00+01:00",
+        gradient: "#5878da",
+        cover: "assets/edice-a03.png",
+        detailImages: [],
+        orderPage: makeOrderPage("A03"),
+        formId: ""
+    },
+    {
+        number: "A04",
+        name: "Smysl života",
+        price: SHARED_PRICE,
+        postage: SHARED_POSTAGE,
+        status: "upcoming",
+        dispatchDate: "2027-03-20T08:00:00+01:00",
+        gradient: "#eecf6d",
+        cover: "assets/edice-a04.png",
+        detailImages: [],
+        orderPage: makeOrderPage("A04"),
+        formId: ""
+    },
+    {
+        number: "A05",
+        name: "Láska",
+        price: SHARED_PRICE,
+        postage: SHARED_POSTAGE,
+        status: "upcoming",
+        dispatchDate: "2027-05-20T08:00:00+02:00",
+        gradient: "#e15181",
+        cover: "assets/edice-a05.png",
+        detailImages: [],
+        orderPage: makeOrderPage("A05"),
+        formId: ""
+    }
+];
+
 const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
-        deadlineDate: "2026-08-20T08:00:00+02:00", // shodné s edition.dispatchDate
+        deadlineDate: "2026-08-20T08:00:00+02:00",
         link: "postovni-klub.html",
 
-        // Expedice probíhá jeden pevný den v týdnu ze zásoby.
-        recurringWeekday: 1,          // 0=neděle, 1=pondělí ...
+        recurringWeekday: 1,
         recurringTime: "08:00",
-        recurringDesktopText: "Objednávky otevřené · odesílám každé pondělí",
-        recurringMobileText: "Odesílám každé pondělí"
+        recurringDesktopText: "Objednávky otevřené · odesílám obálky každé pondělí",
+        recurringMobileText: "Odesílám obálky každé pondělí"
     },
 
-    // 2. DORUČENÍ — jak dlouho jde zásilka po expedici. Jediné místo, kde je
-    // tahle lhůta napsaná; stránky si z ní počítají i konkrétní data.
+    // 2. DORUČENÍ
     delivery: {
         minDays: 7,
         maxDays: 14
     },
 
     // 3. GLOBAL DATES
-    // V HTML se používají přes data-cms="date-<klíč>". Většina klíčů se
-    // POČÍTÁ SAMA z `edition.dispatchDate`, `banner.recurring*` a `delivery`,
-    // takže se žádné datum nepíše do stránky ručně a nemůže zestárnout:
-    //
-    //   date-nextDispatch    → nejbližší pravidelná expedice    "10. srpna"
-    //   date-orderCutoff     → večer před expedicí              "9. srpna 23:59"
-    //   date-deliveryWindow  → kdy dorazí po nejbližší expedici "17.–24. srpna"
-    //   date-editionDispatch → odeslání aktuální edice          "20. srpna"
-    //   date-editionDelivery → kdy dorazí aktuální edice        "27. srpna – 3. září"
-    //   date-deliveryDays    → doručovací lhůta                 "7–14 dní"
-    //
-    // Sem se píše jen datum, které chceš natvrdo přebít (ruční hodnota má
-    // přednost před vypočítanou). Normálně nech prázdné.
     dates: {},
 
-    // 4. CURRENT EDITION — the block that changes when a new edition ships.
-    edition: {
-        number: "A01",
-        name: "Přítomnost",
-        price: 149,
-        postage: { cz: 19, eu: 36, world: 42 }, // volí se uvnitř formuláře
-        status: "available",          // available | last_pieces | sold_out
-        dispatchDate: "2026-08-24T08:00:00+02:00",
-        gradient: "#a7c957",          // barva náhledu v katalogu, viz `gradient` u upcoming
-        cover: "assets/edice-a01.png",
-        orderPage: "edice-a01-objednavka.html",
-        formId: "YPDQ4"               // SimpleShop: "Filipova Edice"
-    },
+    // 4. CENTRAL EDITION LIST — all editions A01..A05 with shared metadata.
+    editions: EDITIONS,
 
-    // 5. UPCOMING — plánované edice, nejbližší první. Zatím bez formuláře.
-    // Odesílám každé dva měsíce; přes zimu je delší pauza (říjen → leden).
-    // `gradient` je barva náhledu edice v katalogu (edice.html). Vykreslí se
-    // jako radiální přechod z téhle barvy do bílé — dokud edice nemá vlastní
-    // `cover`, drží náhledu tvář. Když `cover` doplníš, fotka přechod překryje.
-    upcoming: [
-        { number: "A02", name: "Tvrdá práce",  gradient: "#a96737", dispatchDate: "2026-10-20T08:00:00+02:00" },
-        { number: "A03", name: "Přátelství",   gradient: "#5878da", dispatchDate: "2027-01-20T08:00:00+01:00" },
-        { number: "A04", name: "Smysl života", gradient: "#eecf6d", dispatchDate: "2027-03-20T08:00:00+01:00" },
-        { number: "A05", name: "Láska",        gradient: "#e15181", dispatchDate: "2027-05-20T08:00:00+02:00" }
-    ],
+    // 5. CURRENT EDITION — compatibility with existing pages.
+    edition: EDITIONS.find(function (edition) {
+        return edition.status === "available";
+    }) || EDITIONS[0],
 
-    // 6. ARCHIVE — doprodané nebo odeslané edice, nejnovější první.
-    // Stejný tvar jako `edition`. Edice se statusem "sold_out" nepotřebuje
-    // formId ani orderPage — v katalogu se zobrazí jako doprodaná.
-    archive: []
+    // 6. UPCOMING — compatibility with existing pages.
+    upcoming: EDITIONS.filter(function (edition) {
+        return edition.status === "upcoming" || edition.status === "preorder";
+    }),
+
+    // 7. ARCHIVE — compatibility with existing pages.
+    archive: EDITIONS.filter(function (edition) {
+        return edition.status === "sold_out" || edition.status === "archive";
+    })
 };
 
 // Export for use in global.js and other scripts if needed
