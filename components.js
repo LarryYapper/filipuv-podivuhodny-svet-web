@@ -10,7 +10,7 @@ const SHARED_COMPONENTS = {
             <div class="top-banner-inner"
                 style="align-items: stretch; box-sizing: border-box; display: flex; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 10px;">
                 <style>
-                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:18px;width:100%;padding:8px 0;}
+                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;width:100%;padding:8px 0;}
                     .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
@@ -19,8 +19,7 @@ const SHARED_COMPONENTS = {
                     .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
                     .banner-left{text-align:left;justify-content:flex-start;}
                     .banner-center{justify-content:center;text-align:center;justify-self:center;align-self:center;}
-                    .banner-center .banner-text{font-size:18px;line-height:1.1;font-weight:700;}
-                    .banner-center .banner-val{font-size:24px;line-height:1;}
+                    .banner-center .banner-val{font-size:19px;line-height:1;font-weight:800;}
                     .banner-center .banner-text{font-size:13px;}
                     .banner-right{display:flex;justify-content:flex-end;align-items:center;min-width:0;}
                     .banner-right .banner-button{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;background:#3A2C31;color:#F4F2EB;border:0;border-radius:999px;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.02em;text-decoration:none;cursor:pointer;white-space:nowrap;box-shadow:0 6px 16px rgba(58,44,49,0.10);}
@@ -33,7 +32,7 @@ const SHARED_COMPONENTS = {
                         .banner-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text{font-size:11px;}
-                        .banner-center{justify-content:flex-start;}
+                        .banner-center{justify-content:center;}
                         .banner-right{justify-content:flex-start;}
                         .banner-right .banner-button{width:100%;justify-content:space-between;}
                     }
