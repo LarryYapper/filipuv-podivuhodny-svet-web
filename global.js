@@ -293,13 +293,15 @@
 
         if (!launchVal && !recurringVal) return;
 
-        // End of the launch calendar day — keep celebrating "dnes" until then,
-        // then hide the launch row (the big send day is over).
+        // Keep the regular-edition row visible even after the send day has passed,
+        // because the main A01–A05 line still needs to remain part of the banner
+        // alongside the VÍTEJ row. We only hide it when there is no edition data.
         const launchDayEnd = (function () {
             const d = new Date(LAUNCH);
             d.setHours(23, 59, 59, 999);
             return d.getTime();
         })();
+        const hasRegularEdition = !!(typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.edition && CMS_CONFIG.edition.number);
 
         // Czech accusative "za N <jednotka>" with correct inflection.
         function inflect(n, one, few, many) {
@@ -338,11 +340,15 @@
             const now = Date.now();
 
             if (launchVal) {
-                if (now > launchDayEnd) {
+                if (!hasRegularEdition) {
                     if (launchRow) launchRow.style.display = 'none';
                 } else {
                     if (launchRow) launchRow.style.display = '';
-                    launchVal.textContent = remainingText(LAUNCH - now);
+                    if (now > launchDayEnd) {
+                        launchVal.textContent = 'připravujeme další edici';
+                    } else {
+                        launchVal.textContent = remainingText(LAUNCH - now);
+                    }
                 }
             }
 
