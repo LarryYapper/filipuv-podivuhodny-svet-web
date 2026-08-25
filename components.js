@@ -11,35 +11,35 @@ const SHARED_COMPONENTS = {
                 style="align-items: stretch; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; gap: 10px;">
                 <style>
                     .banner-panel,.banner-split,.banner-half{box-sizing:border-box;}
-                    .banner-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:rgba(244,242,235,0.72);border:1px solid rgba(58,44,49,0.12);border-radius:18px;padding:12px 16px;box-shadow:0 8px 24px rgba(58,44,49,0.04);}
-                    .banner-panel-primary{background:linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.26));}
-                    .banner-panel-current{background:rgba(255,255,255,0.52);}
-                    .banner-panel-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
+                    .banner-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;background:rgba(244,242,235,0.74);border:1px solid rgba(58,44,49,0.12);border-radius:20px;padding:14px 18px;box-shadow:0 8px 24px rgba(58,44,49,0.04);}
+                    .banner-panel-primary{background:linear-gradient(180deg,rgba(255,248,240,0.92),rgba(255,244,232,0.74));}
+                    .banner-panel-current{background:linear-gradient(180deg,rgba(255,255,255,0.84),rgba(244,242,235,0.86));}
+                    .banner-panel-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;flex:1 1 auto;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
                     .banner-sep{color:#3A2C3140;}
                     .banner-text{color:#3A2C31CC;font-size:13px;font-weight:600;}
                     .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
-                    .banner-side{display:flex;align-items:center;gap:12px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;}
-                    .banner-mini{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
+                    .banner-side{display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;max-width:360px;}
+                    .banner-mini{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
                     .banner-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
-                    .banner-split{display:flex;gap:10px;flex-wrap:wrap;}
-                    .banner-half{display:flex;flex:1 1 320px;min-width:0;flex-direction:column;gap:6px;background:rgba(244,242,235,0.72);border:1px solid rgba(58,44,49,0.12);border-radius:18px;padding:12px 16px;box-shadow:0 8px 24px rgba(58,44,49,0.04);text-decoration:none;transition:transform 180ms ease, border-color 180ms ease, background-color 180ms ease;}
+                    .banner-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+                    .banner-half{display:flex;min-width:0;flex-direction:column;gap:5px;background:rgba(244,242,235,0.62);border:1px solid rgba(58,44,49,0.10);border-radius:16px;padding:10px 14px;box-shadow:0 6px 18px rgba(58,44,49,0.03);text-decoration:none;transition:transform 180ms ease, border-color 180ms ease, background-color 180ms ease;}
                     .banner-half:hover{transform:translateY(-1px);border-color:rgba(58,44,49,0.2);background:rgba(255,255,255,0.6);}
-                    .banner-half-kicker{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
-                    .banner-half-title{color:#3A2C31;font-family:'Fraunces',serif;font-size:18px;font-variation-settings:'wght' 580;line-height:1.08;letter-spacing:-0.01em;}
-                    .banner-half-note{color:#3A2C31CC;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:600;line-height:1.35;}
+                    .banner-half-kicker{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
+                    .banner-half-title{color:#3A2C31;font-family:'Fraunces',serif;font-size:17px;font-variation-settings:'wght' 580;line-height:1.05;letter-spacing:-0.01em;}
+                    .banner-half-note{color:#3A2C31CC;font-family:'Mulish',system-ui,sans-serif;font-size:12px;font-weight:600;line-height:1.3;}
                     @media (max-width:767px){
                         .top-banner{padding-block:10px !important;}
                         .top-banner-inner{gap:8px !important;}
-                        .banner-panel{padding:10px 12px;gap:8px;}
+                        .banner-panel{padding:10px 12px;gap:8px;border-radius:16px;}
                         .banner-panel-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text,.banner-mini{font-size:11px;}
                         .banner-side{width:100%;justify-content:space-between;}
                         .banner-cta{font-size:12px;}
-                        .banner-split{gap:8px;}
-                        .banner-half{padding:10px 12px;flex-basis:100%;}
+                        .banner-split{grid-template-columns:1fr;gap:8px;}
+                        .banner-half{padding:10px 12px;border-radius:14px;}
                         .banner-half-title{font-size:16px;}
                         .banner-half-note{font-size:12px;}
                     }
@@ -56,7 +56,8 @@ const SHARED_COMPONENTS = {
                         <span class="banner-text">další expedice <span id="cd-recurring-val" class="banner-val">za pár dní</span></span>
                     </div>
                     <div class="banner-side">
-                        <span class="banner-mini">variabilní časovač a design</span>
+                        <span class="banner-mini">Poštovní klub i Edice VÍTEJ</span>
+                        <span class="banner-mini" style="letter-spacing:0.08em;font-weight:600;">variabilní časovač a design</span>
                         <a href="postovni-klub.html#jak-to-funguje" class="link-hover banner-cta">
                             <span class="desktop-copy">Jak to funguje</span>
                             <span class="mobile-copy">Jak to funguje</span>
@@ -74,6 +75,7 @@ const SHARED_COMPONENTS = {
                         <span class="banner-text"><span data-cms="edition-status"></span> · <span data-cms="edition-price"></span></span>
                     </div>
                     <div class="banner-side">
+                        <span class="banner-mini">Edice VÍTEJ jede každé pondělí</span>
                         <a href="postovni-klub.html" class="link-hover banner-cta">
                             <span class="desktop-copy">Více o edici</span>
                             <span class="mobile-copy">Více</span>
