@@ -673,16 +673,26 @@
             && CMS_CONFIG.edition.status === 'sold_out';
 
         document.querySelectorAll('.edition-order-btn').forEach(el => {
+            const isAnchor = el.tagName === 'A';
+            const existingHref = isAnchor ? (el.getAttribute('href') || '').trim() : '';
+
+            // Keep explicit per-edition links (e.g. card grids on edice.html).
+            if (isAnchor && existingHref && existingHref !== '#') {
+                return;
+            }
+
             if (soldOut) {
                 el.setAttribute('aria-disabled', 'true');
                 el.style.opacity = '0.5';
                 el.style.pointerEvents = 'none';
                 return;
             }
-            if (el.tagName === 'A') {
+
+            if (isAnchor) {
                 el.setAttribute('href', ORDER_URL);
                 return;
             }
+
             el.style.cursor = 'pointer';
             el.setAttribute('role', 'link');
             el.setAttribute('tabindex', '0');

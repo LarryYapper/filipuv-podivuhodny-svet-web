@@ -88,6 +88,12 @@ const EDITIONS = [
     }
 ];
 
+const CURRENT_EDITION = EDITIONS.find(function (edition) {
+    return edition.status === "available";
+}) || EDITIONS.find(function (edition) {
+    return edition.status === "last_pieces";
+}) || EDITIONS[0];
+
 const CMS_CONFIG = {
     // 1. TOP BANNER & COUNTDOWN
     banner: {
@@ -113,13 +119,13 @@ const CMS_CONFIG = {
     editions: EDITIONS,
 
     // 5. CURRENT EDITION — compatibility with existing pages.
-    edition: EDITIONS.find(function (edition) {
-        return edition.status === "available";
-    }) || EDITIONS[0],
+    edition: CURRENT_EDITION,
 
     // 6. UPCOMING — compatibility with existing pages.
     upcoming: EDITIONS.filter(function (edition) {
-        return edition.status === "upcoming" || edition.status === "preorder";
+        return edition.number !== CURRENT_EDITION.number
+            && edition.status !== "sold_out"
+            && edition.status !== "archive";
     }),
 
     // 7. ARCHIVE — compatibility with existing pages.
