@@ -8,9 +8,9 @@ const SHARED_COMPONENTS = {
         <div class="top-banner banner-load"
             style="align-items: center; background: linear-gradient(90deg, #FFE0BC 0%, #FFF0DA 46%, #F7F0E5 100%); border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 0; justify-content: center; padding-inline: clamp(20px, 5vw, 80px); width: 100%;">
             <div class="top-banner-inner"
-                style="align-items: stretch; box-sizing: border-box; display: flex; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 14px;">
+                style="align-items: stretch; box-sizing: border-box; display: flex; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 10px;">
                 <style>
-                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(260px,0.9fr);align-items:center;gap:20px;width:100%;padding:16px 18px;border-top:1px solid rgba(58,44,49,0.12);border-bottom:1px solid rgba(58,44,49,0.12);}
+                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:18px;width:100%;padding:8px 0;}
                     .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
@@ -19,22 +19,24 @@ const SHARED_COMPONENTS = {
                     .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
                     .banner-left{text-align:left;justify-content:flex-start;}
                     .banner-center{justify-content:center;text-align:center;}
+                    .banner-center .banner-text{font-size:13px;}
                     .banner-right{display:flex;justify-content:flex-end;align-items:center;min-width:0;}
-                    .banner-right .banner-button{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;background:#3A2C31;color:#F4F2EB;border:0;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.03em;text-decoration:none;cursor:pointer;white-space:nowrap;}
+                    .banner-right .banner-button{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;background:#3A2C31;color:#F4F2EB;border:0;border-radius:999px;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.02em;text-decoration:none;cursor:pointer;white-space:nowrap;box-shadow:0 6px 16px rgba(58,44,49,0.10);}
                     .banner-right .banner-button:hover{background:#2E2226;}
                     .banner-right .banner-button span:last-child{color:#FC7B35;}
                     @media (max-width:767px){
                         .top-banner{padding-inline:14px !important;}
-                        .top-banner-inner{gap:0 !important;padding-block:10px 8px;}
-                        .banner-strip{grid-template-columns:1fr;gap:10px;padding:12px 14px;}
+                        .top-banner-inner{gap:0 !important;padding-block:8px 6px;}
+                        .banner-strip{grid-template-columns:1fr;gap:8px;padding:6px 0;}
                         .banner-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text{font-size:11px;}
+                        .banner-center{justify-content:flex-start;}
                         .banner-right{justify-content:flex-start;}
                         .banner-right .banner-button{width:100%;justify-content:space-between;}
                     }
                     @media (min-width:768px) and (max-width:980px){
-                        .banner-strip{grid-template-columns:1fr 1fr;}
+                        .banner-strip{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
                         .banner-right{grid-column:1 / -1;justify-content:flex-start;}
                     }
                 </style>
@@ -42,8 +44,6 @@ const SHARED_COMPONENTS = {
                     <div class="banner-copy banner-left">
                         <span class="banner-mark">✦</span>
                         <span class="banner-heading">Obálky odesílám každé pondělí</span>
-                        <span class="banner-sep">·</span>
-                        <span class="banner-text">Poštovní klub i Edice VÍTEJ</span>
                     </div>
                     <div class="banner-copy banner-center">
                         <span class="banner-text">další expedice <span id="cd-recurring-val" class="banner-val">za pár dní</span></span>
