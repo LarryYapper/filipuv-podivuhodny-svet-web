@@ -8,51 +8,51 @@ const SHARED_COMPONENTS = {
         <div class="top-banner banner-load"
             style="align-items: center; background: linear-gradient(90deg, #FFE0BC 0%, #FFF0DA 46%, #F7F0E5 100%); border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 0; justify-content: center; padding-inline: clamp(20px, 5vw, 80px); width: 100%;">
             <div class="top-banner-inner"
-                style="align-items: stretch; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 14px;">
+                style="align-items: stretch; box-sizing: border-box; display: flex; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 14px;">
                 <style>
-                    .banner-strip{box-sizing:border-box;display:flex;align-items:stretch;justify-content:space-between;gap:24px;width:100%;padding:16px 18px;border:1px solid rgba(58,44,49,0.10);border-radius:22px;background:rgba(255,248,238,0.55);box-shadow:0 10px 24px rgba(58,44,49,0.04);}
-                    .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;flex:1 1 auto;}
+                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(260px,0.9fr);align-items:center;gap:20px;width:100%;padding:16px 18px;border-top:1px solid rgba(58,44,49,0.12);border-bottom:1px solid rgba(58,44,49,0.12);}
+                    .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
                     .banner-sep{color:#3A2C3140;}
                     .banner-text{color:#3A2C31CC;font-size:13px;font-weight:600;}
                     .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
-                    .banner-side{display:flex;align-items:center;gap:12px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;padding-left:20px;border-left:1px solid rgba(58,44,49,0.12);min-width:320px;}
-                    .banner-mini{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
-                    .banner-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
-                    .banner-current-value{display:flex;flex-direction:column;gap:2px;min-width:0;}
-                    .banner-current-value .banner-mini{letter-spacing:0.10em;}
+                    .banner-left{text-align:left;justify-content:flex-start;}
+                    .banner-center{justify-content:center;text-align:center;}
+                    .banner-right{display:flex;justify-content:flex-end;align-items:center;min-width:0;}
+                    .banner-right .banner-button{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;background:#3A2C31;color:#F4F2EB;border:0;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.03em;text-decoration:none;cursor:pointer;white-space:nowrap;}
+                    .banner-right .banner-button:hover{background:#2E2226;}
+                    .banner-right .banner-button span:last-child{color:#FC7B35;}
                     @media (max-width:767px){
                         .top-banner{padding-inline:14px !important;}
                         .top-banner-inner{gap:0 !important;padding-block:10px 8px;}
-                        .banner-strip{padding:12px 14px;gap:12px;border-radius:18px;flex-direction:column;}
+                        .banner-strip{grid-template-columns:1fr;gap:10px;padding:12px 14px;}
                         .banner-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
-                        .banner-text,.banner-mini{font-size:11px;}
-                        .banner-side{width:100%;justify-content:space-between;padding-left:0;border-left:0;border-top:1px solid rgba(58,44,49,0.10);padding-top:10px;min-width:0;}
-                        .banner-cta{font-size:12px;}
+                        .banner-text{font-size:11px;}
+                        .banner-right{justify-content:flex-start;}
+                        .banner-right .banner-button{width:100%;justify-content:space-between;}
                     }
                     @media (min-width:768px) and (max-width:980px){
-                        .banner-side{width:100%;justify-content:flex-start;}
+                        .banner-strip{grid-template-columns:1fr 1fr;}
+                        .banner-right{grid-column:1 / -1;justify-content:flex-start;}
                     }
                 </style>
                 <div class="banner-strip">
-                    <div class="banner-copy">
+                    <div class="banner-copy banner-left">
                         <span class="banner-mark">✦</span>
-                        <span class="banner-heading">Objednávky odesílám každé pondělí</span>
+                        <span class="banner-heading">Obálky odesílám každé pondělí</span>
                         <span class="banner-sep">·</span>
+                        <span class="banner-text">Poštovní klub i Edice VÍTEJ</span>
+                    </div>
+                    <div class="banner-copy banner-center">
                         <span class="banner-text">další expedice <span id="cd-recurring-val" class="banner-val">za pár dní</span></span>
                     </div>
-                    <div class="banner-side">
-                        <div class="banner-current-value">
-                            <span class="banner-mini">Aktuální edice</span>
-                            <span class="banner-heading"><span data-cms="edition-number"></span> <span data-cms="edition-name"></span></span>
-                            <span class="banner-text"><span data-cms="edition-status"></span> · <span data-cms="edition-price"></span></span>
-                        </div>
-                        <a href="postovni-klub.html" class="link-hover banner-cta">
-                            <span class="desktop-copy">Více o edici</span>
-                            <span class="mobile-copy">Více</span>
-                            <span class="arrow-slide" style="line-height:18px;">→</span>
+                    <div class="banner-right">
+                        <a id="banner-order-link" href="postovni-klub-objednavka.html" class="banner-button">
+                            <span>Objednej</span>
+                            <span id="banner-order-cta">Edici A01 Přítomnost</span>
+                            <span aria-hidden="true">→</span>
                         </a>
                     </div>
                 </div>

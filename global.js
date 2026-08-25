@@ -560,6 +560,15 @@
             }
         });
 
+        const bannerOrderLink = document.getElementById('banner-order-link');
+        const bannerOrderCta = document.getElementById('banner-order-cta');
+        if (bannerOrderLink && CMS_CONFIG.edition && CMS_CONFIG.edition.orderPage) {
+            bannerOrderLink.setAttribute('href', CMS_CONFIG.edition.orderPage);
+        }
+        if (bannerOrderCta && CMS_CONFIG.edition) {
+            bannerOrderCta.textContent = 'Edici ' + CMS_CONFIG.edition.number + ' ' + CMS_CONFIG.edition.name;
+        }
+
     }
 
     // 11. COOKIE CONSENT BANNER
