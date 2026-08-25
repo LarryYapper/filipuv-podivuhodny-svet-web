@@ -6,55 +6,92 @@
 const SHARED_COMPONENTS = {
     banner: `
         <div class="top-banner banner-load"
-            style="align-items: center; background-color: #3A2C310D; border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 32px; justify-content: space-between; padding-block: 14px; padding-inline: clamp(20px, 5vw, 80px); flex-wrap: wrap; width: 100%;">
+            style="align-items: center; background-color: #3A2C310D; border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 18px; justify-content: space-between; padding-block: 14px; padding-inline: clamp(20px, 5vw, 80px); flex-wrap: wrap; width: 100%;">
             <div class="top-banner-inner"
-                style="align-items: center; box-sizing: border-box; display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; max-width: 1280px; margin: 0 auto; gap: 32px;">
-                <div class="edition-bar">
-                    <style>
-                        .edition-bar{box-sizing:border-box;width:100%;display:flex;flex-direction:column;gap:6px;}
-                        .edition-bar .edition-row{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding-block:6px;}
-                        .edition-bar .edition-row:not(:last-child){border-bottom:1px solid #3A2C3114;}
-                        .edition-bar .edition-info{display:flex;align-items:baseline;gap:8px;min-width:0;flex-wrap:wrap;font-family:'Mulish',system-ui,sans-serif;}
-                        .edition-bar .edition-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:14px;font-weight:580;line-height:1;align-self:center;}
-                        .edition-bar .edition-name{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
-                        .edition-bar .edition-sep{color:#3A2C3140;}
-                        .edition-bar .edition-desc{color:#3A2C31CC;font-size:13px;font-weight:600;}
-                        .edition-bar .edition-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
-                        .edition-bar .edition-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
-                        @media (max-width:767px){
-                            .edition-bar{gap:0;}
-                            .edition-bar .edition-row{gap:6px 12px;padding-block:8px;}
-                            .edition-bar .edition-name{font-size:11px;letter-spacing:0.02em;white-space:normal;}
-                            .edition-bar .edition-desc,.edition-bar .edition-val{font-size:11px;}
-                            .edition-bar .edition-cta{font-size:12px;}
-                        }
-                    </style>
-                    <div id="cd-launch" class="edition-row">
-                        <div class="edition-info">
-                            <span class="edition-mark">✦</span>
-                            <span class="edition-name">Edice <span data-cms="edition-number"></span> <span data-cms="edition-name"></span></span>
-                            <span class="edition-sep">·</span>
-                            <span class="edition-desc">odesílám <span id="cd-launch-val" class="edition-val">za pár dní</span></span>
-                        </div>
-                        <a href="postovni-klub.html" class="link-hover edition-cta">
-                            <span class="desktop-copy">Do poštovního klubu</span>
-                            <span class="mobile-copy">Do klubu</span>
+                style="align-items: stretch; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; gap: 10px;">
+                <style>
+                    .banner-panel,.banner-split,.banner-half{box-sizing:border-box;}
+                    .banner-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:rgba(244,242,235,0.72);border:1px solid rgba(58,44,49,0.12);border-radius:18px;padding:12px 16px;box-shadow:0 8px 24px rgba(58,44,49,0.04);}
+                    .banner-panel-primary{background:linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.26));}
+                    .banner-panel-current{background:rgba(255,255,255,0.52);}
+                    .banner-panel-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
+                    .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
+                    .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
+                    .banner-sep{color:#3A2C3140;}
+                    .banner-text{color:#3A2C31CC;font-size:13px;font-weight:600;}
+                    .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
+                    .banner-side{display:flex;align-items:center;gap:12px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;}
+                    .banner-mini{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
+                    .banner-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
+                    .banner-split{display:flex;gap:10px;flex-wrap:wrap;}
+                    .banner-half{display:flex;flex:1 1 320px;min-width:0;flex-direction:column;gap:6px;background:rgba(244,242,235,0.72);border:1px solid rgba(58,44,49,0.12);border-radius:18px;padding:12px 16px;box-shadow:0 8px 24px rgba(58,44,49,0.04);text-decoration:none;transition:transform 180ms ease, border-color 180ms ease, background-color 180ms ease;}
+                    .banner-half:hover{transform:translateY(-1px);border-color:rgba(58,44,49,0.2);background:rgba(255,255,255,0.6);}
+                    .banner-half-kicker{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;}
+                    .banner-half-title{color:#3A2C31;font-family:'Fraunces',serif;font-size:18px;font-variation-settings:'wght' 580;line-height:1.08;letter-spacing:-0.01em;}
+                    .banner-half-note{color:#3A2C31CC;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:600;line-height:1.35;}
+                    @media (max-width:767px){
+                        .top-banner{padding-block:10px !important;}
+                        .top-banner-inner{gap:8px !important;}
+                        .banner-panel{padding:10px 12px;gap:8px;}
+                        .banner-panel-copy{gap:4px 8px;}
+                        .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
+                        .banner-text,.banner-mini{font-size:11px;}
+                        .banner-side{width:100%;justify-content:space-between;}
+                        .banner-cta{font-size:12px;}
+                        .banner-split{gap:8px;}
+                        .banner-half{padding:10px 12px;flex-basis:100%;}
+                        .banner-half-title{font-size:16px;}
+                        .banner-half-note{font-size:12px;}
+                    }
+                    @media (min-width:768px) and (max-width:980px){
+                        .banner-panel{align-items:flex-start;}
+                        .banner-side{width:100%;justify-content:flex-start;}
+                    }
+                </style>
+                <div class="banner-panel banner-panel-primary">
+                    <div class="banner-panel-copy">
+                        <span class="banner-mark">✦</span>
+                        <span class="banner-heading">Objednávky odesílám každé pondělí</span>
+                        <span class="banner-sep">·</span>
+                        <span class="banner-text">další expedice <span id="cd-recurring-val" class="banner-val">za pár dní</span></span>
+                    </div>
+                    <div class="banner-side">
+                        <span class="banner-mini">variabilní časovač a design</span>
+                        <a href="postovni-klub.html#jak-to-funguje" class="link-hover banner-cta">
+                            <span class="desktop-copy">Jak to funguje</span>
+                            <span class="mobile-copy">Jak to funguje</span>
                             <span class="arrow-slide" style="line-height:18px;">→</span>
                         </a>
                     </div>
-                    <div id="cd-recurring" class="edition-row">
-                        <div class="edition-info">
-                            <span class="edition-mark">✦</span>
-                            <span class="edition-name">Edice VÍTEJ</span>
-                            <span class="edition-sep">·</span>
-                            <span class="edition-desc">odesílám obálky <b>každé pondělí</b> (<span id="cd-recurring-val" class="edition-val">za pár dní</span>)</span>
-                        </div>
-                        <a href="edice-vitej.html" class="link-hover edition-cta">
-                            <span class="desktop-copy">Vyzkoušej za 99 Kč</span>
-                            <span class="mobile-copy">99 Kč</span>
+                </div>
+                <div class="banner-panel banner-panel-current">
+                    <div class="banner-panel-copy">
+                        <span class="banner-mark">✦</span>
+                        <span class="banner-heading">Aktuální edice</span>
+                        <span class="banner-sep">·</span>
+                        <span class="banner-heading"><span data-cms="edition-number"></span> <span data-cms="edition-name"></span></span>
+                        <span class="banner-sep">·</span>
+                        <span class="banner-text"><span data-cms="edition-status"></span> · <span data-cms="edition-price"></span></span>
+                    </div>
+                    <div class="banner-side">
+                        <a href="postovni-klub.html" class="link-hover banner-cta">
+                            <span class="desktop-copy">Více o edici</span>
+                            <span class="mobile-copy">Více</span>
                             <span class="arrow-slide" style="line-height:18px;">→</span>
                         </a>
                     </div>
+                </div>
+                <div class="banner-split">
+                    <a id="banner-released-link" class="banner-half" href="edice.html#vydane">
+                        <span class="banner-half-kicker">Vydané edice</span>
+                        <span id="banner-released-title" class="banner-half-title">Edice A01 Přítomnost</span>
+                        <span id="banner-released-note" class="banner-half-note">1 vydaná edice</span>
+                    </a>
+                    <a id="banner-upcoming-link" class="banner-half" href="edice.html#priprava">
+                        <span class="banner-half-kicker">Edice v přípravě</span>
+                        <span id="banner-upcoming-title" class="banner-half-title">Edice A02 Tvrdá práce</span>
+                        <span id="banner-upcoming-note" class="banner-half-note">4 připravované edice</span>
+                    </a>
                 </div>
             </div>
         </div>

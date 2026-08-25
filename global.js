@@ -293,9 +293,9 @@
 
         if (!launchVal && !recurringVal) return;
 
-        // Keep the regular-edition row visible even after the send day has passed,
-        // because the main A01–A05 line still needs to remain part of the banner
-        // alongside the VÍTEJ row. We only hide it when there is no edition data.
+        // The regular-edition row should stay visible in the banner so visitors
+        // can always see the current A01–A05 line next to the Monday VÍTEJ row.
+        // Hide it only when there is no real edition configured at all.
         const launchDayEnd = (function () {
             const d = new Date(LAUNCH);
             d.setHours(23, 59, 59, 999);
@@ -345,7 +345,7 @@
                 } else {
                     if (launchRow) launchRow.style.display = '';
                     if (now > launchDayEnd) {
-                        launchVal.textContent = 'připravujeme další edici';
+                        launchVal.textContent = 'aktuální edice';
                     } else {
                         launchVal.textContent = remainingText(LAUNCH - now);
                     }
@@ -510,6 +510,56 @@
         return out;
     }
 
+    function initBannerSummary() {
+        if (typeof CMS_CONFIG === 'undefined') return;
+
+        const current = CMS_CONFIG.edition || null;
+        const released = [];
+        if (current) released.push(current);
+        (CMS_CONFIG.archive || []).forEach(edition => released.push(edition));
+        const upcoming = CMS_CONFIG.upcoming || [];
+
+        const releasedTitle = document.getElementById('banner-released-title');
+        const releasedNote = document.getElementById('banner-released-note');
+        const upcomingTitle = document.getElementById('banner-upcoming-title');
+        const upcomingNote = document.getElementById('banner-upcoming-note');
+        const releasedLink = document.getElementById('banner-released-link');
+        const upcomingLink = document.getElementById('banner-upcoming-link');
+
+        function shortEditionList(editions, limit) {
+            return editions
+                .slice(0, limit)
+                .map(edition => 'Edice ' + edition.number + ' ' + edition.name)
+                .join(' · ');
+        }
+
+        function plural(count, one, few, many) {
+            if (count === 1) return one;
+            if (count >= 2 && count <= 4) return few;
+            return many;
+        }
+
+        if (releasedTitle) {
+            releasedTitle.textContent = shortEditionList(released, 1) || 'Vydané edice';
+        }
+        if (releasedNote) {
+            releasedNote.textContent = released.length + ' ' + plural(released.length, 'vydaná edice', 'vydané edice', 'vydaných edic');
+        }
+        if (upcomingTitle) {
+            upcomingTitle.textContent = shortEditionList(upcoming, 2) || 'Žádné edice v přípravě';
+        }
+        if (upcomingNote) {
+            upcomingNote.textContent = upcoming.length + ' ' + plural(upcoming.length, 'připravovaná edice', 'připravované edice', 'připravovaných edic');
+        }
+
+        if (releasedLink && current && current.orderPage) {
+            releasedLink.setAttribute('href', current.orderPage);
+        }
+        if (upcomingLink && upcoming[0] && upcoming[0].orderPage) {
+            upcomingLink.setAttribute('href', upcoming[0].orderPage);
+        }
+    }
+
     function initCMS() {
         if (typeof CMS_CONFIG === 'undefined') return;
 
@@ -559,6 +609,8 @@
                 }
             }
         });
+
+        initBannerSummary();
     }
 
     // 11. COOKIE CONSENT BANNER
