@@ -358,8 +358,11 @@
             var currentFile = (location.pathname || '').split('/').pop() || '';
             var match = currentFile.match(/edice-(a\d+)-objednavka/i);
             var editionNumber = match ? match[1].toUpperCase() : 'A04';
-            var config = window.CMS_CONFIG && Array.isArray(window.CMS_CONFIG.editions)
-              ? window.CMS_CONFIG.editions.find(function (item) { return item.number === editionNumber; })
+            var cmsConfig = (typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG)
+              ? CMS_CONFIG
+              : window.CMS_CONFIG;
+            var config = cmsConfig && Array.isArray(cmsConfig.editions)
+              ? cmsConfig.editions.find(function (item) { return item.number === editionNumber; })
               : null;
             if (!config) return;
 
