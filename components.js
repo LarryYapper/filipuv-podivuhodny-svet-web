@@ -6,15 +6,16 @@
 const SHARED_COMPONENTS = {
     banner: `
         <div class="top-banner banner-load"
-            style="align-items: center; background-color: #3A2C310D; border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 0; justify-content: center; padding-block: 14px; padding-inline: clamp(20px, 5vw, 80px); flex-wrap: wrap; width: 100%;">
+            style="align-items: center; background-color: #F4F2EB; border-bottom-color: #3A2C311F; border-bottom-style: solid; border-bottom-width: 1px; box-sizing: border-box; display: flex; gap: 0; justify-content: center; padding-inline: clamp(20px, 5vw, 80px); width: 100%;">
             <div class="top-banner-inner"
-                style="align-items: stretch; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0;">
+                style="align-items: stretch; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 12px 10px;">
                 <style>
                     .banner-row,.banner-split,.banner-half{box-sizing:border-box;}
-                    .banner-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;padding:12px 0;border-bottom:1px solid rgba(58,44,49,0.10);}
+                    .banner-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;padding:14px 18px;border-bottom:1px solid rgba(58,44,49,0.10);}
                     .banner-row:last-child{border-bottom:0;}
-                    .banner-row-primary{padding-top:0;}
-                    .banner-row-current{padding-bottom:12px;}
+                    .banner-row-primary{background:linear-gradient(90deg,#FFF2E5 0%,#FFE3C7 100%);}
+                    .banner-row-current{background:linear-gradient(90deg,#FFF8EA 0%,#F8EFE1 100%);}
+                    .banner-row-archive{background:linear-gradient(90deg,#F8F2EA 0%,#EEE8DD 100%);padding-top:12px;padding-bottom:12px;}
                     .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;flex:1 1 auto;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
@@ -24,21 +25,24 @@ const SHARED_COMPONENTS = {
                     .banner-side{display:flex;align-items:center;gap:12px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;}
                     .banner-mini{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
                     .banner-cta{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1.5px solid #3A2C31;padding-bottom:2px;color:#3A2C31;font-family:'Mulish',system-ui,sans-serif;font-size:14px;font-weight:700;line-height:18px;text-decoration:none;cursor:pointer;}
-                    .banner-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;padding-top:12px;}
-                    .banner-half{display:flex;min-width:0;flex-direction:column;gap:4px;padding:0;text-decoration:none;}
+                    .banner-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;width:100%;padding-top:0;border-top:1px solid rgba(58,44,49,0.08);}
+                    .banner-half{display:flex;min-width:0;flex-direction:column;gap:4px;padding:14px 18px;text-decoration:none;border-right:1px solid rgba(58,44,49,0.08);background:linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.12));}
+                    .banner-half:last-child{border-right:0;}
                     .banner-half-kicker{color:#3A2C3199;font-family:'Mulish',system-ui,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
                     .banner-half-title{color:#3A2C31;font-family:'Fraunces',serif;font-size:17px;font-variation-settings:'wght' 580;line-height:1.05;letter-spacing:-0.01em;}
                     .banner-half-note{color:#3A2C31CC;font-family:'Mulish',system-ui,sans-serif;font-size:12px;font-weight:600;line-height:1.3;}
                     @media (max-width:767px){
-                        .top-banner{padding-block:10px !important;}
-                        .top-banner-inner{gap:8px !important;}
-                        .banner-row{padding:10px 0;gap:8px;}
+                        .top-banner{padding-inline:14px !important;}
+                        .top-banner-inner{gap:0 !important;padding-block:10px 8px;}
+                        .banner-row{padding:12px 14px;gap:8px;}
                         .banner-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text,.banner-mini{font-size:11px;}
                         .banner-side{width:100%;justify-content:space-between;}
                         .banner-cta{font-size:12px;}
-                        .banner-split{grid-template-columns:1fr;gap:10px;padding-top:10px;}
+                        .banner-split{grid-template-columns:1fr;padding-top:0;}
+                        .banner-half{padding:12px 14px;border-right:0;border-bottom:1px solid rgba(58,44,49,0.08);}
+                        .banner-half:last-child{border-bottom:0;}
                         .banner-half-title{font-size:16px;}
                         .banner-half-note{font-size:12px;}
                     }
@@ -81,7 +85,8 @@ const SHARED_COMPONENTS = {
                         </a>
                     </div>
                 </div>
-                <div class="banner-split">
+                <div class="banner-row banner-row-archive">
+                    <div class="banner-split">
                     <a id="banner-released-link" class="banner-half" href="edice.html#vydane">
                         <span class="banner-half-kicker">Vydané edice</span>
                         <span id="banner-released-title" class="banner-half-title">Edice A01 Přítomnost</span>
@@ -92,6 +97,7 @@ const SHARED_COMPONENTS = {
                         <span id="banner-upcoming-title" class="banner-half-title">Edice A02 Tvrdá práce</span>
                         <span id="banner-upcoming-note" class="banner-half-note">4 připravované edice</span>
                     </a>
+                    </div>
                 </div>
             </div>
         </div>
