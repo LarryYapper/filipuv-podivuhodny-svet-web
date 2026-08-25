@@ -18,7 +18,9 @@ const SHARED_COMPONENTS = {
                     .banner-text{color:#3A2C31CC;font-size:13px;font-weight:600;}
                     .banner-val{color:#FC7B35;font-weight:800;white-space:nowrap;}
                     .banner-left{text-align:left;justify-content:flex-start;}
-                    .banner-center{justify-content:center;text-align:center;}
+                    .banner-center{justify-content:center;text-align:center;justify-self:center;align-self:center;}
+                    .banner-center .banner-text{font-size:18px;line-height:1.1;font-weight:700;}
+                    .banner-center .banner-val{font-size:24px;line-height:1;}
                     .banner-center .banner-text{font-size:13px;}
                     .banner-right{display:flex;justify-content:flex-end;align-items:center;min-width:0;}
                     .banner-right .banner-button{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;background:#3A2C31;color:#F4F2EB;border:0;border-radius:999px;font-family:'Mulish',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.02em;text-decoration:none;cursor:pointer;white-space:nowrap;box-shadow:0 6px 16px rgba(58,44,49,0.10);}
@@ -46,7 +48,7 @@ const SHARED_COMPONENTS = {
                         <span class="banner-heading">Obálky odesílám každé pondělí</span>
                     </div>
                     <div class="banner-copy banner-center">
-                        <span class="banner-text">další expedice <span id="cd-recurring-val" class="banner-val">za pár dní</span></span>
+                        <span id="cd-recurring-val" class="banner-val">5 dní</span>
                     </div>
                     <div class="banner-right">
                         <a id="banner-order-link" href="postovni-klub-objednavka.html" class="banner-button">
