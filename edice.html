@@ -70,24 +70,27 @@
         + ed.gradient + ' 10%, #ffffff 100%);';
     }
 
-    // Planned editions have no price, no form and no order page yet — they
+ // Planned editions have no price, no form and no order page yet — they
     // exist so visitors can see the rhythm ahead, not to be bought.
     function upcomingCard(ed) {
       var orderHref = ed.orderPage || '';
+      var orderable = ed.status === 'available' || ed.status === 'preorder';
+      
       return ''
         + '<div class="reveal" style="display: flex; flex-direction: column; gap: 16px; background-color: #FFFFFF4D; border: 1px dashed #3A2C3133; border-radius: 24px; padding: 24px;">'
         + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D;' + previewBackground(ed) + '"></div>'
         + '  <div style="color: #3A2C3166; font-family: \'Mulish\', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em;">EDICE ' + ed.number + '</div>'
         + '  <div style="color: #3A2C31A6; font-family: \'Fraunces\', serif; font-size: 28px; font-variation-settings: \'wght\' 580; line-height: 1.15;">' + ed.name + '</div>'
         + '  <div style="color: #3A2C3199; font-family: \'Mulish\', sans-serif; font-size: 13px; font-weight: 600;">připravuji · odesílám ' + shipMonth(ed.dispatchDate) + '</div>'
-        + (orderHref ? '  <a class="edition-order-btn" href="' + orderHref + '" style="text-align: center; border-radius: 999px; background-color: #FC7B35; color: #F4F2EB; font-family: \'Mulish\', sans-serif; font-size: 14px; font-weight: 700; padding: 14px 24px; text-decoration: none; margin-top: 4px;">Objednat</a>' : '')
+        + (orderable && orderHref ? '  <a class="edition-order-btn" href="' + orderHref + '" style="text-align: center; border-radius: 999px; background-color: #FC7B35; color: #F4F2EB; font-family: \'Mulish\', sans-serif; font-size: 14px; font-weight: 700; padding: 14px 24px; text-decoration: none; margin-top: 4px;">Objednat</a>' : '')
         + '</div>';
     }
 
     function card(ed, isCurrent) {
-      var orderable = ed.status !== 'sold_out';
+      var orderable = ed.status === 'available' || ed.status === 'preorder';
       var accent = orderable ? '#FC7B35' : '#3A2C3166';
       var orderHref = ed.orderPage || 'postovni-klub-objednavka.html';
+      
       return ''
         + '<div class="reveal" style="display: flex; flex-direction: column; gap: 16px; background-color: #FFFFFF80; border: 1px solid #3A2C311F; border-radius: 24px; padding: 24px;">'
         + '  <div style="aspect-ratio: 3/2; border-radius: 16px; background-color: #3A2C310D; background-size: cover; background-position: center;' + previewBackground(ed) + '"'
