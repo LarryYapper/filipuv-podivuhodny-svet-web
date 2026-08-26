@@ -582,19 +582,19 @@
                 const imgWrap = document.createElement('div');
                 imgWrap.style.flex = "0 0 calc(33.333% - 11px)";
                 imgWrap.style.minWidth = "280px";
+                imgWrap.style.minHeight = "280px"; /* Guarantees height */
                 imgWrap.style.aspectRatio = "1/1";
                 imgWrap.style.borderRadius = "16px";
+                imgWrap.style.backgroundColor = "#3A2C310D"; /* Shows a light gray box if the image 404s */
                 imgWrap.style.backgroundImage = "url('" + imgSrc + "')";
                 imgWrap.style.backgroundSize = "cover";
                 imgWrap.style.backgroundPosition = "center";
                 imgWrap.style.scrollSnapAlign = "start";
-                imgWrap.classList.add('reveal');
                 galleryContainer.appendChild(imgWrap);
             });
         } else if (galleryContainer) {
             galleryContainer.style.display = 'none'; // Hide if no detail images exist
         }
-
     }
 
     // 11. COOKIE CONSENT BANNER
