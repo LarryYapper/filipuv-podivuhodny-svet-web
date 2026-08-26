@@ -542,7 +542,12 @@
                     if (el.tagName === 'IMG') {
                         el.src = value;
                     } else {
-                        el.style.backgroundImage = `url('${value}')`;
+                        // FIX: Remove background-image style directly and replace with a properly formatted url()
+                        el.style.backgroundImage = "url('" + value + "')";
+                        // Ensure it behaves like a cover image
+                        el.style.backgroundSize = "cover";
+                        el.style.backgroundPosition = "center";
+                        el.innerHTML = ''; // Remove placeholder text if any
                     }
                 } else if (prop === 'price') {
                     el.textContent = value + ' Kč';
@@ -567,6 +572,27 @@
         }
         if (bannerOrderCta && CMS_CONFIG.edition) {
             bannerOrderCta.textContent = 'Edici ' + CMS_CONFIG.edition.number + ' ' + CMS_CONFIG.edition.name;
+        }
+
+        // Handle Dynamic Gallery
+        const galleryContainer = document.getElementById('edition-gallery');
+        if (galleryContainer && CMS_CONFIG.edition && CMS_CONFIG.edition.detailImages && CMS_CONFIG.edition.detailImages.length > 0) {
+            galleryContainer.innerHTML = ''; // Clear placeholder if any
+            CMS_CONFIG.edition.detailImages.forEach(imgSrc => {
+                const imgWrap = document.createElement('div');
+                imgWrap.style.flex = "0 0 calc(33.333% - 11px)";
+                imgWrap.style.minWidth = "280px";
+                imgWrap.style.aspectRatio = "1/1";
+                imgWrap.style.borderRadius = "16px";
+                imgWrap.style.backgroundImage = "url('" + imgSrc + "')";
+                imgWrap.style.backgroundSize = "cover";
+                imgWrap.style.backgroundPosition = "center";
+                imgWrap.style.scrollSnapAlign = "start";
+                imgWrap.classList.add('reveal');
+                galleryContainer.appendChild(imgWrap);
+            });
+        } else if (galleryContainer) {
+            galleryContainer.style.display = 'none'; // Hide if no detail images exist
         }
 
     }
