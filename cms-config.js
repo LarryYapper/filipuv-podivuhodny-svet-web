@@ -29,8 +29,8 @@ const EDITIONS = [
         status: "available",
         dispatchDate: "2026-08-24T08:00:00+02:00",
         gradient: "#a7c957",
-        cover: "assets/edice-a01.png",
-        detailImages: [],
+        cover: "assets/edice-a01/cover.jpg",
+        detailImages: ["assets/edice-a01/zine.jpg", "assets/edice-a01/postcard.jpg", "assets/edice-a01/sticker.jpg"],
         orderPage: makeOrderPage("A01"),
         formId: "YPDQ4"
     },
