@@ -314,7 +314,7 @@
         <h1 id="edition-heading">Edice A01 Přítomnost za 149 Kč.</h1>
         <p class="lead">Jedna obálka: ZINE, ručně psaný dopis, fotopohlednice a karta s citátem. Jednorázová objednávka — nic se neopakuje, nic se nestrhává.</p>
 
-        <div class="intro-photo" aria-hidden="true">
+        <div id="edition-photo" class="intro-photo" aria-hidden="true" style="background-size: cover; background-position: center;">
           <span id="edition-photo-label">Foto · Edice A01 Přítomnost</span>
         </div>
 
@@ -373,6 +373,12 @@
 
             var photoLabel = document.getElementById('edition-photo-label');
             if (photoLabel) photoLabel.textContent = 'Foto · Edice ' + config.number + ' ' + config.name;
+            
+            var photoDiv = document.getElementById('edition-photo');
+            if (photoDiv && config.cover) {
+                photoDiv.style.backgroundImage = "url('" + config.cover + "')";
+                if (photoLabel) photoLabel.style.display = 'none';
+            }
 
             var summaryName = document.getElementById('edition-summary-name');
             if (summaryName) summaryName.textContent = 'Edice ' + config.number + ' ' + config.name;
