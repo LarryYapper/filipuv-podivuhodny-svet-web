@@ -33,8 +33,9 @@ const SHARED_COMPONENTS = {
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text{font-size:11px;}
                         .banner-center{justify-content:center;}
-                        .banner-right{justify-content:flex-start;}
-                        .banner-right .banner-button{width:100%;justify-content:space-between;}
+                        .banner-left{justify-content:center; text-align:center;}
+                        .banner-right{justify-content:center;}
+                        .banner-right .banner-button{width:fit-content; justify-content:center;}
                     }
                     @media (min-width:768px) and (max-width:980px){
                         .banner-strip{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
