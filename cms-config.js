@@ -30,7 +30,7 @@ const EDITIONS = [
         dispatchDate: "2026-08-24T08:00:00+02:00",
         gradient: "#a7c957",
         cover: "assets/edice-a01/cover.jpg",
-        detailImages: ["assets/edice-a01/zine.jpg", "assets/edice-a01/postcard.jpg", "assets/edice-a01/sticker.jpg"],
+        detailImages: ["assets/edice-a01/zine.JPG", "assets/edice-a01/postcard.JPG", "assets/edice-a01/sticker.JPG"],
         orderPage: makeOrderPage("A01"),
         formId: "YPDQ4"
     },
@@ -43,7 +43,7 @@ const EDITIONS = [
         dispatchDate: "2026-10-20T08:00:00+02:00",
         gradient: "#a96737",
         cover: "assets/edice-a02.png",
-        detailImages: [],
+        detailImages: ["assets/edice-a02/zine.JPG", "assets/edice-a02/postcard.JPG", "assets/edice-a02/sticker.JPG"],
         orderPage: makeOrderPage("A02"),
         formId: "5Q4zw"
     },
