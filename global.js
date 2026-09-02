@@ -597,6 +597,22 @@
         }
     }
 
+// Handle Dynamic Banner Text
+        const bannerHeading = document.querySelector('.banner-heading');
+        if (bannerHeading && CMS_CONFIG.banner) {
+            function updateBannerText() {
+                if (window.innerWidth <= 767 && CMS_CONFIG.banner.recurringMobileText) {
+                    bannerHeading.textContent = CMS_CONFIG.banner.recurringMobileText;
+                } else if (CMS_CONFIG.banner.recurringDesktopText) {
+                    bannerHeading.textContent = CMS_CONFIG.banner.recurringDesktopText;
+                }
+            }
+            // Run on load
+            updateBannerText();
+            // Update if the user rotates their phone or resizes the browser
+            window.addEventListener('resize', updateBannerText);
+        }
+
     // 11. COOKIE CONSENT BANNER
     function initCookieConsent() {
         if (getCookieConsent()) return;
