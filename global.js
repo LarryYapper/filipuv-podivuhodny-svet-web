@@ -592,12 +592,11 @@
                 imgWrap.style.scrollSnapAlign = "start";
                 galleryContainer.appendChild(imgWrap);
             });
-        } else if (galleryContainer) {
+ } else if (galleryContainer) {
             galleryContainer.style.display = 'none'; // Hide if no detail images exist
         }
-    }
 
-// Handle Dynamic Banner Text
+        // Handle Dynamic Banner Text
         const bannerHeading = document.querySelector('.banner-heading');
         if (bannerHeading && CMS_CONFIG.banner) {
             function updateBannerText() {
@@ -612,6 +611,9 @@
             // Update if the user rotates their phone or resizes the browser
             window.addEventListener('resize', updateBannerText);
         }
+    } // <--- The bracket must be HERE, closing the initCMS() function after the banner code.
+
+    // 11. COOKIE CONSENT BANNER
 
     // 11. COOKIE CONSENT BANNER
     function initCookieConsent() {
