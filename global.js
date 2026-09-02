@@ -605,12 +605,24 @@
 
         // Handle Dynamic Banner Text
         const bannerHeading = document.querySelector('.banner-heading');
+        const bannerMark = document.querySelector('.banner-mark'); // 1. Target the star
+
         if (bannerHeading && CMS_CONFIG.banner) {
             function updateBannerText() {
+                // Update the text
                 if (window.innerWidth <= 767 && CMS_CONFIG.banner.recurringMobileText) {
                     bannerHeading.textContent = CMS_CONFIG.banner.recurringMobileText;
                 } else if (CMS_CONFIG.banner.recurringDesktopText) {
                     bannerHeading.textContent = CMS_CONFIG.banner.recurringDesktopText;
+                }
+
+                // Update the star visibility
+                if (bannerMark) {
+                    if (CMS_CONFIG.shopstatus && CMS_CONFIG.shopstatus.status === 'holiday') {
+                        bannerMark.style.display = 'none'; // Hides the star during holiday
+                    } else {
+                        bannerMark.style.display = ''; // Brings the star back when "open"
+                    }
                 }
             }
             // Run on load
@@ -618,7 +630,7 @@
             // Update if the user rotates their phone or resizes the browser
             window.addEventListener('resize', updateBannerText);
         }
-    } // <--- The bracket must be HERE, closing the initCMS() function after the banner code.
+    }
 
     // 11. COOKIE CONSENT BANNER
 
