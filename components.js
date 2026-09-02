@@ -10,7 +10,7 @@ const SHARED_COMPONENTS = {
             <div class="top-banner-inner"
                 style="align-items: stretch; box-sizing: border-box; display: flex; width: 100%; max-width: 1280px; margin: 0 auto; gap: 0; padding-block: 10px;">
                 <style>
-                    .banner-strip{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;width:100%;padding:8px 0;}
+                    .banner-strip{box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:18px;width:100%;padding:8px 0;}
                     .banner-copy{display:flex;align-items:baseline;gap:8px 10px;flex-wrap:wrap;min-width:0;font-family:'Mulish',system-ui,sans-serif;}
                     .banner-mark{color:#FC7B35;font-family:'Fraunces',system-ui,sans-serif;font-size:15px;font-weight:580;line-height:1;align-self:center;}
                     .banner-heading{color:#3A2C31;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
@@ -28,7 +28,7 @@ const SHARED_COMPONENTS = {
                     @media (max-width:767px){
                         .top-banner{padding-inline:14px !important;}
                         .top-banner-inner{gap:0 !important;padding-block:8px 6px;}
-                        .banner-strip{grid-template-columns:1fr;gap:8px;padding:6px 0;}
+                        .banner-strip{flex-direction:column;gap:8px;padding:6px 0;}
                         .banner-copy{gap:4px 8px;}
                         .banner-heading{font-size:11px;letter-spacing:0.02em;white-space:normal;}
                         .banner-text{font-size:11px;}
@@ -38,9 +38,11 @@ const SHARED_COMPONENTS = {
                         .banner-right .banner-button{width:fit-content; justify-content:center;}
                     }
                     @media (min-width:768px) and (max-width:980px){
-                        .banner-strip{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
-                        .banner-right{grid-column:1 / -1;justify-content:flex-start;}
-                    }
+                        .banner-strip{flex-wrap:wrap;justify-content:center;}
+                        .banner-left{flex:0 1 auto;}
+                        .banner-center{flex:0 1 auto;}
+                        .banner-right{flex:1 1 100%;justify-content:center;margin-top:4px;}
+}
                 </style>
                 <div class="banner-strip">
                     <div class="banner-copy banner-left">

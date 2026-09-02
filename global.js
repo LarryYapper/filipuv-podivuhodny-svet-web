@@ -353,7 +353,14 @@
             }
 
             if (recurringVal) {
-                const target = nextRecurring(now);
+                // Automatically route to the holiday date if the shop status is set to holiday
+                let target;
+                if (typeof CMS_CONFIG !== 'undefined' && CMS_CONFIG.shopstatus && CMS_CONFIG.shopstatus.status === "holiday") {
+                    target = new Date(cfg.deadlineDate).getTime();
+                } else {
+                    target = nextRecurring(now);
+                }
+
                 if (target == null) {
                     if (recurringRow) recurringRow.style.display = 'none';
                 } else {
