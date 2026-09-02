@@ -94,16 +94,47 @@ const CURRENT_EDITION = EDITIONS.find(function (edition) {
     return edition.status === "last_pieces";
 }) || EDITIONS[0];
 
+// --- SHOP STATUS & HOLIDAY SWITCH ---
+const SHOP_STATUS = {
+    status: "holiday", // Options: "open" | "holiday"
+    startday: 3,
+    endday: 9,
+    month: "září",
+    opendate: "10. 9." 
+};
+
+// --- AUTOMATIC BANNER TEXT & TIMER GENERATION ---
+const isHoliday = SHOP_STATUS.status === "holiday";
+
+// 1. Automatický převod "10. 9." na "YYYY-MM-DDT08:00:00+02:00"
+const dateParts = SHOP_STATUS.opendate.split('.');
+const openDay = (dateParts[0] || "1").trim().padStart(2, '0');
+const openMonth = (dateParts[1] || "1").trim().padStart(2, '0');
+const currentYear = new Date().getFullYear();
+const dynamicTimerDate = `${currentYear}-${openMonth}-${openDay}T08:00:00+02:00`;
+
+// 2. Automatické složení textů
+const dynamicDesktopText = isHoliday 
+    ? `🧳 Dovolená ${SHOP_STATUS.startday}.–${SHOP_STATUS.endday}. ${SHOP_STATUS.month} (odesílám ${SHOP_STATUS.opendate}) • Běžně odesílám každé pondělí`
+    : "Obálky odesílám každé pondělí";
+
+const dynamicMobileText = isHoliday 
+    ? `🧳 Dovolená ${SHOP_STATUS.startday}.–${SHOP_STATUS.endday}. ${SHOP_STATUS.month} (odesílám ${SHOP_STATUS.opendate})`
+    : "Obálky odesílám každé pondělí";
+
 const CMS_CONFIG = {
+    shopstatus: SHOP_STATUS,
+
     // 1. TOP BANNER & COUNTDOWN
     banner: {
-        deadlineDate: "2026-08-20T08:00:00+02:00",
+        deadlineDate: isHoliday ? dynamicTimerDate : "2026-08-20T08:00:00+02:00", 
         link: "postovni-klub.html",
 
         recurringWeekday: 1,
         recurringTime: "08:00",
-        recurringDesktopText: "Objednávky otevřené · odesílám obálky každé pondělí",
-        recurringMobileText: "Odesílám obálky každé pondělí"
+        
+        recurringDesktopText: dynamicDesktopText,
+        recurringMobileText: dynamicMobileText
     },
 
     // 2. DORUČENÍ
@@ -115,20 +146,20 @@ const CMS_CONFIG = {
     // 3. GLOBAL DATES
     dates: {},
 
-    // 4. CENTRAL EDITION LIST — all editions A01..A05 with shared metadata.
+    // 4. CENTRAL EDITION LIST
     editions: EDITIONS,
 
-    // 5. CURRENT EDITION — compatibility with existing pages.
+    // 5. CURRENT EDITION
     edition: CURRENT_EDITION,
 
-    // 6. UPCOMING — compatibility with existing pages.
+    // 6. UPCOMING
     upcoming: EDITIONS.filter(function (edition) {
         return edition.number !== CURRENT_EDITION.number
             && edition.status !== "sold_out"
             && edition.status !== "archive";
     }),
 
-    // 7. ARCHIVE — compatibility with existing pages.
+    // 7. ARCHIVE
     archive: EDITIONS.filter(function (edition) {
         return edition.status === "sold_out" || edition.status === "archive";
     })
